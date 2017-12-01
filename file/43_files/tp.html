@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://img.scupio.com/html/tp.html?sc-1449206919722-433674779022 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="jquery-1.11.0.min.js"></script>
+</head><body style="margin: 0;">
+	<center>
+		<div id="ad-hotel"><iframe id="fb5cf779" name="fb5cf779" src="about:blank" framespacing="0" frameborder="no" scrolling="no" width="728" height="90"></iframe></div>
+	</center>
+<script>
+		var $ = jQuery,
+			third_party_src_id = decodeURIComponent(location.search.slice(1)),
+			$adHotel = $('#ad-hotel');
+
+		// prohibit write
+		document.write = function(element) {
+			$adHotel.append(element);
+		}
+
+		$adHotel.append(window.parent.snippet[third_party_src_id]);
+
+		// for interstitialfunction
+		if (window.parent.resize_ratio) {
+			$adHotel.css({
+				'zoom': window.parent.resize_ratio,
+				'top': 0,
+				'left': 0
+			});
+		}
+</script>
+
+</body></html>

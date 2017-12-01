@@ -1,0 +1,237 @@
+body {
+	background: rgb(255, 255, 255);
+}
+.bd {
+	border-top-color: rgb(203, 215, 236); border-top-width: 1px; border-top-style: solid;
+}
+#bd {
+	border-top-color: rgb(203, 215, 236); border-top-width: 1px; border-top-style: solid;
+}
+#bd .grid_8 {
+	width: 650px; margin-right: 0px;
+}
+.box {
+	border: 1px solid rgb(203, 215, 236); border-image: none; font-size: 15px; margin-bottom: 10px;
+}
+.boxTitle {
+	padding: 5px 0px 5px 5px; text-align: justify; color: rgb(221, 0, 0); line-height: 20px; font-size: 14px; font-weight: bold; margin-bottom: 5px; border-left-color: rgb(255, 255, 255); border-left-width: 1px; border-left-style: solid; background-color: rgb(225, 239, 250);
+}
+.arttop {
+	text-align: center; padding-top: 10px;
+}
+.arttop .toptitle {
+	color: rgb(0, 51, 221); font-size: 20px; margin-top: 20px;
+}
+.arttop .title {
+	margin: 10px 0px; font-size: 24px; font-weight: bold;
+}
+.arttop .subtitle {
+	color: rgb(0, 51, 221); margin-bottom: 20px;
+}
+.arttop .caption {
+	margin-top: 5px;
+}
+.arttop2 .caption {
+	margin-bottom: 15px;
+}
+.arttop2 .title {
+	font-size: 30px;
+}
+.arttop {
+	padding-bottom: 15px;
+}
+.arttop img {
+	max-width: 95%;
+}
+#artbody {
+	line-height: 180%; padding-top: 35px; padding-right: 10px; font-size: 100%; margin-bottom: 10px; position: relative;
+}
+#artbody p {
+	line-height: 180%; margin-top: 20px;
+}
+#artbody table {
+	margin: 0px auto;
+}
+#artbody #topbar {
+	font-size: 14px; border-bottom-color: rgb(203, 215, 236); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#artbody table tr td {
+	border: 1px solid rgb(85, 85, 85); border-image: none; padding-right: 3px;
+}
+@media only screen and (max-width:40em)
+{
+.arttop {
+	border-right-color: rgb(203, 215, 236); border-right-width: 0px; border-right-style: solid;
+}
+#artbody {
+	border-right-color: rgb(203, 215, 236); border-right-width: 0px; border-right-style: solid;
+}
+}
+#share table tr td {
+	border: 0px currentColor; border-image: none;
+}
+#share table {
+	margin: 0px;
+}
+#topimg {
+	width: 625px;
+}
+#insidearticleBodyAd {
+	margin: 10px 10px 10px 0px; width: auto; height: auto; overflow: hidden; float: left; display: inline; position: relative;
+}
+#insidearticleBodyAd ul li {
+	width: 149px; height: 30px; text-align: left; line-height: 30px; float: left;
+}
+@media only screen and (max-width:40em)
+{
+#insidearticleBodyAd {
+	width: 100%; float: none;
+}
+}
+.blockCenter {
+	margin-right: auto; margin-left: auto; display: block;
+}
+.blockLeft {
+	float: left; display: block;
+}
+.blockRight {
+	float: right; display: block;
+}
+.artb {
+	margin: 10px 0px; font-size: 12px;
+}
+.bgcolor {
+	
+}
+.bn12 {
+	color: rgb(204, 51, 51); font-size: 12px;
+}
+.wangwen {
+	margin: 5px 0px 10px; padding: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; height: 32px; font-size: 13px;
+}
+.wangwen .wangwenpic {
+	width: 100px; float: left;
+}
+.wangwen .wangwennote {
+	width: 430px; line-height: 16px; float: left;
+}
+.nocopyright {
+	margin: 5px 0px 10px; padding: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; height: 62px; font-size: 13px;
+}
+.nocopyright .nocopyrightlogo {
+	width: 50px; float: left;
+}
+.nocopyright .nocopyrightnote {
+	width: 580px; line-height: 16px; float: left;
+}
+#commenttable {
+	line-height: 22px;
+}
+.commenttable {
+	line-height: 22px;
+}
+.commenttable p {
+	text-indent: 25px;
+}
+.articlepaging {
+	margin: 20px 0px; padding: 10px 0px 10px 130px; text-align: center; color: rgb(255, 255, 255); border-top-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-top-width: 1px; border-bottom-width: 1px; border-top-style: dashed; border-bottom-style: dashed;
+}
+.articlepaging .pagecurrent {
+	background: rgb(34, 102, 187); color: rgb(255, 255, 255); font-weight: bold; float: left; display: block;
+}
+.articlepaging a {
+	padding: 0px 0.5em; border: 1px solid rgb(170, 170, 238); border-image: none; color: rgb(17, 85, 187); margin-right: 5px; float: left; display: block;
+}
+.yulebox {
+	padding-bottom: 5px;
+}
+.yulebox .yulepics {
+	margin: 0px auto; padding: 2px 0px; width: 149px; height: 100px; text-align: center; overflow: hidden; float: left;
+}
+.yulebox .yulepics img {
+	border: 0px currentColor; border-image: none; max-width: 140px;
+}
+.ymkvideo {
+	margin: 5px; width: 139px; height: 132px; text-align: center; overflow: hidden; float: left; display: inline;
+}
+.ymkvideo img {
+	border: 0px currentColor; border-image: none; width: 130px;
+}
+.ymkvideo .ymkvideotitle {
+	width: 135px; height: 32px; line-height: 16px; overflow: hidden; font-size: 13px;
+}
+.oneblogger {
+	width: 300px; margin-bottom: 5px !important; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.bloggerleft {
+	width: 100px; height: 60px; overflow: hidden; float: left;
+}
+.bloggerright {
+	width: 180px; padding-top: 2px; padding-left: 10px; float: left;
+}
+#relatednavbox {
+	margin-bottom: 240px;
+}
+#relatednavbox ul li ul.sub_active {
+	height: 220px;
+}
+#bigtitle {
+	font-size: 18px; margin-top: 10px;
+}
+@media only screen and (min-width:40.06em)
+{
+.imgbox {
+	margin: 5px; width: 139px; height: 135px; text-align: center; overflow: hidden; float: left; display: inline;
+}
+.imgbox img {
+	width: 139px;
+}
+.imgbox .title {
+	width: 135px; height: 32px; line-height: 16px; overflow: hidden; font-size: 13px;
+}
+.imglist li .imgbox {
+	margin: 0px 0px 2px; padding: 2px; border: 1px solid rgb(204, 204, 204); border-image: none; width: 174px; height: 116px; overflow: hidden; float: left;
+}
+.imglist .imgbox img {
+	width: 174px; vertical-align: middle;
+}
+.imglist li .titlebox {
+	width: 108px; padding-top: 2px; font-size: 14px; font-weight: bold; margin-left: 5px; float: left;
+}
+.imglist .titlebox a {
+	color: rgb(51, 51, 51); line-height: 1.2em;
+}
+.imglist .titlebox a:hover {
+	color: rgb(255, 102, 0); text-decoration: underline;
+}
+.imglist .titlebox a:visited {
+	color: rgb(153, 153, 153);
+}
+}
+.click_next {
+	left: -60px; top: 10px; width: 20px; text-align: center; color: rgb(255, 0, 0); line-height: 18px; font-size: 14px; display: none; position: absolute;
+}
+.click_next:visited {
+	color: rgb(255, 0, 0);
+}
+.click_next span {
+	margin-left: -13px;
+}
+.click_next::before {
+	font-size: 16px; font-weight: bold; content: "請繼續看相關文章";
+}
+.arttop .click_next {
+	display: block;
+}
+#below_article_share {
+	margin: 20px auto; float: left;
+}
+#below_article_share .wechat-round {
+	margin-top: 30px;
+}
+@media only screen and (max-width:40em)
+{
+#artbody iframe {
+	width: 100%;
+}
+}

@@ -1,0 +1,167 @@
+@charset "utf-8";
+/*最新消息內容*/
+/*---------------
+      標題
+-----------------*/
+.title{
+	margin:0 0 10px;
+	}
+h1{
+	font-size:24px!important;
+	color:#000000;
+	font-weight:normal!important;
+	}
+.Listen{
+	position:static;
+	background:url(../img/news-detail-Listen.jpg) no-repeat;
+	width:28px;
+	height:22px;
+	border-radius:0  !important;
+	box-shadow:0 1px 2px rgba(0, 0, 0,0);
+	margin:5px 0 0 15px;
+	}
+	.Listen:hover{
+		opacity:0.5;
+		}
+.title .Listen ,.title h1{
+	float:left;
+	}
+/*---------------
+      日期
+-----------------*/
+.list-unstyled li:first-child{
+	padding-left:0px;
+	}
+.date {
+	color:#959595;
+	font-size:13px;
+	}
+/*---------------
+      分享
+-----------------*/
+.Share {
+	float:right;
+	}
+.Share li{
+	float:left;
+	margin:0 0 0 10px;
+	color:#000000;
+	}
+	.Share li:first-child{
+		margin-left:0px;
+		}
+.Share a{
+	display:block;
+	line-height:27px;
+	color:#000000;
+	}
+	.Share a:hover{
+		opacity:0.5;
+		}
+.Share i{
+	padding: 0 5px 0 0;
+}
+.Send ,.Print{
+	padding:5px 0 0;
+	}
+.Share .facebook a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:0 0 ;
+	width:27px;
+	height:27px;
+	}
+.Share .google a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:-103px 0 ;
+	width:27px;
+	height:27px;
+	}
+.Share .twitter a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:-138px 0 ;
+	width:27px;
+	height:27px;
+	}
+.Share .plurk a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:-69px -1px ;
+	width:27px;
+	height:27px;
+	}
+.Share .SK a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:-173px 0 ;
+	width:27px;
+	height:27px;
+	}
+.Share .SP a{
+	background:url(../img/Share-icon.jpg) no-repeat;
+	background-position:right top ;
+	width:27px;
+	height:27px;
+	}
+/*---------------
+      關鍵字
+-----------------*/
+ul.blog-tags a:hover{
+	background-color:#313131;
+	}
+/*---------------
+     延伸閱讀
+-----------------*/
+.relatedbox h2{
+	font-size:15px;
+	color:#000;
+	font-weight:bold;
+	margin:15px 0;
+	}
+.relatedbox  li:first-child{
+	padding-left:15px;
+	}
+.relatedbox .relatedData .col-md-3{
+	width:20%;
+	}
+.sorting-cover{
+	margin:10px 0;
+	color:#555;
+	display:block;
+	}
+/*---------------
+       圖片
+-----------------*/
+/*
+.carousel-caption {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  left: 0;
+  padding: 7px 15px;
+  right: 0;
+}
+*/
+/*
+直式的ipad版780px以下
+==========================================================*/
+@media (max-width: 780px) {}
+/*
+手機板橫式
+==========================================================*/
+@media (max-width: 600px) {
+	.related-list{
+		width:50%;
+		}
+	}
+/*
+手機版420px以下
+==========================================================*/
+@media (max-width: 420px) {
+	.Listen{
+		margin-left:0px;
+		}
+	.date{
+		padding:0 0 15px;
+		}
+	.Share{
+		float:left;
+		margin:0 0 10px;
+		}
+	}

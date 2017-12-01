@@ -1,0 +1,459 @@
+﻿/* Abdominis */
+
+.abdominis {
+    padding-top: 1em;
+}
+
+.rtlth header {
+	height: 28px;
+}
+
+.rtlth h1 {
+	float: left;
+	width: 50%;
+	line-height: 1.3em;
+	color: #5b5b5b;
+	font-size: 1.75em;
+}
+
+#prize .rtlth h1 {
+	width: 100%;
+	color: #3a3a3a;
+	font-size: 1.75em;
+	line-height: 1.3em;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #5b5b5b;
+}
+
+.collum {
+	position: relative;
+	right: 10px;
+	float: right;
+	width: 460px;
+	padding: 10px 0 0 0;
+}
+
+/* Category */
+
+.cate_menu li {
+	float: left;
+	width: 64px;
+	text-align: center;
+}
+
+.cate_menu a {
+	display: block;
+	color: #616161;
+	padding: 10px 0;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+}
+
+.cate_menu a:hover {
+	color: white;
+	border-bottom-color: white;
+}
+
+.cate_menu .new a {border-bottom-color: #ecb527;}
+.cate_menu .hot a {border-bottom-color: #5596d2;}
+.cate_menu .soci a {border-bottom-color: #577798;}
+.cate_menu .polit a {border-bottom-color: #baa795;}
+.cate_menu .inter a {border-bottom-color: #5ba5ee;}
+.cate_menu .business a {border-bottom-color: #4b565f;}
+.cate_menu .life a {border-bottom-color: #e15d5a;}
+.cate_menu .hotdeals a {border-bottom-color: #c908c1;}
+.cate_menu .enter a {border-bottom-color: #ff7a21;}
+.cate_menu .sport a {border-bottom-color: #a31313;}
+.cate_menu .all a {border-bottom-color: #616161;}
+
+.cate_menu .new a:hover {background-color: #ecb527;}
+.cate_menu .hot a:hover {background-color: #5596d2;}
+.cate_menu .soci a:hover {background-color: #577798;}
+.cate_menu .polit a:hover {background-color: #baa795;}
+.cate_menu .inter a:hover {background-color: #5ba5ee;}
+.cate_menu .business a:hover {background-color: #4b565f;}
+.cate_menu .life a:hover {background-color: #e15d5a;}
+.cate_menu .hotdeals a:hover {background-color: #c908c1;}
+.cate_menu .enter a:hover {background-color: #ff7a21;}
+.cate_menu .sport a:hover {background-color: #a31313;}
+.cate_menu .all a:hover {background-color: #616161;}
+
+
+/* Toolbar */
+
+.tlb {
+	position: relative;
+	width: 460px;
+	border-bottom: 4px solid #626366;
+}
+
+.tlb h2,
+.tlb div,
+.tlb a {
+	position: relative;
+	float: left;
+}
+
+.tlb div {
+	top: -9px;
+}
+
+.tlb div,
+.tlb h2 {
+	font-size: 1em;
+	font-weight: lighter;
+}
+
+.fntss {
+	padding-right: 10px;
+}
+
+h2.shrst,
+div.shrs {
+	/*position: absolute;*/
+}/*lpt312*/
+
+h2.shrst {
+	left: 294px;
+}
+
+div.shrs {
+	/*left: 344px;*/
+	width: 455px;
+	/*margin-right: -10px;*/
+	height: 40px;
+	/*margin: 0px 0px 0px -14px;*/
+}/*lpt312*/
+
+.fntss a{
+	background-image: url(/appledaily/images/iconset.png);
+	background-repeat: no-repeat;*/
+	display: block;
+	
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}/*lpt312*/
+
+.shrs a {
+	/*background-image: url(../core/iconset.png);
+	background-repeat: no-repeat;*/
+	/*display: block;*/
+	float:left;
+	width: 100px;
+	height: 32px;
+	margin-right: 5px;
+}/*lpt312*/
+
+.clicked,
+.forward,
+.quote {margin-right: 10px;}
+
+.clicked:hover,
+.forward:hover,
+.quote:hover {text-decoration: underline;}
+
+.bigger {background-position: 0 -555px; margin-right: 0;}
+.middle {background-position: -32px -555px;}
+.smaller {background-position: -64px -555px;}
+
+.fntss a.bigger:hover, .fntss a.bion {background-position: 0 -491px;}
+.fntss a.middle:hover, .fntss a.mion {background-position: -32px -491px;}
+.fntss a.smaller:hover, .fntss a.smon {background-position: -64px -491px;}
+
+a.bigger:hover {background-position: 0 -491px;}
+a.middle:hover {background-position: -32px -491px;}
+a.smaller:hover {background-position: -64px -491px;}
+
+a.plurk {background-image: url(/appledaily/images/rw100_p.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 100px;
+	height: 32px;
+	margin-right: 5px;
+	}/*lpt312*/
+	
+a.facebook {background-image: url(/appledaily/images/rw100_f.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 100px;
+	height: 32px;
+	margin-right: 5px;
+	}/*lpt312*/
+	
+a.twitter {background-image: url(/appledaily/images/rw100_t.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 100px;
+	height: 32px;
+	margin-right: 5px;
+	}/*lpt312*/
+	
+a.gpls {background-image: url(/appledaily/images/rw100_g.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 100px;
+	height: 32px;
+	margin-right: 5px;
+	}/*lpt312*/
+
+/* Realtime News List */
+
+.rtlstisd {
+	float: left;
+	width: 170px;
+	overflow: hidden;
+}
+
+.rtlstisdh {
+	height: 42px;
+	border-bottom: 4px solid #cbcbcb;
+}
+
+.rtlstisdh h1 {
+	font-size: 1.5em;
+	line-height: 1em;
+	padding-top: 0.3em;
+	zoom: 1;
+}
+
+.rtlstisd ul {
+	border-right: 1px solid #cacacf;
+}
+
+.ecrtim {
+	padding: 0.75em 0;
+	border-bottom: 1px solid #cacacf;
+}
+
+.ecrtim img {
+	display: none;
+}
+
+.ecrtim:last-child {
+	border-bottom: 0px solid #cacacf;
+}
+
+.ecrtim time {
+	display: block;
+	color: #929292;
+	font-size: 13px;
+	line-height: 1em;
+	margin-bottom: 0.3em;
+}
+
+.ecrtim a {
+	display: block;
+	color: #000000;
+	font-size: 15px;
+	line-height: 1.4em;
+	margin-right: 20px;
+}
+
+.ecrtim a:hover {
+	text-decoration: underline;
+}
+
+.local .rtlstisdh h1 {color: #577798;}
+.polit .rtlstisdh h1 {color: #baa795;}
+.inter .rtlstisdh h1 {color: #5ba5ee;}
+.busi .rtlstisdh h1 {color: #4b565f;}
+.life .rtlstisdh h1 {color: #e15d5a;}
+.enter .rtlstisdh h1 {color: #ff7a21;}
+.sport .rtlstisdh h1 {color: #a31313;}
+
+.hsv {
+	background: transparent url(/appledaily/images/core/vicon.png) 140px 50% no-repeat;
+	padding-right: 26px;
+}
+
+/* Side List Switcher 	*/
+
+.rtltssw {
+	width: 171px;
+	padding: 2em 0;
+	vertical-align: middle;
+	overflow: hidden;
+	zoom: 1;
+}
+
+.rtltssw a {
+	float: left;
+    color: #464748;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.rtltssw .button {
+	display: block;
+	width: 20px;
+	overflow: hidden;
+	zoom: 1;
+}
+
+.ecsw {
+	position: relative;
+	width: 22px;
+    color: #323232;
+    padding: 0.2em 2px;
+	margin: 0 3px;
+    top: 4px;
+}
+
+.ecsw:hover,
+.rtltssw .on {
+    background-color: #323232;
+    color: white;
+}
+
+/* Main Article */
+
+.mpatc {
+	background-color: white;
+	padding: 10px 20px 20px;
+	zoom: 1;
+}/*lpt312*/
+
+.mpatc label,
+.mpatc label a {
+	color: #76777a;
+}
+
+.mpatc select {
+	width: 440px;
+}
+
+.mpatc header {
+}
+
+.mpatc h1 {
+	color: #3f3f41;
+	font-size: 1.5em;
+	line-height: 1.3em;
+}
+
+.mpatc header h2 {
+	color: #3f3f41;
+	font-size: 1em;
+	line-height: 1.3em;
+	font-weight: lighter;
+}
+
+.gggs {
+	padding: 10px 0 16px;
+}
+
+.gggs * {
+	display: inline;
+	color: #616161;
+	vertical-align: middle !important;
+}
+
+.articulum h2 {
+	position: relative;
+	top: -4px;
+	color: #000000;
+	font-size: 1.25em;
+	line-height: 1em;
+}
+
+.articulum {
+	padding-bottom: 1em;
+}
+
+.articulum p {
+	color: #000000;
+	line-height: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.articulum p a {
+	color: #4688b3;
+	border-bottom: 1px dotted #4688b3;
+}
+
+.articulum a:hover {
+	color: #4688b3;
+	border-bottom: 0px dotted #4688b3;
+}
+
+.arttl {
+	color: #3f3f41;
+	line-height: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.arttl li {
+	margin-bottom: 0.5em;
+}
+
+.urcc {
+	color: #626366;
+	padding: 0.625em 0;
+	border-color: #cacacf;
+	border-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+
+.urcc a {
+	color: #626366;
+}
+
+/* NExt and Previous */
+
+.artiswer a {
+	background-image: url(/appledaily/images/article/pvnx.png);
+	background-color: #ccc;
+	background-repeat: no-repeat;
+	display: block;
+	color: #141414;
+	width: 240px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.artiswer a:hover {
+	background-color: #141414;
+	color: white;
+}
+
+.swpv {
+	background-position: -30px 50%;
+	float: left;
+	text-align: left;
+	padding-left: 40px;
+	padding-right: 20px;
+}
+
+.swnx {
+	background-position: 268px 50%;
+	float: right;
+	text-align: right;
+	padding-left: 20px;
+	padding-right: 40px;
+}
+
+/* Prize Page part */
+
+.pzsgimg {
+	float: left;
+	width: 160px;
+	margin-right: 1em;
+	margin-bottom: 1em;
+}
+
+.idthd,
+.idtpr {
+	line-height: 1.4em;
+	margin-bottom: 0.5em;
+}
+
+/* Home Aside */
+
+.manu {
+	float: right;
+	width: 300px;
+}

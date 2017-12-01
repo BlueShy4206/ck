@@ -1,0 +1,81 @@
+div.jqcloud {
+	overflow: hidden; position: relative;
+}
+div.jqcloud span {
+	padding: 0px;
+}
+div.jqcloud {
+	line-height: normal; font-family: Helvetica,Arial,sans-serif; font-size: 10px;
+}
+div.jqcloud a {
+	font-size: inherit; text-decoration: none;
+}
+div.jqcloud span.w10 {
+	font-size: 550%;
+}
+div.jqcloud span.w9 {
+	font-size: 500%;
+}
+div.jqcloud span.w8 {
+	font-size: 450%;
+}
+div.jqcloud span.w7 {
+	font-size: 400%;
+}
+div.jqcloud span.w6 {
+	font-size: 350%;
+}
+div.jqcloud span.w5 {
+	font-size: 300%;
+}
+div.jqcloud span.w4 {
+	font-size: 250%;
+}
+div.jqcloud span.w3 {
+	font-size: 200%;
+}
+div.jqcloud span.w2 {
+	font-size: 150%;
+}
+div.jqcloud span.w1 {
+	font-size: 100%;
+}
+div.jqcloud {
+	color: rgb(0, 153, 255);
+}
+div.jqcloud a {
+	color: inherit;
+}
+div.jqcloud a:hover {
+	color: rgb(0, 204, 255);
+}
+div.jqcloud span.w10 {
+	color: rgb(0, 204, 255);
+}
+div.jqcloud span.w8 {
+	color: rgb(0, 204, 255);
+}
+div.jqcloud span.w9 {
+	color: rgb(0, 204, 255);
+}
+div.jqcloud span.w7 {
+	color: rgb(51, 153, 221);
+}
+div.jqcloud span.w6 {
+	color: rgb(144, 197, 240);
+}
+div.jqcloud span.w5 {
+	color: rgb(144, 160, 221);
+}
+div.jqcloud span.w4 {
+	color: rgb(144, 197, 240);
+}
+div.jqcloud span.w3 {
+	color: rgb(160, 221, 255);
+}
+div.jqcloud span.w2 {
+	color: rgb(153, 204, 238);
+}
+div.jqcloud span.w1 {
+	color: rgb(170, 181, 240);
+}

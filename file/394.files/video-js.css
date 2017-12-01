@@ -1,0 +1,225 @@
+.video-js {
+	padding: 0px; font-size: 10px; vertical-align: middle; position: relative; background-color: rgb(0, 0, 0);
+}
+.video-js .vjs-tech {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute;
+}
+body.vjs-full-window {
+	margin: 0px; padding: 0px; height: 100%; -ms-overflow-y: auto;
+}
+.vjs-fullscreen.video-js {
+	left: 0px; top: 0px; width: 100% !important; height: 100% !important; right: 0px; bottom: 0px; overflow: hidden; position: fixed; z-index: 1000; _position: absolute;
+}
+.vjs-poster {
+	margin: 0px auto; padding: 76px 0px 0px; width: 100%; position: relative; cursor: pointer; max-height: 100%;
+}
+.video-js .vjs-text-track-display {
+	left: 1em; text-align: center; right: 1em; bottom: 4em; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; position: absolute;
+}
+.video-js .vjs-text-track {
+	background: rgba(0, 0, 0, 0.5); text-align: center; color: rgb(255, 255, 255); font-size: 1.4em; margin-bottom: 0.1em; display: none;
+}
+.video-js .vjs-subtitles {
+	color: rgb(255, 255, 255);
+}
+.video-js .vjs-captions {
+	color: rgb(255, 204, 102);
+}
+.vjs-tt-cue {
+	display: block;
+}
+.vjs-fade-in {
+	transition:visibility linear, opacity 0.3s linear; visibility: visible !important; opacity: 1 !important; -webkit-transition: visibility 0s linear 0s, opacity 0.3s linear; -moz-transition: visibility 0s linear 0s, opacity 0.3s linear; -o-transition: visibility 0s linear 0s, opacity 0.3s linear;
+}
+.vjs-fade-out {
+	transition:visibility 0s linear 1.5s, opacity 1.5s linear; visibility: hidden !important; opacity: 0 !important; -webkit-transition: visibility 0s linear 1.5s, opacity 1.5s linear; -moz-transition: visibility 0s linear 1.5s, opacity 1.5s linear; -o-transition: visibility 0s linear 1.5s, opacity 1.5s linear;
+}
+.vjs-default-skin .vjs-controls {
+	background: -ms-linear-gradient(rgb(36, 36, 36) 50%, rgb(31, 31, 31) 50%, rgb(23, 23, 23) 100%); margin: 0px; padding: 0px; left: 0px; height: 2.6em; right: 0px; bottom: 0px; color: rgb(255, 255, 255); border-top-color: rgb(64, 64, 64); border-top-width: 1px; border-top-style: solid; visibility: hidden; position: absolute; opacity: 0;
+}
+.vjs-default-skin .vjs-control {
+	margin: 0px; padding: 0px; width: 2.6em; height: 2.6em; text-align: center; float: left; position: relative;
+}
+.vjs-default-skin .vjs-control:focus {
+	outline: 0px;
+}
+.vjs-default-skin .vjs-control-text {
+	margin: -1px; padding: 0px; border: 0px currentColor; border-image: none; width: 1px; height: 1px; overflow: hidden; position: absolute; clip: rect(0px, 0px, 0px, 0px);
+}
+.vjs-default-skin .vjs-play-control {
+	width: 5em; cursor: pointer !important;
+}
+.vjs-paused.vjs-default-skin .vjs-play-control div {
+	background: url("video-js.png"); margin: 0.5em auto 0px; width: 15px; height: 17px;
+}
+.vjs-playing.vjs-default-skin .vjs-play-control div {
+	background: url("video-js.png") -25px 0px; margin: 0.5em auto 0px; width: 15px; height: 17px;
+}
+.vjs-default-skin .vjs-rewind-control {
+	width: 5em; cursor: pointer !important;
+}
+.vjs-default-skin .vjs-rewind-control div {
+	background: url("video-js.png"); margin: 0.5em auto 0px; width: 19px; height: 16px;
+}
+.vjs-default-skin .vjs-mute-control {
+	width: 3.8em; float: right; cursor: pointer !important;
+}
+.vjs-default-skin .vjs-mute-control div {
+	background: url("video-js.png") -75px -25px; margin: 0.5em auto 0px; width: 22px; height: 16px;
+}
+.vjs-default-skin .vjs-vol-0.vjs-mute-control div {
+	background: url("video-js.png") 0px -25px;
+}
+.vjs-default-skin .vjs-vol-1.vjs-mute-control div {
+	background: url("video-js.png") -25px -25px;
+}
+.vjs-default-skin .vjs-vol-2.vjs-mute-control div {
+	background: url("video-js.png") -50px -25px;
+}
+.vjs-default-skin .vjs-volume-control {
+	width: 5em; float: right;
+}
+.vjs-default-skin .vjs-volume-bar {
+	background: -ms-linear-gradient(rgb(51, 51, 51), rgb(102, 102, 102)); margin: 1em auto 0px; border-radius: 0.3em; width: 5em; height: 0.6em; position: relative; cursor: pointer !important; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em;
+}
+.vjs-default-skin .vjs-volume-level {
+	background: -ms-linear-gradient(rgb(255, 255, 255), rgb(204, 204, 204)); border-radius: 0.3em; left: 0px; top: 0px; height: 0.6em; position: absolute; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em;
+}
+.vjs-default-skin .vjs-volume-handle {
+	background: rgb(204, 204, 204); border-radius: 0.6em; border: 1px solid rgb(255, 255, 255); border-image: none; left: 0px; top: -0.2em; width: 0.8em; height: 0.8em; position: absolute; -webkit-border-radius: 0.6em; -moz-border-radius: 0.6em;
+}
+.vjs-default-skin div.vjs-progress-control {
+	background: -ms-linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34)); left: 4.8em; top: -1.3em; width: auto; height: 1em; right: 4.8em; border-top-color: rgb(34, 34, 34); border-bottom-color: rgb(31, 31, 31); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; position: absolute;
+}
+.vjs-default-skin .vjs-progress-holder {
+	background: -ms-linear-gradient(rgb(17, 17, 17), rgb(38, 38, 38)); margin: 0px; padding: 0px; border-radius: 0.6em; height: 1em; position: relative; cursor: pointer !important; -webkit-border-radius: 0.6em; -moz-border-radius: 0.6em;
+}
+.vjs-default-skin .vjs-progress-holder .vjs-play-progress {
+	margin: 0px; padding: 0px; border-radius: 0.6em; left: 0px; top: 0px; height: 1em; display: block; position: absolute; -webkit-border-radius: 0.6em; -moz-border-radius: 0.6em;
+}
+.vjs-default-skin .vjs-progress-holder .vjs-load-progress {
+	margin: 0px; padding: 0px; border-radius: 0.6em; left: 0px; top: 0px; height: 1em; display: block; position: absolute; -webkit-border-radius: 0.6em; -moz-border-radius: 0.6em;
+}
+.vjs-default-skin .vjs-play-progress {
+	background: -ms-linear-gradient(rgb(239, 239, 239) 0%, rgb(245, 245, 245) 50%, rgb(219, 219, 219) 50%, rgb(241, 241, 241) 100%);
+}
+.vjs-default-skin .vjs-load-progress {
+	background: -ms-linear-gradient(rgb(102, 102, 102), rgb(51, 51, 51)); opacity: 0.8;
+}
+.vjs-default-skin div.vjs-seek-handle {
+	background: url("video-js.png") 0px -50px; border-radius: 0.8em; left: 0px; top: 0px; width: 16px; height: 16px; margin-top: -0.3em; position: absolute; box-shadow: 0px 2px 4px 0px #000; -webkit-box-shadow: 0 2px 4px 0 #000; -moz-box-shadow: 0 2px 4px 0 #000; -webkit-border-radius: 0.8em; -moz-border-radius: 0.8em;
+}
+.vjs-default-skin .vjs-time-controls {
+	background: -ms-linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34)); top: -1.3em; width: 4.8em; height: 1em; right: 0px; line-height: 1em; font-family: Helvetica, Arial, sans-serif; font-size: 1em; font-weight: normal; border-top-color: rgb(34, 34, 34); border-bottom-color: rgb(31, 31, 31); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; position: absolute;
+}
+.vjs-default-skin .vjs-current-time {
+	left: 0px;
+}
+.vjs-default-skin .vjs-duration {
+	right: 0px; display: none;
+}
+.vjs-default-skin .vjs-remaining-time {
+	right: 0px;
+}
+.vjs-time-divider {
+	display: none;
+}
+.vjs-default-skin .vjs-time-control {
+	line-height: 1; font-family: Helvetica, Arial, sans-serif; font-size: 1em; font-weight: normal;
+}
+.vjs-default-skin .vjs-time-control span {
+	line-height: 25px;
+}
+.vjs-secondary-controls {
+	float: right;
+}
+.vjs-default-skin .vjs-fullscreen-control {
+	width: 3.8em; float: right; cursor: pointer !important;
+}
+.vjs-default-skin .vjs-fullscreen-control div {
+	background: url("video-js.png") -50px 0px; margin: 0.5em auto 0px; width: 16px; height: 16px;
+}
+.vjs-fullscreen.vjs-default-skin .vjs-fullscreen-control div {
+	background: url("video-js.png") -75px 0px;
+}
+.vjs-default-skin .vjs-big-play-button {
+	background: -ms-linear-gradient(rgb(69, 69, 69) 0%, rgb(35, 35, 35) 50%, rgb(22, 22, 22) 50%, rgb(63, 63, 63) 100%); margin: -42px 0px 0px -42px; border-radius: 25px; border: 0.2em solid rgb(255, 255, 255); border-image: none; left: 50%; top: 50%; width: 8em; height: 8em; text-align: center; display: block; position: absolute; z-index: 2; cursor: pointer !important; opacity: 0.95; box-shadow: 4px 4px 8px #000; -webkit-box-shadow: 4px 4px 8px #000; -moz-box-shadow: 4px 4px 8px #000; -webkit-border-radius: 25px; -moz-border-radius: 25px;
+}
+.vjs-default-skin div.vjs-big-play-button:hover {
+	box-shadow: 0px 0px 80px #fff; -webkit-box-shadow: 0 0 80px #fff; -moz-box-shadow: 0 0 80px #fff;
+}
+.vjs-default-skin div.vjs-big-play-button span {
+	background: url("video-js.png") -100px 0px; margin: -20px 0px 0px -15px; left: 50%; top: 50%; width: 35px; height: 42px; display: block; position: absolute;
+}
+.vjs-loading-spinner {
+	margin: -28px 0px 0px -28px; left: 50%; top: 50%; width: 55px; height: 55px; display: none; position: absolute; -webkit-animation-name: rotatethis; -webkit-animation-duration: 1s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear; -moz-animation-name: rotatethis; -moz-animation-duration: 1s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: linear;
+}
+div.vjs-loading-spinner .ball1 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 20px; top: 0px; width: 13px; height: 13px; position: absolute; opacity: 0.12; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball2 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 34px; top: 6px; width: 13px; height: 13px; position: absolute; opacity: 0.25; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball3 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 40px; top: 20px; width: 13px; height: 13px; position: absolute; opacity: 0.37; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball4 {
+	background: rgb(255, 255, 255); border-radius: 10px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 34px; top: 34px; width: 13px; height: 13px; position: absolute; opacity: 0.5; -webkit-border-radius: 10px; -moz-border-radius: 15px;
+}
+div.vjs-loading-spinner .ball5 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 20px; top: 40px; width: 13px; height: 13px; position: absolute; opacity: 0.62; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball6 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 6px; top: 34px; width: 13px; height: 13px; position: absolute; opacity: 0.75; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball7 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 0px; top: 20px; width: 13px; height: 13px; position: absolute; opacity: 0.87; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+div.vjs-loading-spinner .ball8 {
+	background: rgb(255, 255, 255); border-radius: 13px; border: 1px solid rgb(204, 204, 204); border-image: none; left: 6px; top: 6px; width: 13px; height: 13px; position: absolute; opacity: 1; -webkit-border-radius: 13px; -moz-border-radius: 13px;
+}
+.vjs-default-skin .vjs-menu-button {
+	background: -ms-linear-gradient(rgb(77, 77, 77) 0%, rgb(63, 63, 63) 50%, rgb(51, 51, 51) 50%, rgb(37, 37, 37) 100%); margin: 0.2em 0.5em 0px 0px; padding: 0px; border-radius: 0.3em; border: 1px solid rgb(17, 17, 17); border-image: none; width: 3em; height: 2em; float: right; cursor: pointer !important; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em;
+}
+.vjs-default-skin .vjs-menu-button div {
+	background: url("video-js.png") no-repeat 0px -75px; margin: 0.2em auto 0px; padding: 0px; width: 16px; height: 16px;
+}
+.vjs-default-skin .vjs-menu-button ul {
+	margin: 0px; padding: 0px; border-radius: 0.5em; border: 2px solid rgb(51, 51, 51); border-image: none; left: -3.5em; width: 10em; bottom: 2em; overflow: auto; display: none; position: absolute; max-height: 15em; opacity: 0.8; box-shadow: 0px 2px 4px 0px #000; background-color: rgb(17, 17, 17); -webkit-box-shadow: 0 2px 4px 0 #000; -moz-box-shadow: 0 2px 4px 0 #000; -webkit-border-radius: 1em; -moz-border-radius: 0.7em;
+}
+.vjs-default-skin .vjs-menu-button:focus ul {
+	list-style: none; display: block;
+}
+.vjs-default-skin .vjs-menu-button:hover ul {
+	list-style: none; display: block;
+}
+.vjs-default-skin .vjs-menu-button ul li {
+	list-style: none; margin: 0px; padding: 0.3em 0px 0.3em 20px; text-align: left; line-height: 1.4em; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.2em;
+}
+.vjs-default-skin .vjs-menu-button ul li.vjs-selected {
+	background: url("video-js.png") no-repeat -125px -50px; text-decoration: underline;
+}
+.vjs-default-skin .vjs-menu-button ul li:focus {
+	outline: 0px; color: rgb(17, 17, 17); background-color: rgb(204, 204, 204);
+}
+.vjs-default-skin .vjs-menu-button ul li:hover {
+	outline: 0px; color: rgb(17, 17, 17); background-color: rgb(204, 204, 204);
+}
+.vjs-default-skin .vjs-menu-button ul li.vjs-selected:focus {
+	outline: 0px; color: rgb(17, 17, 17); background-color: rgb(204, 204, 204);
+}
+.vjs-default-skin .vjs-menu-button ul li.vjs-selected:hover {
+	outline: 0px; color: rgb(17, 17, 17); background-color: rgb(204, 204, 204);
+}
+.vjs-default-skin .vjs-menu-button ul li.vjs-menu-title {
+	background: -ms-linear-gradient(rgb(77, 77, 77) 0%, rgb(63, 63, 63) 50%, rgb(51, 51, 51) 50%, rgb(37, 37, 37) 100%); margin: 0px 0px 0.3em; padding: 0px; text-align: center; color: rgb(255, 255, 255); text-transform: uppercase; line-height: 2em; font-size: 1em; font-weight: bold; cursor: default;
+}
+.vjs-default-skin .vjs-captions-button div {
+	background-position: -25px -75px;
+}
+.vjs-default-skin .vjs-chapters-button div {
+	background-position: -100px -75px;
+}
+.vjs-default-skin .vjs-chapters-button ul {
+	left: -8.5em; width: 20em;
+}

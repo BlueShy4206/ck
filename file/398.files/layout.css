@@ -1,0 +1,213 @@
+.colnon {
+	margin: 15px 0px; width: 100%; height: 258px; overflow: hidden; clear: both; font-size: 15px; background-color: rgb(193, 237, 252);
+}
+.colnontit {
+	padding: 5px 8px 3px; font-size: 18px; font-weight: bold; border-bottom-color: rgb(147, 197, 216); border-bottom-width: 2px; border-bottom-style: solid; background-color: rgb(238, 238, 238);
+}
+.colnontit a {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+.colnontit a:hover {
+	color: rgb(1, 70, 97); text-decoration: underline;
+}
+.colnon img {
+	margin: 0px 0px 10px 12px; border: 1px solid rgb(51, 51, 51); width: 300px; height: 190px; font-size: 15px; float: left;
+}
+.colrnon {
+	margin: 10px 3px 0px 0px; width: 49%; letter-spacing: 1px; font-size: 15px; float: right;
+}
+.colrnon li {
+	background: url("../../images/news/dot-right.gif") no-repeat 0px 8px; margin: 0px 0px 10px; line-height: 20px; padding-left: 12px; list-style-type: none;
+}
+.colrnon a {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+.colrnon a:hover {
+	color: rgb(1, 70, 97); text-decoration: underline;
+}
+.joke {
+	margin: 10px auto; width: 99%; font-size: 15px; border-top-color: rgb(91, 138, 176); border-bottom-color: rgb(91, 138, 176); border-top-width: 3px; border-bottom-width: 3px; border-top-style: solid; border-bottom-style: solid; background-color: rgb(52, 97, 134);
+}
+.joke .tit {
+	padding: 4px 8px; height: 20px; color: rgb(255, 255, 255); letter-spacing: 3px; font-weight: bold; background-color: rgb(52, 97, 134);
+}
+.joke .con {
+	margin: 0px 2px 4px; padding: 7px 0px 7px 5px; height: 180px; color: rgb(51, 51, 51); line-height: 20px; letter-spacing: 1px; overflow: auto; background-color: rgb(231, 244, 255);
+}
+.joke p {
+	margin: 5px auto 15px; line-height: 10px;
+}
+.colcon9 {
+	margin: 5px 0px 0px; width: 100%; overflow: hidden; clear: both; font-size: 15px; background-color: rgb(255, 255, 255);
+}
+.colpic9 {
+	margin: 15px 10px 20px; height: 133px; overflow: hidden; float: left;
+}
+.colpic9 img {
+	width: 200px;
+}
+.tit9 {
+	padding: 5px 8px 3px; font-size: 15px; font-weight: bold; background-color: rgb(155, 147, 20);
+}
+.tit93c {
+	background-color: rgb(2, 153, 153);
+}
+.tit9ent {
+	background-color: rgb(194, 149, 75);
+}
+.tit9talk {
+	background-color: rgb(229, 113, 86);
+}
+.tit9style {
+	background-color: rgb(147, 116, 156);
+}
+.tit9sport {
+	background-color: rgb(26, 181, 238);
+}
+.tit9 a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.tit9 a:hover {
+	color: rgb(255, 255, 102); text-decoration: none;
+}
+.tit9 a.more {
+	font-weight: 100; float: right; display: block;
+}
+.colcon9ul {
+	margin: 8px 0px 0px; width: 65%; letter-spacing: 1px; font-size: 15px; float: left;
+}
+.colcon9ul li {
+	background: url("/images/all/dot-right.gif") no-repeat 3px 18px; margin: 0px; line-height: 18px; padding-top: 10px; padding-left: 12px; list-style-type: none;
+}
+.colcon9ul a {
+	color: rgb(34, 34, 34);
+}
+.colcon9ul a:hover {
+	color: rgb(0, 102, 153); text-decoration: underline;
+}
+.colcon9ul strong {
+	color: rgb(0, 102, 153);
+}
+.colcon22 {
+	margin: 15px 0px 28px; width: 100%; overflow: hidden; clear: both; font-size: 15px; background-color: rgb(255, 255, 255);
+}
+.colpic22 {
+	margin: 10px 10px 0px; height: 133px; overflow: hidden; float: left;
+}
+.colpic22 img {
+	width: 200px;
+}
+.tit22 {
+	padding: 5px 8px 3px; color: white; font-size: 15px; font-weight: bold; background-color: rgb(155, 147, 20);
+}
+.tit22 {
+	background-color: rgb(36, 95, 163);
+}
+.tit22 a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.tit22 a:hover {
+	color: rgb(238, 238, 238); text-decoration: none;
+}
+.colcon22ul {
+	margin: 8px 0px 0px; width: 65%; letter-spacing: 1px; font-size: 15px; float: left;
+}
+.colcon22ul li {
+	background: url("/images/all/dot-right.gif") no-repeat 3px 18px; margin: 0px; line-height: 18px; padding-top: 10px; padding-left: 12px; list-style-type: none;
+}
+.colcon22ul a {
+	color: rgb(34, 34, 34);
+}
+.colcon22ul a:hover {
+	color: rgb(0, 102, 153); text-decoration: underline;
+}
+.colcon22ul strong {
+	color: rgb(0, 102, 153);
+}
+.rtmore22 {
+	width: 40%; text-align: right; color: rgb(204, 51, 0) !important; padding-bottom: 8px; font-weight: bold; text-decoration: none; margin-right: 10px; float: right; display: block;
+}
+.evtTab {
+	margin: 10px 5px 0px 0px; padding: 5px 10px; border-radius: 4px 4px 0px 0px; color: rgb(102, 102, 102); letter-spacing: 2px; font-size: 0.95em; font-weight: bold; border-right-color: rgb(153, 153, 153); border-right-width: 1px; border-right-style: solid; float: left; cursor: pointer; background-color: rgb(221, 221, 221);
+}
+.evtTab_now {
+	color: rgb(255, 255, 255); border-right-color: rgb(34, 34, 34); border-right-width: 1px; border-right-style: solid; background-color: rgb(102, 102, 102);
+}
+.colnon12 {
+	margin: 15px 0px; width: 100%; overflow: hidden; clear: both; font-size: 15px; background-image: url("../../images/layout/bg_grid.png"); background-repeat: repeat; background-color: rgb(223, 164, 199);
+}
+.colnontit12 {
+	padding: 5px 8px 3px; font-size: 18px; font-weight: bold; border-bottom-color: rgb(215, 136, 176); border-bottom-width: 2px; border-bottom-style: solid; background-color: rgb(238, 238, 238);
+}
+.colnontit12 a {
+	color: rgb(108, 36, 72); text-decoration: none;
+}
+.colnontit12 a:hover {
+	color: rgb(199, 86, 143); text-decoration: underline;
+}
+.colnon12 img {
+	margin: 0px 0px 10px 12px; border: 1px solid rgb(51, 51, 51); width: 300px; height: 190px; font-size: 15px; float: left;
+}
+.colnon12 ul {
+	margin: 10px 3px 0px 0px; width: 49%; letter-spacing: 1px; font-size: 15px; float: right;
+}
+.colnon12 li {
+	background: url("../../images/news/dot-right.gif") no-repeat 0px 8px; margin: 0px 0px 10px; line-height: 20px; padding-left: 12px; list-style-type: none;
+}
+.colnon12 a {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+.colnon12 a:hover {
+	color: rgb(86, 29, 57); text-decoration: underline;
+}
+.colnon13 {
+	margin: 15px 0px; width: 100%; overflow: hidden; clear: both; font-size: 15px;
+}
+.ghost {
+	margin: 10px auto; width: 99%; font-size: 15px; border-bottom-color: rgb(51, 51, 51); border-bottom-width: 2px; border-bottom-style: solid; background-color: rgb(51, 51, 51);
+}
+.ghost .tit {
+	padding: 4px 8px; color: rgb(255, 255, 255); line-height: 30px; letter-spacing: 3px; font-weight: bold; background-color: rgb(34, 34, 34);
+}
+.ghost .tit strong {
+	margin: 3px 8px 4px 4px; padding: 3px 4px 4px 7px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);
+}
+.ghost .con {
+	margin: 0px; padding: 7px 0px 7px 10px; height: 180px; color: rgb(255, 255, 255); line-height: 20px; letter-spacing: 1px; overflow: auto; background-image: url("/images/index/bg.jpg");
+}
+.colcon20 {
+	margin: 15px 0px 28px; width: 100%; overflow: hidden; clear: both; font-size: 15px; background-color: rgb(255, 255, 255);
+}
+.colpic20 {
+	margin: 10px 10px 0px; height: 133px; overflow: hidden; float: left;
+}
+.colpic20 img {
+	width: 200px;
+}
+.tit20 {
+	padding: 5px 8px 3px; color: white; font-size: 15px; font-weight: bold; background-color: rgb(253, 106, 4);
+}
+.tit20 a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.tit20 a:hover {
+	color: rgb(238, 238, 238); text-decoration: none;
+}
+.colcon20ul {
+	margin: 8px 0px 0px; width: 65%; letter-spacing: 1px; font-size: 15px; float: left;
+}
+.colcon20ul li {
+	background: url("/images/all/dot-right.gif") no-repeat 3px 18px; margin: 0px; line-height: 18px; padding-top: 10px; padding-left: 12px; list-style-type: none;
+}
+.colcon20ul a {
+	color: rgb(34, 34, 34);
+}
+.colcon20ul a:hover {
+	color: rgb(0, 102, 153); text-decoration: underline;
+}
+.colcon20ul li:first-child {
+	background-position: 3px 8px; padding-top: 0px;
+}
+.rtmore20 {
+	width: 40%; text-align: right; color: rgb(204, 51, 0) !important; padding-bottom: 8px; font-weight: bold; text-decoration: none; margin-right: 10px; float: right; display: block;
+}

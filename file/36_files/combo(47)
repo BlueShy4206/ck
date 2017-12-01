@@ -1,0 +1,634 @@
+! function() {
+    function e() {
+        return -1 != window.location.href.indexOf("https:")
+    }
+
+    function t(e) {
+        return encodeURIComponent(e)
+    }
+
+    function n(n, a, i, c, s, l) {
+        var u = document.createElement("img"),
+            f = {
+                server: n.bs,
+                adId: n.ad,
+                impId: n.imp,
+                type: a || "ycp.impression",
+                timestamp: (new Date).getTime(),
+                ref: i,
+                data: c,
+                secure: s || e(),
+                extData: l
+            },
+            p = "";
+        if (p += f.server, p += "?impressionId=" + t(f.impId), p += "&adId=" + t(f.adId), p += "&type=" + t(f.type), p += "&timeStamp=" + t(f.timestamp.toString(10)), f.ref && (p += "&ref=" + t(f.ref)), f.data && (p += "&ycp_data=" + t(r.JSON.stringify(f.data))), f.extData)
+            for (var d in f.extData) p += "object" == typeof f.extData[d] ? "&" + d + "=" + t(r.JSON.stringify(f.data)) : "&" + d + "=" + f.extData[d];
+        if (f.url = p, u.src = p, o.log && log("Beacon.fire: " + r.JSON.stringify(f)), window.CustomEvent) try {
+            var v = f,
+                h = v.type.replace("ycp.", "");
+            h = "ycp:" + h, v.type = h;
+            var g = new CustomEvent(h, {
+                detail: v,
+                bubbles: !0,
+                cancelable: !0
+            });
+            document.dispatchEvent(g)
+        } catch (m) {}
+        return f
+    }
+
+    function o(e) {
+        this.context = e, this.admeta = {
+            ad: this.context.params.adId,
+            bs: this.context.params.trackingMonkeyURL || this.context.params.trackingMonkeyAddress,
+            imp: this.context.config && this.context.config.context.impressionId || Math.random().toString("16").substr(2)
+        }, this.context.profilingPoints = {}, this.video = a.create(this)
+    }
+
+    function a(e) {
+        this.beacon = e
+    }
+    var r = window.YCP;
+    r || (window.YCP = {}, r = window.YCP);
+    var i = function() {
+        function e(e, t, n) {
+            var o = t;
+            try {
+                for (; o !== (n || window.document);) {
+                    if (o === e) return !0;
+                    o = o.parentNode
+                }
+                return !1
+            } catch (a) {
+                return console.error(a.message), !1
+            }
+        }
+
+        function t(t, n) {
+            var o, a, i = document;
+            r.Utils.addEvent(i, "mouseover", function(r) {
+                e(t, r.target) ? (o = a, a = r.target, o || n(r)) : (o = null, a = null)
+            })
+        }
+
+        function n(t, n) {
+            var o, a, i = document;
+            r.Utils.addEvent(i, "mouseout", function(n) {
+                e(t, n.target) && (o = n.target, a = n)
+            }), r.Utils.addEvent(i, "mouseover", function(r) {
+                e(t, r.target) || o && (n(a), o = null, a = null)
+            })
+        }
+
+        function o(e, o, a) {
+            function i(e) {
+                if (l) {
+                    s = void 0 !== e ? e.timeStamp || (new Date).getTime() : (new Date).getTime();
+                    var t = s - c;
+                    t >= 1e3 && o(t), l = !1
+                }
+            }
+            var c, s, l;
+            return t(e, function(e) {
+                c = e.timeStamp || (new Date).getTime(), l = !0
+            }), n(e, function(e) {
+                i(e)
+            }), a && r.Utils.addEvent(e, "mousedown", function(e) {
+                i(e)
+            }), i
+        }
+        var a = {};
+        return a.isOrChildOf = e, a.onMouseEnter = t, a.onMouseLeave = n, a.onDwell = o, a
+    }();
+    o.prototype = {
+        fire: function(e, t, o, a, r) {
+            return n(this.admeta, e, t, o, a, r)
+        },
+        impression: function(e) {
+            var t = this.fire("ycp.impression", e);
+            return r.log("YCP Beacon: " + t.url), t
+        },
+        recordEnd: function(e) {
+            if (null != e && this.context.globalStartTimer && this.context.profilingPoints) {
+                var t = (new Date).getTime(),
+                    n = t - this.context.globalStartTimer;
+                this.context.profilingPoints[e] = n
+            }
+        },
+        profile: function() {
+            if (this.context.profilingPoints) {
+                var e = this.fire("ycp.profile", "profile", this.context.profilingPoints);
+                return e
+            }
+        },
+        fallback: function(e) {
+            e || (e = "ycpExceedsTimeout");
+            var t = this.fire("ycpExceedsTimeout", e);
+            return r.log("YCP Beacon: " + t.url), t
+        },
+        interaction: function(e, t) {
+            var n = this.fire("interaction", e, t);
+            return r.log("YCP Beacon: " + n.url), n
+        },
+        productImpression: function(e) {
+            if (!e) throw new Error("product impression beacon called without product Ids");
+            e instanceof Array || (e = [e]);
+            var t = this.fire("prodImpression", null, {
+                productIds: e
+            });
+            return r.log("YCP Beacon: " + t.url), t
+        },
+        productMouseover: function(e) {
+            if (!e) throw new Error("product Mouseover beacon called without product Id");
+            prods instanceof Array || (e = [e]);
+            var t = this.fire("prodIntr", "mouseOver", {
+                productIds: e
+            });
+            return r.log("YCP Beacon: " + t.url), t
+        },
+        expand: function() {
+            var e = this.fire("interaction", "expand", {
+                ex: 1
+            });
+            return r.log("YCP Beacon: " + e.url), e
+        },
+        collapse: function() {
+            var e = this.fire("interaction", "collapse", {
+                ex: 0
+            });
+            return r.log("YCP Beacon: " + e.url), e
+        },
+        error: function(e) {
+            var t = this.fire("error", null, {
+                error: e.message
+            });
+            return r.log("YCP Beacon: " + t.url), t
+        },
+        click: function(e) {
+            return this.interaction("click", {
+                componentIds: e || "unknown"
+            })
+        },
+        scroll: function(e) {
+            return this.interaction("scroll", {
+                componentIds: e || "unknown"
+            })
+        },
+        dwell: function(e, t) {
+            var n = this;
+            if (!e) throw new Error("Beacon: dwell requires an HTMLElement to bind events");
+            return i.onDwell(e, function(e) {
+                var t = n.fire("interaction", "mouseOver", {
+                    tw: e.toString(10)
+                });
+                r.log("YCP Beacon: " + t.url)
+            }, void 0 === t || t)
+        },
+        replay: function() {
+            var e = this.fire("interaction", "replay", {
+                ex: 1
+            });
+            return r.log("YCP Beacon: " + e.url), e
+        }
+    }, o.create = function(e) {
+        return new o(e)
+    }, o.context = function(e) {
+        return new o(e)
+    }, a.prototype = {
+        play: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Play Interaction"), this.beacon.interaction("play", {
+                vComp: e
+            })
+        },
+        pause: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Pause Interaction"), this.beacon.interaction("pause", {
+                vComp: e
+            })
+        },
+        mute: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Mute Interaction"), this.beacon.interaction("mute", {
+                vComp: e
+            })
+        },
+        unmute: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Unmute Interaction"), this.beacon.interaction("unmute", {
+                vComp: e
+            })
+        },
+        fullscreen: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Fullscreen Interaction"), this.beacon.interaction("fullscreen", {
+                vComp: e
+            })
+        },
+        replay: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video Replay Interaction"), this.beacon.interaction("replay", {
+                vComp: e
+            })
+        },
+        quartile_0: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video 0% progress"), this.beacon.fire("vidProgress", "v0", {
+                vComp: e
+            })
+        },
+        quartile_25: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video 25% progress"), this.beacon.fire("vidProgress", "v25", {
+                vComp: e
+            })
+        },
+        quartile_50: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video 50% progress"), this.beacon.fire("vidProgress", "v50", {
+                vComp: e
+            })
+        },
+        quartile_75: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video 75% progress"), this.beacon.fire("vidProgress", "v75", {
+                vComp: e
+            })
+        },
+        quartile_100: function(e) {
+            return e || (e = "unknown"), r.log("YCP Beacon: Video 100% progress"), this.beacon.fire("vidProgress", "v100", {
+                vComp: e
+            })
+        }
+    }, a.create = function(e) {
+        return new a(e)
+    }, r.Beacon || (r.Beacon = o, r.VideoBeacon || (r.VideoBeacon = a))
+}(),
+function() {
+    function buildFlashApi(e, t) {
+        if (YCP.Flash || (YCP.Flash = {}), !YCP.Flash[e]) {
+            var n = t.creative.selection;
+            for (var o in n)
+                if (n.hasOwnProperty(o) && "FlashComponent" === n[o].type) {
+                    var a = n[o].flashvars;
+                    try {
+                        a || (a = "{}");
+                        var r = YCP.JSON.parse(a);
+                        r.ycpId = e, n[o].flashvars = YCP.JSON.stringify(r)
+                    } catch (i) {
+                        YCP.log.error("Ignore this error, assume that flashVars are in key1=value1&key2=value2 form ", i);
+                        var c = {};
+                        if (-1 !== a.indexOf("="))
+                            for (var s = a.split("&"), l = 0; l < s.length; l++) {
+                                var u = s[l].split("=");
+                                c[u[0]] = u[1]
+                            }
+                        c.ycpId = e, n[o].flashvars = YCP.JSON.stringify(c)
+                    }
+                }
+            YCP.Flash[e] = {
+                getData: function() {
+                    return YCP.JSON.stringify(t)
+                }
+            }
+        }
+    }
+
+    function makeConvergeCall(e, t, n) {
+        function o() {
+            var e = function(e) {
+                    return 10 > e ? "0" + e : e
+                },
+                t = new Date,
+                n = t.getFullYear(),
+                o = e(t.getMonth() + 1),
+                a = e(t.getDate()),
+                r = e(t.getHours()),
+                i = e(t.getMinutes());
+            return n + "-" + o + "-" + a + " " + r + ":" + i
+        }
+        if (t.isPreview) n(t.simulatedData);
+        else {
+            var a = document.createElement("script"),
+                r = Math.random().toString(16).replace("0.", "cb");
+            window[r] = function(t) {
+                YCP.active[e].beacon.admeta.imp = t.context && t.context.impressionId || Math.random().toString("16").substr(2), YCP.active[e].beacon.recordEnd("convergeCall"), YCP.active[e].beacon.profile(), YCP.active[e].globalStartTimer = 0, n(t), a.parentNode.removeChild(a);
+                try {
+                    delete window[r]
+                } catch (o) {
+                    window[r] = function() {}
+                }
+            };
+            var i = t.convergeMonkeyURL + "adId=" + t.adId + "&size=" + t.size + "&format=jsonp&creativeGroupId=" + t.creativeGroupId + "&placementGroupId=" + t.placementGroupId + "&clickTag0=" + t.macros.clickTag0 + "&cTime=" + encodeURIComponent(o()) + "&cbk=" + r;
+            t.macros.product_macros && t.macros.product_macros.length > 0 && (i += "&pd=" + t.macros.product_macros), t.macros.ca_seg && t.macros.ca_seg.length > 0 && (i += "&ca_seg=" + t.macros.ca_seg), t.dpi && t.dpi.length > 0 && (i += "&dpi=" + t.dpi), t.macros.adx && t.macros.adx.length > 0 && (i += "&adx=" + t.macros.adx), t.macros.ex_id && t.macros.ex_id.length > 0 && (i += "&ex_id=" + t.macros.ex_id), t.macros.ex_time && t.macros.ex_time.length > 0 && (i += "&ex_time=" + t.macros.ex_time), a.src = i;
+            var c = document.body;
+            c = c || document.createElement("body"), YCP.active[e].globalStartTimer = (new Date).getTime(), c.appendChild(a)
+        }
+    }
+    var YCP = window.YCP;
+    YCP || (window.YCP = {}, YCP = window.YCP);
+    var JSON;
+    window.JSON ? JSON = window.JSON : ("object" != typeof JSON && (JSON = {}), function() {
+            function m(e) {
+                return 10 > e ? "0" + e : e
+            }
+
+            function r(e) {
+                return s.lastIndex = 0, s.test(e) ? '"' + e.replace(s, function(e) {
+                    var t = u[e];
+                    return "string" == typeof t ? t : "\\u" + ("0000" + e.charCodeAt(0).toString(16)).slice(-4)
+                }) + '"' : '"' + e + '"'
+            }
+
+            function p(t, o) {
+                var a, i, c, s, l, u = e,
+                    f = o[t];
+                switch (f && "object" == typeof f && "function" == typeof f.toJSON && (f = f.toJSON(t)), "function" == typeof k && (f = k.call(o, t, f)), typeof f) {
+                    case "string":
+                        return r(f);
+                    case "number":
+                        return isFinite(f) ? String(f) : "null";
+                    case "boolean":
+                    case "null":
+                        return String(f);
+                    case "object":
+                        if (!f) return "null";
+                        if (e += n, l = [], "[object Array]" === Object.prototype.toString.apply(f)) {
+                            for (s = f.length, a = 0; s > a; a += 1) l[a] = p(a, f) || "null";
+                            return c = 0 === l.length ? "[]" : e ? "[\n" + e + l.join(",\n" + e) + "\n" + u + "]" : "[" + l.join(",") + "]", e = u, c
+                        }
+                        if (k && "object" == typeof k)
+                            for (s = k.length, a = 0; s > a; a += 1) "string" == typeof k[a] && (i = k[a], (c = p(i, f)) && l.push(r(i) + (e ? ": " : ":") + c));
+                        else
+                            for (i in f) Object.prototype.hasOwnProperty.call(f, i) && (c = p(i, f)) && l.push(r(i) + (e ? ": " : ":") + c);
+                        return c = 0 === l.length ? "{}" : e ? "{\n" + e + l.join(",\n" + e) + "\n" + u + "}" : "{" + l.join(",") + "}", e = u, c
+                }
+            }
+            "function" != typeof Date.prototype.toJSON && (Date.prototype.toJSON = function() {
+                return isFinite(this.valueOf()) ? this.getUTCFullYear() + "-" + m(this.getUTCMonth() + 1) + "-" + m(this.getUTCDate()) + "T" + m(this.getUTCHours()) + ":" + m(this.getUTCMinutes()) + ":" + m(this.getUTCSeconds()) + "Z" : null
+            }, String.prototype.toJSON = Number.prototype.toJSON = Boolean.prototype.toJSON = function() {
+                return this.valueOf()
+            });
+            var t = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                s = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                e, n, u = {
+                    "\b": "\\b",
+                    " ": "\\t",
+                    "\n": "\\n",
+                    "\f": "\\f",
+                    "\r": "\\r",
+                    '"': '\\"',
+                    "\\": "\\\\"
+                },
+                k;
+            "function" != typeof JSON.stringify && (JSON.stringify = function(t, o, a) {
+                var r;
+                if (n = e = "", "number" == typeof a)
+                    for (r = 0; a > r; r += 1) n += " ";
+                else "string" == typeof a && (n = a);
+                if ((k = o) && "function" != typeof o && ("object" != typeof o || "number" != typeof o.length)) throw Error("JSON.stringify");
+                return p("", {
+                    "": t
+                })
+            }), "function" != typeof JSON.parse && (JSON.parse = function(a, e) {
+                function c(t, n) {
+                    var o, a, r = t[n];
+                    if (r && "object" == typeof r)
+                        for (o in r) Object.prototype.hasOwnProperty.call(r, o) && (a = c(r, o), void 0 !== a ? r[o] = a : delete r[o]);
+                    return e.call(t, n, r)
+                }
+                var d;
+                if (a = String(a), t.lastIndex = 0, t.test(a) && (a = a.replace(t, function(e) {
+                        return "\\u" + ("0000" + e.charCodeAt(0).toString(16)).slice(-4)
+                    })), /^[\],:{}\s]*$/.test(a.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return d = eval("(" + a + ")"), "function" == typeof e ? c({
+                    "": d
+                }, "") : d;
+                throw new SyntaxError("JSON.parse")
+            })
+        }()), YCP.JSON = JSON, YCP.log = function(e) {
+            YCP.log.enable && window.console && console.log(e)
+        }, YCP.log.error = function(e) {
+            YCP.log.enable && window.console && (console.error ? console.error(e) : console.log("!!! " + e))
+        }, YCP.active || (YCP.active = {}), YCP.adLoad = function(e, t) {
+            if (!YCP.active[e]) {
+                YCP.active[e] = {
+                    params: t,
+                    completed: !1,
+                    config: null,
+                    callbacks: [function(t) {
+                        YCP.active[e].getPlaceholderIdsByType = function(e) {
+                            var n = t.creative.selection,
+                                o = [];
+                            for (var a in n)
+                                if (n.hasOwnProperty(a)) {
+                                    var r = n[a];
+                                    r.type === e && o.push(a)
+                                }
+                            return o
+                        }, YCP.active[e].getComponent = function(e) {
+                            return t.creative.selection[e]
+                        }, YCP.Flash[e].getComponents = function() {
+                            return YCP.JSON.stringify(t.creative.selection)
+                        }, YCP.Flash[e].getComponent = function(e) {
+                            return YCP.JSON.stringify(t.creative.selection[e])
+                        }, YCP.Flash[e].getProducts = function() {
+                            return YCP.JSON.stringify(t.products)
+                        }, YCP.Flash[e].beacon = YCP.active[e].beacon, YCP.Flash[e].videoBeacon = YCP.active[e].videoBeacon, YCP.Flash[e].action = function(t, n) {
+                            try {
+                                var o = function(e) {
+                                    return o = "function" == typeof Array.prototype.indexOf ? Array.prototype.indexOf : function(e) {
+                                        var t = -1,
+                                            n = -1;
+                                        for (t = 0; t < this.length; t++)
+                                            if (this[t] === e) {
+                                                n = t;
+                                                break
+                                            }
+                                        return n
+                                    }, o.call(this, e)
+                                };
+                                videoActions = ["vplay", "vpause", "vmute", "unmute", "vreplay", "v0", "v25", "v50", "v75", "v100"];
+                                var a = n;
+                                if (o.call(videoActions, t) > -1 && !n) {
+                                    var r, a;
+                                    try {
+                                        r = YCP.Flash[e].getPlaceholderIdsByType("VideoComponent")
+                                    } catch (i) {
+                                        a = "unknown"
+                                    }
+                                    r && r.length > 0 && (a = r[0])
+                                }
+                                switch (t) {
+                                    case "expand":
+                                        console.log("In expand"), YCP.Flash[e].beacon.expand(), console.log("After expand");
+                                        break;
+                                    case "collapse":
+                                        YCP.Flash[e].beacon.collapse();
+                                        break;
+                                    case "replay":
+                                        YCP.Flash[e].beacon.replay();
+                                        break;
+                                    case "product:impression":
+                                        if (!n) throw new Error("product impression beacon cant be fired without product ids array");
+                                        YCP.Flash[e].beacon.productImpression(n);
+                                        break;
+                                    case "product:mouseover":
+                                        if (!n) throw new Error("product impression beacon cant be fired without product ids array");
+                                        YCP.Flash[e].beacon.productMouseover(n);
+                                        break;
+                                    case "fallback":
+                                        YCP.active[e].fallback();
+                                        break;
+                                    case "error":
+                                        if (!(n && n instanceof Error)) throw new Error("error beacon needs message of type Error Obj in Javascript");
+                                        YCP.Flash[e].beacon.error(n);
+                                        break;
+                                    case "vplay":
+                                        YCP.Flash[e].videoBeacon.play(a);
+                                        break;
+                                    case "vpause":
+                                        YCP.Flash[e].videoBeacon.pause(a);
+                                        break;
+                                    case "vmute":
+                                        YCP.Flash[e].videoBeacon.mute(a);
+                                        break;
+                                    case "vunmute":
+                                        YCP.Flash[e].videoBeacon.unmute(a);
+                                        break;
+                                    case "vreplay":
+                                        YCP.Flash[e].videoBeacon.replay(a);
+                                        break;
+                                    case "v0":
+                                        YCP.Flash[e].videoBeacon.quartile_0(a);
+                                        break;
+                                    case "v25":
+                                        YCP.Flash[e].videoBeacon.quartile_25(a);
+                                        break;
+                                    case "v50":
+                                        YCP.Flash[e].videoBeacon.quartile_50(a);
+                                        break;
+                                    case "v75":
+                                        YCP.Flash[e].videoBeacon.quartile_75(a);
+                                        break;
+                                    case "v100":
+                                        YCP.Flash[e].videoBeacon.quartile_100(a)
+                                }
+                            } catch (c) {
+                                YCP.active[e].fallback()
+                            }
+                        }
+                    }],
+                    isFallback: !1,
+                    fallback: function() {
+                        var t = YCP.active[e];
+                        t.beacon = YCP.Beacon.context(t);
+                        var n = document.getElementById(e);
+                        if (n) {
+                            n.innerHTML = "";
+                            var o = new Image;
+                            o.src = t.params.fallback.image, o.setAttribute("border", "0");
+                            var a = document.createElement("a");
+                            a.href = t.params.fallback.click, a.target = "_blank", a.appendChild(o), YCP.Utils.addEvent(a, "click", function() {
+                                t.config && t.config.tracking && t.config.tracking.fallbackClick && ((new Image).src = t.config.tracking.fallbackClick)
+                            }), n.appendChild(a)
+                        }
+                        if (t.isFallback = !0, t.beacon.fallback(), t.fallbacks.length)
+                            for (var r = 0; r < t.fallbacks.length; r++) t.fallbacks[r].call(t);
+                        t.config && t.config.tracking && t.config.tracking.fallbackView && ((new Image).src = t.config.tracking.fallbackView)
+                    },
+                    fallbacks: []
+                };
+                var n = setTimeout(function() {
+                    YCP.active[e].fallback.call(YCP.active[e])
+                }, 5e3);
+                YCP.active[e].beacon = YCP.Beacon.context(YCP.active[e]), YCP.active[e].videoBeacon = YCP.VideoBeacon.create(YCP.active[e].beacon), makeConvergeCall(e, t, function(t) {
+                    clearTimeout(n), t.ycpId = e, YCP.active[e].config = t, YCP.active[e].completed = !0, YCP.active[e].beacon = YCP.Beacon.context(YCP.active[e]), YCP.active[e].videoBeacon = YCP.VideoBeacon.create(YCP.active[e].beacon);
+                    try {
+                        buildFlashApi(e, t, YCP.active[e].beacon)
+                    } catch (o) {
+                        YCP.active[e].fallback(), YCP.log.error("Error in buildFlashApi ", o.message)
+                    }
+                    if (YCP.active[e].callbacks.length)
+                        for (var a = 0; a < YCP.active[e].callbacks.length; a++) try {
+                            YCP.active[e].callbacks[a].call(YCP.active[e], t, YCP.active[e].params, YCP.active[e])
+                        } catch (o) {
+                            YCP.active[e].fallback(), YCP.log.error(o.message);
+                            break
+                        }
+                    delete YCP.active[e].callbacks
+                })
+            }
+        }, YCP.getAd = function(e, t) {
+            return YCP.active[e] ? (YCP.active[e].completed ? t.call(YCP.active[e], YCP.active[e].config, YCP.active[e].params, YCP.active[e]) : YCP.active[e].callbacks.push(t), !0) : !1
+        }, YCP.onFallback = function(e, t) {
+            return YCP.active[e] ? (YCP.active[e].isFallback ? t.call(YCP.active[e], YCP.active[e].params, YCP.active[e]) : YCP.active[e].fallbacks.push(t), !0) : !1
+        }, YCP.Utils || (YCP.Utils = {}),
+        function(e) {
+            function t(e, t, n) {
+                return e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent ? e.attachEvent("on" + t, function(e) {
+                    function t(e) {
+                        this.target = e.srcElement
+                    }
+                    var o = this;
+                    t.prototype = window.event, n.call(o, new t(e))
+                }) : void(e["on" + t] = n)
+            }! function(t) {
+                function n(e) {
+                    var t = e.match(/[0-9]+.?[0-9]*/);
+                    return t && t[0] ? parseFloat(t[0]) : 0
+                }
+                var o = navigator.userAgent.toString(),
+                    a = {
+                        html: t,
+                        os: function() {
+                            var e, t = "other",
+                                n = null;
+                            return /windows|win32/i.test(o) ? t = "windows" : /macintosh|mac_powerpc/i.test(o) ? t = "macintosh" : /iphone|ipod|ipad/i.test(o) ? (t = "ios", e = /CPU OS ([0-9_]+)/i.exec(o), e && e[1] && (n = e[1].replace("_", "."))) : /android/i.test(o) ? (t = "android", e = /Android\s*([0-9.]+)/.exec(o), e && e[1] && (n = e[1])) : /linux/i.test(o) && (t = "linux"), {
+                                name: t,
+                                version: n
+                            }
+                        }(),
+                        isIE: function() {
+                            var e = o.match(/MSIE ([^;]*)|Trident.*; rv:([0-9.]+)/);
+                            return e && (e[1] || e[2]) ? n(e[1] || e[2]) : 0
+                        }(),
+                        isFireFox: function() {
+                            var e = o.match(/Firefox\/([0-9.]+)/);
+                            return e && e[1] ? n(e[1]) : 0
+                        }(),
+                        isSafari: function() {
+                            var e = o.match(/Version\/([0-9.]+)\s?Safari/);
+                            return e && e[1] ? n(e[1]) : 0
+                        }(),
+                        isChrome: function() {
+                            var e = o.match(/Chrome\/([0-9.]+)/);
+                            return e && e[1] ? parseInt(e[1]) : 0
+                        }(),
+                        isWebKit: function() {
+                            var e = o.match(/AppleWebKit\/([0-9.]+)/);
+                            return e && e[1] ? n(e[1]) : 0
+                        }(),
+                        isFlash: function() {
+                            var e = "0",
+                                t = !1;
+                            if (navigator.plugins && "object" == typeof navigator.plugins["Shockwave Flash"]) e = navigator.plugins["Shockwave Flash"].description, void 0 != typeof e && (e = e.replace(/^.*\s+(\S+\s+\S+$)/, "$1").replace(" ", "."));
+                            else if (window.ActiveXObject) {
+                                try {
+                                    oActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7")
+                                } catch (n) {
+                                    try {
+                                        oActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7")
+                                    } catch (n) {
+                                        try {
+                                            oActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6"), oActiveX.AllowScriptAccess = "always"
+                                        } catch (n) {
+                                            try {
+                                                oActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash")
+                                            } catch (n) {
+                                                t = !0
+                                            }
+                                        }
+                                    }
+                                }
+                                if ("object" == typeof oActiveX && (e = oActiveX.GetVariable("$version"), void 0 != typeof e && (e = e.replace(/^\S+\s+(.*)$/, "$1").replace(/,/g, "."))), t === !0) return 0
+                            }
+                            return parseInt(e.split(".")[0])
+                        }(),
+                        isNarrow: function() {
+                            return document.documentElement.className.toString().match(/lite-page/) ? !0 : !1
+                        }()
+                    };
+                e.ua = a
+            }(document.documentElement), e.addEvent = t
+        }(YCP.Utils)
+}();

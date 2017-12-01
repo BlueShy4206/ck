@@ -1,0 +1,458 @@
+﻿@charset "utf-8";
+/************************************************************************************
+smaller than 980
+*************************************************************************************/
+
+/* set image max width to 100% */
+img {
+	max-width: 100%;
+	/*height: auto;*/
+	width: auto\9; /* ie8 */
+}
+
+@media screen and (max-width: 5000px) {
+     /*#top .nav2{ display:none}*/
+	 .h_5000{ display:none}
+	 .s_5000{ display:block}
+ 	 .m4 .a3_ns3{ width:678px}
+	 .m4 .a3_2 { width:678px}
+	 .m4 .a3_3 { width:1130px}
+	 .lst{width:422px;height:125px;text-align:center;}
+	 
+}
+@media screen and (max-width: 1040px) {
+	 .h_1140{ display:none}
+	 .s_1140{ display:block}
+	 
+     .m1{ height:auto; overflow:hidden} 
+	 .m1 .a1{ width:889px; height:auto; overflow:hidden}
+	 .m1 .a1 .lg { width:270px; height:auto; overflow:hidden}
+	 .m1 .a1 .hd { width:581px; height:auto; overflow:hidden}
+	 .m1 .a1 .hd .tp{width:581px; height:auto; overflow:hidden}
+	 .m1 .a1 .hd .tp .lk2{ width:80px; height:auto; overflow:hidden;float:right; margin-left:3px}
+	 .m1 .a1 .hd .tp .lk2 img{ width:80px}
+	 
+	 .m1 .a1 .hd .sh {width:155px; height:32px; background:url(../images/0306/bx3.png); margin-right:0px }
+	 .m1 .a1 .hd .sh .bx{ width:102px }
+	 .m6 .a6 { width:98%}
+	 .m6 .a6 .icc2{ width:7%; margin:0 2% 0 0;font-size:18px}
+	 .m6 .a6 .tt10{ width:91%; }
+	 .m6 .a6 .tt10 a{font-size:18px; letter-spacing:-1px}
+	 
+	 .m5{ height:auto; overflow:hidden}
+	 .m5 .a5{ width:98%}
+	 .m5 .a5 .lg2{ width:18%; height:auto; overflow:hidden; padding:1% 0}
+	 .m5 .a5 .tt8{ width:68%;height:auto; overflow:hidden}
+	 .m5 .a5 .tt9{ width:13%;height:auto; overflow:hidden}
+	 .m4 .a3 .ls4{ background:#eee}
+	 .m4 .a3 .ls3{ background:#eee}
+	 
+	 .m4{ width:894px; height:auto; overflow:hidden}
+	 .m4 .a3{ width:678px; margin-bottom:10px}
+	 .m4 .a3_ns3{ width:452px}
+	 .m7 .a7 .nsa3 .ma17{ width:402px; height:40px}
+	 .m7 .a7 .nsa3 .ma18{ width:402px}
+	 .m7 .a7 .nsa3 .ma19{ width:402px}
+	 .m7 .a7 .nsa3 .ma19 .bxa4 { width:402px}
+	 /*----------------------流行網首頁-------------*/
+	 
+	 .ma16{ width:452px}
+	 .m4 .a3_2 { width:442px}
+	 
+	 /*----------------------------------流行網VIEW頁---------------------*/
+	 .m10 .a10{ width:894px; margin:0 auto; height:auto; overflow:hidden}
+	 .m9 .a9{ width:100%; }
+	 .m11{ width:452px}
+	 .m7 .a7{ width:442px;}
+	 .m7 .a7 .nsa3{ width:402px; background:#eee}
+	 .m7 .a7 .nsa3 .ma7{ width:402px}
+	 .m7 .a7 .nsa3 .tt26{  width:307px}
+	 .m7 .a7 .nsa3 .tt27{ width:307px}
+	 .m16 { width:402px; padding:0px }
+	 .m10 .a10 .ma10 .ar11{background:#eee}
+	 .m10 .gd2{ width:894px;}
+	 .m7 .a7 .nsa3 .tk{ width:402px}
+	 .m7 .a7 .nsa3 .oth{ width:402px}
+	 .m7 .a7 .nsa3 .oth .tt28 a{ width:342px; font-size:15px; padding:0 10px}
+	 .m7 .a7 .nsa3 .oth .tt29 a{ width:342px; font-size:15px; padding:0 10px}
+	 
+	 /*----------------------------------流行網節目表-樣式1---------------------*/
+	 .m10 .a10 .ma9{ width:442px;}
+	 .m10 .a10 .ma9 .ls13{width:402px}
+	 .m10 .a10 .ma9 .ls13 .ar4{ width:442px}
+	 .m10 .a10 .ma9 .ls13 .ar4 .tm{ font: italic bold 22px/24px Georgia; text-align:left; color:#333; width:160px; margin:0 0 0 0}
+	 .m10 .a10 .ma9 .ls14{ width:402px; height:auto; overflow:hidden}
+	 .m10 .a10 .ma9 .ls14 .tt33{ width:242px}
+	 .m10 .a10 .ma9 .ls13 .ar5{ width:272px; clear:both; margin:5px 10px 0 0}
+	 .m10 .a10 .ma9 .ls13 .ar5 .c6{ width:272px; height:auto; overflow:hidden; }
+	 .m10 .a10 .ma9 .ls13 .ar5 .tt32{ width:182px;  }
+	 .m10 .a10 .ma9 .ls13 .ar5 .tt32 a{ font-size:18px; color:#333;font-style:italic; letter-spacing:-1px}
+	 .m10 .a10 .ma9 .ls14 .tt33 a{ color:#333}
+	 .m10 .a10 .ma9 .ls13 .ar6{ margin:40px 0 0 0}
+	 
+	 /*----------------------------------流行網節目表-樣式2---------------------*/
+	 
+	 .m10 .a10 .ma9 .ls13-2{width:402px}
+	 .m10 .a10 .ma9 .ls13-2 .ar4-2{ width:402px}
+	 .m10 .a10 .ma9 .ls13-2 .ar4-2 .tm-2{ font: italic bold 22px/24px Georgia; text-align:left; color:#333; width:150px; margin:0 0 0 0}
+	 .m10 .a10 .ma9 .ls13-2 .ar5-2{ width:272px; clear:both; margin:5px 10px 0 0}
+	 .m10 .a10 .ma9 .ls13-2 .ar5-2 .c6-2{ width:272px; height:auto; overflow:hidden; }
+	 .m10 .a10 .ma9 .ls13-2 .ar5-2 .tt32-2{ width:182px;  }
+	 .m10 .a10 .ma9 .ls13-2 .ar5-2 .tt32-2 a{ font-size:18px; color:#333;font-style:italic;letter-spacing:-1px}
+	 .m10 .a10 .ma9 .ls13-2 .ar6-2{ margin:40px 0 0 0}
+	 
+	  /*----------------------流行網DJ-------------*/
+	 .m4_2 { width:904px}
+	 .m4 .a3_3 { width:904px}
+	 /*.m12 .a14 { width:442px}0*/
+	 
+	  /*----------------------音樂網曲目查詢-------------*/
+	 .m10 .a10 .ma9 .ls17{ width:442px; background:#eee}
+	 .m10 .a10 .ma9 .ls17 .bxa{ width:442px}
+	 .m10 .a10 .ma9 .ls17 .bxa2{ width:442px}
+	 .m10 .a10 .ma9 .ls17 .bxa div{ padding:0; font-size:12px}
+	 .m10 .a10 .ma9 .ls17 .bxa2 div{ padding:10px 0; font-size:12px}
+	 .m10 .a10 .ma9 .ls17 .bxa .btx1 { width:59px}
+	 .m10 .a10 .ma9 .ls17 .bxa .btx1-2{ width:89px}
+	 .m10 .a10 .ma9 .ls17 .bxa .btx0 { width:91px}
+	 .m10 .a10 .ma9 .ls17 .bxa .btx2 { width:69px}
+	 .m10 .a10 .ma9 .ls17 .bxa2 .btx4 { width:60px}
+	 .m10 .a10 .ma9 .ls17 .bxa2 .btx4-2 { width:90px}
+	 .m10 .a10 .ma9 .ls17 .bxa2 .btx3{ width:92px}
+	 .m10 .a10 .ma9 .ls17 .bxa2 .btx5{ width:70px}
+	 /*----------------------新聞網首頁----------------------*/
+	 .m7_2{ width:894px; }
+	
+	 .m7 .a7 .mns{ width:402px; background:#eee}
+	 .m7 .a7 .mns .im { width:120px; margin:0 10px 0 0; height:auto }
+	 .m7 .a7 .mns .tt11{ width:272px}
+	 .m7 .a7 .mns .dt4{ width:272px}
+	 .m7 .a7 .mns .c3{ width:402px; margin:10px 0 0 0}
+	 .m7 .a7 .mns .ls7{ width:402px;height:auto; overflow:hidden; }
+	 .m7 .a7 .mns .ls7 a{ width:376px; height:auto; overflow:hidden; line-height:30px;padding:5px 10px}
+	 
+	 /*新聞列表部分*/
+	 .m7 .a7 .pga{ width:427px}
+	 .m7 .a7 .nsa2{ width:442px}
+	 .m7 .a7 .nsa2 .ma3{ width:402px; background:#eee}
+	 .m7 .a7 .nsa2 .ma3 .ls10{ width:402px}
+	 .m7 .a7 .nsa2 .ma3 .ls10 .tt16{ width:256px}	 
+	 .m7 .a7 .nsa2 .ma3 .ls10 .dat{ width:256px;}
+	 .m7 .a7 .nsa2 .ma3 .ls10 .c4{ width:256px; height:auto; overflow:hidden}
+	 
+	 .m7 .a7 .nsa2 .ma3 .ls10 .tt17{ width:386px}
+	 .m7 .a7 .nsa2 .ma3 .ls10 .c5{ width:386px;height:auto; overflow:hidden}
+	 
+	 .m7 .a8 .tops .ma4{ background:#eee}
+	 
+	 
+	 /*-------------DJ內頁----------------*/
+	 .m10 .a11{ width:894px}
+	 .m10 .a11 .ma11{ width:894px}
+	 .m10 .a11 .ma11 .ar8-2{ width:216px}
+	 .m10 .a11 .ma11 .ar9{ width:729px }
+	 .m10 .a11 .ma11 .ar9 .tt41{ width:729px}
+	 .m10 .a11 .ma11 .ar10{ width:442px; clear:both; margin:20px 0 0 165px }
+	 .m10 .a11 .ma11 .ar10 .tt42{ width:216px}
+	 .m10 .a11 .ma11 .ar8-2 .tt40-2{ width:216px}
+	
+	 .m10 .a13{ width:894px}
+	 .m10 .a13 .ma14{ width:442px; background:#eee}
+	 .m10 .a13 .ma15{ width:422px; background:#eee}
+	 .m10 .a12{ width:894px}
+	 .m10 .a12 .ma12{ width:706px; margin:0 10px 0 0}
+	 /*-------------------------快訊---------------------*/
+	 .m7 .a7 .ns{width:402px;}
+	 .m7 .a7 .ns .tt52{ width:322px}
+	 .m7 .a7 .ns .tt54 { width:322px;} 
+	 
+	 /*----------上一頁+下一頁----------*/
+	 .m4 .m21{ width:668px;}
+	 .m4 .m21 .ma20{ width:329px}
+	 .m4 .m21 .ma20 .tt61 a{width:249px;}
+	 .m4 .m21 .ma20 .tt62 a{width:249px;}
+	 
+	  /*----------音樂網流行網使用----------*/
+	 .m4 .m22{ width:442px;}
+     .m4 .m22 .ma21 {width:216px;}
+     .m4 .m22 .ma21 .tt63 a{width:136px;}
+     .m4 .m22 .ma21 .tt64 a{width:136px;}
+	 
+	  /*----------20140317 新聞網分類選單----------*/
+	 .m7 .a7 .m42 {width:442px;}
+	 .m7 .a7 .m42 .a15{ width:52px;}
+	 .m7 .a7 .m42 .a15 a{ width:52px}
+}
+@media screen and (max-width: 800px) {
+     .h_800{ display:none}
+	 .s_800{ display:block}
+	 
+	 .m1{ height:auto; overflow:hidden} 
+	 .m1 .a1{ width:668px; height:auto; overflow:hidden}
+	 .m1 .a1 .lg {}
+	 .m1 .a1 .hd { width:668px; height:auto; overflow:hidden}
+	 .m1 .a1 .hd .tp{width:668px; height:auto; overflow:hidden}
+	 .m1 .a1 .hd .tp .lk2{ width:91px; height:auto; overflow:hidden;float:right; margin:0 3px 0 1px}
+	 .m1 .a1 .hd .tp .lk2 img{ width:91px}
+	 
+	 .wp{ width:100%}
+	 .m4{ width:668px; height:auto; overflow:hidden; }
+	 .m4 .a3{ width:452px; margin-bottom:10px}
+	 
+	  /*----------------------------------流行網VIEW頁---------------------*/
+	 /*.m10 .a10{ width:668px; }
+	 .m9 .a9{ width:100%; }
+	 .m11{ width:668px; }
+	 .m7 .a7{ width:668px;}
+	 .m7 .a7 .nsa3{ width:628px; background:#eee}
+	 .m7 .a7 .nsa3 .ma7{ width:628px}
+	 .m7 .a7 .nsa3 .tt26{  width:307px}
+	 .m7 .a7 .nsa3 .tt27{ width:307px}
+	 .m16 { width:628px; }
+	 .m10 .gd2{ width:668px; }*/
+	  /*----------------------------------流行網VIEW頁2版---------------------*/
+	 .m10 .a10{ width:668px; }
+	 .m10 .gd2{ width:668px;}
+	 .m10 .a10 .ma10{ width:216px}
+	 .m10 .a10 .ma10 .ar11{ width:176px}
+	 .m10 .a10 .ma10 .ar11 .ls18{ width:176px}
+	 .m10 .a10 .ma10 .ar11 .ls18 .tt44{ width:176px}
+	 .m10 .a10 .ma10 .ar11 .ls18 .c8{ width:176px}
+	 .m10 .a10 .ma10 .ar7{ width:216px}
+	 
+	 .m10 .a10 .ma10 .tt35{ width:216px}
+	 .m10 .a10 .ma10 .ar7 .ls15{ width:216px}
+	 .m10 .a10 .ma10 .ar7 .ls15 div { width:216px}
+	 .m10 .a10 .ma10 .ar7 .ls15 .tt37{  height:auto; overflow:hidden}
+	 .m10 .a10 .ma10 .ar11 .ls18 .im7{ width:176px; margin-right:0px; height:auto; overflow:hidden}
+	 .m10 .a10 .ma10 .ar11 .ls18 .im7 img{ width:100%;}
+	 .m10 .a10 .ma10 .ar11 .ls18 .tt44{ height:auto; overflow:hidden}
+	 
+	 /*----------------------流行網首頁-------------*/
+	 
+	 .ma16{ width:452px}
+	 .m4 .a3_2 { width:442px}
+	 
+	 
+	 /*----------------------流行網DJ-------------*/
+	  .m4_2 { width:678px}
+	 .m4 .a3_3 { width:678px}
+	 /*----------------------------------中廣新聞---------------------*/
+	 .m7 .a7 .mns .ls7 a h4{ display:none}
+	 
+	 /*----------------------新聞網首頁----------------------*/
+	 .m7_2{ width:668px; }
+	
+	/*點閱排名*/
+	 .m15{ width:216px}
+	 .m15 .bx4{ width:125px;}
+	 .m7 .a8{ width:216px}
+	 .m7 .a8 .tops{ width:216px;}
+	 .m7 .a8 .tops .tt18{ width:196px; }
+	 .m7 .a8 .tops .ma4{ width:196px; padding:5px 10px 10px}
+	 .m7 .a8 .tops .ma4 .ls11{ width:196px; height:auto; overflow:hidden; margin-bottom:5px}
+	 .m7 .a8 .tops .ma4 .ls11 .ic6{ margin:5px 10px 40px 0}
+	 .m7 .a8 .tops .ma4 .ls11 .ic7{ margin:5px 10px 40px 0}
+	 .m7 .a8 .tops .ma4 .ls11 .tt19{ width:166px;height:auto; overflow:hidden}
+	 .m7 .a8 .tops .ma4 .ls11 .tt19 a{ line-height:20px} 
+	 .m7 .a8 .tops .ma4 .ls11 .pit{ text-align:left; border:0; height:auto; overflow:hidden; line-height:20px; margin:0}
+	 
+	 /*焦點影音*/
+	 .m7 .a8 .tops .tt20{ width:196px}
+	 .m7 .a8 .tops .ma5{ width:216px;}
+	 .m7 .a8 .tt48{ width:216px}
+	 .m7 .a8 .ar7{ width:216px} 
+	 .m7 .a8 .ar7 .ls19{ width:216px}
+	 .m7 .a8 .ar7 .ls19 div{ width:216px}
+	 .m7 .a8 .tops .ma5 iframe{ width:216px}
+	 
+	 /*-------------DJ內頁----------------*/
+	 
+	 .m10 .a11{ width:668px}
+	 .m10 .a11 .ma11{ width:668px}
+	 .m10 .a11 .ma11 .ar8-2{ width:442px;margin:20px 0 0 165px}
+	 .m10 .a11 .ma11 .ar9{ width:729px }
+	 .m10 .a11 .ma11 .ar9 .tt41{ width:729px}
+	 .m10 .a11 .ma11 .ar8-2 .tt40-2{ width:442px}
+	 
+	 .lst{width:320px;text-align:center;}
+	 
+	 .m10 .a13{ width:668px}
+	 .m10 .a13 .ma14{ width:329px}
+	 .m10 .a13 .ma15{ width:309px}
+	 
+	 .m10 .a12{ width:668px}
+	 .m10 .a12 .ma12{ width:480px; margin:0 10px 0 0}
+	 .m10 .a11 .ma11 .im5{ margin:0 }
+	 .lst{width:600px;height:125px;text-align:center;}
+	 /*------------------新聞網線上收聽---------------------------*/	 
+	 .m17{ width:216px; margin:0 0 5px 0}
+	 .m17 .lst2 {width:216px}
+	 .m17 .lst2 a{width:216px}
+	 .m17 .lst2 a:hover{ height:33px; border:0}
+	 .m17 .lst2-2 {width:216px}
+	 .m17 .lst2-2 a{width:216px}
+	 .m17 .lst2-2 a:hover{ height:33px; border:0}
+	  /*-----------託播價格--------------*/
+	 .m18{ font-size:13px}
+	 .m19{ font-size:13px}
+	 .m20{ font-size:13px}
+	 	/*----------上一頁+下一頁----------*/
+	 .m4 .m21{ width:442px;}
+	 .m4 .m21 .ma20{ width:216px}
+	 .m4 .m21 .ma20 .tt61 a{width:136px;}
+	 .m4 .m21 .ma20 .tt62 a{width:136px;}
+	
+
+	
+ }
+
+@media screen and (max-width: 680px) {
+     .h_680{ display:none}
+	 .s_680{ display:block}
+	 
+	 .m1{ height:auto; overflow:hidden} 
+	 .m1 .a1{ width:442px; height:auto; overflow:hidden}
+	 
+	 .m1 .a1 .lg { width:442px; margin:15px 0 5px}
+	 .m1 .a1 .hd { width:442px; height:auto; overflow:hidden; padding-top:5px}
+	 .m1 .a1 .hd .hdlk2{ width:105px; margin:0 0 15px 5px; height:42px}
+	 .m1 .a1 .hd .hdlk2 img{ width:105px;}
+	 .m1 .a1 .hd .sh {width:185px; height:32px; background:url(../images/0225/bx2.png); margin-right:0px; clear:both}
+	 .m1 .a1 .hd .sh .bx{ width:132px }
+	 
+	 
+	 .m4{ width:442px; height:auto; overflow:hidden;}
+	 .m4 .a3{ width:442px; margin-bottom:10px}
+	 .m10 .gd2{ width:442px;}
+	 /*.m4{ width:100%}
+     .m4 .a3{ width:72%; margin-bottom:1%}
+	 .m4 .a4{ width:28%;}*/
+	 .m6 .a6 .icc2{ width:7%; margin:0 2% 0 0;font-size:18px}
+	 .m6 .a6 .tt10{ width:91%; }
+	 .m6 .a6 .tt10 a{font-size:18px; letter-spacing:-1px}
+	 /*.m1 .a1 .hd .sh{ background:#FFF; border:1px solid #ddd; width:54.5%;}
+	 .m1 .a1 .hd .tp{ margin:2% 0 0 0}
+	 .m1 .a1 .lg {height:auto; overflow:hidden;width:25%;padding:2% 0 0; text-align:right}*/
+	 
+	 .m4 .a4{ width:442px; margin:0 10px 10px  0; height:auto; overflow:hidden;}
+	 .m4 .a4 .ar1{ width:100%;  margin-bottom:3%;height:auto; overflow:hidden} 
+	 .m4 .a4 .ar1 .tt3{ width:100%;background:#8c8fc6}
+	 .m4 .a4 .ar1 .amr { width:84%;padding:3% 8% 5%; border:0; border-bottom:5px solid #8B8EC5 }
+	 .m4 .a4 .ar1 .amr .ls5{ width:100%}
+	 .m4 .a4 .ar1 .amr .ls5 .icc{ width:3%; margin-right:3%}
+	 .m4 .a4 .ar1 .amr .ls5 .tt4 { width:92%}
+ 	 .m4 .a4 .ar2{ width:100%; margin-bottom:3%;height:auto; overflow:hidden}
+	 .m4 .a4 .ar2 .tt5{ width:100%;background:#CA7BAA }
+	 .m4 .a4 .ar2 .amr2{width:84%;padding:3% 8% 5%; border:0; border-bottom:5px solid #CA7BAA;height:auto; overflow:hidden }
+	 .m4 .a4 .ar2 .amr2 .ls6{width:100%}
+	 .m4 .a4 .ar2 .amr2 .ls6 .tt6{ width:92%}
+	 .m4 .a4 .ar2 .amr2 .ls6 .tt7{ width:92%}
+	 .m4 .a4 .ar2 .amr2 .ls6 .icc2{width:3%; margin-right:3%}
+	 
+	 .m4 .a4 .ar3{  width:442px; margin:0 0 10px; height:auto; overflow:hidden;}
+	 .ar3 .m50 { width:372px; height:30px; line-height:30px; font-size:16px}
+	 .ar3 .m51 a { height:30px; line-height:30px;font-size:16px}
+	 .m4 .a4 .ar3 img{ width:100%}
+	 
+	  /*----------------------------------流行網VIEW頁2版---------------------*/
+	 .m10 .a10{ width:442px; padding:0 5px; }
+	 .m10 .a10 .ma10{ width:442px}
+	 .m10 .a10 .ma10 .ar11{ width:402px}
+	 .m10 .a10 .ma10 .ar11 .ls18{ width:402px}
+	 .m10 .a10 .ma10 .ar11 .ls18 .tt44{ width:402px}
+	 .m10 .a10 .ma10 .ar11 .ls18 .c8{ width:402px}
+	 .m10 .a10 .ma10 .ar7{ width:442px}
+	 
+	 .m10 .a10 .ma10 .tt35{ width:442px}
+	 .m10 .a10 .ma10 .ar7 .ls15{ width:442px}
+	 .m10 .a10 .ma10 .ar7 .ls15 div { width:442px}
+	 .m10 .a10 .ma10 .ar11 .ls18 .im7{ width:120px; margin:0 10px 5px 0}
+	 
+	 /*----------------------新聞網首頁----------------------*/
+	 .m7_2{ width:442px; }
+	
+	/*點閱排名*/
+	 .m15{ width:442px}
+	 .m15 .bx4{width:351px;}
+	 .m7 .a8{ width:442px}
+	 .m7 .a8 .tops{ width:442px;}
+	 .m7 .a8 .tops .tt18{ width:422px; }
+	 .m7 .a8 .tops .ma4{ width:422px; padding:11px 20px 16px;}
+	 .m7 .a8 .tops .ma4 .ls11{ width:422px; height:auto; overflow:hidden; margin-bottom:5px}
+	 .m7 .a8 .tops .ma4 .ls11 .ic6{margin:5px 10px 0 0;}
+	 .m7 .a8 .tops .ma4 .ls11 .ic7{margin:5px 10px 0 0;}
+	 .m7 .a8 .tops .ma4 .ls11 .tt19{ width:252px; height:34px; }
+	 .m7 .a8 .tops .ma4 .ls11 .tt19 a{ line-height:34px} 
+	 .m7 .a8 .tops .ma4 .ls11 .pit{ width:119px; height:24px;text-align:center;font:13px/24px "微軟正黑體";color:#555; border-left:1px solid #ddd; margin:5px 0}
+
+	 
+	 /*焦點影音*/
+	 .m7 .a8 .tops .tt20{ width:422px}
+	 .m7 .a8 .tops .ma5{ width:442px;}
+	 .m7 .a8 .tt48{ width:442px}
+	 .m7 .a8 .ar7{ width:442px} 
+	 .m7 .a8 .ar7 .ls19{ width:442px}
+	 .m7 .a8 .ar7 .ls19 div{ width:442px}
+	 .m7 .a8 .tops .ma5 iframe{ width:442px}
+	 
+	 
+	 /*-------------DJ內頁----------------*/
+	 
+	 .m10 .a11{ width:442px}
+	 .m10 .a11 .ma11{ width:442px}
+	 .m10 .a11 .ma11 .ar8-2{ width:442px;margin:20px 0 0 0}
+	 .m10 .a11 .ma11 .ar9{ width:442px; margin:0 }
+	 .m10 .a11 .ma11 .ar9 .tt41{ width:442px}
+	 .m10 .a11 .ma11 .ar8-2 .tt40-2{ width:442px}
+	 .m10 .a11 .ma11 .ar10{ margin:20px 0 0 0}
+	 
+	 .m10 .a11 .ma11 .ar8{ width:442px; position:relative}
+	 .m10 .a11 .ma11 .ar8 .tt38{ clear:both; margin:0 0 0 0px}
+	 .m10 .a11 .ma11 .ar8 .bk2{ position:absolute; left:0px; top:0px; margin:0; width:65px; display:none}
+	 .m10 .a11 .ma11 .ar8 .bk2 img{ width:65px; height:94px}
+	 .m10 .a11 .ma11 .ar8 .lg{ margin:0 0 5px 0px}
+	 .m10 .a11 .ma11 .lsn3{ margin:20px 0 0 0; width:42px }
+	 .m10 .a11 .ma11 .im5{ margin:20px 0 0 0;}
+	 .m10 .a11 .ma11 .im5 img{ width:100%}
+	 
+	 
+	 .m10 .a11 .ma11 .ar9 .c7{ width:442px}
+	
+	 .m10 .a13{ width:442px}
+	 .m10 .a13 .ma14{ width:442px; margin:0 0 10px 0}
+	 .m10 .a13 .ma15{ width:422px}
+	 
+	 .m10 .a12{ width:442px}
+	 .m10 .a12 .ma12{ width:254px; margin: 0 10px 0 0 }
+	
+	 .lst{width:600px;height:125px;text-align:center;}
+	 /*------------------新聞網線上收聽---------------------------*/	 
+	 .m17{ width:442px}
+	 .m17 .lst2 {width:120px}
+	 .m17 .lst2 a{width:120px}
+	 /*-----------託播價格--------------*/
+	 .m18{ font-size:13px}
+
+	 }
+
+@media screen and (max-width: 480px) {
+     .h_480{ display:none}
+	 .s_480{ display:block}
+	 .m4 .a3{ width:100%; margin-bottom:10px}
+	 .wp{ width:100%}
+	 .m4 .a4{ width:100%; }
+	 
+ 	 .m5 .a5 .lg2{ width:96%;padding:0 2%;;height:auto; overflow:hidden;}
+	 .m5 .a5 .tt8{ width:96%;height:auto; overflow:hidden; font-size:15px; padding:2% 2% 0}
+	 .m5 .a5 .tt9{ width:96%;height:auto; overflow:hidden;font-size:15px; text-align:left; padding:1% 2% 3%}
+	 .m6 .a6 .icc2{ width:8%; margin:0 1% 0 0;font-size:12px}
+	 .m6 .a6 .tt10{ width:89%; }
+	 .m6 .a6 .tt10 a{font-size:16px; letter-spacing:-1px;}
+	 
+	 
+	 .m4 .m21{ margin:0}
+		 
+}
+	
+body { min-width:452px;}

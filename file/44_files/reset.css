@@ -1,0 +1,123 @@
+﻿@charset "utf-8";
+/* CSS Information ==============================
+Description:reset
+============================================== */
+body{text-align:center;-webkit-text-size-adjust:none;color:#333;font-family:"Microsoft JhengHei","微軟正黑體",Arial,sans-serif;font-size:13px; background:url(../images/mbg.jpg) center 0 repeat-x;}
+body,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,form,th,p,cite,em,address,small {margin:0;padding:0;list-style:none;font-weight:normal;font-style:normal;}
+a {color:#222;text-decoration:none;outline:none;cursor:pointer;}/*color:#6a4716;color:#543304;*/
+a:hover {text-decoration:underline;color:#778C13;}
+img {display:block;/**/}
+img,table,th,td {border:0;text-align:left;}
+table {border-collapse:collapse;width:100%;color:#333;}
+select,textarea,input{color:#333;font-family:"Microsoft JhengHei","微軟正黑體",Arial,sans-serif; padding:0; }
+ul,ol,li{zoom:1;overflow:hidden;}
+label {display:inline-block;}
+mark {color:#E81D3A; background:transparent;}
+.vl *{vertical-align:middle;}
+.clearfix {content:".";display:block;height:0;clear:both;visibility:hidden;_display:inline;}
+.blank12,.blank10 {display:block;clear:both;overflow:hidden;}
+.blank12 {height:12px;}
+.blank10 {height:10px;}
+.lt {text-align:left!important;}
+.rt {text-align:right!important;}
+.cr {text-align:center!important;}
+.dtime {font-size:12px; text-align:center;}
+.path {font-size:13px; font-family:simsun; height:32px; line-height:32px; border-bottom:1px solid #ddd; margin-bottom:10px; overflow:hidden;}/*--- 頁面導覽路徑 ---*/
+	.path nav {float:left;}
+	.path nav a,.path cite {display:inline-block; margin:0 5px;font-family:"Microsoft JhengHei","微軟正黑體",Arial,sans-serif;}
+	.path cite {color:#666;}
+	.path a:hover {color:#c00;text-decoration:underline;}
+	.btnBack {float:right; padding-right:16px; margin-right:10px;font-family:"Microsoft JhengHei","微軟正黑體",Arial,sans-serif; background:url(../images/lifeImg.png) right -849px no-repeat;}
+
+#container,#header,#navigate,#footer {width:1000px;}
+#container {margin:0 auto;text-align:left;}
+#main {float:left;width:688px;background-color:#fff;}
+#main2 {float:left;width:688px;}
+#side {float:right;width:300px;}
+.aside {padding:6px 15px;}
+.cBgs{background:url(../images/bodybgs.png) right 0 repeat-y;}
+
+/*--- header ---*/
+#header {margin:0 auto; text-align:left;zoom:1; overflow:hidden;}
+.cyglodtxt {zoom:1;overflow:hidden;} 
+.cyglodtxt a {display:block;text-align:center; height:30px; line-height:30px;color:#063695; font-size:15px;text-decoration:underline;}  
+.cyglodtxt a:hover {color:#39c;}
+	#masthead {font-size:12px; text-align:right; color:#ccc; height:25px; line-height:25px;width:50%;float:right;}
+	#mastheadl {font-size:12px; text-align:left; color:#ccc; height:15px; line-height:15px;width:50%;float:left;color:#666;}
+	#masthead a {display:inline-block; margin:0 4px; color:#666;}
+	#masthead a:hover {text-decoration:underline; color:#c00;}
+	#mastheadl img {float:left;margin-right:5px;}
+	#mastheadl li {margin-top:5px;margin-right:5px;float:left;}
+	#mastheadl a {color:#666;}
+	#mastheadl a:hover {text-decoration:underline; color:#c00;}
+
+.channellogo { float:left; position:relative;top:0;z-index:888;width:260px;margin-top:15px;}
+	.yeslogo {position:absolute; z-index:999; top:15px; left:-2px; font-size:1%;}
+	.yeslogo img {}
+	.channellogo h1 { margin:20px 0 0 160px;}
+	.channellogo h1 a { float:left;text-indent:-9999px;width:76px; height:38px; font-size:1%; background:url(../images/consume.png) 0 0 no-repeat;}
+
+/*--- navigate ---*/
+#navigate {margin:0 auto 10px auto;height:40px;position:relative; z-index:30; text-align:center;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background:#A9C627;border-top:2px solid #b5d231;border-bottom:2px solid #7f9715;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#A9C627), to(#8AA220));background: -moz-linear-gradient(#A9C627, #8AA220);background: linear-gradient(#A9C627, #8AA220);-pie-background: linear-gradient(#A9C627, #8AA220);behavior: url(/life/PIE.htc);}/*behavior: url(/life/PIE.htc);*/
+	#navigate .navs {overflow:visible;height:40px;}
+	.navs li {float:left;display:inline;position:relative;overflow:visible;padding-top:4px; font-size:15px;width:72px;height:36px;padding-right:2px; background:url(../images/lifeImg.png) right -142px no-repeat;}
+	.navs li a {color:#fff;display:block; text-decoration:none;}
+	.navs li span {display:block;font-size:9px; font-weight:normal; color:#bdcd76;}	
+	
+	/*--- 二層選單使用 ---*/
+	.navs ul {display:none;position:absolute; left:-1px;width:160px; padding-top:3px;border:1px solid #c2baa1; border-bottom:2px solid #b2a98b; border-top:0;background:url(../images/navBgs.png) #e0dcd0 34px -98px no-repeat;}
+	.navs ul li {background:none; font-size:14px; height:32px; line-height:32px;}
+	.navs ul li a:hover {text-decoration:underline;}
+	#navigate li.iehover:hover li {height:32px; line-height:32px; width:auto; background:none; border:0; padding:0 12px; margin:0;}
+	.iehover ul {display:block;}
+	
+	/*--- 利用body控制選單 ---*/
+	body#c1 .navs #chanl1,body#c2 .navs #chanl2,body#c3 .navs #chanl3,body#c4 .navs #chanl4,body#c5 .navs #chanl5,body#c6 .navs #chanl6,body#c7 .navs #chanl7,body#c8 .navs #chanl8,body#c9 .navs #chanl9,body#c10 .navs #chanl10,body#c11 .navs #chanl11,#navigate li.iehover:hover {width:66px;padding-top:3px;height:35px;border:1px solid #c2baa1; background:url(../images/navBgs.png) 0 0 repeat-x;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;behavior:url(/life/PIE.htc);}
+	body#c1 .navs #chanl1 span,body#c2 .navs #chanl2 span,body#c3 .navs #chanl3 span,body#c4 .navs #chanl4 span,body#c5 .navs #chanl5 span,body#c6 .navs #chanl6 span,body#c7 .navs #chanl7 span,body#c8 .navs #chanl8 span,body#c9 .navs #chanl9 span,body#c10 .navs #chanl10 span,body#c11 .navs #chanl11 span,#navigate li.iehover:hover span{color:#977d5a;}
+	body#c1 .navs #chanl1 a,body#c2 .navs #chanl2 a,body#c3 .navs #chanl3 a,body#c4 .navs #chanl4 a,body#c5 .navs #chanl5 a,body#c6 .navs #chanl6 a,body#c7 .navs #chanl7 a,body#c8 .navs #chanl8 a,body#c9 .navs #chanl9 a,body#c10 .navs #chanl10 a,body#c11 .navs #chanl11 a,#navigate li.iehover:hover a {color:#462d0b;}
+	#navigate li.iehover:hover {position:relative;width:70px;padding-top:3px;border:1px solid #b4ad98;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;behavior:url(/life/PIE.htc);}
+
+
+/*--- 主選單上的搜尋Bar ---*/
+#navSrch { position:absolute;width:200px;right:12px;top:6px;text-align:left;}
+	.srchBar { float:left;position:relative; border:1px solid #8AA220;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;background:url(../images/srchBarBg.png) 0 0 no-repeat;behavior: url(/life/PIE.htc);}
+	.seltBox {float:left;height:26px;line-height:26px;}
+	.seltBox .passiveSelect,.seltBox .activeSelect {display:block; width:26px;height:26px; line-height:26px;padding:0 20px 0 8px;cursor:pointer;outline:none;background:url(../images/lifeImg.png) right -408px no-repeat;}
+	.seltBox ul {width:160px;_width:163px; border:1px solid #ccc;border-bottom:2px solid #aaa; padding:5px 0; background:url(../images/lineBg.png) 0 bottom repeat-x;outline:none;}
+	.seltBox ul li {float:left; display:inline; cursor:pointer; width:38px; text-align:center;height:20px; line-height:20px;}
+	.seltBox ul li:hover {text-decoration:underline;color:#EE2B45;}
+	.selected  {display:inline-block; color:#EE2B45; font-weight:bold;}
+	.srchBar .txts {background:transparent;border:0; width:100px;height:26px; line-height:26px;*height:24px;*line-height:24px;padding:0 4px;}
+	.srchBtn {position:relative; display:inline-block; margin-left:-1px;_margin-left:-3px;height:26px; line-height:26px; border:1px solid #8AA220;border-right-color:#7e9519;border-bottom-color:#7e9519; background:url(../images/lifeImg.png) 0 -200px no-repeat;}
+	.sbtn {border:0; background:transparent;color:#fff;width:30px;font-size:14px; line-height:23px;*line-height:20px; display:inline-block;cursor:pointer;}
+	
+/*--- footer ---*/
+#footer {margin:0 auto;color:#888;background-color:#2b2e31; overflow:hidden;}
+#footer a {margin:0 3px;color:#888;}
+#footer a:hover {color:#cdc3a2;text-decoration:underline;}
+	#footer small {display:block;font-size:12px;padding-bottom:15px;}
+	.siteinfo {border-bottom:1px solid #3b3e40;height:32px;line-height:32px;background:#1f1f1f;}
+	.wgroup {height:32px;line-height:32px;}
+	.community {margin-left:15px;}
+	
+/*--- pagination ---*/
+.pagination { padding:30px 0 10px 0;zoom:1; overflow:hidden; text-align:center;}
+.pagination span,.pagination a,.pagination cite {display:inline-block; font-size:12px;}
+.pagination a,.pagination cite {border:1px solid #ccc;height:22px;line-height:22px; background-color:#f5f5f5;}
+.pagination span a,.pagination cite{padding:0 8px; margin:0 3px;}
+.pagination cite {border:none; font-weight:bold; background:none;}
+.pagination cite.on {background:#ccc; border:1px solid #aaa; color:#fff;}
+.pagination span a:hover {color:#fff; background:#A9C627; border:1px solid #8AA220;}
+.pbtns {width:23px;margin:0 2px; background:url(../images/lifeImg.png) 4px -350px no-repeat;}
+.pbtns1 {width:66px;margin:0 3px;}
+.lnext {background-position:8px -383px;}
+.bnext {background-position:9px -323px;}
+.bprev {background-position:8px -293px;}
+.fprev {background-position:8px -353px;}	
+
+/*--- ads banner ---*/
+.ads728x90 {float:right;width:728px;height:90px;}
+.ads650x100 { height:100px; overflow:hidden;margin-bottom:12px; background:#bbb;}
+.ads650x100 small,.ads650x100 span {float:left; display:inline;}
+.ads650x100 small {font-size:13px; width:22px; text-align:center; line-height:20px; padding-top:10px;}
+.ads650x100 a {color:#fff;}

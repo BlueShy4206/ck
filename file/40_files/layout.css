@@ -1,0 +1,88 @@
+﻿/* 7.重要專題 */
+.colnon{width:100%; margin:15px 0px 15px; overflow:hidden; clear:both; font-size:15px; background-color:#C1EDFC; height:258px}/* 底色 */
+.colnontit{font-size:18px; font-weight:bold; background-color:#eee; padding:5px 8px 3px; background-color:#eee; border-bottom:2px solid #93c5d8;}/* 標題→底色不改(eee)、底線色改 */
+.colnontit a{color:#000; text-decoration:none; }/* 大標字色 */
+.colnontit a:hover{color:#014661; text-decoration:underline;}
+.colnon img{font-size:15px; float:left; margin:0px 0px 10px 12px; border:1px solid #333; width:300px; height:190px;}
+.colrnon{width:49%; float:right; margin:10px 3px 0px 0px; letter-spacing:1px; font-size:15px;} 
+.colrnon li{line-height:20px; margin:0px 0px 10px 0px; padding-left:12px; list-style-type:none; background:url(../../images/news/dot-right.gif) no-repeat 0px 8px;}
+.colrnon a{color:#000; text-decoration:none;}/* 字色 */
+.colrnon a:hover{color:#014661; text-decoration:underline;}
+
+/* 8 笑話 */
+.joke{width:99%; font-size:15px; background-color:#346186; border-bottom:3px solid #5b8ab0; border-top:3px solid #5b8ab0; margin:10px auto 10px;}
+.joke .tit{font-weight:bold; background-color:#346186; color:#FFF; padding:4px 8px 4px; letter-spacing:3px; height:20px;}
+.joke .con{margin:0px 2px 4px; padding:7px 0px 7px 5px; background-color:#e7f4ff; line-height:20px; letter-spacing:1px; color:#333; height:180px; overflow:auto;}
+.joke p{ line-height:10px; margin:5px auto 15px;}
+
+/* 9 汽車 */
+.colcon9{width:100%; margin:5px 0px 0px; overflow:hidden; clear:both; font-size:15px; background-color:#fff;}/* 底色 */
+.colpic9{ margin:15px 10px 20px; height:133px; float:left; overflow:hidden;}
+.colpic9 img{width:200px;}
+.tit9{font-size:15px; font-weight:bold; padding:5px 8px 3px; background-color:#9b9314;}
+.tit93c{background-color:#029999;}
+.tit9ent{background-color:#c2954b;}
+.tit9talk{background-color:#e57156;}
+.tit9style{background-color:#93749c;}
+.tit9sport{background-color:#1ab5ee;}
+.tit9 a{color:#fff; text-decoration:none;}
+.tit9 a:hover{color:#FFFF66; text-decoration:none;}
+.tit9 a.more{ display:block; float:right; font-weight:100;}/*more*/
+.colcon9ul{ width:65%; float:left; margin:8px 0px 0px 0px; letter-spacing:1px; font-size:15px;} 
+.colcon9ul li{ line-height:18px; margin:0px; padding-left:12px; list-style-type:none; background:url(/images/all/dot-right.gif) no-repeat 3px 18px; padding-top:10px;}
+.colcon9ul a{color:#222;}
+.colcon9ul a:hover{color:#069; text-decoration:underline;}
+.colcon9ul strong{color:#006699;}
+
+/* 22 事件 */
+.colcon22{width:100%; margin:15px 0px 28px; overflow:hidden; clear:both; font-size:15px; background-color:#fff;}/* 底色 */
+.colpic22{ margin:10px 10px 0px; height:133px; float:left; overflow:hidden;}
+.colpic22 img{width:200px;}
+.tit22{font-size:15px; font-weight:bold; padding:5px 8px 3px; background-color:#9b9314; color:white}
+.tit22{background-color:#245fa3;}
+.tit22 a{color:#fff; text-decoration:none;}
+.tit22 a:hover{color:#eee; text-decoration:none;}
+.colcon22ul{ width:65%; float:left; margin:8px 0px 0px 0px; letter-spacing:1px; font-size:15px;} 
+.colcon22ul li{ line-height:18px; margin:0px; padding-left:12px; list-style-type:none; background:url(/images/all/dot-right.gif) no-repeat 3px 18px; padding-top:10px;}
+.colcon22ul a{color:#222;}
+.colcon22ul a:hover{color:#069; text-decoration:underline;}
+.colcon22ul strong{color:#006699;}
+.rtmore22 {display:block; width:40%; float:right; text-align: right; margin-right:10px; color:#cc3300 !important; font-weight:bold; padding-bottom:8px; text-decoration:none;}
+
+/* 11 專題tab #c7d4db*/
+.evtTab{ background-color:#ddd; float:left; padding:5px 10px 5px; margin:10px 5px 0 0; border-radius: 4px 4px 0px 0px; cursor:pointer; border-right:1px solid #999; font-size:0.95em; color:#666; letter-spacing:2px; font-weight:bold;}
+.evtTab_now{ background-color:#666; border-right:1px solid #222; color:#fff;}/* 目前頁面所在 */
+
+/* 12 專題 */
+.colnon12{width:100%; margin:15px 0px 15px; overflow:hidden; clear:both; font-size:15px; background-color:#DFA4C7; background-image:url(../../images/layout/bg_grid.png); background-repeat:repeat;}/* 底色 */
+.colnontit12{font-size:18px; font-weight:bold; background-color:#eee; padding:5px 8px 3px; border-bottom:2px solid #D788B0;}/* 標題→底色不改(eee)、底線色改 */
+.colnontit12 a{color:#6C2448; text-decoration:none;}/* 大標字色 */
+.colnontit12 a:hover{color:#C7568F; text-decoration:underline;}
+.colnon12 img{font-size:15px; float:left; margin:0px 0px 10px 12px; border:1px solid #333; width:300px; height:190px;}
+.colnon12 ul{width:49%; float:right; margin:10px 3px 0px 0px; letter-spacing:1px; font-size:15px;} 
+.colnon12 li{line-height:20px; margin:0px 0px 10px 0px; padding-left:12px; list-style-type:none; background:url(../../images/news/dot-right.gif) no-repeat 0px 8px;}
+.colnon12 a{color:#000; text-decoration:none;}/* 字色 */
+.colnon12 a:hover{color:#561D39; text-decoration:underline;}
+
+/* 13 一圖 */
+.colnon13{width:100%; margin:15px 0px 15px; overflow:hidden; clear:both; font-size:15px;  }/* 底色 */
+
+/* 17 鬼故事 */
+.ghost{width:99%; font-size:15px; background-color:#333; border-bottom:2px solid #333; margin:10px auto 10px;}
+.ghost .tit{font-weight:bold; background-color:#222; color:#FFF; padding:4px 8px 4px; letter-spacing:3px; line-height:30px;}
+.ghost .tit strong{ padding:3px 4px 4px 7px; background-color:#FFF; color:#333; margin:3px 8px 4px 4px;}
+.ghost .con{color:#FFF; line-height:25px; margin:0px; padding:7px 0px 7px 10px; line-height:20px; letter-spacing:1px; height:180px; overflow:auto; background-image:url(/images/index/bg.jpg);}
+
+/* 20 內頁 */
+.colcon20{width:100%; margin:15px 0px 28px; overflow:hidden; clear:both; font-size:15px; background-color:#fff;}/* 底色 */
+.colpic20{ margin:10px 10px 0px; height:133px; float:left; overflow:hidden;}
+.colpic20 img{width:200px;}
+.tit20{font-size:15px; font-weight:bold; padding:5px 8px 3px; background-color:#fd6a04; color:white}
+.tit20 a{color:#fff; text-decoration:none;}
+.tit20 a:hover{color:#eee; text-decoration:none;}
+.colcon20ul{ width:65%; float:left; margin:8px 0px 0px 0px; letter-spacing:1px; font-size:15px;} 
+.colcon20ul li{ line-height:18px; margin:0px; padding-left:12px; list-style-type:none; background:url(/images/all/dot-right.gif) no-repeat 3px 18px; padding-top:10px;}
+.colcon20ul a{color:#222;}
+.colcon20ul a:hover{color:#069; text-decoration:underline;}
+.colcon20ul li:first-child{padding-top:0; background-position:3px 8px}
+.rtmore20 {display:block; width:40%; float:right; text-align: right; margin-right:10px; color:#cc3300 !important; font-weight:bold; padding-bottom:8px; text-decoration:none;}

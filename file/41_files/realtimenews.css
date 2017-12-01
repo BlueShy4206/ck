@@ -1,0 +1,496 @@
+﻿
+
+.collum table, td, th {
+    border: 1px solid #333333;
+}
+.bgnone {
+    background-color: transparent;
+    padding: 0;
+}
+#newnav {
+    clear: both;
+    margin-bottom: 20px;
+    /*width: 650px;*/
+	width:970px;
+	width:970.5px \9;
+	margin:0px auto;
+	z-index:9999;
+}/*lpt317*/
+#newnav li {
+    float: left;
+    text-align: center;
+}
+#newnav a {
+    /*background: url("/appledaily/images/navline.jpg") no-repeat scroll left center transparent;*/
+    /*border-bottom: 1px solid #7d7d7d;*/
+	border-left: 1px solid #797979;
+	/*border-right: 1px solid #616161;*/
+    color: white;
+    display: block;
+    font-size: 1.125em;
+    padding: 10px 0;
+	padding-top: 12px \9;
+	padding-bottom: 8px \9;
+	background:#353535;
+}/*lpt317*/
+.navlast a {border-right: 1px solid #797979;}/*lpt317*/
+.nav1line a {border-bottom: 1px solid #797979;}/*lpt317*/
+#newnav a:hover {
+    color: #FFFFFF;
+}
+.navlv1 {
+    width: 128px;
+}
+.navlv2 {
+    /*width: 80px;*/
+	width: 88.1px;
+}/*lpt317*/
+#newnav .new a {
+    border-top-color: #ECB527;
+}
+#newnav .new a:hover {
+    background-color: #ECB527;
+}
+#newnav .newed a {
+    background-color: #ECB527;
+    color: #FFFFFF;
+}
+
+#newnav .zoo a:hover {
+    background-color: #e872af;
+}/*lpt317*/
+#newnav .zooed a {
+    background-color: #e872af;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .fun a:hover {
+    background-color: #ed2556;
+}/*lpt317*/
+#newnav .funed a {
+    background-color: #ed2556;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .rsea a:hover {
+    background-color: #b213c7;
+}/*lpt317*/
+#newnav .rseaed a {
+    background-color: #b213c7;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .fb a {
+    background-color: #0e78ff;
+	/*color: #0e78ff;*/
+	color:white;
+	/*font-weight:bold;*/
+}/*lpt317*/
+
+#newnav .fb a:hover {
+    background-color: #0e78ff;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .fbed a {
+    background-color: #0e78ff;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .house a:hover {
+    background-color: #217ad9;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .houseed a {
+    background-color: #217ad9;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .forum a:hover {
+    background-color: #ca4979;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .forumed a {
+    background-color: #ca4979;
+	color: #FFFFFF;
+}/*lpt317*/
+
+#newnav .hot a {
+    border-top-color: #5596D2;
+}
+#newnav .hot a:hover {
+    background-color: #5596D2;
+}
+#newnav .hoted a {
+    background-color: #5596D2;
+    color: #FFFFFF;
+}
+#newnav .video a {
+    border-top-color: #5C48BF;
+}
+#newnav .video a:hover {
+    background-color: #5C48BF;
+}
+#newnav .videoed a {
+    background-color: #5C48BF;
+    color: #FFFFFF;
+}
+#newnav .recommend a {
+    border-top-color: #3C9F5C;
+}
+#newnav .recommend a:hover {
+    background-color: #3C9F5C;
+}
+#newnav .recommended a {
+    background-color: #3C9F5C;
+    color: #FFFFFF;
+}
+#newnav .all a {
+    border-top-color: #616161;
+}
+#newnav .all a:hover {
+    background-color: #616161;
+}
+#newnav .alled a {
+    background-color: #616161;
+    color: #FFFFFF;
+}
+#newnav .enter a {
+    border-top-color: #FF7A21;
+}
+#newnav .enter a:hover {
+    background-color: #FF7A21;
+}
+#newnav .entered a {
+    background-color: #FF7A21;
+    color: #FFFFFF;
+}
+#newnav .soci a {
+    border-top-color: #577798;
+}
+#newnav .soci a:hover {
+    background-color: #577798;
+}
+#newnav .socied a {
+    background-color: #577798;
+    color: #FFFFFF;
+}
+#newnav .inter a {
+    border-top-color: #5BA5EE;
+}
+#newnav .inter a:hover {
+    background-color: #5BA5EE;
+}
+#newnav .intered a {
+    background-color: #5BA5EE;
+    color: #FFFFFF;
+}
+#newnav .life a {
+    border-top-color: #E15D5A;
+}
+#newnav .life a:hover {
+    background-color: #E15D5A;
+}
+#newnav .lifeed a {
+    background-color: #E15D5A;
+    color: #FFFFFF;
+}
+#newnav .hotdeals a {
+    border-top-color: #C908C1;
+}
+#newnav .hotdeals a:hover {
+    background-color: #C908C1;
+}
+#newnav .hotdealsed a {
+    background-color: #C908C1;
+    color: #FFFFFF;
+}
+#newnav .polit a {
+    border-top-color: #BAA795;
+}
+#newnav .polit a:hover {
+    background-color: #BAA795;
+}
+#newnav .polited a {
+    background-color: #BAA795;
+    color: #FFFFFF;
+}
+#newnav .sport a {
+    border-top-color: #A31313;
+}
+#newnav .sport a:hover {
+    background-color: #A31313;
+}
+#newnav .sported a {
+    background-color: #A31313;
+    color: #FFFFFF;
+}
+#newnav .business a {
+    border-top-color: #4B565F;
+}
+#newnav .business a:hover {
+    background-color: #4B565F;
+}
+#newnav .businessed a {
+    background-color: #4B565F;
+    color: #FFFFFF;
+}
+
+#newnav .ccc a {
+    border-top-color: #318597;
+}
+#newnav .ccc a:hover {
+    background-color: #318597;
+}
+#newnav .ccced a {
+    background-color: #318597;
+    color: #FFFFFF;
+}
+#newnav .fashion a {
+    border-top-color: #b1558b;
+}
+#newnav .fashion a:hover {
+    background-color: #780e87;
+}/*lpt317*/
+#newnav .fashioned a {
+    background-color: #780e87;
+    color: #FFFFFF;
+}/*lpt317*/
+#newnav .blog{/*background: url("/appledaily/images/navline.jpg") no-repeat scroll left center transparent;*/}/*lpt317*/
+#newnav .blog a { /*background:url(/appledaily/images/blog1.png) 0 7px no-repeat;*/
+    border-top-color: #83b400; /*height:34px;*/
+	overflow:hidden;
+}/*lpt317*/
+#newnav .blog a:hover {
+	/*background:url(/appledaily/images/blog2.png) 0 7px no-repeat;*/
+    background-color: #83b400;
+}/*lpt317*/
+#newnav .bloged a { 
+    /*background:url(/appledaily/images/blog2.png) 0 7px no-repeat;*/
+	/*height:34px;*/
+	overflow:hidden;
+	background-color: #83b400;
+}/*lpt317*/
+#newnav .hotg{/*background: url("/appledaily/images/navline.jpg") no-repeat scroll left center transparent;*/}/*lpt317*/
+#newnav .hotg a {
+	/*background: url(/appledaily/images/hotg1.png) 0 7px no-repeat;*/
+	border-top-color: #ec057c;
+	/*height: 34px;*/
+	overflow: hidden;
+}/*lpt317*/
+#newnav .hotg a:hover {
+	/*background:url(/appledaily/images/hotg2.png) 0 7px no-repeat;*/
+    background-color: #ec057c;
+}/*lpt317*/
+
+#newnav .hotged a { 
+    /*background:url(/appledaily/images/hotg2.png) 0 7px no-repeat;*/
+	/*height:34px;*/
+	overflow:hidden;
+	background-color: #ec057c;
+}/*lpt317*/
+
+#videobox {
+    width: 640px;
+}
+.timebox {
+    background-color: #FFFFFF;
+    color: #6D6D6D;
+    float: left;
+    font-size: 1.125em;
+    padding: 8px;
+    width: 624px;
+}
+.timebox2 {
+    background-color: #FFFFFF;
+    color: #6D6D6D;
+    float: left;
+    font-size: 1.125em;
+    margin-top: 20px;
+    padding: 8px;
+    width: 624px;
+}
+#videolist {
+    float: left;
+    margin: 20px 20px 0;
+    width: 173px;
+}
+#videolist a {
+    background: url("/appledaily/images/icon1.jpg") no-repeat scroll 0 115px #FFFFFF;
+    color: #383C40;
+    display: block;
+    height: 225px;
+}
+#videolist a:hover {
+    background-color: #5C48BF;
+    background-image: none;
+    color: #FFFFFF;
+}
+#videotime {
+    font-size: 0.8125em;
+    padding: 0 5px 5px 7px;
+}
+#videolist figure {
+    display: block;
+    height: 115px;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    position: relative;
+    width: 173px;
+}
+#videolist p {
+    height: 45px;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0 5px 0 7px;
+}
+#videolist span {
+    background: url("/appledaily/images/core/eye.png") no-repeat scroll 7px center transparent;
+    display: block;
+    font-size: 0.8125em;
+    margin-bottom: 10px;
+    padding-left: 30px;
+}
+#recommendbox {
+    background-color: #747474;
+    width: 640px;
+}
+#recommendlist a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #383C40;
+    float: left;
+    margin: 15px 17px;
+    padding: 3px;
+    width: 170px;
+}
+#recommendlist a:hover {
+    color: #777;
+    float: left;
+    padding: 3px;
+    width: 170px;
+}
+#recommendlist p {
+    height: 45px;
+    line-height: 1.4em;
+    overflow: hidden;
+    padding: 0 5px;
+}
+#recommendpic {
+    position: relative;
+}
+#recommendpic2 {
+    float: left;
+    position: relative;
+}
+#recommendlist2 {
+    background-color: #FFFFFF;
+    float: left;
+    padding: 6px;
+    width: 628px;
+}
+#recommendlist2 li {
+    list-style: none outside none;
+}
+#recommendw {
+    float: left;
+    margin: 0 10px;
+    width: 140px;
+}
+#recommendw p a {
+    color: #383C40;
+    height: 45px;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+#recommendw p a:hover {
+    color: #3C9F5C;
+}
+#recommendtime {
+    color: #383C40;
+    font-size: 0.8125em;
+    margin-bottom: 5px;
+    padding: 0 5px 5px 0;
+	margin-top:5px;
+}
+#playicon {
+    bottom: 3px;
+    height: 32px;
+    position: absolute;
+    right: 3px;
+    width: 32px;
+}
+
+.views{background: url("/appledaily/images/core/eye.png") no-repeat scroll 7px center transparent;
+    display:block;
+    margin-bottom: 5px;
+	float:right;
+	width:45px;
+	overflow:hidden;
+	   padding-left: 30px;
+	   
+	}
+.table420{ width:420px;}
+.table420 td{ line-height:1.5em; padding:5px}
+
+.rlogo {
+background: white url(/appledaily/images/r_logo.jpg) 0px 5px no-repeat;
+display: block;
+width: 195px;
+height: 90px;
+}/*lpt312*/
+
+.rlogo a {
+display: block;
+width: 203px;
+height: 90px;
+}
+
+#realnav {/*width:970px;*/height:36px;margin:0px auto;background:white;}/*lpt312*/
+
+.rsearch {
+width:87px;
+width:86px \9;
+height:36px;
+line-height: 1em;
+vertical-align: middle;
+border-left:1px solid #797979;
+border-right:1px solid #797979;
+background:#363636;
+}/*lpt312*/
+
+.rsbox {
+width: 51px;
+width: 50px \9;
+height:36px;
+color: #fefefe;
+background:#616161;
+font-size: 16px;
+float:left;
+/*margin:4px 0px 0px 4px;*/
+line-height:36px \9;
+}/*lpt312*/
+
+.rsbtn {
+background:#616161 url(/appledaily/images/sbaricon.png) 10px 10px no-repeat;
+/*background:url(../core/rsbtn.png) no-repeat;*/
+width:36px;
+height:36px;
+/*background:#009ec6;*/
+float:left;
+/*margin:4px 0px 0px 0px;*/
+cursor: pointer;
+}/*lpt312*/
+
+.rsbtn:hover {
+background:#2a2a2a url(/appledaily/images/sbaricon.png) 10px 10px no-repeat;
+}/*lpt312*/
+
+
+
+
+

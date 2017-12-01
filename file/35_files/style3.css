@@ -1,0 +1,73 @@
+﻿/* CSS Document */
+
+/*-----新聞網選單checked-----*/
+.m7 .a7 .pga .pgl .checked{color:#fff; background:#31368e;}
+
+/*-----流行網日期checked-----*/
+.m9 .a9 .tt31 .checked{color:#fff;background:#cc0000;border-left:1px solid #cc0000;padding:5px 13px; text-align:center; }
+/*-----流行網節目表checked-----*/
+.m9 .a9 .tt30 .checked{color:#333;background:#ffcc00;border-left:1px dashed #ffcc00;text-align:center}
+
+/*-----音樂網日期checked-----*/
+.m9 .a9 .tt31_3 .checked{color:#fff;background:#845fbc;border-left:1px solid #845fbc;}
+/*-----音樂網曲目checked-----*/
+.m9 .a9 .tt31_4 .checked{color:#fff;background:#845fbc;border-left:1px solid #845FBC;padding:5px 30px;}
+
+/*-----分頁-----*/
+.pg { width:100%; text-align:center; margin:20px 0;  }
+.pg .disabled{border:1px #ddd solid; background:#f4f4f4;font:bold 14px/28px  "微軟正黑體"; margin-right:1% ; text-align:center; cursor:pointer; padding:1%;  }
+.pg .current{  background:#666;border:1px #666 solid; color:#fff;font:bold 14px/28px  "微軟正黑體"; margin-right:1% ; text-align:center; cursor:pointer; padding:1%; }
+.pg a{border:1px #ddd solid; background:#f4f4f4;font:bold 14px/28px  "微軟正黑體"; margin-right:1% ; text-align:center; cursor:pointer; padding:1%; }
+.pg a:hover, .pg .current{  background:#666;border:1px #666 solid; color:#fff}
+
+
+
+/*-----第二版日期checked樣式-----*/
+.m12 .a14 .tt46 .checked{color:#333;background:#ffcc00;border-right:1px solid #ffcc00;}
+.m12 .a14 .tt47 .checked{color:#333;background:#ffcc00;border-right:1px solid #ffcc00}
+.m10 .a12 .ma12 .bl{ z-index:99;}
+.m10 .a12 .ma12 .br{ z-index:99;}
+
+
+/*-----新聞網豆豆龍---------*/
+/*
+.m7 .gd2 .gdt{ font:13px/30px "新細明體";color:#cc0000;}
+.m7 .gd2 .gdt a{font:13px/30px "新細明體";color:#555;}
+.m7 .gd2 .gdt a:hover{color:#31368e; text-decoration:underline}*/
+
+
+
+/*-----新聞網搜尋---------*/
+.m15 .bt4 a{ cursor:pointer;}
+
+/*-----曲目查詢，時間---------*/
+/*
+.m12 .a14 .tt46_2 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #666; display:inline-block;  padding:5px 9px;background:#E1DECB; padding:5px 30px; text-align:center;}
+.m12 .a14 .tt46_2 a:hover{color:#333;background:#ffcc00;border-right:1px solid #ffcc00;}
+*/
+.m12 .a14 .tt46_2 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #666; display:inline-block;  padding:5px 0px;background:#E1DECB;width:103px; text-align:center;}
+.m12 .a14 .tt46_2 a:hover{color:#333;background:#ffcc00;border-right:1px solid #ffcc00;}
+.m12 .a14 .tt46_2 .checked{color:#333;background:#ffcc00;border-right:1px solid #ffcc00;}
+/*-----View頁點閱率---------*/
+.m7 .a7 .nsa3 .tk .tx_2{ width:140px;float:left;font:15px/15px "微軟正黑體";margin:0 10px 0 0;}
+
+/*-----收聽率---------*/
+/*.m10 .a11 .ma11 .ar8-2{ height:140px;}*/
+
+
+/*-----曲目查詢(日期)---------*/
+.m12 .a14 .tt47 a{ width:75px;}
+
+/*.m10 .a11 .ma11 .ar8-2 .tt40-2{ text-indent:-44px; margin-left:44px;}*/
+
+/*-----廣告業務checked---------*/
+.m7 .a7 .nsa3 .ma17 .mn a.checked0 { background:#31368e;  color:#fff;}
+.m7 .a7 .nsa3 .ma17 .mn a.checked1 { background:#dd0000;  color:#fff;}
+.m7 .a7 .nsa3 .ma17 .mn a.checked2 { background:#9D82C6;  color:#fff;}
+.m7 .a7 .nsa3 .ma17 .mn a.checked3 { background:#3f89c8;  color:#fff;}
+.m7 .a7 .nsa3 .ma18 .bxa3 .sd input{width:100px; height:30px;font:bold 14px/30px "微軟正黑體";color:#666; background:#ccc; text-align:center; display:inline-block; cursor:pointer; }
+.m7 .a7 .nsa3 .ma18 .bxa3 .sd input:hover{ background:#31368e; color:#fff; cursor:pointer; }
+
+/*-----Template_down 服務信箱---------*/
+.block_mail a{font:11px/20px "新細明體";color:#FFCC00;}
+.block_mail a:hover{color:#ccc;}

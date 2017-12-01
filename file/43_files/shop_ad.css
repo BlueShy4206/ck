@@ -1,0 +1,505 @@
+/*.album_ad110x110 {
+	專輯內頁廣告
+	position:absolute;
+	left:970px;
+	top:0;
+}
+*/
+/* .album_ad200x200 img {
+	專輯內頁贊助商廣告 
+	width:200px;
+	height:200px;
+}
+.sponsor_txt {
+	line-height:10px !important;
+	font-size:12px;
+	color:#bcbcbc;
+	text-align:center;
+}
+*/
+
+/************ POPUP_eventAd START ************/
+/********* 20140102-燦坤折價券 START *********/
+.content_kuai a.kuai {
+	width: 620px;
+	height: 285px;
+	background:url(../../../img/index/event/banner_ad.png) center top no-repeat;
+	margin:15px 37px;
+	display:block;
+}
+.down_btn {
+	padding-top:30px;
+}
+/********* 20140102-燦坤折價券 END *********/
+/************ POPUP_eventAd END ************/
+
+
+/************ for 共產檔 Ad START ************/
+.iframAdWrap{
+    width:660px;
+    background:#fff;
+}
+
+.image_list li.dashed, .dashed{
+    border-bottom:1px dashed #ccc;
+}
+.white-space{
+    white-space:nowrap;
+}
+.font_normal{
+    font-weight:normal;
+    font-size:1.1em;
+}
+.ig_ad_hd{text-align:center;}
+.ig_ad_title{
+    margin: -3px 0 0px 0;
+    padding: 26px 5px;
+    color: #FF5A96;
+    font-weight: bold;
+    font-size:19px;
+}
+.ig_ad_search{
+    padding: 20px 0;
+    display: inline-block;
+    margin-left: 115px;
+}
+.ig_ad_search button{
+    float: left;
+    padding: 0 10px;
+    width: 45px;
+    height: 27px;
+    border: 0;
+    border-radius: 0 2px 2px 0;
+    background: #f23d79 url(http://statics.iguang.tw/img/index/index/iguang/icon/search_icon.png) 14px 6px no-repeat;
+    color: #FFF;
+    cursor: pointer;
+}
+.ig_ad_search button:hover, .ig_ad_search button:active{
+    background-color: #f20c59;
+}
+.ig_ad_search input{
+    float: left;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0 5px;
+    width: 150px;
+    height: 25px;
+    outline: none;
+    border: solid #fff 1px;
+    border-radius: 2px 0 0 2px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+    line-height: 2.7\9;
+    -webkit-appearance: textfield;
+}
+.ig_logo{
+    padding: 15px 0;
+}
+.ig_ad_wrap{width:100%;position:relative;overflow:hidden;}
+.ig_ad_cont{width:2000px;position:relative;}
+.ig_ad_cont .ig_btn_box a{
+    display: inline-block;    
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+    font-size:12px;
+    margin: 0 3px;
+}
+.ig_ad_cont .ig_btn_box{
+    opacity: 0;
+    position: absolute;
+    top: 66%;
+    left: 4%;
+    background-color: rgba(255, 255, 255, 0.69);
+    padding: 5px 8px;
+    -moz-transition: opacity 0.3s ease-in;
+    -webkit-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+.ig_btn_box a.ig_btn01{
+    background:rgba(0, 0, 0, 1);
+
+}
+.ig_btn_box a.ig_btn02{
+    background:rgba(255, 0, 77, 1);
+    padding: 10px 26px;
+}
+.ig_ad_cont li{
+    position:relative; 
+    display:inline-block; 
+    cursor:pointer;
+    width: 217px;
+	height: 241px;
+	vertical-align: top;
+}
+.ig_ad_cont li:hover .ig_btn_box, .ig_ad3_cont li:hover .ig_btn_box{
+    opacity:1;
+}
+.ig_ad_p{
+    color: #000;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    height: 36px;
+    width: 200px;
+    margin: 0 auto;
+    font-size:12px;
+}
+.ig_ad_price{
+    margin-bottom:10px;
+}
+.ig_ad_price:after{
+    display:block;
+    content:'';
+    clear:both;
+}
+.ig_ad_price span{
+    display:inline-block;
+}
+.oldPrice{
+    text-decoration:line-through;
+    padding-top: 10px;
+    color: #999;
+}
+.newPrice{
+    font-size: 15px;
+    margin-right: 11px;
+    color: #F23078;
+    position: absolute;
+    right: 0px;
+    bottom: 3px;
+}
+.ig_ad_pic{width: 200px; height: 200px;margin: 0 auto 5px auto; text-align: center;}
+.ig_ad_pic img{width:auto; height:auto; max-height:100%; max-width:100%;}
+
+a.sliderBtn{
+    display:inline-block;
+    padding:5px;
+    position:absolute;
+    top:25%;
+}
+.sr{right:0;}
+a.sliderBtn:hover{    
+    background:rgba(0, 0, 0, 0.3);
+}
+/*ad2*/
+.ig_ad2_logo{
+    background:#ffabc4;
+    width: 170px;
+    text-align:center;
+}
+.ig_ad2_logo a{
+    display:block;
+    padding:58px 0;
+}
+.share_wrap{margin:20px 0;}
+.share_wrap:after{
+    display:block;
+    content:'';
+    clear:both;
+}
+.ig_ad2_wrap{
+    width: 100%;
+    height: 195px;
+    border:4px solid #ffabc4;
+    box-sizing:border-box;
+    position:relative;
+}
+.ig_ad2_pic{width:130px; margin: 2px auto 0 auto; height:130px;text-align: center;}
+.ig_ad2_pic img{width:auto; height:auto; max-height:100%; max-width:100%;}
+.ig_ad2_cont{}
+.ig_ad2_cont li{display:inline-block;width: 150px; height:183px; vertical-align:top;}
+.ig_ad2_cont li a h1, .ig_ad2_cont li a:hover h1{
+    font-size: 13px;
+    padding: 5px;
+    color: #05a;
+    letter-spacing: 1px;
+    font-weight:normal;
+    height: 22px;
+    overflow: hidden;
+}
+.ig2_btn_box{
+    position:absolute;
+    right: 7px;
+    top: 17%;
+}
+.ig_ad2_price{
+    font-size:15px;
+    color: #F23078;
+    text-align:center;
+}
+.ig2_btn_box{}
+.ig2_btn_box li{}
+.ig2_btn_box li a{    
+    width: 20px;
+    display: block;
+    height: 20px;
+    text-align: center;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	border-radius: 10px;
+    line-height: 20px;    
+    border:1px solid #FFABC4;
+    margin-bottom:10px;
+    color:#FFABC4;
+    background:#fff;
+    transition:none;
+}
+.ig2_btn_box li a:hover{
+    background-color: #FFABC4;
+    border:1px solid #FFABC4;
+    color: #fff;
+}
+a.about_cont_btn{
+    border: 1px solid #ccc;
+    padding: 10px 123px;
+    color: #999;
+    display: block;
+    margin: 0 auto;
+}
+a.about_cont_btn:hover{
+    position:relative;
+    top:2px;
+}
+.alignCenter{
+    text-align:center;
+}
+.mgTB20{
+    margin:20px 0;
+}
+.mgL30{
+    margin-left:30px;
+}
+.mgB25{
+    margin-bottom:25px;
+}
+.font_12{
+    font-size:12px;
+    margin-right:2px;
+}
+
+
+.ig_ad3_pic{width:130px;height:130px; margin: 2px auto 0 auto;text-align: center;}
+.ig_ad3_pic img{width:auto; height:auto; max-height:100%; max-width:100%;}
+.ig_ad3_cont{
+    width:2000px;
+    position:relative;
+	padding-left: 5px;
+}
+.ig_ad3_cont li{display:inline-block;width: 160px;height:187px; margin-bottom: 10px; vertical-align:top; cursor:pointer; position:relative;}
+.ig_ad3_cont li h1, .ig_ad3_cont li:hover h1{
+    font-size: 13px;
+    padding: 5px;
+    color: #05a;
+    letter-spacing: 1px;
+    font-weight:normal;
+    line-height:1.2;
+    height: 26px;
+    overflow: hidden;
+}
+.ig_ad3_price{
+    font-size:15px;
+    color: #F23078;
+    text-align:center;
+}
+
+.ig_ad3_cont .ig_btn_box{
+    opacity: 0;
+    position: absolute;
+    top: 48%;
+    left: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 3px;
+    -moz-transition: opacity 0.3s ease-in;
+    -webkit-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+.ig_ad3_cont .ig_btn_box a{
+    display: inline-block;    
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+    font-size:12px;
+    margin: 0 3px;
+}
+
+.ig_ad_cont  li.js_hover .ig_btn_box {
+    opacity: 1;
+}
+/*ad4*/
+.ad_tag_box{
+    padding:0 15px;
+    width: 660px;
+    box-sizing: border-box;
+
+}
+.ad_tag_box a.tag{
+    padding:0 5px!important;
+}
+
+.ig_ad4_pic{width:130px;height:130px; margin: 2px auto 4px auto;text-align: center;}
+.ig_ad4_pic img{width:auto; height:auto; max-height:100%; max-width:100%;}
+.ig_ad4_cont{
+    width:2000px;
+    position:relative;
+	padding-left: 5px;
+}
+.ig_ad4_cont li{display:inline-block;width: 160px;height:187px; margin-bottom: 10px; vertical-align:top; cursor:pointer; position:relative;}
+.ig_ad4_cont li h1, .ig_ad3_cont li:hover h1{
+    font-size: 13px;
+    padding: 5px;
+    color: #05a;
+    letter-spacing: 1px;
+    font-weight:normal;
+    line-height:1.2;
+    height: 26px;
+    overflow: hidden;
+}
+.ig_ad4_price{
+    font-size:15px;
+    color: #F23078;
+    text-align:center;
+}
+
+.ig_ad4_cont .ig_btn_box{
+    opacity: 0;
+    position: absolute;
+    top: 48%;
+    left: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 3px;
+    -moz-transition: opacity 0.3s ease-in;
+    -webkit-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+.ig_ad4_cont .ig_btn_box a{
+    display: inline-block;    
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+    font-size:12px;
+    margin: 0 3px;
+}
+
+/************ for 共產檔 Ad END ************/
+/**********for mobile ad 暫時不知道要放哪 Start*********/
+.apiMobileWrap{}
+.twelveBox{
+    padding: 4vw 8vw;
+    background: -webkit-linear-gradient(top, transparent 9px, #ccc 10px), -webkit-linear-gradient(left, transparent 9px, #ccc 10px);
+    background: -moz-linear-gradient(top, transparent 9px, #ccc 10px), -moz-linear-gradient(left, transparent 9px, #ccc 10px);
+    background: -o-linear-gradient(top, transparent 9px, #ccc 10px), -o-linear-gradient(left, transparent 9px, #ccc 10px);
+    background: -ms-linear-gradient(top, transparent 9px, #ccc 10px), -ms-linear-gradient(left, transparent 9px, #ccc 10px);
+    background: linear-gradient(top, transparent 9px, #ccc 10px), linear-gradient(left, transparent 9px, #ccc 10px);
+    -webkit-background-size: 10px 10px;
+    -moz-background-size: 10px 10px;
+    background-size: 10px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+.twelveBox h1{
+    font-size: 17px;
+    border-left: 3px solid #f69;
+    padding-left: 5px;      
+}
+.twelveBox ul{
+    text-align:center;
+    padding: 10px 0;
+}
+.twelveBox li{/*父*/
+    width: 27vw;
+    height: 27vw;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 3px;
+    position:relative;
+}
+.twelveBox .tag{
+    padding:0 5px;
+    margin:2px 0;
+    color: #f25584;
+    border: 1px solid #f2aabf;
+    background: #ffebf1;
+}
+
+.play{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    padding: 5px 2px;
+    box-sizing: border-box;
+}
+
+.play h2{
+    text-align: left;
+    color: #D6FF00;
+    font-size: 13px;
+    font-weight: normal;
+    line-height:1.2;
+}
+.play .store{
+    color: #fff;
+    position: absolute;
+    right: 5px;
+    bottom: 35px;
+}
+.play .price{
+    position: absolute;
+    bottom: 5px;
+    color: #fff;
+    right: 0;
+    left: 0;
+    background: #f69;
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px 0;
+    border-radius: 13px;
+}
+.twelveBox li a{
+    display:block;
+    height:100%;
+}
+.twelveBox li a img{
+    width:100%;
+    /*垂直置中*/
+    position:relative;
+    top:50%;
+    transform:translateY(-50%);
+    /*垂直置中*/
+}
+@media (min-width:375px){
+    .play{
+        padding: 7px 5px;
+    }
+    .play .store{
+        right: 10px;
+        bottom: 39px;
+    }
+    .play .price{
+        bottom:10px;
+    }
+    .play h2{
+        font-size:15px;
+    }
+}
+/**********for mobile ad 暫時不知道要放哪 End*********/

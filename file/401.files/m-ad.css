@@ -1,0 +1,9 @@
+#m_ad {
+	top: 0px; width: 100%; height: 200%; padding-top: 20px; position: fixed; z-index: 1000300; min-height: 1280px; background-color: rgba(0, 0, 0, 0.5);
+}
+#m_ad_close {
+	margin: 20px; padding: 10px; top: 0px; width: 50px; height: 50px; right: 0px; position: absolute; z-index: 10999999; cursor: pointer;
+}
+#m_ad_close span {
+	background: url("../images/ico_cti.png") no-repeat -848px -219px; width: 36px; height: 36px; display: block;
+}

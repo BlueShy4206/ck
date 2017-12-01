@@ -1,0 +1,111 @@
+.fix {
+	margin: 0px; padding: 15px 0px 20px; width: 100%; border-bottom-color: rgb(220, 220, 220); border-bottom-width: 1px; border-bottom-style: solid; float: left; min-height: 80px;
+}
+.fix a {
+	color: rgb(46, 106, 176);
+}
+.fix a:hover {
+	color: rgb(86, 189, 255);
+}
+.data {
+	line-height: 25px; letter-spacing: 1px; clear: both; font-size: 15px;
+}
+.fixvs {
+	vertical-align: bottom; float: left; display: table-cell;
+}
+.fixvs span {
+	width: 70px; height: 55px; text-align: center; vertical-align: bottom; display: table-cell;
+}
+.fixr {
+	margin-top: 15px; float: right; max-width: 310px;
+}
+.fixr img {
+	margin: 0px 10px; border: 1px solid rgb(204, 204, 204); float: right;
+}
+.fixr_w {
+	margin: 0px; padding: 0px; width: 90px; text-align: left; vertical-align: middle; float: right; display: table-cell;
+}
+.fixr_w span {
+	width: 90px; height: 46px; text-align: left; vertical-align: middle; display: table-cell;
+}
+.fixr_res {
+	width: 108px; text-align: center; color: rgb(204, 0, 0); letter-spacing: 0px; font-family: Consolas; font-size: 40px; font-weight: bold; float: right; display: table-cell;
+}
+.fixl {
+	margin-top: 15px; float: left; max-width: 310px;
+}
+.fixl img {
+	margin: 0px 10px; border: 1px solid rgb(204, 204, 204); float: left;
+}
+.fixl_w {
+	margin: 0px; padding: 0px; width: 90px; text-align: right; vertical-align: middle; float: left; display: table-cell;
+}
+.fixl_w span {
+	width: 90px; height: 46px; text-align: right; vertical-align: middle; display: table-cell;
+}
+.fixl_res {
+	width: 108px; text-align: center; color: rgb(204, 0, 0); letter-spacing: 0px; font-family: Consolas; font-size: 40px; font-weight: bold; float: right; display: table-cell;
+}
+.fixres {
+	color: rgb(153, 153, 153);
+}
+.fixQ {
+	width: 290px;
+}
+.fixQ span {
+	height: 55px; text-align: center;
+}
+.fixall {
+	margin: 0px 0px 40px; overflow: hidden;
+}
+.fixFB {
+	width: 270px; height: 20px; text-align: center; overflow: hidden;
+}
+.fixVote {
+	width: 109px; text-align: center; margin-top: 15px;
+}
+.tomogame {
+	margin: 10px 0px; letter-spacing: 1px; overflow: auto; border-top-color: rgb(47, 106, 176); border-bottom-color: rgb(47, 106, 176); border-top-width: 2px; border-bottom-width: 2px; border-top-style: solid; border-bottom-style: solid; background-color: rgb(242, 250, 253);
+}
+.tomogame strong {
+	padding: 0px 10px; color: rgb(255, 255, 255); line-height: 35px; display: block; background-color: rgb(47, 106, 176);
+}
+.fix300 {
+	margin: 0px; padding: 8px 0px; font-size: 13px; border-bottom-color: rgb(153, 153, 153); border-bottom-width: 1px; border-bottom-style: solid; min-height: 40px;
+}
+a.fixA:link {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a.fixA:visited {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a.fixA:active {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a.fixA:hover {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+.fix300 img {
+	margin: 2px 8px 0px 5px; width: 40px;
+}
+.fix300 span {
+	width: 30px; height: 30px;
+}
+.fixrl {
+	margin: 5px 0px; width: 135px;
+}
+.fixrl a {
+	width: 80px;
+}
+.fixrl span {
+	width: 80px; height: 32px;
+}
+.half {
+	width: 89%; text-align: center; display: inline-block;
+}
+.grade {
+	width: 132px; text-align: center; color: rgb(204, 0, 0); font-size: 18px; font-weight: bold; display: inline-block;
+}
+.gametime {
+	text-align: center;
+}

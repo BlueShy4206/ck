@@ -1,0 +1,1 @@
+PARSELY.pInit({"apikey":"appledaily.com.tw","settings":{"debug":false,"widget":false,"tracker":true},"customizations":null,"track_ip_addresses":true,"bundle":"/code/ptrack-v0.4.5.js","track_third_party_cookies":true,"uuid":"aa6a79ec-6192-4d9d-b455-3836c1f708e6","network_uuid":"4a6b3bb7-b32c-4af8-8a26-967ba0ffb8ae","apikey_uuid":"aa6a79ec-6192-4d9d-b455-3836c1f708e6"});

@@ -1,0 +1,69 @@
+body {
+	color: rgba(0, 7, 13, 1);
+}
+td {
+	color: rgba(0, 7, 13, 1);
+}
+th {
+	color: rgba(0, 7, 13, 1);
+}
+p {
+	line-height: 26px;
+}
+tr td h3 {
+	font-family: 微軟正黑體; font-size: 18pt;
+}
+.search_text {
+	line-height: 18pt; font-family: "微軟正黑體"; font-size: 10pt;
+}
+.newsbox_content_txt {
+	line-height: 18pt; font-family: "微軟正黑體"; font-size: 12pt;
+}
+.newsbox_title_txt {
+	color: rgb(0, 0, 0); line-height: 20pt; font-family: "微軟正黑體"; font-size: 18pt; font-weight: bold;
+}
+.newsbox_menu_txt {
+	color: rgb(0, 0, 0); line-height: 18pt; font-family: "微軟正黑體"; font-size: 10pt; text-decoration: none;
+}
+.newsbox_menu_txt:hover {
+	color: rgb(0, 111, 173); line-height: 18pt; font-family: "微軟正黑體"; font-size: 10pt; text-decoration: underline;
+}
+.newbox_img {
+	margin: 10pt;
+}
+.breadcrumd_text {
+	color: rgb(0, 0, 0); line-height: 18pt; font-family: "微軟正黑體"; font-size: 10pt; text-decoration: none;
+}
+h4 {
+	font-family: 微軟正黑體;
+}
+.foot_style {
+	color: rgb(0, 0, 0); font-family: 微軟正黑體; font-size: 14px;
+}
+.search_link {
+	color: rgba(15, 116, 200, 1); font-family: 微軟正黑體; font-size: 16px;
+}
+.search_title_txt {
+	color: rgba(1, 136, 204, 1); line-height: 20pt; font-family: "微軟正黑體"; font-size: 18pt; font-weight: bold;
+}
+.search_content_txt {
+	line-height: 18pt; font-family: "微軟正黑體"; font-size: 12pt;
+}
+#menu_table {
+	margin-bottom: 5px;
+}
+#top_menu_bg {
+	background-position: top; height: 148px; background-image: url("../images/top_menu_bg.jpg"); background-repeat: no-repeat;
+}
+#footer {
+	height: 125px; background-image: url("/defalut_web_images/footer_bg.jpg"); background-repeat: repeat-x;
+}
+#footer_in {
+	padding: 10px; width: 980px; margin-right: auto; margin-left: auto;
+}
+.footer_box {
+	padding: 10px; width: 30%; float: left;
+}
+.footer_2 {
+	padding: 5px 0px; text-align: center; font-family: "微軟正黑體"; font-size: 14px;
+}

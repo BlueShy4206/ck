@@ -1,0 +1,2151 @@
+html {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+body {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+div {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+span {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+iframe {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h1 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h2 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h3 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h4 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h5 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+h6 {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+p {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+a {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+address {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+code {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+img {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+dl {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+dt {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+dd {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+ol {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+ul {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+li {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+form {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+label {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+table {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+tbody {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+tfoot {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+thead {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+tr {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+th {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+td {
+	margin: 0px; padding: 0px; border: 0px currentColor; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+}
+body {
+	height: 100%; font-family: Arial,"新細明體", Helvetica, sans-serif; background-color: rgb(230, 230, 230);
+}
+img {
+	border: currentColor;
+}
+a:link {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:visited {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:active {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:hover {
+	color: rgb(4, 78, 140); text-decoration: underline;
+}
+#main {
+	margin: 0px auto; width: 970px; background-color: rgb(255, 255, 255);
+}
+.content {
+	margin: 0px 5px; width: 650px; letter-spacing: 1px; float: left; min-width: 650px;
+}
+.adright {
+	margin: 0px 5px 0px 0px; width: 300px; font-size: 0.95em; float: right;
+}
+.adright_bar {
+	width: 300px;
+}
+.footer {
+	padding: 15px 10px; text-align: center; color: rgb(85, 85, 85); letter-spacing: 1px; overflow: hidden; clear: both; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid;
+}
+.footer img {
+	width: 110px; margin-bottom: 5px;
+}
+ul {
+	margin: 10px 0.5em;
+}
+li {
+	list-style: none; padding-left: 0.5em;
+}
+.header {
+	margin: 0px; padding: 0px; font-family: Verdana, "新細明體"; position: relative;
+}
+.header .logo {
+	margin: 0px; padding: 0px; width: 210px; float: left;
+}
+.header .logo img {
+	margin: 10px 0px 0px;
+}
+.header .top {
+	width: 750px; color: rgb(192, 192, 192); line-height: 18px; font-size: 13px; float: right;
+}
+.menu {
+	margin: 13px 0px 0px; width: 736px; color: rgb(0, 0, 0); font-size: 13px; float: left;
+}
+.menu ul {
+	list-style: none; margin: 0px; padding: 0px; height: 40px; vertical-align: middle; display: table-cell;
+}
+.menu li {
+	margin: 0px; padding: 0px; vertical-align: middle; display: table-cell;
+}
+.menu a {
+	padding-right: 10px; vertical-align: middle; float: left; display: table-cell; cursor: pointer;
+}
+.menu a:hover {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+.menu a img {
+	margin-right: 5px;
+}
+.menu .now1 {
+	color: rgb(51, 51, 51); letter-spacing: normal; font-weight: bold;
+}
+.menu .mobi {
+	float: right;
+}
+.mtab {
+	margin: 0px 0px 10px; width: 100%; letter-spacing: 2px; clear: both; font-size: 13px; border-top-color: rgb(35, 96, 163); border-top-width: 1px; border-top-style: solid; background-color: rgb(35, 96, 163);
+}
+.mtab ul {
+	list-style: none; margin: 0px; padding: 0px 5px; height: 40px;
+}
+.mtab li {
+	margin: 0px; padding: 0px;
+}
+.mtab a {
+	margin: 0px; padding: 10px 15px; color: rgb(255, 255, 255); line-height: 20px; border-right-color: rgb(251, 254, 255); border-right-width: 1px; border-right-style: dotted; float: left; display: block;
+}
+.mtab a:hover {
+	color: rgb(34, 34, 34); text-decoration: none; background-color: rgb(223, 239, 255);
+}
+.mtab .now2 {
+	color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);
+}
+.guide {
+	color: rgb(85, 85, 85); line-height: 20px; font-size: 13px; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.share {
+	margin: 10px 0px; padding: 5px 0px 2px; color: rgb(85, 85, 85); font-size: 13px; background-color: rgb(242, 242, 242);
+}
+.share * {
+	height: 20px; vertical-align: baseline; display: inline-block;
+}
+.share img {
+	margin: 0px 10px;
+}
+.ar {
+	cursor: pointer;
+}
+.shareapi {
+	margin-left: 6px; position: relative;
+}
+.gplus {
+	left: 0px; top: 0px; width: 75px; position: absolute;
+}
+.tweet {
+	left: 82px; top: 0px; width: 94px; position: absolute;
+}
+.fblike {
+	left: 182px; top: 0px; width: 130px; height: 20px; overflow: hidden; position: absolute;
+}
+.fb-like-box {
+	margin-bottom: 10px;
+}
+.related {
+	color: rgb(85, 85, 85); line-height: 20px; font-size: 13px; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.related a {
+	color: rgb(4, 78, 140);
+}
+.top {
+	margin: 5px; text-align: right; clear: both;
+}
+h1 {
+	margin: 0px; padding: 20px 5px 10px; color: rgb(153, 0, 0); line-height: 30px; font-size: 1.45em; font-weight: bold;
+}
+h4 {
+	padding: 10px 5px; color: rgb(51, 51, 51); line-height: 22px; font-size: 0.96em; font-weight: bold;
+}
+h5 {
+	margin: 0px; padding: 20px 5px 10px; color: rgb(51, 51, 51); line-height: 30px; font-size: 1.25em; font-weight: bold;
+}
+.text {
+	margin: 5px 0px; padding: 0px; width: 99%; color: rgb(51, 51, 51); letter-spacing: 1px; overflow: auto;
+}
+.text span {
+	margin: 0px; color: rgb(119, 119, 119); padding-left: 5px; font-size: 13px; font-weight: 100;
+}
+.text p {
+	margin: 0px; padding: 10px 5px; line-height: 25px; font-size: 0.95em;
+}
+.text .wordsize {
+	margin: 0px; padding: 10px 5px; line-height: 28px; font-size: 1.2em;
+}
+.text a {
+	color: rgb(0, 117, 169); text-decoration: none;
+}
+.text a:hover {
+	color: rgb(0, 117, 169); text-decoration: underline;
+}
+.text table {
+	margin: 0px auto; padding: 5px; border: 1px solid rgb(178, 178, 178); width: 95%; border-collapse: collapse; background-color: rgb(255, 255, 255);
+}
+.text table td {
+	padding: 0px 5px; border: 1px solid rgb(227, 227, 227); line-height: 25px;
+}
+.text .pic {
+	margin: 10px 10px 10px 3px; border: 1px solid rgb(102, 102, 102); width: 320px; font-size: 13px; float: left; background-color: rgb(221, 221, 221);
+}
+.text .pic p {
+	margin: 0px auto; padding: 0px 0px 3px; width: 300px; text-align: left; line-height: 18px;
+}
+.text .pic .photo300 {
+	margin: 10px auto 0px; padding: 0px; border: currentColor; width: 300px; text-align: center;
+}
+.text .pic .photo300 img {
+	max-width: 300px;
+}
+.text .pic li {
+	list-style-type: none;
+}
+.text .pic ul.liadd li {
+	margin: 0px; padding: 10px 0px 0px; border-top-color: rgb(170, 170, 170); border-top-width: 1px; border-top-style: dotted;
+}
+div.text div.pic ul.liadd li:first-child {
+	padding: 0px; border-top-color: currentColor; border-top-width: medium; border-top-style: none;
+}
+.text hr {
+	border-width: 0px 0px 1px; border-style: none none solid; border-color: currentColor currentColor rgb(170, 170, 170); height: 0px;
+}
+.text .head {
+	width: 110px;
+}
+.text .head .photo300 {
+	margin: 0px auto; width: 110px;
+}
+.text .head .photo300 img {
+	width: 110px;
+}
+.text .head .photo300 p {
+	display: none;
+}
+.text .head .photo300 a {
+	display: block;
+}
+.text .pic .ad {
+	padding: 5px 10px; color: rgb(153, 0, 0); font-weight: bold; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(238, 238, 238);
+}
+.text .pic .pg {
+	padding: 10px 6px 6px; line-height: 18px; letter-spacing: normal; overflow: hidden; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid; background-color: rgb(238, 238, 238);
+}
+.text .pic .pg a {
+	margin: 0px 6px 5px; padding: 2px 6px 1px; border: 1px solid rgb(85, 85, 85); color: rgb(51, 51, 51); text-decoration: none; float: left; background-color: rgb(255, 255, 255);
+}
+.text .pic .pg a:hover {
+	padding: 2px 6px 1px; border: 1px solid rgb(102, 102, 102); color: rgb(255, 255, 255); text-decoration: none; float: left; background-color: rgb(102, 102, 102);
+}
+.text .pic .pg strong {
+	margin: 0px 6px 5px; padding: 2px 6px 1px; border: 1px solid rgb(102, 102, 102); color: rgb(255, 255, 255); float: left; background-color: rgb(102, 102, 102);
+}
+.textclear {
+	clear: both;
+}
+.photo {
+	margin: 0px auto 10px; padding: 10px; border: 1px solid rgb(238, 238, 238); width: 620px; text-align: center;
+}
+.prev {
+	padding: 10px 10px 10px 32px; text-align: left; margin-bottom: 20px; background-color: rgb(233, 240, 254);
+}
+.next {
+	padding: 10px 32px 10px 10px; text-align: right; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(233, 240, 254);
+}
+.pic600 {
+	margin: 0px auto 10px; padding: 10px 0px; border: 1px solid rgb(221, 221, 221); text-align: center; overflow: auto; background-color: rgb(242, 242, 242);
+}
+.pic600 img {
+	text-align: center;
+}
+.pic600 p {
+	margin: 0px; padding: 0px; width: 93%; text-align: left; line-height: 20px; font-size: 0.95em; display: inline-block;
+}
+.ad_undercont {
+	margin: 0px auto 5px; border-top-color: rgb(160, 160, 160); border-bottom-color: rgb(160, 160, 160); border-top-width: 1px; border-bottom-width: 1px; border-top-style: dotted; border-bottom-style: dotted; background-color: rgb(255, 255, 255);
+}
+.ad_undercont .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.ad_undercont .ad {
+	padding: 0px 0px 12px; width: 50%; text-align: center; float: left;
+}
+.ad_undercont div {
+	margin: 6px 0px 0px;
+}
+.ad_undercont a.gad {
+	color: rgb(34, 34, 34); line-height: 30px; font-size: 0.7em; font-weight: bold; text-decoration: none;
+}
+.ad_undercont a.gadtit {
+	color: rgb(0, 102, 204); line-height: 20px; font-size: 0.95em; font-weight: 100;
+}
+.ad_undercont a.gadtit:hover {
+	color: rgb(204, 51, 0);
+}
+.ad_undercont a.gadurl {
+	color: rgb(0, 102, 204); padding-left: 10px; font-size: 0.8em; font-weight: 100;
+}
+.ad_undercont a.gadurl:hover {
+	color: rgb(204, 51, 0);
+}
+.ad_undercont span {
+	font-size: 0.75em;
+}
+.ad_undercont hr {
+	border-width: 1px medium medium; border-style: dashed none none; border-color: rgb(239, 239, 239) currentColor currentColor; height: 1px;
+}
+#page {
+	margin: 20px auto; text-align: center; line-height: 30px; clear: both; font-size: 15px;
+}
+#page a {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(204, 204, 204); color: rgb(102, 102, 102); text-decoration: none;
+}
+#page a:hover {
+	padding: 2px 6px 1px; border: 1px solid rgb(149, 149, 149); color: rgb(153, 0, 0); text-decoration: none;
+}
+#page strong {
+	margin: 0px 5px; padding: 2px 6px 1px 8px; color: rgb(204, 204, 204); background-color: rgb(51, 51, 51);
+}
+#page span {
+	padding: 2px 10px 1px 6px;
+}
+.relatednews {
+	margin: 10px auto 20px; letter-spacing: 1px; overflow: hidden; font-size: 0.95em;
+}
+.relatednews .tit {
+	padding: 2px 10px 0px; color: rgb(41, 55, 69); line-height: 25px; font-weight: bold; border-bottom-color: rgb(213, 234, 255); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(238, 247, 255);
+}
+.relatednews .re {
+	margin: 0px; padding: 0px; display: inline;
+}
+.relatednews .re li {
+	background: url("/images/news/dot.gif") no-repeat 0px 12px; margin: 8px 10px; line-height: 25px; padding-left: 10px; list-style-type: none;
+}
+.relatednews .re li a {
+	color: rgb(4, 78, 140);
+}
+.realtimenews {
+	margin: 10px auto 20px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.realtimenews .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.realtimenews ul {
+	margin: 0px; padding: 0px; width: 50%; float: left;
+}
+.realtimenews li {
+	background: url("/images/news/dot.gif") no-repeat 0px 10px; margin: 8px 10px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.realtimenews a:visited {
+	color: rgb(102, 102, 102);
+}
+.realtimenews .more {
+	padding: 0px; width: 20%; text-align: right; font-size: 0.8em; font-weight: 100; float: right;
+}
+.realtimenews .more a {
+	margin: 0px 5px; padding: 2px 6px 3px; color: rgb(51, 102, 153); text-decoration: none;
+}
+.realtimenews .more a:hover {
+	margin: 0px 5px; padding: 2px 6px 1px; color: rgb(0, 0, 102);
+}
+.browsenews {
+	margin: 10px auto 20px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.browsenews .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.browsenews ul {
+	margin: 0px; padding: 0px; width: 50%; float: left;
+}
+.browsenews li {
+	background: url("/images/news/dot.gif") no-repeat 0px 10px; margin: 8px 10px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.browsenews li img {
+	vertical-align: bottom;
+}
+.browsenews a:visited {
+	color: rgb(102, 102, 102);
+}
+.browsenews .pg {
+	padding: 5px 0px; width: 100%; text-align: right; letter-spacing: normal; font-size: 0.8em; float: left;
+}
+.browsenews .pg a {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(51, 102, 153); text-decoration: none;
+}
+.browsenews .pg a:hover {
+	padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(51, 102, 153);
+}
+.browsenews .pg strong {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); font-weight: 100; background-color: rgb(51, 102, 153);
+}
+.browsenews .more {
+	padding: 0px; width: 20%; text-align: right; font-size: 0.8em; font-weight: 100; float: right;
+}
+.browsenews .more a {
+	margin: 0px 5px; padding: 2px 6px 3px; color: rgb(51, 102, 153); text-decoration: none;
+}
+.browsenews .more a:hover {
+	margin: 0px 5px; padding: 2px 6px 1px; color: rgb(0, 0, 102);
+}
+.hotnews {
+	margin: 20px auto; width: 99%; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.hotnews .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; margin-bottom: 5px; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.hotnews ul {
+	margin: 0px; padding: 0px; width: 50%; height: 290px; overflow: hidden; float: left;
+}
+.hotnews li {
+	background: url("/images/news/dot.gif") no-repeat 10px 14px; padding: 5px 10px 10px 20px; line-height: 22px; overflow: hidden; display: block; list-style-type: none;
+}
+.hotnews li img {
+	margin: 0px 5px 0px -1em; float: left;
+}
+.hotnews a:visited {
+	color: rgb(102, 102, 102);
+}
+.hotnews .pg {
+	padding: 10px 0px; width: 100%; text-align: right; letter-spacing: normal; font-size: 0.8em; float: left;
+}
+.hotnews .pg a {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(51, 102, 153); text-decoration: none;
+}
+.hotnews .pg a:hover {
+	padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(51, 102, 153);
+}
+.hotnews .pg strong {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); font-weight: 100; background-color: rgb(51, 102, 153);
+}
+.hotnewsad {
+	margin: 10px 0px 20px; width: 99%; overflow: hidden;
+}
+.hotnewsad .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.hotnewsad .ad {
+	padding: 12px 0px; width: 50%; text-align: center; float: left;
+}
+.search {
+	background: url("/images/news/search.gif") no-repeat 1em 50%; margin: 8px 0px 15px; padding: 0px; border: 1px solid rgb(204, 204, 204); width: 99%; text-align: center; line-height: 35px;
+}
+.search a {
+	margin: 0px 5px; padding: 2px 5px 1px; border: 1px solid rgb(85, 85, 85); background-color: rgb(239, 239, 239);
+}
+.search a:hover {
+	border: 1px solid rgb(85, 85, 85); color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(85, 85, 85);
+}
+.pointnew {
+	margin: 10px auto; overflow: hidden; border-top-color: rgb(102, 102, 102); border-bottom-color: rgb(102, 102, 102); border-top-width: 4px; border-bottom-width: 4px; border-top-style: solid; border-bottom-style: solid;
+}
+.pointnew span {
+	text-align: right; color: rgb(102, 102, 102); line-height: 18px; clear: both; font-size: 0.8em; display: block;
+}
+.pointnew span a {
+	color: rgb(4, 78, 140); font-weight: bold;
+}
+.pointnew .tab {
+	margin: 10px 0px; padding: 0px; width: 85%; letter-spacing: 1px; list-style-type: none;
+}
+.pointnew .tab li {
+	margin: 0px 5px 0px 0px; top: 1px; float: left; display: block; position: relative;
+}
+.pointnew .tab li a {
+	padding: 5px; font-weight: bold; text-decoration: none; display: block; background-color: rgb(219, 219, 219);
+}
+.pointnew .tab .pnt_focus a {
+	padding: 5px; color: rgb(153, 0, 0); border-top-color: rgb(102, 102, 102); border-right-color: rgb(102, 102, 102); border-left-color: rgb(102, 102, 102); border-top-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-left-style: solid; display: block; cursor: default; background-color: rgb(255, 255, 255);
+}
+.pointnew .con {
+	padding: 5px; width: 97%; letter-spacing: 1px; clear: both; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid;
+}
+.pointnew .con li {
+	list-style: none; margin: 5px 0px; width: 100%; border-bottom-color: rgb(243, 243, 243); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.pointnew .con li a {
+	width: 90%; line-height: 20px; margin-left: 30px; display: block;
+}
+.pointnew .no {
+	padding: 2px 6px; border: 1px solid rgb(102, 102, 102); margin-bottom: 3px; float: left; display: inline;
+}
+.pointnew .con2 {
+	padding: 5px; width: 97%; letter-spacing: 1px; overflow: hidden; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid;
+}
+.pointnew .con2 li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 10px; margin: 6px 3px; padding-left: 12px; border-bottom-color: rgb(243, 243, 243); border-bottom-width: 1px; border-bottom-style: solid; list-style-type: none;
+}
+.pointnew .con2 li a {
+	line-height: 20px;
+}
+.pointnew .ad5 {
+	padding: 5px 0px 5px 5px; clear: both; font-size: 13px; margin-top: 10px; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: dotted;
+}
+.pointnew .ad5 a:link {
+	padding: 1px 5px; border: 1px solid rgb(4, 78, 140); color: rgb(255, 255, 255); font-weight: bold; text-decoration: none; margin-left: 10px; background-color: rgb(4, 78, 140);
+}
+.pointnew .ad5 a:visited {
+	padding: 1px 5px; border: 1px solid rgb(4, 78, 140); color: rgb(255, 255, 255); font-weight: bold; text-decoration: none; margin-left: 10px; background-color: rgb(4, 78, 140);
+}
+.pointnew .ad5 a:active {
+	padding: 1px 5px; border: 1px solid rgb(4, 78, 140); color: rgb(255, 255, 255); font-weight: bold; text-decoration: none; margin-left: 10px; background-color: rgb(4, 78, 140);
+}
+.pointnew .ad5 a:hover {
+	padding: 1px 5px; border: 1px solid rgb(4, 78, 140); color: rgb(4, 78, 140); font-weight: bold; text-decoration: none; margin-left: 10px; background-color: rgb(255, 255, 255);
+}
+.pointnew strong {
+	color: rgb(85, 85, 85); line-height: 30px; padding-bottom: 3px; font-size: 13px; font-weight: bold; display: block;
+}
+.ad_w300 {
+	margin: 0px 0px 10px; width: 100%;
+}
+.ad_fun {
+	margin: 10px auto; border: 1px solid rgb(153, 153, 153); width: 99%; color: rgb(51, 51, 51); overflow: hidden; padding-bottom: 8px; font-size: 0.85em;
+}
+.ad_fun .tit {
+	padding: 4px 8px 3px; font-weight: bold; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(238, 238, 238);
+}
+.ad_fun ul {
+	margin: 0px auto 5px;
+}
+.ad_fun li {
+	background: url("/images/news/dot-list.gif") no-repeat 0px 5px; margin: 6px 6px 6px 7px; line-height: 18px; padding-left: 10px; list-style-type: none;
+}
+.ad_fun .tr {
+	margin: 5px 5px 0px 7px; line-height: 18px; overflow: hidden;
+}
+.ad_fun .tr img {
+	margin: 3px 5px 0px 0px; float: left;
+}
+.ad_fun .tr strong {
+	color: rgb(4, 78, 140); line-height: 25px; display: block;
+}
+.ad_fun .noneline {
+	border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}
+.vote_box {
+	margin: 10px auto; border: 1px solid rgb(204, 204, 204); width: 99%; color: rgb(51, 51, 51); overflow: hidden; font-size: 0.85em;
+}
+.vote_box01 {
+	margin: 10px auto; border: 1px solid rgb(179, 28, 76); color: rgb(51, 51, 51); overflow: hidden; font-size: 0.85em; display: block;
+}
+.vote_box .tit {
+	background: rgb(255, 255, 255); padding: 7px 8px 5px; border-bottom-color: rgb(179, 28, 76); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.vote_box01 .tit {
+	background: rgb(179, 28, 76); padding: 7px 8px 5px; color: rgb(255, 255, 255); font-size: 18px; font-weight: bold; border-bottom-color: rgb(179, 28, 76); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.vote_box .tr {
+	margin: 10px 5px 0px 7px; line-height: 18px; padding-bottom: 5px;
+}
+.vote_box01 .tr {
+	padding: 10px 5px 5px 7px; line-height: 1.6em; font-size: 15px; font-weight: bold;
+}
+.vote_box .vote {
+	padding: 8px 5px 6px 0px; text-align: right; clear: both; font-size: 12px; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: dotted; display: block;
+}
+.vote_box01 .vote {
+	padding: 8px 5px 6px 0px; text-align: right; clear: both; font-size: 12px; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: dotted; display: block;
+}
+.vote_box .vote a {
+	padding: 5px 0px; color: rgb(36, 95, 163); font-weight: bold;
+}
+.vote_box01 .vote a {
+	padding: 5px 0px; color: rgb(204, 51, 0) !important; font-size: 15px; font-weight: bold;
+}
+.vote_box01 .tr .time {
+	color: rgb(136, 136, 136); letter-spacing: 1px; font-size: 12px; font-weight: normal;
+}
+.vote_box .tr::before {
+	font-weight: bold; content: "Q：";
+}
+.vote_box01 .tr::before {
+	font-weight: bold; content: "Q1：";
+}
+.vote_box01 .votetr02::before {
+	font-weight: bold; content: "Q2：";
+}
+.votebtn {
+	margin: 10px 0px; text-align: center;
+}
+.govote {
+	display: inline-block;
+}
+.govote a {
+	display: inline-block;
+}
+.goresult {
+	display: inline-block;
+}
+.goresult a {
+	display: inline-block;
+}
+.govote {
+	padding: 0px 3px;
+}
+.goresult {
+	padding: 0px 3px;
+}
+.govote a {
+	padding: 5px 20px; color: rgb(255, 255, 255); text-decoration: none;
+}
+.goresult a {
+	padding: 5px 20px; color: rgb(255, 255, 255); text-decoration: none;
+}
+.govote a {
+	background: rgb(179, 28, 76);
+}
+.goresult a {
+	background: rgb(102, 102, 102);
+}
+.govote a:hover {
+	background: rgb(51, 51, 51);
+}
+.goresult a:hover {
+	background: rgb(51, 51, 51);
+}
+.votebtn02 {
+	margin: 10px 0px; padding-top: 15px; border-top-color: rgb(153, 153, 153); border-top-width: 1px; border-top-style: dotted; position: relative;
+}
+.vote02 {
+	padding: 4px 5px 3px 0px; top: 15px; text-align: right; right: 0px; color: rgb(102, 102, 102); clear: both; font-size: 15px; display: inline-block; position: absolute;
+}
+.vote02 a {
+	color: rgb(204, 51, 0); font-weight: bold;
+}
+.votech {
+	margin: 10px 0px 30px;
+}
+.votech > input[type='radio'] {
+	display: none;
+}
+.votech > input[type='radio'] + label {
+	margin: 0px; padding: 0px; width: 100%; clear: both; display: block;
+}
+span.RadioW {
+	padding: 0px 0px 10px; width: 90%; line-height: 18px; font-weight: normal;
+}
+.votech > input[type='radio'] + label span {
+	float: left; display: inline-block;
+}
+.votech > input[type='radio'] + label span.RadioImg {
+	background: url("/images/news/check_no.png") no-repeat 0% 0% / 20px; margin: 0px 5px -8px 0px; padding: 0px; width: 20px; height: 20px; font-size: 16px;
+}
+.votech > input[type='radio']:checked + label span.RadioImg {
+	background: url("/images/news/check_yes.png") no-repeat 0% 0% / 20px; margin: 0px 5px -8px 0px; padding: 0px; width: 20px; height: 20px; font-size: 16px;
+}
+.votetr02 {
+	border-top-color: rgb(222, 190, 200); border-top-width: 2px; border-top-style: solid;
+}
+.votelist02 {
+	margin-bottom: -10px;
+}
+.votelist02 > input[type='radio'] + label {
+	width: 49%; display: inline-block;
+}
+.fb {
+	margin: 10px auto; clear: both;
+}
+.fb .tit {
+	padding: 2px 10px 0px; color: rgb(41, 55, 69); line-height: 25px; font-weight: bold; border-bottom-color: rgb(213, 234, 255); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(238, 247, 255);
+}
+.fb-fans {
+	margin: 10px auto 0px; height: 340px; overflow: hidden;
+}
+#fb-act {
+	background: white; margin-bottom: 10px;
+}
+.footer .logo {
+	width: 19%; text-align: right; color: rgb(85, 85, 85); line-height: 16px; padding-right: 10px; font-size: 11px; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid; float: left;
+}
+.footer .logo img {
+	margin-bottom: 5px;
+}
+.footer .item1 {
+	width: 79%; text-align: center; line-height: 30px; font-size: 12px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.footer .item1 a {
+	margin: 0px 7px; font-weight: bold;
+}
+.footer .item2 {
+	margin: 8px 0px 0px 8px; width: 78%; color: rgb(85, 85, 85); line-height: 24px; font-size: 12px; font-weight: bold; float: left;
+}
+.footer .item2 a {
+	margin: 0px 8px; font-weight: 100;
+}
+.NsFc {
+	margin: 10px auto 20px; padding: 8px; border: 1px dotted rgb(190, 204, 224); letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em; background-image: url("/images/news/NsFc_bg.gif"); background-repeat: repeat-x;
+}
+.NsFc h2 {
+	margin: 0px; padding: 0px 5px 5px 0px; color: rgb(153, 0, 0); line-height: 28px; font-size: 1.45em; font-weight: bold;
+}
+.NsFc h2 span {
+	color: rgb(119, 119, 119); letter-spacing: normal; padding-left: 10px; font-size: 13px; font-weight: 100; white-space: nowrap;
+}
+.NsFc p {
+	color: rgb(85, 85, 85); line-height: 22px;
+}
+.NsFc a {
+	color: rgb(153, 0, 0);
+}
+.NsFc .photo {
+	margin: 5px 10px 5px 3px; padding: 0px; border: 1px solid rgb(158, 172, 191); width: 300px; height: 190px; overflow: hidden; float: left; background-color: rgb(216, 222, 232);
+}
+.NsFc .photo div {
+	width: 300px; height: 190px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.NsFc .photo div * {
+	vertical-align: middle;
+}
+.NsFcrel {
+	margin: 22px auto 0px; width: 100%; text-align: left; letter-spacing: 2px; font-size: 15px; float: left;
+}
+.NsFcrel .tit {
+	padding: 2px 10px 0px; color: rgb(85, 85, 85); line-height: 20px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.NsFcrel .re {
+	margin: 0px; padding: 0px 0px 5px;
+}
+.NsFcrel .re li {
+	background: url("/images/news/dot.gif") no-repeat 0px 8px; margin: 8px 10px 0px; line-height: 18px; padding-left: 10px; list-style-type: none;
+}
+.NsFcrel .re li a {
+	color: rgb(4, 78, 140);
+}
+.NsFcrel .re li span {
+	color: rgb(65, 111, 150); letter-spacing: normal; padding-left: 5px; font-size: 12px; font-weight: 100;
+}
+.NsFcrt {
+	margin: 10px auto 0px; padding: 8px 5px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.NsFcrt h2 {
+	margin: 0px; padding: 0px 5px 5px 0px; color: rgb(153, 0, 0); line-height: 28px; font-size: 1.45em; font-weight: bold;
+}
+.NsFcrt h2 span {
+	color: rgb(119, 119, 119); letter-spacing: normal; padding-left: 10px; font-size: 13px; font-weight: 100;
+}
+.NsFcrt p {
+	color: rgb(85, 85, 85); line-height: 22px; font-size: 15px;
+}
+.NsFcrt a {
+	color: rgb(153, 0, 0);
+}
+.NsFcrt h2 a img {
+	width: 18px; padding-left: 8px; vertical-align: middle;
+}
+.NsFcrt .photo {
+	margin: 0px 10px 5px 3px; padding: 0px; border: 1px solid rgb(158, 172, 191); width: 300px; height: 190px; overflow: hidden; float: left; background-color: rgb(216, 222, 232);
+}
+.NsFcrt .photo div {
+	width: 300px; height: 190px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.NsFcrt .photo div * {
+	vertical-align: middle;
+}
+.fpnews {
+	margin: 10px auto 20px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.fpnews .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.fpnews ul {
+	margin: 0px; padding: 0px; width: 50%; float: left;
+}
+.fpnews li {
+	background: url("/images/news/dot.gif") no-repeat 0px 10px; margin: 10px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.fpnews a:visited {
+	color: rgb(102, 102, 102);
+}
+.fpnews li span {
+	color: rgb(119, 119, 119); letter-spacing: normal; padding-left: 5px; font-size: 12px; font-weight: 100;
+}
+.fpnews ul .logo {
+	background: url("/images/news/3p.gif") no-repeat 0px 2px; margin: 10px; line-height: 20px; padding-left: 15px; list-style-type: none;
+}
+.fpnews ul .logo a {
+	color: rgb(204, 51, 0);
+}
+.fpnews ul .logo span {
+	color: rgb(204, 102, 51); letter-spacing: normal; padding-left: 5px; font-size: 12px; font-weight: 100;
+}
+.NsMd1 {
+	margin: 10px auto 20px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.NsMd1 .tit {
+	padding: 2px 10px 0px; color: rgb(34, 34, 34); line-height: 25px; font-weight: bold; border-bottom-color: rgb(69, 98, 140); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(157, 201, 237);
+}
+.NsMd1 .areal {
+	margin: 8px 0px 0px; padding: 0px; width: 50%; color: rgb(102, 102, 102); float: left;
+}
+.NsMd1 .areal p {
+	padding: 0px 8px; color: rgb(119, 119, 119); line-height: 20px; font-size: 13px; margin-top: 4px;
+}
+.NsMd1 .areal .line {
+	padding: 0px 8px; color: rgb(204, 51, 0); line-height: 20px; display: block;
+}
+.NsMd1 .photo {
+	margin: 5px 8px 0px; padding: 0px; border: 1px solid rgb(158, 172, 191); width: 100px; height: 100px; text-align: center; float: left; background-color: rgb(216, 222, 232);
+}
+.NsMd1 .photo div {
+	width: 100px; height: 100px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.NsMd1 .photo div * {
+	vertical-align: middle;
+}
+.NsMd1 .areal ul {
+	margin: 10px 5px; padding: 0px; width: 100%; float: left;
+}
+.NsMd1 ul {
+	margin: 0px; padding: 0px; width: 50%; float: left;
+}
+.NsMd1 li {
+	background: url("/images/news/dot.gif") no-repeat 3px 10px; margin: 12px 5px; line-height: 22px; padding-left: 14px; list-style-type: none;
+}
+.NsMd1 li img {
+	vertical-align: bottom;
+}
+.NsMd1 a:visited {
+	color: rgb(102, 102, 102);
+}
+.NsMd1 .logo {
+	background: url("/images/news/3p.gif") no-repeat 0px 2px; padding-left: 14px; list-style-type: none;
+}
+.NsMd1 .pg {
+	padding: 5px 0px; width: 100%; text-align: right; letter-spacing: normal; font-size: 0.8em; float: left;
+}
+.NsMd1 .pg a {
+	margin: 0px 5px; padding: 2px 6px 3px; border: 1px solid rgb(51, 102, 153); color: rgb(51, 102, 153); text-decoration: none;
+}
+.NsMd1 .pg a:hover {
+	padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(51, 102, 153);
+}
+.NsMd1 .pg strong {
+	margin: 0px 5px; padding: 2px 6px 1px; border: 1px solid rgb(51, 102, 153); color: rgb(255, 255, 255); font-weight: 100; background-color: rgb(51, 102, 153);
+}
+.NsMd1 .more {
+	padding: 0px; width: 25%; text-align: right; font-size: 0.8em; font-weight: 100; float: right;
+}
+.NsMd1 .more a {
+	margin: 0px 5px; padding: 2px 6px 3px; color: rgb(51, 102, 153); text-decoration: none;
+}
+.NsMd1 .more a:hover {
+	margin: 0px 5px; padding: 2px 6px 1px; color: rgb(0, 0, 102);
+}
+.list {
+	margin: 0px auto 20px; letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.list .tit {
+	padding: 10px 10px 2px; color: rgb(51, 51, 51); line-height: 20px; font-weight: bold; border-bottom-color: rgb(157, 201, 237); border-bottom-width: 2px; border-bottom-style: solid; background-color: rgb(182, 220, 253);
+}
+.list ul {
+	margin: 0px; padding: 0px; width: 100%; border-top-color: rgb(227, 227, 227); border-top-width: 1px; border-top-style: solid; float: left;
+}
+.list li {
+	background: url("/images/news/dot-list.gif") no-repeat 0px 13px; margin: 15px 0px 15px 8px; padding: 5px 10px; line-height: 22px; border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; border-bottom-style: solid; list-style-type: none;
+}
+.list li a {
+	width: 85%; display: block;
+}
+.list li.lipic {
+	background: none; list-style: none; margin: 5px 0px 0px; padding: 4px 0px 10px; width: 98%; line-height: 24px; border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; border-bottom-style: solid; float: left; min-height: 40px; max-height: 100px;
+}
+.list a.picword:link {
+	padding: 0px 3px 0px 10px; width: 80%; display: block; min-height: 40px;
+}
+.list a.picword:link img {
+	width: 18px; padding-left: 4px; vertical-align: middle;
+}
+.list a:visited {
+	color: rgb(102, 102, 102);
+}
+.list span {
+	padding: 0px 0px 0px 5px; width: 20%; text-align: right; color: rgb(119, 119, 119); letter-spacing: normal; font-size: 12px; font-weight: 100; float: right; display: block; position: relative;
+}
+.list span a {
+	padding: 3px 12px 3px 10px; width: 30px; color: rgb(17, 17, 17) !important; line-height: 18px; font-size: 13px; float: right; display: block; background-color: rgb(238, 238, 238);
+}
+.list span a.tab1 {
+	background-color: rgb(155, 228, 231);
+}
+.list span a.tab1::after {
+	content: "焦點";
+}
+.list span a.tab2 {
+	background-color: rgb(137, 198, 255);
+}
+.list span a.tab2::after {
+	content: "政治";
+}
+.list span a.tab3 {
+	background-color: rgb(178, 185, 255);
+}
+.list span a.tab3::after {
+	content: "社會";
+}
+.list span a.tab4 {
+	background-color: rgb(246, 212, 149);
+}
+.list span a.tab4::after {
+	content: "生活";
+}
+.list span a.tab5 {
+	background-color: rgb(248, 148, 193);
+}
+.list span a.tab5::after {
+	content: "國際";
+}
+.list span a.tab6 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(229, 113, 86);
+}
+.list span a.tab6::after {
+	content: "言論";
+}
+.list span a.tab7 {
+	background-color: rgb(255, 180, 131);
+}
+.list span a.tab7::after {
+	content: "財經";
+}
+.list span a.tab8 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(38, 90, 240);
+}
+.list span a.tab8::after {
+	content: "體育";
+}
+.list span a.tab9 {
+	background-color: rgb(254, 166, 167);
+}
+.list span a.tab9::after {
+	content: "地方";
+}
+.list span a.tab10 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(219, 58, 149);
+}
+.list span a.tab10::after {
+	content: "娛樂";
+}
+.list span a.tab11 {
+	background-color: rgb(189, 225, 120);
+}
+.list span a.tab11::after {
+	content: "消費";
+}
+.list span a.tab12 {
+	background-color: rgb(156, 225, 168);
+}
+.list span a.tab12::after {
+	content: "副刊";
+}
+.list span a.tab13 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(2, 131, 188);
+}
+.list span a.tab13::after {
+	letter-spacing: 4px; font-size: 14px; content: "3C";
+}
+.list span a.tab14 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(187, 176, 23);
+}
+.list span a.tab14::after {
+	content: "汽車";
+}
+.list span a.tab15 {
+	color: rgb(255, 255, 255) !important; background-color: rgb(154, 116, 163);
+}
+.list span a.tab15::after {
+	content: "iStyle";
+}
+.realtimeListPic {
+	margin: 0px 10px; width: 100px; height: 100px; overflow: hidden; float: left; position: relative;
+}
+.realtimeListPic .picdfl {
+	width: 100px;
+}
+.list .lipic .pic85x60 {
+	left: -25px; top: 0px; position: absolute; min-height: 100px; max-height: 200px; min-width: 125px; max-width: 200px;
+}
+.list .keyword {
+	margin: 0px 0px 30px; padding: 20px 10px 10px; text-align: left; line-height: 25px; font-size: 13px; background-color: rgb(232, 243, 255);
+}
+.list .keyword div {
+	padding: 0px 10px; text-align: right;
+}
+.list .search {
+	background: none; border: currentColor; width: 83%; text-align: left; color: rgb(102, 102, 102); line-height: 20px; padding-left: 0px; font-size: 13px;
+}
+.list strong {
+	margin: 0px; padding: 0px; font-weight: 100; background-color: rgb(255, 255, 153);
+}
+.list .snone {
+	margin: 10px 0px 30px; padding: 15px 10px; text-align: left; line-height: 20px; font-size: 13px; border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.list .snone p {
+	padding: 10px 0px; color: rgb(51, 51, 51); font-size: 15px; font-weight: bold;
+}
+.list .catalogue {
+	margin: 0px; padding: 5px; text-align: left; line-height: 25px; font-size: 13px; background-color: rgb(218, 237, 253);
+}
+.list .catalogue ul {
+	border: currentColor;
+}
+.list .catalogue li {
+	background: none; margin: 5px 3px 0px; padding: 0px 4px;
+}
+.catalogue a {
+	padding: 2px 5px 3px; color: rgb(0, 0, 0); background-color: rgb(209, 194, 170);
+}
+.catalogue a:hover {
+	color: rgb(0, 0, 0); background-color: rgb(242, 238, 231);
+}
+#print_main {
+	margin: 0px auto; width: 680px; background-color: rgb(255, 255, 255);
+}
+.print_content {
+	margin: 0px 5px; width: 99%; letter-spacing: 1px; overflow: hidden; float: left;
+}
+.print_text {
+	margin: 15px 0px; padding: 0px; color: rgb(0, 0, 0); letter-spacing: 2px; float: left;
+}
+.print_text h4 {
+	padding: 10px 5px; color: rgb(0, 0, 0); line-height: 22px; font-size: 16px; font-weight: bold;
+}
+.print_text span {
+	margin: 0px; color: rgb(119, 119, 119); padding-left: 5px; font-size: 13px; font-weight: 100;
+}
+.print_text p {
+	margin: 0px; padding: 10px 5px; line-height: 22px; font-size: 16px;
+}
+.print_text .pic {
+	margin: 10px 10px 10px 3px; border: 1px solid rgb(102, 102, 102); width: 320px; padding-bottom: 5px; float: left; background-color: rgb(221, 221, 221);
+}
+.print_text .pic p {
+	margin: 0px auto; padding: 0px 0px 3px; width: 300px; line-height: 18px; font-size: 13px;
+}
+.print_text .pic .photopr {
+	margin: 8px auto 0px; border: currentColor; width: 300px; text-align: center;
+}
+.print_text .pic .photopr img {
+	width: 300px;
+}
+.print_text hr {
+	border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(170, 170, 170) currentColor currentColor; height: 5px;
+}
+.print_guide {
+	color: rgb(85, 85, 85); line-height: 20px; font-size: 13px; margin-top: 20px; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid;
+}
+.print_footer {
+	padding: 20px; text-align: center; color: rgb(85, 85, 85); overflow: hidden; clear: both; font-size: 13px; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid;
+}
+.ad_t1 {
+	text-align: center; overflow: auto; padding-top: 8px; clear: both; font-size: 13px; margin-bottom: 10px; border-top-color: rgb(46, 106, 176); border-top-width: 6px; border-top-style: solid;
+}
+.ad_t1 .ad {
+	padding: 0px 0px 2px; width: 328px; letter-spacing: 1px; border-right-color: rgb(228, 228, 228); border-right-width: 1px; border-right-style: solid; float: left;
+}
+.ad_t1 .date {
+	padding: 0px 0px 2px; width: 300px; color: rgb(85, 85, 85); float: right;
+}
+.ad_t1 a {
+	color: rgb(51, 51, 255);
+}
+.ad_t1 a:hover {
+	color: rgb(51, 51, 153); text-decoration: none;
+}
+.ad970 {
+	margin: 0px 0px 8px; padding: 0px; width: 100%;
+}
+.date {
+	margin: 0px auto; padding: 0px; text-align: center; color: rgb(85, 85, 85); line-height: 18px; font-size: 13px;
+}
+.oilbox {
+	border: 1px solid rgb(116, 116, 116); width: 298px; text-align: center; line-height: 20px; font-size: 13px; margin-top: 6px; margin-bottom: 10px;
+}
+.oilg {
+	color: rgb(0, 153, 0); font-weight: bold;
+}
+.oilr {
+	color: rgb(255, 0, 0); font-weight: bold;
+}
+.oil_001 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+.weather {
+	margin: 10px auto; overflow: hidden; border-top-color: rgb(102, 102, 102); border-bottom-color: rgb(102, 102, 102); border-top-width: 4px; border-bottom-width: 4px; border-top-style: solid; border-bottom-style: solid;
+}
+.weather strong {
+	line-height: 30px; letter-spacing: 1px; padding-bottom: 3px; font-size: 1em; font-weight: bold; display: block;
+}
+.weather span {
+	text-align: right; color: rgb(102, 102, 102); letter-spacing: normal; font-size: 0.8em; font-weight: 100; float: right; display: block;
+}
+.weather .tab {
+	margin: 0px; padding: 0px; width: 99%; line-height: 25px; font-size: 0.8em; list-style-type: none;
+}
+.weather .tab li {
+	margin: 0px 3px 0px 0px; padding: 0px; top: 1px; float: left; display: block; position: relative; background-color: rgb(255, 255, 255);
+}
+.weather .tab li a {
+	padding: 4px 3px 1px; text-decoration: none; display: block; background-color: rgb(219, 219, 219);
+}
+.weather .tab li strong {
+	padding: 0px 3px; color: rgb(153, 0, 0); font-weight: 100; border-top-color: rgb(102, 102, 102); border-right-color: rgb(102, 102, 102); border-left-color: rgb(102, 102, 102); border-top-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-left-style: solid; display: block; background-color: rgb(255, 255, 255);
+}
+.weather .tit {
+	padding: 6px 0px 2px; text-align: right; color: rgb(102, 102, 102); clear: both; font-size: 0.8em;
+}
+.weather .tit a {
+	color: rgb(4, 78, 140); font-weight: bold;
+}
+.weather .con {
+	margin: 0px; padding: 0px 8px; width: 96%; letter-spacing: 1px; clear: both; font-size: 13px; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid;
+}
+.weather .con li {
+	list-style: none; margin: 0px; width: 100%; color: rgb(51, 51, 51); line-height: 28px; border-bottom-color: rgb(210, 210, 210); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.weather .con div {
+	padding: 3px 0px 0px; width: 25%; text-align: center; float: left;
+}
+.weather .con .cc {
+	color: rgb(119, 119, 119);
+}
+.weather .con img {
+	margin: 0px; padding: 0px; text-align: right; vertical-align: top;
+}
+.hottag {
+	border-top-color: rgb(146, 73, 73); border-top-width: 4px; border-top-style: solid;
+}
+.hottag strong {
+	line-height: 30px; letter-spacing: 1px; font-size: 1em; font-weight: bold; display: block;
+}
+.lottery {
+	border-color: rgb(146, 73, 73);
+}
+.lottery_con {
+	margin: 0px; padding: 0px 8px; width: 96%; letter-spacing: 1px; clear: both; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: solid; display: none;
+}
+.lottery_con li {
+	list-style: none; margin: 0px; width: 100%; border-bottom-color: rgb(210, 210, 210); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.lottery_con .lot {
+	padding: 0px 10px; width: 30%; line-height: 30px; font-size: 15px; float: left;
+}
+.lottery_con .lot_01 {
+	padding: 0px 10px; width: 50%; line-height: 30px; font-size: 15px; float: left;
+}
+.lottery_con .black.lot_01 {
+	color: rgb(0, 0, 0); float: left;
+}
+.lottery_con .red.lot_01 {
+	color: rgb(204, 51, 0); float: left;
+}
+.lottery_con .lot_no {
+	width: 50%; line-height: 30px; letter-spacing: 2px; padding-left: 10px; font-size: 18px; font-weight: bold; float: left;
+}
+.lottery_con .lot_no .p_b {
+	color: rgb(0, 0, 0); float: left;
+}
+.lottery_con .lot_no .p_r {
+	color: rgb(204, 0, 0); float: left;
+}
+.spgame {
+	margin: 0px auto 10px; border: 1px solid rgb(155, 183, 220); text-align: center; overflow: hidden;
+}
+.spgame .sportr {
+	margin: 0px; width: 42%; text-align: center; color: rgb(51, 51, 51); line-height: 15px; letter-spacing: 1px; font-size: 13px; float: right;
+}
+.spgame .sportl {
+	margin: 0px; width: 42%; text-align: center; color: rgb(51, 51, 51); line-height: 15px; letter-spacing: 1px; font-size: 13px; float: left;
+}
+.spgame strong {
+	width: 100%; text-align: center; color: rgb(204, 0, 0); line-height: 40px; font-family: Arial, Helvetica, sans-serif; font-size: 30px; float: left; display: block;
+}
+.spgame .none {
+	color: rgb(204, 204, 204);
+}
+.spgame span {
+	width: 100%; text-align: center; line-height: 50px;
+}
+.spgame span img {
+	margin-top: 6px;
+}
+.spgame p {
+	width: 100%; text-align: center; margin-top: 5px; float: left; display: block;
+}
+.spgame .vs {
+	margin: 0px 6px; width: 35px; padding-top: 40px; float: left;
+}
+.spgametit {
+	padding: 3px 0px 0px; color: rgb(1, 55, 99); letter-spacing: 1px; font-size: 15px; font-weight: bold; border-bottom-color: rgb(155, 183, 220); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.moregame {
+	padding: 2px 8px; text-align: right; color: rgb(34, 34, 34); clear: both; font-size: 13px; font-weight: bold; border-top-color: rgb(155, 183, 220); border-top-width: 1px; border-top-style: solid;
+}
+.moregame a {
+	color: rgb(4, 78, 140); font-weight: bold;
+}
+.sppredict {
+	margin: 3px auto 10px; padding: 4px 4px 4px 15px; color: rgb(255, 255, 153); line-height: 18px; letter-spacing: 1px; font-weight: bold; background-color: rgb(46, 106, 176);
+}
+.spgame_n {
+	margin: 0px auto 20px; border: 1px solid rgb(204, 204, 204); overflow: hidden;
+}
+.spgametit_n {
+	padding: 5px; color: rgb(0, 0, 0); letter-spacing: 1px; font-size: 15px; font-weight: bold;
+}
+.sp_box {
+	margin: 0px;
+}
+.sp_box li {
+	padding: 0px;
+}
+.sport_on .sportit {
+	background: rgb(238, 238, 238); border-top-color: rgb(0, 72, 134); border-top-width: 3px; border-top-style: solid; position: relative;
+}
+.sport_off .sportit {
+	background: rgb(238, 238, 238); border-top-color: rgb(119, 119, 119); border-top-width: 3px; border-top-style: solid; position: relative;
+}
+.spteam {
+	padding: 5px 15px 5px 5px; color: rgb(255, 255, 255); line-height: 24px;
+}
+.sport_on .spteam {
+	background: url("/images/news/sportit_on.png") no-repeat right top;
+}
+.sport_off .spteam {
+	background: url("/images/news/sportit_off.png") no-repeat right top;
+}
+a.spmore {
+	padding: 0px 5px; top: 0px; height: 24px; right: 0px; color: rgb(0, 72, 134); line-height: 24px; font-size: 13px; font-weight: bold; position: absolute;
+}
+.sportb {
+	margin: 0px; padding: 8px 0px 12px; width: 100%; overflow: auto;
+}
+.sportb li {
+	float: left;
+}
+.sportb li.spb01 {
+	width: 30%;
+}
+.sportb li.s_score {
+	width: 40%;
+}
+.sportb li.spb03 {
+	width: 30%;
+}
+.teami {
+	text-align: center;
+}
+.teami img {
+	width: 75px;
+}
+.teamw {
+	text-align: center; color: rgb(0, 0, 0); line-height: 1.4em;
+}
+.teamw span {
+	margin: 0px; padding: 0px; color: rgb(119, 119, 119); font-size: 0.9rem; display: block;
+}
+.s_score span {
+	margin: 0px; padding: 0px; width: 47%; height: 78px; text-align: center; line-height: 96px; font-size: 2em; float: left;
+}
+.sport_on li.s_score span {
+	color: rgb(185, 0, 0);
+}
+.sport_off li.s_score span {
+	color: rgb(170, 170, 170);
+}
+li.s_score span.scen {
+	width: 6%; height: 78px; color: rgb(34, 34, 34); line-height: 96px; font-size: 1.2em; float: left;
+}
+.score_w {
+	text-align: center; color: rgb(102, 102, 102); line-height: 1.4em; clear: both; font-size: 0.9rem;
+}
+.extra {
+	margin: 0px 0px 15px; width: 100%; height: 34px; letter-spacing: 2px; overflow: hidden; font-size: 24px; font-weight: 900; background-color: rgb(230, 230, 230);
+}
+.extra a {
+	height: 34px; color: rgb(187, 36, 1); line-height: 33px; padding-left: 40px;
+}
+.extra a:hover {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+.extra img {
+	float: left;
+}
+.extrabox {
+	width: 34px; height: 34px; text-align: center; color: rgb(255, 255, 255); line-height: 34px; letter-spacing: normal; font-size: 12px; font-weight: 100; position: absolute; background-color: rgb(204, 0, 0);
+}
+.extrabg {
+	background-color: rgb(248, 226, 228);
+}
+.indexnews {
+	margin: 0px auto; padding: 0px; width: 650px; overflow: hidden; font-size: 0.95em;
+}
+.lbox {
+	background: rgb(236, 236, 236); margin: 0px 0px 8px; padding: 0px; border: 1px solid rgb(102, 102, 102); height: 300px; position: relative;
+}
+.lbox .photo {
+	margin: 0px; padding: 0px; border: currentColor; width: 100%;
+}
+.lbox .photo img {
+	margin: 0px; width: 490px; display: block;
+}
+.lbox .explain {
+	padding: 15px 5px 0px; border: currentColor; width: 148px; height: 235px; text-align: left; overflow: hidden; float: left;
+}
+.lbox .explain a {
+	color: rgb(0, 0, 51); line-height: 25px; font-family: Calibri,"新細明體"; font-size: 20.5px; font-weight: bold;
+}
+.lbox p {
+	padding: 20px 2px; text-align: left; color: rgb(0, 0, 51); font-size: 15px;
+}
+.slideElm > a {
+	display: inline-block;
+}
+.lbox .btl {
+	left: 12px; top: 252px; width: 36px; height: 37px; position: absolute; cursor: pointer;
+}
+.lbox .btr {
+	left: 110px; top: 252px; width: 36px; height: 37px; position: absolute; cursor: pointer;
+}
+.lbox .bts {
+	left: 61px; top: 252px; width: 36px; height: 37px; position: absolute; cursor: pointer;
+}
+.slideElm {
+	display: none;
+}
+.slideElmOn {
+	display: block;
+}
+.rbox {
+	margin: 0px 3px; padding: 0px; width: 73%; height: 337px; overflow: hidden; float: left; position: relative;
+}
+.rbox ul {
+	margin-top: 5px;
+}
+.rbox li {
+	background-position: left; margin: 9px 0px; line-height: 24px; padding-left: 38px; font-size: 1.2em; list-style-type: none; background-repeat: no-repeat;
+}
+.rbox li a {
+	color: rgb(0, 102, 153);
+}
+.rbox li a:visited {
+	color: rgb(68, 68, 68);
+}
+.rbox .lit1 {
+	background-image: url("/images/index/t1.gif");
+}
+.rbox .lit2 {
+	background-image: url("/images/index/t2.gif");
+}
+.rbox .lit3 {
+	background-image: url("/images/index/t3.gif");
+}
+.rbox .lit4 {
+	background-image: url("/images/index/t4.gif");
+}
+.rbox .lit5 {
+	background-image: url("/images/index/t5.gif");
+}
+.rbox .lit6 {
+	background-image: url("/images/index/t6.gif");
+}
+.rbox .lit7 {
+	background-image: url("/images/index/t7.gif");
+}
+.rbox .lit8 {
+	background-image: url("/images/index/t8.gif");
+}
+.rbox .lit9 {
+	background-image: url("/images/index/t9.gif");
+}
+.rbox .lit10 {
+	background-image: url("/images/index/t10.gif");
+}
+.rbox .lit11 {
+	background-image: url("/images/index/t11.gif");
+}
+.rbox .lit12 {
+	background-image: url("/images/index/t12.gif");
+}
+.rbox .lit13 {
+	background-image: url("/images/index/t13.gif");
+}
+.rbox .lit14 {
+	background-image: url("/images/index/t14.gif");
+}
+.rbox .lit15 {
+	background-image: url("/images/index/t15.gif");
+}
+.rbox .lit16 {
+	background-image: url("/images/index/t16.gif");
+}
+.rbox .lit17 {
+	background-image: url("/images/index/t1.gif");
+}
+.rbox .lit18 {
+	background-image: url("/images/index/t11.gif");
+}
+.rbox .lit19 {
+	background-image: url("/images/index/t17.gif");
+}
+.rbox .headline {
+	background: none; margin: 0px 0px 10px; line-height: 24px; padding-left: 0px; font-size: 22px; font-weight: bold; list-style-type: none;
+}
+.rbox .headline a {
+	color: rgb(204, 51, 0);
+}
+.rbox .headline a:visited {
+	color: rgb(204, 51, 0);
+}
+.rboxmore {
+	padding: 0px 0px 5px; text-align: right; right: 0px; bottom: 0px; color: rgb(204, 51, 0) !important; font-weight: bold; text-decoration: none; margin-right: 5px; display: block; position: absolute;
+}
+.leftmenu {
+	margin: 5px 10px 10px 0px; padding: 0px; width: 158px; text-align: center; letter-spacing: 3px; font-size: 14px; float: left;
+}
+.leftmenu li {
+	margin: 0px; padding: 3px 0px; width: 78px; border-bottom-color: rgb(153, 153, 153); border-bottom-width: 1px; border-bottom-style: dotted; float: left; display: block; list-style-type: none; background-color: rgb(232, 239, 255);
+}
+.leftmenu .li2 {
+	margin: 0px 0px 3px; padding: 3px 0px 0px; width: 156px; text-align: left; letter-spacing: 4px; font-size: 1.1em; border-bottom-color: rgb(136, 136, 136); border-bottom-width: 1px; border-bottom-style: solid; float: left; display: block; list-style-type: none; background-color: rgb(232, 239, 255);
+}
+.leftmenu li a {
+	text-align: left; color: rgb(16, 43, 62); line-height: 30px; font-weight: bold; text-decoration: none;
+}
+.leftmenu li a div {
+	margin: 10px 0px 10px 12px; width: 5px; height: 10px; float: left;
+}
+.leftmenu .rborder {
+	border-right-color: rgb(153, 153, 153); border-right-width: 1px; border-right-style: dotted;
+}
+.leftmenu .noborder {
+	border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.leftmenu .main1 {
+	background-color: rgb(88, 210, 215);
+}
+.leftmenu .main2 {
+	background-color: rgb(100, 165, 254);
+}
+.leftmenu .main3 {
+	background-color: rgb(140, 154, 226);
+}
+.leftmenu .main4 {
+	background-color: rgb(180, 129, 233);
+}
+.leftmenu .main5 {
+	background-color: rgb(241, 119, 238);
+}
+.leftmenu .main6 {
+	background-color: rgb(251, 119, 120);
+}
+.leftmenu .main7 {
+	background-color: rgb(250, 97, 132);
+}
+.leftmenu .main8 {
+	background-color: rgb(220, 142, 109);
+}
+.leftmenu .main9 {
+	background-color: rgb(252, 164, 4);
+}
+.leftmenu .main10 {
+	background-color: rgb(185, 171, 2);
+}
+.leftmenu .main11 {
+	background-color: rgb(120, 174, 2);
+}
+.leftmenu .main12 {
+	background-color: rgb(1, 156, 73);
+}
+.leftmenu .main13 {
+	margin-right: 25px; background-color: rgb(85, 85, 85);
+}
+.leftmenu .main14 {
+	background-color: rgb(244, 29, 103);
+}
+.leftmenu .main15 {
+	margin-right: 25px; background-color: rgb(177, 116, 40);
+}
+.leftmenu .main16 {
+	background-color: rgb(153, 0, 0);
+}
+.indexcont {
+	padding: 0px; width: 650px; margin-bottom: 20px; float: left;
+}
+.col2 {
+	margin: 15px 0px; width: 100%; overflow: hidden; clear: both;
+}
+.col2tit {
+	padding: 0px 5px 3px; height: 20px; font-size: 15px; font-weight: bold; border-bottom-color: rgb(67, 67, 67); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.col2tit a {
+	padding: 2px 5px 0px; color: rgb(0, 0, 0);
+}
+.col2tit a:hover {
+	color: rgb(204, 0, 0); text-decoration: none;
+}
+.col2tit a.now {
+	padding: 2px 5px 0px; background-color: rgb(247, 225, 227);
+}
+.col2tit span {
+	padding: 0px 10px; color: rgb(204, 204, 204); font-weight: 100;
+}
+.col2photo {
+	margin: 0px; padding: 0px 5px 0px 8px; width: 48%; height: 314px; letter-spacing: 1px; float: left;
+}
+.col2photo img {
+	margin: 3px 8px 0px 0px; width: 100px; height: 100px; float: left;
+}
+.col2photo p {
+	margin: 6px 0px 0px; width: 203px; color: rgb(153, 153, 153); line-height: 19px; font-size: 13px; float: right;
+}
+.col2photo a {
+	color: rgb(204, 51, 0); line-height: 22px; font-size: 16px; font-weight: bold;
+}
+.col2photo div:first-child {
+	border-width: medium medium 1px; border-style: none none dotted; border-color: currentColor currentColor rgb(51, 102, 153); margin: 0px; height: 50%; padding-top: 8px;
+}
+.col2photo div:nth-child(2) {
+	height: 50%; padding-top: 8px;
+}
+.col2 ul {
+	margin: 0px 0px 0px 2px; width: 49%; height: 330px; font-size: 15px; border-left-color: rgb(51, 102, 153); border-left-width: 1px; border-left-style: dotted; float: right; display: block;
+}
+.col2 li {
+	background: url("/images/news/dot.gif") no-repeat 0px 8px; margin: 8px 0px 10px 15px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.colHd {
+	display: none;
+}
+.colin2 {
+	margin: 15px 0px; width: 100%; overflow: hidden; clear: both; position: relative;
+}
+.coltab {
+	margin: 10px 0px 0px; padding: 10px 0px 0px 8px; height: 20px; letter-spacing: 1px; font-size: 13px; font-weight: bold; border-bottom-color: rgb(184, 184, 184); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(191, 212, 236);
+}
+.coltit {
+	padding: 0px 8px; width: 100%;
+}
+.colhov {
+	padding: 3px 8px 4px; border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px; border-bottom-style: solid; background-color: rgb(255, 255, 255);
+}
+.colr {
+	margin: 10px 3px 0px 0px; width: 49%; letter-spacing: 1px; font-size: 15px; float: right;
+}
+.coll {
+	margin: 10px 0px; width: 49%; letter-spacing: 1px; font-size: 15px; float: left;
+}
+.colin2 li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 8px; margin: 0px 0px 12px 5px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.colcont .colr {
+	height: 233px; overflow: hidden;
+}
+.colcont {
+	margin: 0px; padding: 0px; width: 100%; height: 265px; overflow: hidden; display: none;
+}
+.colmore {
+	top: 245px; right: 0px; font-size: 0.95em; font-weight: bold; position: absolute;
+}
+.colmore:link {
+	color: rgb(0, 102, 153);
+}
+.colmore:visited {
+	color: rgb(0, 102, 153);
+}
+.rightline {
+	border-right-color: rgb(51, 102, 153); border-right-width: 1px; border-right-style: dotted;
+}
+.colul {
+	margin: 0px 3px; font-size: 15px;
+}
+.colul li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 8px; margin: 6px 0px 12px 5px; line-height: 20px; padding-left: 10px; list-style-type: none;
+}
+.colpic {
+	margin: 0px 5px; overflow: hidden;
+}
+.colpic strong {
+	font-size: 16px;
+}
+.colpic p {
+	width: 300px; height: 190px; color: rgb(119, 119, 119); line-height: 25px; letter-spacing: 2px; overflow: hidden; font-size: 15px; margin-top: 11px;
+}
+.colpic a {
+	color: rgb(0, 102, 153);
+}
+.colpic img {
+	margin: 2px 5px 0px 0px; float: left;
+}
+.colbod {
+	position: relative;
+}
+.colbodhov {
+	display: block;
+}
+.hide {
+	display: none;
+}
+.in2sort {
+	margin: 0px 0px 18px; background-color: rgb(255, 246, 226);
+}
+.tabsort {
+	border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(217, 217, 217) currentColor rgb(217, 217, 217) rgb(217, 217, 217); margin: 0px; padding: 0px; border-radius: 8px 0px 0px 8px; width: 20%; height: 284px; overflow: hidden; float: left; background-color: rgb(236, 236, 236);
+}
+.titsort {
+	padding: 0px 10px 0px 15px; height: 40px; line-height: 36px; font-weight: normal; border-bottom-color: rgb(216, 216, 216); border-bottom-width: 1px; border-bottom-style: solid; float: left; background-color: rgb(236, 236, 236);
+}
+.hovsort {
+	padding: 0px 10px 0px 15px; height: 40px; line-height: 36px; border-bottom-color: rgb(216, 216, 216); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(255, 246, 226);
+}
+.bodsort {
+	border-radius: 0px 8px 8px 0px; border: 1px solid rgb(217, 217, 217); height: 284px; overflow: hidden;
+}
+.contsort {
+	float: left;
+}
+.ulsort {
+	padding: 10px;
+}
+.lisort {
+	margin: 5px; padding: 0px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.picbox {
+	margin: 20px auto; width: 100%; height: 210px; overflow: hidden; clear: both; position: relative;
+}
+.picbox .box {
+	margin: 5px 2px; padding: 5px 4px; width: 150px; height: 180px; float: left; background-color: rgb(232, 239, 255);
+}
+.picbox .box div {
+	width: 150px; height: 120px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.picbox .box div * {
+	vertical-align: middle;
+}
+.picbox .box p {
+	margin: 0px; padding: 5px 8px; width: 140px; height: 32px; text-align: left; color: rgb(51, 51, 51); line-height: 18px; overflow: hidden; font-size: 13px; display: block;
+}
+.picbox .pg {
+	padding: 0px; width: 40%; height: 20px; text-align: right; float: right;
+}
+.picbox .pg span {
+	margin: 0px 5px; padding: 3px 4px 0px; float: right; display: block; background-color: rgb(232, 239, 255);
+}
+.picbox .pg span:hover {
+	padding: 3px 4px 0px; cursor: pointer; background-color: rgb(153, 204, 255);
+}
+#picks {
+	width: 3000px; position: absolute;
+}
+.colul3c {
+	margin: 0px; font-size: 15px; float: left;
+}
+.colul3c li {
+	background: url("/images/news/dot-list.gif") no-repeat 3px 8px; margin: 12px 0px 10px; line-height: 20px; padding-left: 12px; list-style-type: none;
+}
+.colul3c a {
+	color: rgb(12, 32, 56);
+}
+.colcar {
+	margin: 12px 5px; font-size: 15px;
+}
+.colcar p {
+	margin: 2px 5px 10px 0px; color: rgb(119, 119, 119); line-height: 18px; font-size: 13px;
+}
+.colcar a {
+	color: rgb(0, 102, 153);
+}
+.colcar img {
+	margin: 0px 6px 6px 0px; float: left;
+}
+.col {
+	margin: 0px; width: 100%; overflow: hidden; clear: both; font-size: 15px;
+}
+.colsubj {
+	margin: 0px 10px 10px 0px; width: 100%; overflow: hidden; border-bottom-color: rgb(206, 208, 227); border-bottom-width: 1px; border-bottom-style: dotted; float: left;
+}
+.colsubj li {
+	background: url("/images/news/dot-list.gif") no-repeat 0px 8px; margin: 10px 0px 10px 10px; padding: 0px 12px; color: rgb(51, 102, 153); line-height: 20px; list-style-type: none;
+}
+.indexsubj {
+	margin: 10px 5px 0px; width: 100%; float: left;
+}
+.subjtit {
+	padding: 0px 5px 3px; height: 20px; font-weight: bold; border-bottom-color: rgb(135, 150, 186); border-bottom-width: 3px; border-bottom-style: solid;
+}
+.indexsubj img {
+	margin: 2px 5px 5px 10px; width: 100px; height: 100px; float: left;
+}
+.indexsubj strong {
+	margin: 0px 2px 2px; width: 100%; color: rgb(4, 78, 140); font-size: 18px; display: block;
+}
+.indexsubj ul {
+	margin: 0px 0px 0px 10px; float: left;
+}
+.indexsubj li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 8px; margin: 6px 0px 6px 5px; line-height: 20px; padding-left: 12px; list-style-type: none;
+}
+.lia {
+	color: rgb(51, 102, 204);
+}
+.more {
+	padding: 0px; width: 20%; text-align: right; font-size: 15px; font-weight: bold; float: right;
+}
+.more a {
+	margin: 0px 5px; padding: 2px 6px 0px; color: rgb(51, 102, 153); text-decoration: none;
+}
+.more a:hover {
+	margin: 0px 5px; padding: 2px 6px 0px; color: rgb(0, 0, 102);
+}
+.manPrt .col {
+	display: none;
+}
+.manPrt .manColOn {
+	display: block;
+}
+.weekendtit {
+	padding: 5px 10px; text-align: left; color: rgb(51, 51, 51); font-size: 13px; font-weight: bold; background-color: rgb(191, 212, 236);
+}
+.weekend2 {
+	margin: 15px 0px; padding: 0px; width: 210px; height: 275px; border-top-color: rgb(153, 180, 216); border-bottom-color: rgb(153, 180, 216); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; float: right; background-color: rgb(223, 233, 246);
+}
+.weekend2 .box {
+	margin: 10px auto; padding: 0px 15px; overflow: hidden; float: left;
+}
+.weekend2 .box p {
+	text-align: center; font-size: 15px; display: block;
+}
+.weekend2 .box img {
+	width: 180px; height: 180px; letter-spacing: 1px; margin-bottom: 8px; box-shadow: 1px 3px 6px 0px rgba(0,0,0,0.6); -webkit-box-shadow: 1px 3px 6px 0px rgba(0, 0, 0, 0.6); -moz-box-shadow: 1px 3px 6px 0px rgba(0, 0, 0, 0.6);
+}
+.agoods {
+	margin: 15px 10px 15px 0px; padding: 0px 0px 5px; width: 210px; text-align: center; border-top-color: rgb(153, 180, 216); border-bottom-color: rgb(153, 180, 216); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; float: left; background-color: rgb(255, 255, 255);
+}
+.agoods img {
+	margin: 0px auto; height: 245px; display: block;
+}
+.subject {
+	float: left;
+}
+.subject img {
+	width: 200px; height: 240px; margin-top: 5px;
+}
+.service {
+	margin: 0px auto 20px; color: rgb(51, 51, 51); letter-spacing: 2px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.service .tit {
+	padding: 15px 10px 0px; line-height: 20px; font-weight: bold;
+}
+.service .pic {
+	margin: 15px auto; text-align: center;
+}
+.service p {
+	margin: 15px; padding: 0px 3px; line-height: 25px;
+}
+.service .subtit {
+	margin: 20px 15px 15px; padding: 0px 10px; line-height: 30px; font-weight: bold; background-color: rgb(234, 234, 234);
+}
+.service a {
+	color: rgb(0, 104, 183);
+}
+.service ul {
+	margin: 0px; padding: 0px 20px;
+}
+.service li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 10px; margin: 15px 10px; line-height: 23px; padding-left: 10px; list-style-type: none;
+}
+.service table {
+	margin: 20px auto; padding: 2px 0px 10px; width: 90%; line-height: 30px; background-color: rgb(242, 242, 242);
+}
+.service table .trbg {
+	background-color: rgb(247, 253, 231);
+}
+.service table th {
+	padding: 0px 15px; text-align: right; font-weight: 100;
+}
+.service table td {
+	height: 40px;
+}
+.service .ps {
+	color: rgb(204, 0, 0); font-size: 15px; font-weight: bold;
+}
+.service span {
+	color: rgb(102, 102, 102); font-size: 13px;
+}
+.service span a {
+	color: rgb(0, 104, 183);
+}
+.service .uploadT {
+	margin: 20px auto; padding: 30px 20px; width: 83%; border-top-color: rgb(242, 242, 242); border-bottom-color: rgb(242, 242, 242); border-top-width: 2px; border-bottom-width: 2px; border-top-style: solid; border-bottom-style: solid; background-color: rgb(255, 240, 243);
+}
+.service .Txml {
+	margin: 20px auto; padding: 2px 0px 10px; width: 90%; line-height: 30px; background-color: rgb(255, 255, 255);
+}
+.service .Txml th {
+	text-align: center; font-weight: bold; background-color: rgb(242, 242, 242);
+}
+.service .Txml td {
+	text-align: left; border-bottom-color: rgb(213, 213, 213); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.service p.adtit {
+	padding: 1px 5px; color: rgb(255, 255, 255); font-family: "微軟正黑體"; background-color: rgb(45, 88, 167);
+}
+.service a.bt1 {
+	margin: 0px 0px 0px 40px; width: 260px; height: 70px; text-align: center; color: rgb(17, 17, 17); display: inline-block;
+}
+.service a.bt2 {
+	margin: 0px 0px 0px 40px; width: 260px; height: 70px; text-align: center; color: rgb(17, 17, 17); display: inline-block;
+}
+.service a.bt1 span {
+	color: rgb(17, 17, 17); line-height: 50px; font-family: "微軟正黑體"; font-size: 18px;
+}
+.service a.bt2 span {
+	color: rgb(17, 17, 17); line-height: 50px; font-family: "微軟正黑體"; font-size: 18px;
+}
+.service a.bt1 {
+	background: url("/images/service/bt1.png") no-repeat;
+}
+.service a.bt2 {
+	background: url("/images/service/bt2.png") no-repeat;
+}
+.sort_menu {
+	color: rgb(46, 106, 176); line-height: 20px; letter-spacing: 1px; font-size: 13px; border-bottom-color: rgb(46, 106, 176); border-bottom-width: 4px; border-bottom-style: solid;
+}
+.sort_menu a {
+	padding: 0px 10px; color: rgb(4, 78, 140);
+}
+.sort_menu a:hover {
+	color: rgb(4, 78, 140); text-decoration: none; background-color: rgb(233, 241, 255);
+}
+.sort_news {
+	margin: 0px auto 20px; padding: 8px 0px 8px 8px; border: 1px dotted rgb(190, 204, 224); letter-spacing: 1px; overflow: hidden; clear: both; font-size: 0.95em;
+}
+.sort_news .photo {
+	padding: 0px; border: 1px solid rgb(158, 172, 191); width: 300px; height: 190px; margin-right: 8px; float: left; background-color: rgb(216, 222, 232);
+}
+.sort_news .photo div {
+	width: 300px; height: 190px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.sort_news .photo div * {
+	vertical-align: middle;
+}
+.sort_news .no1 {
+	background: none; margin: 0px; padding: 0px 5px 5px 0px; color: rgb(153, 0, 0); line-height: 22px; font-size: 1.25em; font-weight: bold; list-style-type: none;
+}
+.sort_news .no1 a {
+	color: rgb(153, 0, 0);
+}
+.sort_news .no1 span {
+	color: rgb(136, 136, 136); letter-spacing: normal; padding-left: 10px; font-size: 13px; font-weight: 100; white-space: nowrap;
+}
+.sort_news ul {
+	margin: 0px; padding: 0px; width: 320px; float: left;
+}
+.sort_news li {
+	background: url("/images/index/t4-1.gif") no-repeat 0px 3px; margin: 5px 0px 12px 3px; line-height: 18px; padding-left: 38px; list-style-type: none;
+}
+.sort_news li a {
+	color: rgb(4, 78, 140);
+}
+.sort_news .lit1 {
+	background-image: url("/images/index/t4-2.gif");
+}
+.sort_news .lit2 {
+	background-image: url("/images/index/t4-3.gif");
+}
+.sort_news .lit3 {
+	background-image: url("/images/index/t4-4.gif");
+}
+.sort_news ul li span {
+	color: rgb(136, 136, 136); letter-spacing: normal; padding-left: 5px; font-size: 12px; font-weight: 100;
+}
+.interFB {
+	vertical-align: middle; display: inline-block;
+}
+.tb_calendar {
+	border: 5px solid rgb(209, 192, 166); width: auto; text-align: center; line-height: 30px; font-size: 0.9em; border-collapse: collapse;
+}
+.tb_calendar th {
+	height: 24px; color: rgb(129, 82, 26); font-family: sans-serif; font-size: 15px; font-weight: bold;
+}
+.tb_calendar td {
+	border: 2px solid rgb(255, 255, 255); width: 35px; height: 28px; background-color: rgb(246, 246, 246);
+}
+.tb_calendar .bg {
+	color: rgb(118, 103, 74); border-bottom-color: rgb(153, 133, 106); border-bottom-width: 3px; border-bottom-style: solid; background-color: rgb(237, 237, 237);
+}
+.tb_calendar .pf_left {
+	margin: 5px 3px 0px; float: left;
+}
+.tb_calendar .date {
+	margin: 1px; font-family: sans-serif;
+}
+.tb_calendar .date a {
+	padding: 3px 1px; border: 1px solid rgb(211, 199, 177); width: 34px; text-align: center; color: rgb(106, 57, 6); margin-left: 1px; display: block; background-color: rgb(211, 199, 177);
+}
+.tb_calendar a.bgtoday {
+	border: 1px solid rgb(204, 51, 0);
+}
+#calright {
+	padding: 0px 15px; font-size: 20px; display: inline-block;
+}
+#calleft {
+	padding: 0px 15px; font-size: 20px; display: inline-block;
+}
+.list .newspaper {
+	width: 100%; overflow: hidden; background-color: rgb(230, 221, 207);
+}
+.newspaper li {
+	float: left;
+}
+.newspaper a.select {
+	border: currentColor; color: white; background-color: rgb(173, 127, 60);
+}
+.foraward {
+	height: 1px; overflow: hidden; border-top-color: rgb(102, 102, 102); border-bottom-color: rgb(146, 73, 73); border-top-width: 0px; border-bottom-width: 4px; border-top-style: solid; border-bottom-style: solid; display: none;
+}
+.for_award_no {
+	width: 85%; text-align: right; letter-spacing: 3px; font-family: Arial; font-size: 30px;
+}
+.input_no {
+	margin: 5px; padding: 0px; width: 70px; height: 45px; font-family: Arial; font-size: 32px; vertical-align: middle;
+}
+.clear_text {
+	margin: 5px; padding: 0px; width: 152px; height: 45px; font-family: Arial, "微軟正黑體"; font-size: 28px; font-weight: bold; vertical-align: middle;
+}
+.lst_award_no_item {
+	width: 70%; text-align: right; line-height: 30px; letter-spacing: 3px; font-family: Arial, "微軟正黑體"; font-size: 20px;
+}
+.lst_award_no_item span {
+	width: 30%; font-family: Arial, "微軟正黑體"; font-size: 20px; margin-top: 0px; float: left;
+}
+.lst_award_no_item b {
+	color: rgb(204, 0, 0);
+}
+.lst_award_no {
+	height: 30px; overflow: hidden;
+}
+.weather .foraward_sw {
+	color: rgb(204, 51, 0); font-size: 15px; font-weight: bold; float: left; cursor: pointer;
+}
+.foraward ul {
+	margin: 0px auto; width: 85%; line-height: 16px; letter-spacing: 1px;
+}
+.foraward ul p {
+	margin: 5px 0px; padding: 2px 5px; font-size: 15px; font-weight: bold; background-color: rgb(221, 221, 221);
+}
+.foraward li {
+	background: url("/images/news/dot-right.gif") no-repeat 0px 8px; margin: 5px 0px; padding: 0px 5px 0px 12px; font-size: 13px; list-style-type: none;
+}
+.forwardTo {
+	left: 0px; top: 0px; width: 100%; height: 1500px; display: none; position: fixed; z-index: 51;
+}
+.forwardTo div {
+	margin: 0px; padding: 10px 0px; line-height: 20px; letter-spacing: 1px; font-size: 15px; vertical-align: bottom;
+}
+.forwardTo .tit {
+	padding: 0px; margin-bottom: 10px; border-bottom-color: rgb(153, 102, 102); border-bottom-width: 3px; border-bottom-style: solid; position: relative;
+}
+.forwardTo .tit img {
+	right: 0px; position: absolute; cursor: pointer;
+}
+.forwardTo p {
+	line-height: 20px; font-weight: bold;
+}
+.forwardTo span {
+	color: rgb(136, 136, 136); line-height: 20px; font-size: 13px;
+}
+.forwardTo img {
+	vertical-align: middle;
+}
+.forwardTo .form {
+	margin: 128px auto 0px; padding: 40px 50px 50px; border-radius: 10px; border: 1px solid rgb(204, 204, 204); width: 600px; position: relative; z-index: 2; background-color: rgb(255, 255, 255);
+}
+.forwardTo .overlap {
+	left: 0px; top: 0px; width: 100%; height: 1500px; position: absolute; z-index: 1; opacity: 0.6; background-color: rgb(204, 204, 204);
+}
+.preview {
+	background: url("/images/news/preview.gif");
+}
+.clear {
+	clear: both;
+}
+.ent {
+	margin: 20px auto; width: 100%; height: 220px; overflow: hidden; clear: both; position: relative;
+}
+.ent .enttit {
+	padding: 0px 5px; color: rgb(132, 80, 30); letter-spacing: 1px; font-family: "微軟正黑體"; font-size: 20px; font-weight: bold; border-bottom-color: rgb(67, 67, 67); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.ent .box {
+	margin: 5px 2px; padding: 5px 4px; width: 150px; height: 190px; float: left; background-color: rgb(248, 240, 227);
+}
+.ent .box div {
+	width: 150px; height: 120px; overflow: hidden;
+}
+.ent .box div::before {
+	height: 100%; vertical-align: middle; display: inline-block; content: "";
+}
+.ent .box div img {
+	width: 150px; vertical-align: middle; display: inline-block;
+}
+.ent .box p {
+	margin: 0px; padding: 5px 8px; width: 140px; height: 32px; text-align: left; color: rgb(51, 51, 51); line-height: 18px; overflow: hidden; font-size: 13px; display: block;
+}
+.ent .box a:hover {
+	color: rgb(132, 80, 30);
+}
+.ent .pg {
+	padding: 6px 0px 0px; width: 40%; text-align: right; float: right;
+}
+.ent .pg span {
+	margin: 0px 5px; padding: 0px 4px; float: right; display: block; background-color: rgb(248, 240, 227);
+}
+.ent .pg span:hover {
+	padding: 0px 4px; cursor: pointer; background-color: rgb(235, 207, 166);
+}
+#picks {
+	width: 3000px; position: absolute;
+}
+#header {
+	margin: 0px; padding: 0px;
+}
+.menu_hd {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.menu_hd li {
+	margin: 0px 10px 0px 0px; padding: 0px; display: inline-block;
+}
+.menu_hd li a {
+	opacity: 0.75; transition-property: opacity; transition-duration: 0.2s; transition-timing-function: linear;
+}
+.menu_hd li a:hover {
+	opacity: 1;
+}
+.photolist {
+	padding: 10px 0px; width: 100%; height: 90px; position: relative; background-color: rgb(34, 34, 34);
+}
+.photolist a {
+	margin: 0px 3px 0px 5px; width: 90px; height: 90px; overflow: hidden; float: left; background-color: rgb(51, 51, 51);
+}
+.photolist a div {
+	width: 90px; height: 90px; text-align: center; vertical-align: middle; display: table-cell;
+}
+.phcircle {
+	margin: 0px 28px; width: 92%; overflow: hidden; float: left;
+}
+.photolist a.bt1 {
+	margin: 27px 0px 0px; left: 5px; width: 20px; height: 35px; position: absolute; z-index: 99; background-color: rgb(34, 34, 34);
+}
+.photolist a.bt2 {
+	margin: 27px 0px 0px; width: 20px; height: 35px; right: 5px; position: absolute; z-index: 99; background-color: rgb(34, 34, 34);
+}
+.bigphoto {
+	width: 100%; text-align: center; bottom: 110px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; position: absolute; z-index: 500; background-color: rgba(3, 3, 3, 0.9);
+}
+.bigphoto img {
+	margin: 5px auto 10px;
+}
+.bigphoto span {
+	padding: 5px 10px; width: 95%; height: 25px; text-align: right; float: right; display: block; cursor: pointer;
+}
+.bigphoto strong {
+	margin: auto; padding: 0px 0px 8px; width: 90%; text-align: left; color: rgb(255, 255, 255); font-size: 0.9em; display: block;
+}
+.con_keyword {
+	padding: 0px 5px; width: 99%;
+}
+.con_keyword span {
+	margin: 0px 0px 10px; width: 100%; color: rgb(153, 153, 153); font-size: 13px; display: block;
+}
+.con_keyword a {
+	margin: 0px 10px 6px 0px; padding: 5px 10px; color: rgb(6, 77, 139); display: inline-block; background-color: rgb(216, 230, 243);
+}
+.con_keyword a:hover {
+	color: rgb(17, 17, 17); text-decoration: none; background-color: rgb(192, 220, 243);
+}
+#hot_keyword_area .w10 {
+	font-weight: bolder;
+}
+#hot_keyword_area .w9 {
+	font-weight: bolder;
+}
+#hot_keyword_area .w8 {
+	font-weight: bolder;
+}
+#hot_keyword_area .w7 {
+	font-weight: bold;
+}
+#hot_keyword_area .w6 {
+	font-weight: bold;
+}

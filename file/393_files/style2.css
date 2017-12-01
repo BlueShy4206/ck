@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+#page_wrapper {
+	background : url('cdnews_016.gif') repeat;
+}
+
+#main_bg .content {
+	text-align:left;
+}
+
+#main_bg .content .content_nav {
+	clear:both;
+	padding:15px;
+}
+
+#main_bg .content .content_nav .nav_left {
+	float:left;
+	width:400px;
+}
+
+#main_bg .content .content_nav .nav_right {
+	float:right;
+	width:300px;
+	text-align:right;
+}
+
+#main_bg .content .content_dep {
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom:10px;
+	padding:10px;
+	background:#DBDDF4;
+}
+
+#main_bg .content .content_dep ul {
+	margin-top:10px;
+	margin-left:30px;
+	margin-right:30px;
+	line-height:150%;
+	font-size:14px;
+}
+
+#main_bg .content_title {
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:25px;
+}
+
+#main_bg .content_title h2 {
+	font-size:22px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+#main_bg .content_title h3 {
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:10px;
+	color:#666666;
+}
+
+#main_bg .content_title h6 {
+	font-size:12px;
+	font-weight:normal;;
+	margin-bottom:0px;
+}
+
+#main_bg .content_body {
+	font-size:15px;
+	font-weight:normal;;
+	line-height:150%;
+	padding-left:30px;
+	padding-right:30px;
+	padding-bottom:10px;
+	text-align: justify;
+}
+
+#main_bg .content_body img {
+	cursor:hand;
+}
+
+td {
+	font-size:12px;
+}
+
+#main_bg .content .comment_title {
+	margin-left:10px;
+	width:800px;
+	font-size:14px;
+}
+
+#main_bg .content .comment_title .comment_title_left {
+	width:380px;
+	float:left;
+	text-align:left;
+	color:#FF0000;
+	font-weight:bold;
+}
+
+#main_bg .content .comment_title .comment_title_right {
+	width:380px;
+	float:right;
+	text-align:right;
+}
+
+#main_bg .content .comment {
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+	width:800px;
+	clear:both;
+}
+
+#main_bg .content .comment td {
+	font-size:14px;
+	padding:8px;
+}
+
+#main_bg .content .comment .comment_content {
+	padding:15px;
+	line-height:150%;
+}
+
+#main_bg .content .comment_input {
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+	width:798px;
+	border:#CCCCCC 1px solid;
+	font-size:14px;
+	background : url(cdnews_024.gif) no-repeat 580px 20px;
+	clear:both;
+}
+
+#main_bg .content .comment_input .comment_input_spline {
+	height:10px;
+	background:#F1F1F1;
+}
+
+#main_bg .content .comment_input .comment_input_body {
+	padding:20px;
+}
+
+#main_bg .content .comment_input textarea {
+	width:500px;
+	height:100px;
+	padding:2px;
+}

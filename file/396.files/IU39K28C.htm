@@ -1,0 +1,1254 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta name="keywords" content="軍事新聞網,新聞導覽,新聞,雜誌" />
+    <meta name="description" content="軍事新聞網,新聞導覽,新聞,雜誌" /> 
+<meta name="author" content="國防部青年日報社-軍事新聞網" />
+<meta name="copyright" content="本網頁著作權屬國防部青年日報社-軍事新聞網所有" />
+<meta name="robots" content="all" />
+<meta property="og:image" content=""/>
+<link href="css/normalize.css" rel="stylesheet" /><link href="themes/js/style.css" rel="stylesheet" type="text/css" /><link href="css/jquery-ui-1.9.2.custom.css" rel="stylesheet" /><title>
+	國防部青年日報社-軍事新聞網
+</title>
+<link href="./themes/WEB4/style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/48.ico" type="image/x-icon" /><link rel="icon" href="/48.ico" type="image/x-icon" />
+
+	<script src="jlib/jquery-1.4.4.js" type="text/javascript"></script>
+	<noscript>
+		<p>您的瀏覽器似乎不支援JavaScript語法，但沒關係，這裡的JavaScript語法並不會影響到內容的描述。</p>
+	</noscript>
+	<script src="jlib/jquery.easing.1.3.js" type="text/javascript"></script>
+	<noscript>
+		<p>您的瀏覽器似乎不支援JavaScript語法，但沒關係，這裡的JavaScript語法並不會影響到內容的描述。</p>
+	</noscript>
+
+	<style type="text/css">
+		#slidebox
+		{
+			position: relative;
+			margin: 0px;
+			background: #000;
+		}
+
+			#slidebox img
+			{
+				border: 0px solid #fff;
+				color: #000;
+				padding: 0px;
+				margin: 0px;
+			}
+
+			#slidebox a
+			{
+				text-decoration: none;
+				color: #fff;
+			}
+
+			#slidebox, #slidebox .content
+			{
+				width: 335px;
+			}
+
+				#slidebox, #slidebox .container, #slidebox .content
+				{
+					height: 250px;
+				}
+
+		#slidebox
+		{
+			overflow: hidden;
+		}
+
+			#slidebox .container
+			{
+				position: relative;
+				left: 0;
+			}
+
+			#slidebox .content
+			{
+				text-align: center;
+				float: left;
+			}
+
+				#slidebox .content div
+				{
+					padding: 0px;
+					font-family: Verdana, Geneva, sans-serif;
+					font-size: 13px;
+					text-align: center;
+					overflow: hidden;
+				}
+
+					#slidebox .content div img
+					{
+						height: 215px;
+					}
+
+			#slidebox .next, #slidebox .previous
+			{
+				position: absolute;
+				z-index: 2;
+				display: block;
+				width: 21px;
+				height: 21px;
+			}
+
+			#slidebox .next
+			{
+				right: 0;
+				margin-right: 2px;
+				background: url(slidebox_next.png) no-repeat left top;
+			}
+
+				#slidebox .next:hover
+				{
+					background: url(slidebox_next_hover.png) no-repeat left top;
+				}
+
+			#slidebox .previous
+			{
+				background: url(slidebox_previous.png) no-repeat left top;
+			}
+
+				#slidebox .previous:hover
+				{
+					background: url(slidebox_previous_hover.png) no-repeat left top;
+				}
+
+			#slidebox .thumbs
+			{
+				position: absolute;
+				z-index: 2;
+				top: 0px;
+				right: 0px;
+			}
+
+				#slidebox .thumbs .thumb
+				{
+					display: block;
+					margin-left: 2px;
+					float: left;
+					font-family: Verdana, Geneva, sans-serif;
+					font-size: 9px;
+					text-decoration: none;
+					padding: 2px 4px;
+					background: url(slidebox_thumb.png);
+					color: #fff;
+				}
+
+				#slidebox .thumbs a.thumb:hover
+				{
+					background: #eee;
+					color: #00f;
+				}
+
+		/* marquee */
+		#abgne_marquee
+		{
+			position: relative;
+			overflow: hidden;
+			width: 540px;
+			height: 20px;
+			border: 1px solid #ccc;
+		}
+
+			#abgne_marquee ul, #abgne_marquee li
+			{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			#abgne_marquee ul
+			{
+				position: absolute;
+			}
+
+				#abgne_marquee ul li a
+				{
+					display: block;
+					overflow: hidden;
+					font-size: 16px;
+					height: 20px;
+					text-decoration: none;
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+	</style>
+
+	<script type="text/javascript">
+<!--
+	$(document).ready(function () {
+		var autoPlayTime = 10000;
+		autoPlayTimer = setInterval(autoPlay, autoPlayTime);
+		function autoPlay() {
+			Slidebox('next');
+		}
+		$('#slidebox .next').click(function () {
+			Slidebox('next', 'stop');
+		});
+		$('#slidebox .previous').click(function () {
+			Slidebox('previous', 'stop');
+		});
+		var yPosition = $('#slidebox').height() / 2 - $('#slidebox .next').height() / 2;
+		$('#slidebox .next').css('top', yPosition);
+		$('#slidebox .previous').css('top', yPosition);
+	});
+	//slide page to id
+	function Slidebox(slideTo, autoPlay) {
+		var animSpeed = 200; //animation speed
+		var easeType = 'easeInOutExpo'; //easing type
+		var sliderWidth = $('#slidebox').width();
+		var leftPosition = $('#slidebox .container').css("left").replace("px", "");
+		$("#slidebox .content").each(function (i) {
+			totalContent = i * sliderWidth;
+			$('#slidebox .container').css("width", totalContent + sliderWidth);
+		});
+		if (!$("#slidebox .container").is(":animated")) {
+			if (slideTo == 'next') { //next
+
+				if (leftPosition == -totalContent) {
+					$('#slidebox .container').animate({ left: 0 }, animSpeed, easeType); //reset
+				} else {
+					$('#slidebox .container').animate({ left: '-=' + sliderWidth }, animSpeed, easeType); //next
+					var autoPlayTime = 10000;
+				}
+			} else if (slideTo == 'previous') { //previous
+
+				if (leftPosition == '0') {
+					$('#slidebox .container').animate({ left: '-' + totalContent }, animSpeed, easeType); //reset
+				} else {
+					$('#slidebox .container').animate({ left: '+=' + sliderWidth }, animSpeed, easeType); //previous
+				}
+			} else {
+				var slide2 = (slideTo - 1) * sliderWidth;
+				if (leftPosition != -slide2) {
+					$('#slidebox .container').animate({ left: -slide2 }, animSpeed, easeType); //go to number
+				}
+			}
+		}
+
+	}
+
+
+	//marquee
+	$(function () {
+		var $marqueeUl = $('div#abgne_marquee ul'),
+		$marqueeli = $marqueeUl.append($marqueeUl.html()).children(),
+		_height = $('div#abgne_marquee').height() * -1,
+		scrollSpeed = 600,
+		timer,
+		speed = 3000 + scrollSpeed;
+
+		$marqueeUl.css('top', $marqueeli.length / 2 * _height);
+
+		$marqueeli.hover(function () {
+			clearTimeout(timer);
+		}, function () {
+			timer = setTimeout(showad, speed);
+		});
+		function showad() {
+			var _now = $marqueeUl.position().top / _height;
+			_now = (_now - 1 + $marqueeli.length) % $marqueeli.length;
+
+			//marquee UI here
+			$marqueeUl.animate({
+				top: _now * _height
+			}, scrollSpeed, function () {
+				if (_now == 0) {
+					$marqueeUl.css('top', $marqueeli.length / 2 * _height);
+				}
+			});
+			timer = setTimeout(showad, speed);
+		}
+		//restart timer 
+		timer = setTimeout(showad, speed);
+
+	});
+	//-->國防部青年日報社軍事新聞網
+	</script>
+
+
+    <link href="css/v2.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/print.css?1399538240" media="print" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="../js/modernizr.js?1401526236" type="text/javascript"></script><!--[if lte IE 8]><script src="../js/ie.js?1401526236" type="text/javascript"></script><![endif]--><noscript>您的瀏覽器似乎不支援JavaScript語法，但沒關係，這裡的JavaScript語法並不會影響到內容的描述。</noscript>
+    <noscript>國防部青年日報社軍事新聞網</noscript> 
+    <script type="text/javascript">
+    var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    var refUrl = document.referrer; // Get the URL where the user came from
+    var prevUrl = refUrl.substr(7, 23); // Create a substring after 'http://' and '.com'
+    var mobileUrl = "news.gpwb.gov.tw/mobile"; // String from mobile site URL; must match prevUrl
+
+	
+	// Run auto-redirect only if the user is on mobile and isn't from m.azharkamar.com
+    if ((mobile) && !(prevUrl == mobileUrl)) {
+        //document.location = "http://news.gpwb.gov.tw/WebService.asmx/../mobile/index.aspx";
+
+		 
+		window.location.replace("/mobile/index.aspx");
+		
+    }
+	
+  </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26674884-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+		<style type="text/css" media="all">
+			.image_carousel {padding: 15px 0 15px 40px;position: relative;}
+            .image_carousel img {width:90px;height:90px;border: 1px solid #ccc;background-color: black;padding: 9px;margin: 5px;display: block;float: left;}
+            a.prev, a.next {background: url(booklet/images/miscellaneous_sprite.png) no-repeat transparent;width: 45px;height: 50px;display: block;position: absolute;top: 55px;}
+            a.prev {left: -22px;background-position: 0 0; }
+            a.prev:hover {background-position: 0 -50px; }
+            a.next {right: -22px;background-position: -50px 0; }
+            a.next:hover {background-position: -50px -50px; }
+            a.prev span, a.next span {display: none;}
+            .clearfix {float: none;clear: both;}
+			.content-hd a.hot:after {content:""}
+			.content-hd-13, .content-hd-14 {margin: 0.15em 0 0.5em;border-bottom: 1px dotted #994f6a;text-indent: .5em;clear: both;color: #666666;font-size: 1.75em;line-height: 1.33333em;}
+			.content-hd-13 {border-bottom: 3px solid #1069b1;}
+			.content-hd-14 {border-bottom: 3px solid #ee7f41;}
+			.content-hd-13 a, .content-hd-14 a {display: block;text-decoration: none;}
+			.content-hd-13 a:after, .content-hd-14 a:after {content: "MORE>";float: right;font-weight: lighter;margin-right: .5em;position: relative;bottom: -6px;font-size: 0.5625em;line-height: 2.22222em;}
+			.content-hd-13:hover a {color: #fff;background-color: #1069b1;}
+			.content-hd-14:hover a {color: #fff;background-color: #ee7f41;}
+			.content-hd-13:hover .news, .content-hd-14:hover .news {border-color: #fff;color: #fff;}
+			.content-hd-13 .news, .content-hd-14 .news {border-left: 2px solid #666666;margin-left: .5em;font-weight: lighter;display: inline-block;line-height: 18px;color: #bcbcc7;}
+			.content-page, .content-page p {font-size: 18px;line-height: 1.7em;}
+			.content-page p {margin-top: 1em;}
+			.content-page .figcaption {font-size: 12px;}
+			.content .genre-news li:before {content: "‧";font-weight: bold;}
+			.time-news {font-size: 15px; line-height: 1.5em;}
+			.time-news .content-hd a {color: #fff;}
+			.content .genre-news {font-size: 14px; line-height: 1.6em; font-weight: normal;}
+			h2.content-hd a.btn {;font-size: 14px;color: #2a2a2a;top: 3px;float: right;text-decoration: none;padding: 0 10px;height: 25px;line-height: 25px}
+			h2.content-hd a.btn:after, .ID900 a:after, .ID910 a:after { content:""}
+			h3.feature a {color: black;}
+			h3.feature a:hover {color: #ef8332;}
+			h3.feature .time {font-size: 0.7em;}
+			table.ID900 {width: 100%}
+			table.footer {width: 100%}
+			#hd-news .content {font-size: 15px;}
+			#header .logo {width:100%}
+			/*img.figure__image {width: auto}
+			img.figure__image {width: 700px}
+			.thumbnail__wrapper img {height: 100px; width: auto; display: block}*/
+			.news-list h3 {font-size: 20px;margin: 12px 0 16px;}
+			.news-list h3 a {color: black;}
+			.news-list .time {font-size: 15px;}
+			.nivo-caption {opacity: 0.7}
+			.nivo-caption h3 {margin: 0}
+			body {background: #CCCCC; font-family: "微軟正黑體"}
+			#wrap dl {font-size: 13px}
+			.sbs-info h2 {font-size: 23px}
+			#main-nav .sub-2-toggle {width:96px}
+			#main-nav .sub-2 {left: 96px}
+			#main-nav .sub-2.drop-left { right: 96px; }
+		</style>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=521094384662349&version=v2.0";
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+				</script>
+</head>
+<body class="index">
+  <form method="post" action="main.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/vbjgc4UBq/nT+aOMQUQYDyVPz9ufq6eCIGdRhQhQfKVaHQUeMBAxwSW7UeWc5Z3uG5QisSnMBcYBOLkSK1I16SwZ5I+IISNTSQxWyQ+TbzTcBYBbCCe71jK7HxYIvUKnnXYIg==" />
+</div>
+
+    <div id="page">
+      <!--TOP LINK-->
+	  <div id="header">
+        <div class="top">
+          <ul id="theme-nav">
+            <li>
+              <a href="/index.aspx?ydn=tFD67Q790OC5WjkczMpaaQ%3d%3d" id="theme-1"></a>
+            </li>
+            <li>
+              <a href="/index.aspx?ydn=J0mRsRqjRJWRw2OGWRDQ6Q%3d%3d" id="theme-2"></a>
+            </li>
+            <li>
+			  <a href="/index.aspx?ydn=0rDN%2bTdia7EexexBRpBDew%3d%3d" id="theme-3"></a>
+            </li>
+            <li>
+			  <a href="/index.aspx?ydn=7y4Im%2bNJxzKSrzLvtvSBJQ%3d%3d" id="theme-4"></a>
+            </li>
+            <li>
+              <a href="/index.aspx?ydn=ytzu727cLrFLXHvJGd8wVw%3d%3d" id="theme-5"></a>
+            </li>
+          </ul>
+		  <ul id="top-nav">
+            <li>
+              <a accesskey="U" href="sitemap.aspx" tabindex="1" title="上方導覽連結區域">:::</a>
+            </li>
+            <li>
+              <a title="回首頁" tabindex="2" href="index.aspx">回首頁</a>
+            </li>
+            <li>
+              <a title="設為首頁" tabindex="3" href="#void">設為首頁</a>
+            </li>
+            <li><a title'網站導覽' tabindex=4 href=/textclass.aspx?ydn=bJ1%2bvLP5z7Prro73nFkRYBRCe7UwT5EWlGBkVM22C6bQwdzEkWQdCKOJ1lLs9GXy>網站導覽</a></li><li><a title'常見問題' tabindex=5 href=/textclass.aspx?ydn=bJ1%2bvLP5z7Prro73nFkRYOK2s%2bKhO%2b0KD%2fNQNg49%2fYy5OOI0BIIdB0%2f2tMaT2y7C>常見問題</a></li><li><a title'RSS' tabindex=6 href=/textclass.aspx?ydn=bJ1%2bvLP5z7Prro73nFkRYIsCUraGPYLl8wr5Z37mSRsVOIESMQbNaCagTrz3lPyW>RSS</a></li>
+			<li>
+              <a title="手機版" tabindex="7" href="/mobile">手機版</a>
+            </li>
+			
+            <li>
+              <a title="English" tabindex="8" href="ennewsclass.aspx">English</a>
+            </li>
+          </ul>
+        </div>
+		<h1 class="logo">
+          青年日報
+        </h1>
+		<!--Main-nav-->
+		<ul id="main-nav">
+		  <a accesskey="L" class="tile" href="sitemap.aspx" tabindex="9" title="左方主選單 AccessKey: L">:::</a>
+		  <li class="root">
+            <a title="首頁" tabindex="10" href="/">首頁</a>
+          </li>
+		  <li class=root><a title=要聞 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfSCNlWv4RFy5b4xq24zKgG4%3d>要聞</a><ul class=sub-1 style='width:384px'><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNgQTSyflEMFRxQsR%2fNWHaVk%3d>千萬觀光大國達陣 幸運兒：我愛臺灣</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNvS5hTfP2V0UJh3bL%2fMU2sA%3d>警察特考遭疑 考選部：檢討審議</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNp4KiQ48udrfpbPPyLxaPpU%3d>松山機場爆裂物 研判惡作劇</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNj3bU2i5BENPqmDhQEZkbOg%3d>歷史上的今天：12月21日</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNpkIxv6TdZdDumeBCepSqm4%3d>「創始國」的歷史無可改變 聯國臨時總部 仍懸掛我國旗</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNjQdZE5v%2biyr9K8Mho2N2P8%3d>輔導微型企業 注入高值化經濟動能</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNqhMP18nlKuDWnJcOpuA%2bPo%3d>結合地方特色 營造東部產業發展契機</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNnHPYZz1Ymj2xLDHoT%2foJYM%3d>保障身障者權益 政府鼓勵友善建築 安全又方便</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNj9g8WsMw6e2PEnUxlqvaUQ%3d>保障身障者權益 建構無障礙環境 提供舒適便利空間</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNrafyZ81QtVzbdEuQHenDxA%3d>觀光局：提升旅遊質量 明年邁向1070萬人次</a></li>
+			</ul></li><li class=root><a title=軍事 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfW9%2fceCBc7IeZtSN5apcT9Q%3d>軍事</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfduN00%2fUTtaHubMgDTAwiGg%3d>軍事新聞</a><ul class=sub-2><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtrqLrxRgKwtRqgM5MN2OMViJGKVadJCZRxMsKukzgCo8%3d>空軍司令部：尊重司法判決 加強性別平權宣教</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtrqLrxRgKwtRqgM5MN2OMVsoPZxsIAXoNxNv0rIhlpuU%3d>國防部一般職務宿舍申住最新消息</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF%2bDi1FJjeuYWVR48rooPnv0%3d>嚴總長視導後勤部隊 要求「工安為先」</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF9Ya05W7y52T5JLxLbNY2yk%3d>即將突破19萬人  國防部發言人粉絲專頁 按讚有好禮</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF39BIrYLR5dY5pcRWJq0XoE%3d>特勤、偵搜部隊鑑測 驗證訓練成效</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF5efflsLmtQ0dC2wdOYBoWU%3d>競賽激勵榮譽心 累積經驗</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF5VfuRO3cpeLCyvhb7MLVcY%3d>上校以上轉任公職考試下月5日起報名</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF6d34kg7MBKQO5hbDQhxZCM%3d>邱國正視導黑鷹直升機接機</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtkSHTX8rA%2fUwqsYul1z%2fyF%2bDoAmF483zHWgHhrwLkj5E%3d>從軍心主張：發揮專業 精益求精</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rt2A5082oZ364Lc2hpeUwMtg7KyQhoJvuK2QJx99Vz8Yg%3d>大武盃鐵人三項 官兵競賽練戰技</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbffKqLrFfCdlep4HZVS87XAc%3d>軍武大觀</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfflCpgVau%2bPbQQ7k9h1OqvM%3d>寰宇韜略</a><ul class=sub-2><li style='width:244px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbhM2auEkoxwKGbAKnE8nCQwUOvlcqiFKxOK4EO8CAjNSjbjz2cpzI6n67cveZ1ElKncw%2fdfm1g9gimVMAE5f74%3d>探索新科技對未來戰爭的影響（下）</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfQ157rKxDVUdjge0h26Mivk%3d>戰史回顧</a><ul class=sub-2><li style='width:314px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfW69tLedG5G02S48bgEJFVuiBFjD9ZEyZTYAEuGPMyLqbYJa%2bXon33TP8nYLSYllaMldEJs%2fOJ8MhqIXH2GopJw%3d>徐州會戰國軍血戰寧死不降 奮戰到底創獲大捷</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfRDGK4m%2bl5Eci2ZPILFkE3U%3d>軍事專題</a><ul class=sub-2><li style='width:216px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVDGfA2czeYcX9ruHYPdW1ap%2fzvbMjFJh%2bUpg4La5Y19AL5UC8A8Z8NdOeJwvf3XMt0MULRnNpgGFR7PZq6yBoA%3d>淺析俄羅斯遠東軍力部署與發展</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfQouQuOdKQa9v06s3PUIZYM%3d>青溪</a><ul class=sub-2><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbxbq2UfTyA%2fdcg6buPDlZV2covD5O1pcIpu1HDFsYfcNU63iyjp5Ib203x6DIjaH547hdeBbU0H6TWgp0AjbqQ%3d>中區後輔會議 表揚有功幹部</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbxbq2UfTyA%2fdcg6buPDlZV2covD5O1pcIpu1HDFsYfcNU63iyjp5Ib203x6DIjaH400pNYyGKFj5JuyitxSQ6k%3d>中區後安幹部工作研討 表彰績優</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbxbq2UfTyA%2fdcg6buPDlZV2covD5O1pcIpu1HDFsYfcNU63iyjp5Ib203x6DIjaH326GaHyDWMHT3KRx5o7MA0%3d>屏東後輔熱情響應捐血</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbxbq2UfTyA%2fdcg6buPDlZV2covD5O1pcIpu1HDFsYfcNU63iyjp5Ib203x6DIjaH0bNCpcOL9wP4g1cWNuDdzA%3d>高雄後備旅教召 報到率100％</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfdKW5TKuvnfPrNdupN2s7SA%3d>情與義</a><ul class=sub-2><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCm3X43ou3iaiNwSxWcKE0T4%3d>臺中榮服職涯發展講座 中部榮民眷受惠</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCrgjmUTW9q3KbT4nUO4VCk0%3d>臺南榮服座談就學就業 踴躍熱絡</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCkxbhaJTTWz0oZQSCG2JE3s%3d>東縣寒冬送暖 馬蘭榮家一堂歡</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCqjZAFiOH5mTwbdWE%2bXzeDU%3d>屏東榮家教授軟食料理惠長者</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCvN3ilR4Ma3R%2frcnM78WFEM%3d>花蓮榮家懇親會 溫馨樂融融</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCihXYRVqf6HWfCrIIwjTp60%3d>彰化榮家綜藝饗宴慰老懷</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCrwvbIz2Gt%2bjFwqTxVUa6Uc%3d>後備部對遺眷退員關懷備至</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCgVGyxpwOaaSydETboxzbH8%3d>高榮南院音樂會 感恩鄉親</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfeg19Ht9s%2biPC5adZcvIpyI%3d>軍人之友</a><ul class=sub-2><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRcEuINIkWGPcQEjls6HBx7LFoxV77Uk4yDzE3PrIDTT0nCoxQk9oZFbHtZN90h6CeSpZNEQH3ZYm%2fZfzYlf7dg%3d>臺北英雄館餐廳圍爐年菜 滿足饕客</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRcEuINIkWGPcQEjls6HBx7LFoxV77Uk4yDzE3PrIDTT0nCoxQk9oZFbHtZN90h6CUBoMYAblwsth10YsezqRoo%3d>跨區連線服務 軍友站即時傳愛</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRcEuINIkWGPcQEjls6HBx7LFoxV77Uk4yDzE3PrIDTT0nCoxQk9oZFbHtZN90h6CRXmhI8sYNhswXF0JUysC0I%3d>部隊協請慰問家屬 南市軍友站即時服務</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRcEuINIkWGPcQEjls6HBx7LFoxV77Uk4yDzE3PrIDTT0nCoxQk9oZFbHtZN90h6CTRQ1XdfRf0Xa%2fwHoabWneg%3d>歡送役男入伍 各縣市站動起來</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRcEuINIkWGPcQEjls6HBx7LFoxV77Uk4yDzE3PrIDTT0nCoxQk9oZFbHtZN90h6CezwUWmZhmXyi%2fPcQlw5pmA%3d>南市議員探視役男 勉勵接受訓練</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfez4Js4ZymOy2RKUJJBrPbc%3d>荷松</a><ul class=sub-2><li style='width:244px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRo5HgS%2fPDroBlrJf2aTLVg3UU5Y%2bI5DnZmB%2f4ROVVvEkvtjpeQhgwM0G0JQHEqRNSnsye7e6IAiTmysZgJAGGc%3d>雲林後憲響應臺灣阿甘倡環保</a></li><li style='width:244px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRo5HgS%2fPDroBlrJf2aTLVg3UU5Y%2bI5DnZmB%2f4ROVVvEkvtjpeQhgwM0G0JQHEqRNQILtZ21rv9%2beZw0A6RFe4U%3d>屏東後憲辦全民國防活動 視聽饗宴</a></li><li style='width:244px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRo5HgS%2fPDroBlrJf2aTLVg3UU5Y%2bI5DnZmB%2f4ROVVvEkvtjpeQhgwM0G0JQHEqRNfR73IkgxLCHf46rIkiQS9I%3d>宜蘭後憲慶祝協勤隊成立</a></li><li style='width:244px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfRo5HgS%2fPDroBlrJf2aTLVg3UU5Y%2bI5DnZmB%2f4ROVVvEkvtjpeQhgwM0G0JQHEqRNcTLOFaeWvKTX0wmIFLu4es%3d>環臺憲愛 公益募款捐助弱勢</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfadTwkrK9c2SXvMDIzq2cLI%3d>武備巡禮</a><ul class=sub-2><li style='width:202px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTPjgUgRhyf92RULJg6sM8nhI8CBq%2fpTrCc7sWHUriwixrUrzepIo2RSuAcH7S%2fxnFuq1lyuclbK2rb6FzzTEI4%3d>C─17環球霸王Ⅲ式運輸機</a></li><li style='width:202px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTPjgUgRhyf92RULJg6sM8nhI8CBq%2fpTrCc7sWHUriwixrUrzepIo2RSuAcH7S%2fxnOyzl5chaLTMbCYY6QMi3kA%3d>性能優異 作業效率高</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfYiF7iDUTNGw7OpWJp6fp78%3d>全民國防</a><ul class=sub-2></ul>
+			</ul></li><li class=root><a title=國際 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfYMtVjokagTncMbe%2fYAemjM%3d>國際</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfRY98uB2VmphB6ZMNxwZqPs%3d>國際新聞</a><ul class=sub-2><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6IZujM6CZlGrOPXvYhZpmnE%3d>模擬2030核戰   美空軍演習   強化核打擊能力</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6JUcBkVi0pT5wkZhBkf7w84%3d>日防衛預算創新高   逾5兆日圓</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6CUJ9NxXNuTjh4qFbcZBm70%3d>英女兵擬明年底上前線作戰</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6JX5zcID%2bT5rvXHcHHzy9nM%3d>艦艇上飲酒!?   法美軍紀大不同</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6ObN8MtzM0E8%2fvgYF3m18fM%3d>T-50表演墜毀   重擊韓航太</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6MSn2RKRnGOkLPyFP1G0IQ0%3d>歐巴馬施壓   土耳其自伊拉克撤軍</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6JSVZ9nGZ3%2bhMajBUxa%2b8nA%3d>印尼渡輪沉沒   逾70人下落不明</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6D2t883Mq60E42xCEHDyU%2b8%3d>法航463班機迫降肯亞   倖為「詐」彈</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCe2W9qAd209ujAdIXFnDnX%2ff4Ut1G2i2yYOV2UTtsCP9o%3d>英恐攻警戒調高 影片教保命</a></li><li style='width:384px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCe2W9qAd209ujAdIXFnDnX%2fZLoI3%2frb3hcFZGPDzLV3W0%3d>美完成羅馬尼亞飛彈防禦系統</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfXxm3hsCrJowKfnGgkRzITw%3d>國際瞭望</a><ul class=sub-2><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXtVB2%2b7tMZe03%2f1T5w2VRmaKEbK5NbPK4eGsdSf2GsLNA6xPiUF5Mvi5I%2b4yc5oAOdG%2buSJrGyFmai5Yzy3qCM%3d>重新認識新興恐怖主義 看我國反恐定位</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXtVB2%2b7tMZe03%2f1T5w2VRmaKEbK5NbPK4eGsdSf2GsL%2fx7mc%2fvapr%2frmK8IszJn5lMKIbi2pnyJUsis%2fB5TyNk%3d>女兵參與前線作戰 美軍全面解禁</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfbb3AJit7T3RB9sYatG%2bDCk%3d>全球戰略</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTKvDKRvw1n0y8hR4hSkfiE%3d>軍事論壇</a><ul class=sub-2></ul>
+			</ul></li><li class=root><a title=搜奇 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfSXVyb%2fXFwL8vtF5KyU7TeE%3d>搜奇</a><ul class=sub-1 style='width:272px'><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4Fgvkv%2f2S0RoKft043iL2RG6O6BmqanzpNxOwEEWAlUQniN4%3d>年度10大經典太空時刻</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzjN2i%2f2tizoOkKvyCozPp9w%3d>洛馬瘋星戰 未來軍武很科幻</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzoorZ4eNRbC3GPfCwS9D7Rg%3d>迷途小白鶴 金山野放</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzsj1DzqbnkxlVhhDE8pcufM%3d>美原油出口解禁 提供租稅促綠能</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzvVzAzF2M65fwSpgQ8JIoA8%3d>大馬再「下殺手」！吉隆坡禁售電子菸</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzizbU6hEFgffPmKrR59my5E%3d>雲南「馬鹿洞人」 晚期智人新發現</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvkBXKxDj3LCeqR%2bAgEPgtc7eYNjhMfIPtAIFvdDi0veEY%3d>向遺屬致敬 美退伍大兵泳征密西西比河</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvkBXKxDj3LCeqR%2bAgEPgtc7V52z%2fLr4tDDnPbxaAn5WfQ%3d>耶誕夜星際訪客將飛掠</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvkBXKxDj3LCeqR%2bAgEPgtc7R6ookv0Osxr3hsQ6XYNjA0%3d>14光年外…新發現「超級地球」</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvkBXKxDj3LCeqR%2bAgEPgtc7Z3FlwH69FG0Gixoev4P7UM%3d>祖克柏愛女 堪稱最小星戰迷</a></li>
+			</ul></li><li class=root><a title=生活 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTRfpZkAmr3FXzMVFc9Nfy8%3d>生活</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfV9vgE1M97FKxoTKaFg1yCE%3d>生活新聞</a><ul class=sub-2><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBokOg4R882nYbYd%2f%2foKH0t0%3d>進擊巨人、蛋黃哥… 動漫迷矚目</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBpf5cciQHy1B5VByFGnYPi8%3d>3款蛋黃哥料理 可愛爆表</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBhU8MZDt5bojOs4SnuhBqQQ%3d>南投信義鄉踏雪尋梅開鑼 歡迎體驗</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBhPEqH1ASIeXlYaaUQF4%2fIY%3d>恐怖升級住房 漫迷搶好康</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBjRnXrPIQBEPJ6ujLjVlptA%3d>臺鐵花東線七星報喜紀念月台票 26日開賣</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBrFAlKw%2fU1kHSHoxuhlXuZI%3d>屏東山川琉璃吊橋26日起試營運</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBpujI70uJ%2fqwCLnYliDr%2f7U%3d>二林蕎麥花海 花姿獨特超吸睛</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBqJj5UQmI6YtsWcaidYU66U%3d>國5試辦交通新措施 依舊塞車</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBqnVioNZ1drr6YRGGPrCQ4s%3d>本週油價調降 柴油探新低</a></li><li style='width:300px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxLqHdaXp6aiIgK7F7XZ6Rcdv82zXiWSDqEvRRFRRB5BU%3d>新店新氣象 吃喝玩樂一次搞定</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTCvb0YbwQ94IBJbOBGaYDo%3d>旅遊</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTn70a2cGjLPbRTarAb86Oc%3d>車訊</a><ul class=sub-2><li style='width:118px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZXM4b8%2b7eRzHHmOtlQDK7mTAdVCo09KmMOP34%2fT%2fJYKEo%2f14rP8n6Ku4SYgExb0hnxUk73Yr7U5Tvn7sHp%2fW7U%3d>精打細算挑愛車</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfeo0VTj7UjP%2bEZdRedePQN4%3d>3C</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfba3URe7dKTd8AlqLWRtea4%3d>美食</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfUhK2aOf8acSf81zIuwzW%2bE%3d>長青</a><ul class=sub-2><li style='width:174px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfQF0k0wx9I3p9R8FBK9zwdoEQ1sJOpIdc7XmvlAVq1z8RtaTsCE0Dlkp%2bb5v6zMRl94mGHKI%2buATlMo0xNXJx3s%3d>快樂銀髮族 護肝保健康</a></li></ul>
+			</ul></li><li class=root><a title=教育 tabindex=10 href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSPJSVvVLh0EK6RRWG8BKm0%3d>教育</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgcnFt9K6tj1vTHni%2fDD0FgM%3d>教育新聞</a><ul class=sub-2><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU9YiI1OlxbhQRuzkkaSiPlt44DCwbvYdVXwnBR1CXeF8%3d>高中職遊程設計賽 「長榮」奪冠</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU9YiI1OlxbhQRuzkkaSiPliD6pThBHgzg3a5fqILT1ho%3d>四技申請 逾萬名額供高中生換跑道</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUZrduOr4TBo6sGRxh%2fCW85J2J2AlHUCQj3cYBD6lTtZs%3d>《2016大陸高校升學指南》  介紹兩大工程重點高校</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUZrduOr4TBo6sGRxh%2fCW85EVUxeGtnyVdTs3NFeK%2f1UU%3d>打造臺灣華語文聖地  「走讀城市學華語」 啟動</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU7XzLD3GxdHcWTEEa7gqzdn0dAq88FYefl6PvowCk6qE%3d>助視障行  馬彗娟獲教部獎勵15萬</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUfYVdAXZM%2fXneYe8NzMR9aPaDoYnY6W3A9BbhPRGev5I%3d>適性探索 學子找到人生方向</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUfYVdAXZM%2fXneYe8NzMR9aHeqXi1eKnKvdxpXayysxaM%3d>冬至搓湯圓 「大葉」外生開心體驗</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU6HMGSSgj9L68OIDbfKLCb60DGfsA19IkXaWBigKC1Rg%3d>教部啟用2資源募集平台</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU6HMGSSgj9L68OIDbfKLCb1tO3yjaKvhHMb559kHI0Yo%3d>臺科大積極拓展國際生源</a></li><li style='width:384px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU6HMGSSgj9L68OIDbfKLCb37TxrjQ6yDs64ceGgk4j%2fE%3d>105學子獲頒蔡萬霖獎學金</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgdVt7wwufKdDbJxSLl%2f0v1w%3d>中英快譯</a><ul class=sub-2><li style='width:706px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgZfC%2ffg3Nx4Ug%2b7ur9Ya9Pytp7W8BEL12lCcTNLtSTkcbaHgpv6q1t6ZiEpKIU8WDlVaJqnVbvXeuLwOs9ibtmI%3d>The Battle for the Second Screen  次螢幕戰爭─多媒體娛樂進化關鍵</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgUh9wTUMDhSktLH7LUSEQFI%3d>快樂學園</a><ul class=sub-2></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgVloKIABK6gh2b1bzC2aK1g%3d>青春一族</a><ul class=sub-2></ul>
+			</ul></li><li class=root><a title=藝文 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfb414e%2fB6r5sfG%2fB6tlj8yw%3d>藝文</a><ul class=sub-1 style='width:454px'><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BMxQ8xoz0n%2fuCzNUqQ0yISWM%3d>國光歲末公演 《極度新鮮》</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2bYCdnk27iiiJXtcuIdsTdM%3d>唐文華擔綱《血染未央宮》</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM1WtzaVg%2bgIy7Qj9I1O8CQQ%3d>臺灣國際藝術節 《愛人》打頭陣</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2b9bfz%2bQfhXxzvpICT60lSQ%3d>張辰溦《和老頑童一同去探險》繽紛歡樂</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec76fvlCK66qRINfrRTIubaw%3d>兩岸首座亞洲藝文博物館─故宮南院開館前夕  「雲嘉南之夜」點燈</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2OGbpvJiCZBPXQE4NDdyz8%3d>開幕3個月免費  一律預約─10首展  首秀「黃地團龍如意紋」</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2mR7%2bX6vI3pwmOYEZV%2bhms%3d>臺中國家歌劇院  曲牆工法全球創先</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2QdhxyFWGA5aiqpLpWFz7A%3d>國際管樂節踩街  震撼嘉義</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8XecwdRF9iKVyTpZlPv2OXOVVA%3d>正體漢字全球書法賽  674作獲獎</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJQUZ9SbkjH1tJiAaLmZwH4cHyHHVs0JfAiWhintHzlNI%3d>「國軍培育出來的畫家」─李沃源彩墨彩瓷展  涵泳官兵藝文視野</a></li>
+			</ul></li><li class=root><a title=公益 tabindex=10 href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTA9aOBQEY49Md8pA1XMcLY%3d>公益</a><ul class=sub-1 style='width:300px'><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeR%2bZAZrbOZ8kubvOv84uCesXvZo2pQFPA%2fIzvkMr0oDBQ%3d>公益音樂會傳愛 支持孩子追夢</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j%2fcecp8OChDrPkq4OlNHxrA%3d>臺灣首支原民弦樂團 親愛愛樂</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j%2b8ZGo3kgPUn4DUFowaZswY%3d>逗陣盃籃球賽 為氣爆區青少年打氣</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j132ofoKONpX42R1g289qXk%3d>南投婦幼保護志工隊成軍</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRqf5xyNGxGAcQCVX53JYYVCdNTcbXspk%2f%2bmmu%2bP51QP4%3d>紅盒子裡有秘密 打造友善世界</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRqf5xyNGxGAcQCVX53JYYVANjV%2f6Ub0f%2fCbQVL8nszA8%3d>發現更多聲音的喜悅 聽損兒最懂</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRqf5xyNGxGAcQCVX53JYYVCoB28eza3jqiWtooMjeBek%3d>善化弱勢學童耶誕圓夢</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRqf5xyNGxGAcQCVX53JYYVHTqfpsS51nyCJmorfnEfEQ%3d>耐斯王子《耶誕心願卡》 寒童暖心</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRl6DXGa91oJ%2f7eMvfRuSEDJU%2bPXR847V4L2gipgBOYiQ%3d>創世自立媽烤瓜獻愛心 龍千玉力挺</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRl6DXGa91oJ%2f7eMvfRuSEDDfqumT0jtEIUo9VSROxURU%3d>寒流來襲 衛福部、北市府、人安送暖助寒士</a></li>
+			</ul></li><li class=root><a title=運動 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfbzNPpSQurZjKjT0lpk1Yxk%3d>運動</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfcP1hA%2b38Tj3JoKc7CLg5ow%3d>國內體育</a><ul class=sub-2><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJfxM1f%2beMYpGrEDhL8yya5E%3d>全國手球賽 130隊高雄大車拚</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJRid6qTW4aNl4%2b8KANNu5JE%3d>璞園8連勝 台啤屠臺銀 達欣飲金酒</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJZkBcmlvwzVgjbVj6FMd27M%3d>臺北國際城市青少棒賽 激戰7局 新泰不敵大阪 1分飲恨</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJVICbm7zKk06rC55a8DGrXk%3d>周思齊棒球獎學金 31人得獎</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJaBWb9%2fLbvYjU%2bi7U%2blYxJo%3d>岩貞祐太最佳投手 楊岱均最佳打者</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJca3ipaEggNxgGe%2bFHU%2fSWs%3d>第8局逆轉 中培擒日職摘冠</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJUq%2bz5DdzqgVXgJZCJ5uuAE%3d>臺北馬拉松 何盡平稱霸國內 傅淑萍封后</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdM%2bW4lF0yIOC3InnYKlF5X39eKhjW8EwnvObZfRxwVW1w%3d>單車勇士寒冬送暖  愛心繞全臺</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdM%2bW4lF0yIOC3InnYKlF5X39Kmecvs3rO4ld29XZlb6j0%3d>單車環臺募款起程 救助急難家庭</a></li><li style='width:398px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdM%2bW4lF0yIOC3InnYKlF5X3zKWlIpIKOSwsCG7k3nEH6I%3d>呂政儒手感燙 裕隆扳倒勇士</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfSe%2fvx75d7iJSvToMOC9wbQ%3d>國外體育</a><ul class=sub-2><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggK8E0jEoK5TbycH8Qezcnio%3d>德甲 穆勒點射得分 拜仁技壓漢諾威</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggPr6%2bBmlF8TVsGvsyK1fDfU%3d>國民補強戰力 目標指向陳偉殷</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggN1%2f8%2fzSPLMCa2LgPuz1RO4%3d>霍華德領軍 火箭擊沉快艇 打破流言</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggMXHUcSkAct2eXtmEhUIfKE%3d>爾文推特宣布：我回來了</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggI08G9xt%2f8aDFqG7BNsVbIs%3d>老布缺陣 雷霆雙星聯手 血洗湖人</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REXfXNEp7l%2fxs1WaFIPT3ggLv%2b0C5uw0iPJ%2f0nGo6IBl8%3d>豪哥替補砍15分 黃蜂仍輸巫師</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REwoTVmwX7wuY1K8EVYuqw07YgFdXLnjwqwUw1UXX1Ssc%3d>皇家關注陳偉殷 價碼是關鍵</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REwoTVmwX7wuY1K8EVYuqw0wHIcP8UsLeDLFP%2fX%2bJ4JTY%3d>末節大爆發 勇士獵鹿驚險復仇</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REwoTVmwX7wuY1K8EVYuqw02vE%2bGewYzTbsL2WTNSuHB8%3d>4度延長惡鬥68分鐘 活塞克公牛</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfev1RP9qrUUhEdvlR4XXkMg3s%2bO7OOn8EIzSIeYvI7REwoTVmwX7wuY1K8EVYuqw09%2fjCsgOeQqfm21idyueyDY%3d>馬刺戳穿快艇 主場連勝寫隊史</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfdGTeFOVvNG%2bCT2mwe%2bdzD0%3d>路跑</a><ul class=sub-2><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW824%2biE7fpowmNq8tYECeFXRbFrR2TUYdcpKCjb2%2f0BSps%3d>酷樂路跑耶誕彰化站 3000人參加</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW82dU67kUtLmd6fP0WNlpG%2b5w%2bCb7SekERTcwisZvNi9YY%3d>泰迪熊愛心路跑 助貧童安心上學</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW82dU67kUtLmd6fP0WNlpG%2b59AVOGd%2fcpUvx4qcmMzUf7s%3d>臺北馬拉松 許淑淨任一日志工</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW82%2fJbsp72B4SbcwEipZhOJYdA3h7lRxGMFUqJWPdMyPck%3d>臺北馬拉松 明市民廣場開跑</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW82UKQbFJbmtnxEGp2wkLs0pXtAMYZU%2fffFKTaURF8ouJ4%3d>空污改善 臺北馬拉松照常舉行</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTJAoGULyW2bsEAMGj3zRMnUeTd02KDWWMlRx6ZsUW82Qef4eR1Uk5tKlVDvjT2SECqURnsYQM5kbnOY8bYp%2f1g%3d>陳彥博榮歸</a></li></ul>
+			</ul></li><li class=root><a title=影劇 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfaGdR2OljMzplkpuMyKv2Zs%3d>影劇</a><ul class=sub-1 style='width:328px'><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJiofjNDbIZL8OlF27jr9QfU%3d>「一把青」劇組座談 暢談女人情事</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJhhoWzK9XSxy1N3wWtHiAjg%3d>潘柏希耶誕送禮 李佳豫頻「打槍」</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJshiX3Skt9DVc3%2bN4s8jn2A%3d>「耶誕巨星派對」第2場 蕭敬騰壓軸High翻</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4g8h814Yck3lZqVALhb2mKwhQbWQitlDR4h1Aajgb3Q4%3d>濱崎步離華 親切簽名贈粉絲</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJhpmcouCiu%2fQxQ7zmKgdNtE%3d>大元拍練舞戲壓力大 拜邱昊奇為師</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJncIjHIJYjufinUtDiGCosM%3d>追婚日記票房佳 粉絲包場挺偶像</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJpYRl%2bDcd9hr%2fAPa9EzTBRo%3d>臺南跨年三部曲胡瓜主持 眾星雲集</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJpXSj6ItGBFBjC66gtZCtho%3d>王宇婕、郭耀仁鹿港拍戲 大讚美食</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4f3IsO4lPotgDdvufWRDDe0gE6Kl8ieV8PYi5y14Vw3o%3d>金牌選手白富貴、拳擊正妹楊甯快拳比武</a></li><li><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4f3IsO4lPotgDdvufWRDDe3iW%2bRk4yi1HG9t1B78FxyQ%3d>蘇打綠舉辦專輯簽唱會 開心點燈</a></li>
+			</ul></li><li class=root><a title=大陸 tabindex=10 href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgf73tX6hTJLoEunAfsyc9Lo%3d>大陸</a><ul class=sub-1><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgadmNSGvIKWwzTG2HMZwOLk%3d>大陸動態</a><ul class='sub-2 drop-left'><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCyExK8o8BWTDW07SMNICNlYLU7CzPW4DzUsFyxBm%2bErw%3d>深圳山坡崩塌 吞沒工業區</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCyExK8o8BWTDW07SMNICNlfZFpuYGPxWxLk8H0URu3pk%3d>陸與韓、澳FTA生效 降稅、降價不同步</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCyExK8o8BWTDW07SMNICNlWsP%2fLJTb3KFMna1KCwvFZ0%3d>河北土豪村 年終分紅逾5千萬</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCD2BNb9Wr9en%2bQa7VW0ABlrz2ZhmlB0Pl9bymiFGT10M%3d>陸20省公布「十三五」 11省爭設自貿區</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCD2BNb9Wr9en%2bQa7VW0ABlg6OxrZ2Db1dsUkS68gbwQA%3d>陸研發「超強電池」　充電7秒車行35公里</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCD2BNb9Wr9en%2bQa7VW0ABlo4rDOLTWPFr7WbbUHlT3jM%3d>美USTR警告：阿里巴巴須取締假貨</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCD2BNb9Wr9en%2bQa7VW0ABluXfkLUlC9vQ1P2P0bSrcwE%3d>未來5天 重度空污罩陸18城</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCtHr6HkSHmEUe%2bIopIJhBHgsYaCadHvQ9SQ%2fbJ2Bp%2bDk%3d>滬自貿區金改細則 加速資本帳兌換</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCtHr6HkSHmEUe%2bIopIJhBHmHpd50UYEtU9oomHcVL10w%3d>江西前副省長受賄 一審判13年</a></li><li style='width:356px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTE6CetfB%2f%2fbWi3jLklMUdNDLC037y%2fpJJ6C9pZF6%2bGCtHr6HkSHmEUe%2bIopIJhBHsyrDWNkot1AL4NuYlRgznw%3d>蘋果攜手銀聯 Apple Pay 2016年登陸</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXNrr4fnsxsxPycChLtyYB0%3d>共軍動態</a><ul class='sub-2 drop-left'><li style='width:244px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgbZQcb3WjyjPkojITh1TO92kGu4pOjdnRnz%2f6oDkiy50ct7yRc0Nc0iLD65PtMAn7%2bTUfwgvaNOwwMOwbeCgXek%3d>三大艦隊 南海實兵演練</a></li><li style='width:244px'><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgbZQcb3WjyjPkojITh1TO92kGu4pOjdnRnz%2f6oDkiy50t83GAMqDtei6aiBYfSf3Re0umpsckxxkBPIrlb2rgE4%3d>東海艦隊訓練失事 飛行員跳傘獲救</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgYNzJARETsyCtcqj0gN0LvE%3d>兩岸論壇</a><ul class='sub-2 drop-left'></ul>
+			</ul></li><li class=root><a title=論壇 tabindex=10 href=newsclass.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7anLPfJD4gVqcI%2ffVCoFy%2f9I%3d>論壇</a><ul class='sub-1 drop-left' style='width:328px'><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXq%2fVokFbYB9a%2fcTpbJOrx5eV79FdCO0LTUJgP4cDfrM4%3d>社論：建立全球合作性機制 強化反恐意識</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXuK%2btTKqvfZXqo3yVaeZnIWMXd%2fo%2bWqwKhmlTcZjWAXI%3d>我見我思：強化冬季保健 確維部隊戰力</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXq%2fVokFbYB9a%2fcTpbJOrx5V6E2ta%2b3mTrfWfrkbvuPfM%3d>柳營點滴：部隊與社區結合 體現軍民一家親</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXX8H9V9sM%2bNEIHFOts4YhnQXfDb4Cej30smbzQrsvl%2f0%3d>社論：「專長訓練中心」為戰而訓 堅實防衛力量</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXX8H9V9sM%2bNEIHFOts4YhnavvlgDGoCskpO5%2bMcl7WF8%3d>我見我思：嚴守行政中立 確維國軍超然立場</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXX8H9V9sM%2bNEIHFOts4YhnXqpFU1MHK0zkWf5LIvQB%2fU%3d>柳營點滴：募集發票 軍校生愛心不落人後</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXX8H9V9sM%2bNEIHFOts4YhnQ5xg4Z%2bj%2bUkULjJb23jmG0%3d>防範網路威脅 維護資訊安全</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXSMEHIMgDX2Q0Qu1oO6oU126RveVG6A0lhBHYN%2bcuUN4%3d>社論：戰?文藝薰陶校園 潛移默化深耕全民國防</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXSMEHIMgDX2Q0Qu1oO6oU1wjXzpC4FtCtJDmQS8z1GN8%3d>我見我思：運動競賽融合戰技 強身健體凝聚向心</a></li><li><a href=news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ahBURwZ%2fxCkoH%2bRnvuMETFxPp0PEai8WCj0VwuvsdHvXSMEHIMgDX2Q0Qu1oO6oU15CACvHJ8pXRcPMuwtfezKk%3d>柳營點滴：揮棒傳球有默契 我們心連心</a></li>
+			</ul></li><li class=root><a title=地方 tabindex=10 href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfRFkMYvrDydyti%2fwS0j%2fYfk%3d>地方</a><ul class='sub-1 drop-left'><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfaPjDRzltce2Tb1Ttj5tzwI%3d>大臺北</a><ul class='sub-2 drop-left'><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dTp%2bAmDPfATAIAviu34vKWE%3d>客家公園竹夢市集將登場 邀體驗</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dZVOu6yz2nXC5bB%2fKAckr38%3d>十八份水圳 樂山樂水樂優游</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6df85DYLoevjB4W5Qq4hyCGI%3d>臺北世大運贊助需求 歡迎參與</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dXvEHEdW%2b61vtmn23VT2yNc%3d>新北文化志工年終感恩暨頒獎</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dU33lO3ftR3sV9qRKLhIMUY%3d>銀髮好聲音歌唱賽 124長者展歌藝</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dV7M2sF72P1gPWWw7uDAvi8%3d>天文館推跨年玩翻天‧觀星趣</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dRTwJdl0gkc2vxYMlsKO8S8%3d>芥菜種會愛心育幼院105年搬遷</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dZxL2FDmUaCn6%2bSoAeaBp6M%3d>北市德興礦坑 打造新景點</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dfKRuKj2kre6YRj04vhGTds%3d>八里污水廠續推設備更新</a></li><li style='width:258px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6df6k6sMO1mFgDlosftqBbkg%3d>茶農陳易泰與學者分享有機農業</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfVGKCG0LfVnzlU6eLw%2fZLjc%3d>桃竹苗</a><ul class='sub-2 drop-left'><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnhq%2fw17PcotL%2bnaqb%2fMr3GI%3d>乙未事件論壇 重現先烈抗日情操</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnj15jhcChWJXBLkUt0s4WTE%3d>竹縣原鄉賞楓 正是時候</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnpZVxvWE7f7ybvWomtcAuHA%3d>歲末聯歡 竹市文化局感謝志工奉獻</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnn8mYZe%2f9JgDCrN%2bQH9%2b3SI%3d>桃警芬芳錄 精障男子迷途 大園所助返家</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnm6fJUlI5LvvMwNpUIQ%2b8A4%3d>復興區後山地區ATM啟用</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnoqmeLFL%2bmhtshM%2b74onE4Q%3d>耶誕前夕 生命之愛園遊會暖弱勢</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnnaIlpuwGg3%2bgnefpLsmB%2fk%3d>業者違法開發關西山丘 送辦</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnsxtxjR9LnwASGdA0Z%2byIKo%3d>企業遭祝融 邱鏡淳探慰</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnvo25LggfOxLjj%2bY5n69h6o%3d>桃園書法教育學會辦講座</a></li><li style='width:286px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfWIQrJWsAo05toS0aglp%2bn8lHjBaW4BvSAz%2b4UMK7V1om9y%2bQDIPsazeAKu7iajUnrV7rBTJXZtvYGwbFdgG0pQ%3d>竹市北區環保評比獲優等</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfXL92gapoaW3GwRhyc9d0tY%3d>中彰投雲</a><ul class='sub-2 drop-left'><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9koy8MS5MIxEG64Yh9ga6gvco%3d>臺中愛鄰守護志工隊成軍 一里一守護</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko7uxd1r%2f5SFnqghvY5OxWBg%3d>《2016臺中好日子》手札開放索取</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko1laSR3nEaJAmGF2Okd45TY%3d>兒童聯想創作畫決賽登場</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko8q9%2fwlKy4O4g4l4kmAZ7Ww%3d>新田登山步道親子遊 寓教於樂</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9kowW5TX2KMN1%2bAhkwBE5PoJM%3d>PM2.5若偏高 中市即啟動應變作業</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko3mc%2bgxUkZGgtY3DGXMC%2bsc%3d>臺水今起汰換五權西路管線</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko%2f9jwvi5%2fEhi51nXtFjPFfI%3d>雲林故事館8週年活動鄉親同樂</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByS8bMfQ60jTE%2b6co3wW9ko5sI1CjVUul32pWEQzGTqY8%3d>小狀元經典會考 品格教育扎根</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByyvXjzAQ9vX6nyd3jJlzN%2fW51%2fWzSjl7gN5NDMHG9sh0%3d>修平科大社區營造 「水鹿洄游」新景點</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfVqoD5E%2bU8GAQGbDAylzkxf2iqKsbDk201e1ZLBnYUByyvXjzAQ9vX6nyd3jJlzN%2fXVS6na96gXVnJxKrnxfFEI%3d>大葉大學校慶 校史走廊啟用</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfbkfx7aSAm8GQUJfxxwWtes%3d>嘉南高屏澎</a><ul class='sub-2 drop-left'><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPQxn4HqeEyeQ%2fJ6Mj3J3f7Q%3d>東北季風起 賞鹽田訪候鳥</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPcKSei0l8iDdW2IJ9VGP%2fR4%3d>高雄VOGUE嘉年華 素人明星拚才藝</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPapypQ3fNT9DPtdfR%2fNfsqw%3d>樂齡長輩遊林園 探索倒立水母奇觀</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPZcgCwjnTsjy7tPcTCyyaEU%3d>KANO景觀牆 正式揭幕</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPeC%2f%2fJXz7%2bss8v2lI08w5aU%3d>臺南後備部人才招募 成效卓著</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPVCMkmwuO%2b2wlTSUMEUa0r4%3d>故宮開嘉門 樂團接力演出熱鬧滾滾</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPZyb1GRy4jwdRRIxQHRkBks%3d>有你真好 慶耶誕增進親子互動</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlHaNqMmXzBBmAp6Pp%2f%2fhfPS4L6aMHIWX38V4PXAU7P8M%3d>動手做薑餅人 讓愛更貼近</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlFwOnzrJdVt8geO5lU9823M%2bVK%2fPF3jCwJn483w4tkF4%3d>屏東中信公益園區啟用 棒球孩子圓夢</a></li><li style='width:272px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcTBGkMHpNm2HkTb6PHuRNPRS3cQZWVuPiB8jL9rarSlFwOnzrJdVt8geO5lU9823IEr%2fkeXEDTFwPLtSAwydqg%3d>郵走澎湖─沙景藝術</a></li></ul><li class=sub-2-toggle><a href=newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTrJMtal944tMXkKpfaMayo%3d>基宜花東</a><ul class='sub-2 drop-left'><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFFwQidsdBF%2fTy%2bZ1KDwlJMEM%3d>反毒 花縣逾3000民眾健走</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFFxJiQtXXQsTfojIWHs%2fqV%2bE%3d>縣長就職週年 人瑞見證金門蛻變</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFFz7sZoc3i6FJVF1kOpwysKw%3d>花蓮舞蹈劇坊 捐款挹注愛心年菜</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFF3YFcacE7dMrk7rySgZIhOc%3d>教會慶耶誕 歡樂滿金門</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFF%2fOFbQN%2f5%2beS%2fhJOBHAno4U%3d>基市首屆公民論壇 凝聚共識</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFFyLpyxjxht29V35DqdDtWBc%3d>羅東鎮慰問教召後備軍人</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFF9F0l4mpxTARyWR70SPm5%2b8%3d>花東花海季熱鬧登場</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFF0sZaGgYPUGGCPts6hp%2bwWM%3d>臺灣新年數鳥嘉年華 即起報名</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuweBymEGCi1ehQQqzY9sFF0svAKXODk6X2d2dBaQKFAI%3d>宜縣啟用第3家托育中心</a></li><li style='width:230px'><a href=news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbbKdwPwqTMyNP7GtG3AG1M23xnHP24Zi9U4l6ampAFuANNsgdMvgumMN%2fw98w69dHnQvxviRUAptYDbDV9r8Pw%3d>花蓮便當野餐趣 4套餐各現創意</a></li></ul>
+			</ul></li><li class=root><a title=副刊 tabindex=10 href=newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrga7xg8XphVSe1AuCUAxiDh8%3d>副刊</a><ul class='sub-1 drop-left' style='width:202px'><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggysKluHmE8%2b7PCZRnksEN%2blo%3d>暖冬溫情</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggykGrWe%2bF5kQRZNdZ5x9fAZk%3d>重做馮婦</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggysTR%2fn3FyJk6t0CM7aVQHL8%3d>冬日郊野</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggyh0GKgO42W06%2fO2L7J%2bFZzc%3d>堅強的慈母</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOL%2bJuKfa9BEjBkgxldm7GM6IGogS8yY%2fXRAN1fAxPh750%3d>逆轉人生</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOL%2bJuKfa9BEjBkgxldm7GM6PZJ%2fZwBNKzZPSs4ciTvEPg%3d>耶誕節前遊萬金</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOL%2bJuKfa9BEjBkgxldm7GM6Lf%2blUTzrliJgv895Y0PjEA%3d>秋遊野趣</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOL%2bJuKfa9BEjBkgxldm7GM6LAv8HcKZPsiCoDhMfOgL8U%3d>飛向夢想</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLDQ3S2whM%2fYV4gwXfMbNSO%2fptpZwbxRF%2fp6SopF280I4%3d>北市後備部感謝地方支持國軍</a></li><li><a href=news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLDQ3S2whM%2fYV4gwXfMbNSO6QHcV1AjM4atYNAgz8E37c%3d>金剛經的智慧</a></li>
+			</ul></li>
+		</ul>
+		<ul id="sub-nav">
+          <li>
+            <a title="即時新聞" tabindex="25" href="newsclass.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ajYVrn9NgP5aT0J2Nzmp8GI%3d">即時新聞</a>
+          </li>
+          <li>
+            <a title="莒光園地" tabindex="26" href="newsclass.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7aooEQGF8Vh92ddiW16Fuel8%3d">莒光園地</a>
+          </li>
+        </ul>
+      </div><!--Main-->
+      <div id="main" valign="top">
+	    <ul id="searchbar">
+		<li>西曆：2015/12/21</li> <li>農曆：乙未年11月11日</li>
+          <li><input type="submit" name="ctl00$btn_searth" value="全站搜尋" id="btn_searth" accesskey="H" tabindex="31" title="全站搜尋" class="btn" onkeypress="BTN_SEARTH_CLICK" />
+        
+        </ul>
+        <div id="content">
+        
+	
+    <div class="slider-wrapper theme-light">
+        <!--輪播圖-->
+        <div class="nivoSlider" id="slider">
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4Fgvkv%2f2S0RoKft043iL2RG6O6BmqanzpNxOwEEWAlUQniN4%3d">
+				
+                <img title="#caption-1" src="image.ashx?d=20151221&n=2348176.jpg" alt="年度10大經典太空時刻" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BMxQ8xoz0n%2fuCzNUqQ0yISWM%3d">
+				
+                <img title="#caption-2" src="image.ashx?d=20151221&n=2337671.jpg" alt="國光歲末公演 《極度新鮮》" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM1WtzaVg%2bgIy7Qj9I1O8CQQ%3d">
+				
+                <img title="#caption-3" src="image.ashx?d=20151221&n=2334925.jpg" alt="臺灣國際藝術節 《愛人》打頭陣" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2bYCdnk27iiiJXtcuIdsTdM%3d">
+				
+                <img title="#caption-4" src="image.ashx?d=20151221&n=2335735.jpg" alt="唐文華擔綱《血染未央宮》" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2b9bfz%2bQfhXxzvpICT60lSQ%3d">
+				
+                <img title="#caption-5" src="image.ashx?d=20151221&n=2333833.jpg" alt="張辰溦《和老頑童一同去探險》繽紛歡樂" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzjN2i%2f2tizoOkKvyCozPp9w%3d">
+				
+                <img title="#caption-6" src="image.ashx?d=20151220&n=2345753.jpg" alt="洛馬瘋星戰 未來軍武很科幻" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec76fvlCK66qRINfrRTIubaw%3d">
+				
+                <img title="#caption-7" src="image.ashx?d=20151220&n=0025008.jpg" alt="兩岸首座亞洲藝文博物館─故宮南院開館前夕  「雲嘉南之夜」點燈" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzoorZ4eNRbC3GPfCwS9D7Rg%3d">
+				
+                <img title="#caption-8" src="image.ashx?d=20151220&n=2342378.jpg" alt="迷途小白鶴 金山野放" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2QdhxyFWGA5aiqpLpWFz7A%3d">
+				
+                <img title="#caption-9" src="image.ashx?d=20151220&n=0018101.jpg" alt="國際管樂節踩街  震撼嘉義" />
+            </a>
+        
+            <a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2mR7%2bX6vI3pwmOYEZV%2bhms%3d">
+				
+                <img title="#caption-10" src="image.ashx?d=20151220&n=0020847.jpg" alt="臺中國家歌劇院  曲牆工法全球創先" />
+            </a>
+        
+        </div>
+        
+            <div class="nivo-html-caption" id="caption-1">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4Fgvkv%2f2S0RoKft043iL2RG6O6BmqanzpNxOwEEWAlUQniN4%3d"><h3>年度10大經典太空時刻</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-2">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BMxQ8xoz0n%2fuCzNUqQ0yISWM%3d"><h3>國光歲末公演 《極度新鮮》</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-3">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM1WtzaVg%2bgIy7Qj9I1O8CQQ%3d"><h3>臺灣國際藝術節 《愛人》打頭陣</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-4">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2bYCdnk27iiiJXtcuIdsTdM%3d"><h3>唐文華擔綱《血染未央宮》</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-5">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2b9bfz%2bQfhXxzvpICT60lSQ%3d"><h3>張辰溦《和老頑童一同去探險》繽紛歡樂</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-6">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzjN2i%2f2tizoOkKvyCozPp9w%3d"><h3>洛馬瘋星戰 未來軍武很科幻</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-7">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec76fvlCK66qRINfrRTIubaw%3d"><h3>兩岸首座亞洲藝文博物館─故宮南院開館前夕  「雲嘉南之夜」點燈</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-8">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzoorZ4eNRbC3GPfCwS9D7Rg%3d"><h3>迷途小白鶴 金山野放</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-9">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2QdhxyFWGA5aiqpLpWFz7A%3d"><h3>國際管樂節踩街  震撼嘉義</h3></a>
+            </div>
+        
+            <div class="nivo-html-caption" id="caption-10">
+                <!--圖說--><a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8Xec2mR7%2bX6vI3pwmOYEZV%2bhms%3d"><h3>臺中國家歌劇院  曲牆工法全球創先</h3></a>
+            </div>
+        
+    </div>
+	
+		<div class="row time-news">
+			<h2 class="content-hd">
+				<a class="more">即時新聞<span class="news">News</span></a>
+			</h2>
+			<div class="span-left">
+				<ul class="no-bullets">
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTJnOWDa2m18J%2f12PRIcA1wf9BIIldVjoJGZhLNk9OQ4o%3d">繽紛燈飾不稀奇  全台4大創.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTGBDRDuZSXJH%2bCYqE24GYhZuHfCviPsWvuqg6ZmvNjtY%3d">冬至吃湯圓  來碗傳承好滋味 (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTqQaT9VBJTPNjdFMO39joDzVdUsUsvT3ExQEi1UpUICk%3d">連3天空氣品質差  中市密切.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTJw1JkYo5WRBYTESNqSzTG32%2bSLImbOkvBd5JF4rTY0E%3d">6.0強震侵襲印尼婆羅洲 (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTdE7QdcZEIrmQOoRrY2ONDgYeVeAHtpZYXpvSOgdDzQk%3d">彰顯太平島主權  國際法學會.. (2015/12/20)</a>
+						</li>
+					
+				</ul>
+			</div>
+			<div class="span-right">
+				<ul class="no-bullets">
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTmNcrdxGtxi5lE7EuwddKwvAAn4H01vYIqoZ6oN%2bYbkY%3d">全台北最浪漫  6大不可錯過.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTzRlSKK3dqBihUe3wFWW9YX1%2fPeKPvcXefoH%2b1k8DN9U%3d">利用在地植物  屏東大學研發.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTghmrPNdk1w5ENJ3%2b92Bf%2fYWsNcUl3e8jWxoTgs44Z54%3d">驚爆焦點  稱霸哥譚獨立電影.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjToSIY708Jz7GS7KPAJ8ZaVI3iZGzVQ24zUnsCjKZfmWc%3d">星戰7熱滾滾  北美首週末票.. (2015/12/21)</a>
+						</li>
+					
+						<li>
+							<i class="icon-circle"></i>
+							<a href="news.aspx?ydn=w2u5S9CJZGAXB%2fzPg%2fq7ag0eWrbrHqzGDZkDr5zvOonG%2bVoXeOXJ9yDf52EnFfjTdE7QdcZEIrmQOoRrY2ONDvUaCm3Geh9xhVMWCRBY640%3d">巾幗不讓鬚眉 英女兵將受訓上.. (2015/12/20)</a>
+						</li>
+					
+				</ul>
+			</div>
+		</div>
+    
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-1"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfSCNlWv4RFy5b4xq24zKgG4%3d">
+			要聞<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNpkIxv6TdZdDumeBCepSqm4%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2316992.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNvS5hTfP2V0UJh3bL%2fMU2sA%3d">警察特考遭疑 考選..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNrafyZ81QtVzbdEuQHenDxA%3d">觀光局：提升旅遊質..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNp4KiQ48udrfpbPPyLxaPpU%3d">松山機場爆裂物 研..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNj3bU2i5BENPqmDhQEZkbOg%3d">歷史上的今天：12..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfbBlvy%2f7DopDATM56oOni4SVXf5gP0fAZFib8muqHca0KbySTSj7uKh8oPo%2fqqwzNj9g8WsMw6e2PEnUxlqvaUQ%3d">保障身障者權益 建..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-2"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfW9%2fceCBc7IeZtSN5apcT9Q%3d">
+			軍事<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTPjgUgRhyf92RULJg6sM8nhI8CBq%2fpTrCc7sWHUriwixrUrzepIo2RSuAcH7S%2fxnOyzl5chaLTMbCYY6QMi3kA%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2348134.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTPjgUgRhyf92RULJg6sM8nhI8CBq%2fpTrCc7sWHUriwixrUrzepIo2RSuAcH7S%2fxnOyzl5chaLTMbCYY6QMi3kA%3d">性能優異 作業效率..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfTPjgUgRhyf92RULJg6sM8nhI8CBq%2fpTrCc7sWHUriwixrUrzepIo2RSuAcH7S%2fxnFuq1lyuclbK2rb6FzzTEI4%3d">C─17環球霸王Ⅲ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtrqLrxRgKwtRqgM5MN2OMViJGKVadJCZRxMsKukzgCo8%3d">空軍司令部：尊重司..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfdIqFnzB9aVI4ooMjsJjzE7nF%2fB8Zoq46mHk2om5r5rtrqLrxRgKwtRqgM5MN2OMVsoPZxsIAXoNxNv0rIhlpuU%3d">國防部一般職務宿舍..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYTJuSBJ6bHedTWsPCYoHB1j%2bG2CwKuEdhfJVYNP4%2biS9EnU1nh1tIySb5hjV0sRCkxbhaJTTWz0oZQSCG2JE3s%3d">東縣寒冬送暖 馬蘭..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-3"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfYMtVjokagTncMbe%2fYAemjM%3d">
+			國際<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6JUcBkVi0pT5wkZhBkf7w84%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2355862.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6MSn2RKRnGOkLPyFP1G0IQ0%3d">歐巴馬施壓   土..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6JUcBkVi0pT5wkZhBkf7w84%3d">日防衛預算創新高 ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6D2t883Mq60E42xCEHDyU%2b8%3d">法航463班機迫降..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6IZujM6CZlGrOPXvYhZpmnE%3d">模擬2030核戰 ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfawwp7ACuY9V%2b%2b9acRq6ANtBigFZ6SD%2fWjtqdQ8mFrCelZ3ehcMYt%2bRednMiuonL6ObN8MtzM0E8%2fvgYF3m18fM%3d">T-50表演墜毀 ..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-4"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfSXVyb%2fXFwL8vtF5KyU7TeE%3d">
+			搜奇<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4Fgvkv%2f2S0RoKft043iL2RG6O6BmqanzpNxOwEEWAlUQniN4%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2342151.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4Fgvkv%2f2S0RoKft043iL2RG6O6BmqanzpNxOwEEWAlUQniN4%3d">年度10大經典太空..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzizbU6hEFgffPmKrR59my5E%3d">雲南「馬鹿洞人」 ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzvVzAzF2M65fwSpgQ8JIoA8%3d">大馬再「下殺手」！..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzoorZ4eNRbC3GPfCwS9D7Rg%3d">迷途小白鶴 金山野..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfb0e%2b%2beJP7D3HGsxhDrckoVVltzM1BBSYdMMO3%2f4FgvklLjnhCSfnPU9%2bxJAq0COzjN2i%2f2tizoOkKvyCozPp9w%3d">洛馬瘋星戰 未來軍..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-5"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfTRfpZkAmr3FXzMVFc9Nfy8%3d">
+			生活<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBjRnXrPIQBEPJ6ujLjVlptA%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2335334.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBqnVioNZ1drr6YRGGPrCQ4s%3d">本週油價調降 柴油..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBjRnXrPIQBEPJ6ujLjVlptA%3d">臺鐵花東線七星報喜..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBrFAlKw%2fU1kHSHoxuhlXuZI%3d">屏東山川琉璃吊橋2..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBpf5cciQHy1B5VByFGnYPi8%3d">3款蛋黃哥料理 可..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfZCu6AK1LTOQcTCVKm7o8Wu%2buCj989YbOzxb13%2fgkvxxI7e1imKG3ZGA1vVVI0RKBpujI70uJ%2fqwCLnYliDr%2f7U%3d">二林蕎麥花海 花姿..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-6"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfb414e%2fB6r5sfG%2fB6tlj8yw%3d">
+			藝文<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BMxQ8xoz0n%2fuCzNUqQ0yISWM%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2336655.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BMxQ8xoz0n%2fuCzNUqQ0yISWM%3d">國光歲末公演 《極..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2bYCdnk27iiiJXtcuIdsTdM%3d">唐文華擔綱《血染未..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM1WtzaVg%2bgIy7Qj9I1O8CQQ%3d">臺灣國際藝術節 《..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJ2TOkmxwYZ60r%2bY65Y%2f0BM%2b9bfz%2bQfhXxzvpICT60lSQ%3d">張辰溦《和老頑童一..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfXeut3OMJo83bj7NmgTAG033tHYhPBe9b0dTyaGEDKnJUKMjAnm80qBS55s8J8XecwdRF9iKVyTpZlPv2OXOVVA%3d">正體漢字全球書法賽..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-7"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfbzNPpSQurZjKjT0lpk1Yxk%3d">
+			運動<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJUq%2bz5DdzqgVXgJZCJ5uuAE%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2337388.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJZkBcmlvwzVgjbVj6FMd27M%3d">臺北國際城市青少棒..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJUq%2bz5DdzqgVXgJZCJ5uuAE%3d">臺北馬拉松 何盡平..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJRid6qTW4aNl4%2b8KANNu5JE%3d">璞園8連勝 台啤屠..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJVICbm7zKk06rC55a8DGrXk%3d">周思齊棒球獎學金 ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfcbb4p%2f7Rggv9zh67Jj6ODUDZnC9uqhyscT0udfaWqdMMnK8Gb2L7cfTcZH4QXvIJaBWb9%2fLbvYjU%2bi7U%2blYxJo%3d">岩貞祐太最佳投手 ..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-8"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfaGdR2OljMzplkpuMyKv2Zs%3d">
+			影劇<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJiofjNDbIZL8OlF27jr9QfU%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2353284.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJiofjNDbIZL8OlF27jr9QfU%3d">「一把青」劇組座談..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJhhoWzK9XSxy1N3wWtHiAjg%3d">潘柏希耶誕送禮 李..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJshiX3Skt9DVc3%2bN4s8jn2A%3d">「耶誕巨星派對」第..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJhpmcouCiu%2fQxQ7zmKgdNtE%3d">大元拍練舞戲壓力大..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbffKS0AjfoxWLg2xQU3rss6h64JUpP5%2fpDLWaKfVRZlq4CJxy1oCXWmBF99VniEPbJncIjHIJYjufinUtDiGCosM%3d">追婚日記票房佳 粉..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-9"><a href="newsclass.aspx?ydn=026dTHGgTRNpmRFEgxcbfRFkMYvrDydyti%2fwS0j%2fYfk%3d">
+			地方<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dTp%2bAmDPfATAIAviu34vKWE%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2101826.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dRTwJdl0gkc2vxYMlsKO8S8%3d">芥菜種會愛心育幼院..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dfKRuKj2kre6YRj04vhGTds%3d">八里污水廠續推設備..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6df6k6sMO1mFgDlosftqBbkg%3d">茶農陳易泰與學者分..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dTp%2bAmDPfATAIAviu34vKWE%3d">客家公園竹夢市集將..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=026dTHGgTRNpmRFEgxcbfYCv7EGkQ%2b9FSC4p%2fJ7ybOS82sRREYPPbX3rVeQv%2fi47FjdasdlAQ8uXdQZKBc%2f6dZVOu6yz2nXC5bB%2fKAckr38%3d">十八份水圳 樂山樂..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-10"><a href="newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrga7xg8XphVSe1AuCUAxiDh8%3d">
+			副刊<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrAFLt9I%2fxTDbJr0cGP80C56RaA8qxMj%2br9O7LyrfixsUbnJF%2bx52A7e3e9u1DruhUg%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20150421\0025160.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggysTR%2fn3FyJk6t0CM7aVQHL8%3d">冬日郊野</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggykGrWe%2bF5kQRZNdZ5x9fAZk%3d">重做馮婦</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggysKluHmE8%2b7PCZRnksEN%2blo%3d">暖冬溫情</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOLZglmJjNk1J6jBFoOoPggyh0GKgO42W06%2fO2L7J%2bFZzc%3d">堅強的慈母</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgRbSXFWV6c6yY6P4UjWjfrCz7yZmO2m2rQa8oWFqMZOL%2bJuKfa9BEjBkgxldm7GM6LAv8HcKZPsiCoDhMfOgL8U%3d">飛向夢想</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+			<div class="row genre">
+        
+		<div class="span-left-full">
+			<h2 class="content-hd-11"><a href="newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSPJSVvVLh0EK6RRWG8BKm0%3d">
+			教育<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU9YiI1OlxbhQRuzkkaSiPlt44DCwbvYdVXwnBR1CXeF8%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2330009.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU9YiI1OlxbhQRuzkkaSiPlt44DCwbvYdVXwnBR1CXeF8%3d">高中職遊程設計賽 ..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU9YiI1OlxbhQRuzkkaSiPliD6pThBHgzg3a5fqILT1ho%3d">四技申請 逾萬名額..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUZrduOr4TBo6sGRxh%2fCW85J2J2AlHUCQj3cYBD6lTtZs%3d">《2016大陸高校..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEUZrduOr4TBo6sGRxh%2fCW85EVUxeGtnyVdTs3NFeK%2f1UU%3d">打造臺灣華語文聖地..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgSHTD4yz4GJwg%2ffjBD2Lhmnqg8rNdWvGr%2fLRSxVsmqEU7XzLD3GxdHcWTEEa7gqzdn0dAq88FYefl6PvowCk6qE%3d">助視障行  馬彗娟..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span-left-full">
+			<h2 class="content-hd-12"><a href="newsclass.aspx?ydn=2QR3ZY8DxoKPv973RMHrgTA9aOBQEY49Md8pA1XMcLY%3d">
+			公益<span class="news">News</span></a>
+			</h2>
+			<div class="content">
+				<div class="tn-wrapper">
+					<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j%2fcecp8OChDrPkq4OlNHxrA%3d">
+						<div class="tn">
+							<img width="160" height="110" alt="nightlife" src="http://news.gpwb.gov.tw/p\b_F0101\20151221\2332745.jpg">
+						</div>
+					</a>
+				</div>
+				<div class="genre-news">
+					<ul>
+						
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j132ofoKONpX42R1g289qXk%3d">南投婦幼保護志工隊..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j%2fcecp8OChDrPkq4OlNHxrA%3d">臺灣首支原民弦樂團..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRmd9ScXgxjRviqwce0MP7j%2b8ZGo3kgPUn4DUFowaZswY%3d">逗陣盃籃球賽 為氣..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeR%2bZAZrbOZ8kubvOv84uCesXvZo2pQFPA%2fIzvkMr0oDBQ%3d">公益音樂會傳愛 支..</a>
+							</li>
+                        
+							<li>
+								<a href="news.aspx?ydn=2QR3ZY8DxoKPv973RMHrgXcPq2l7UHjGBPG2biWuD0Hqu4fITUdMifqNvT0gHxeRqf5xyNGxGAcQCVX53JYYVANjV%2f6Ub0f%2fCbQVL8nszA8%3d">發現更多聲音的喜悅..</a>
+							</li>
+                        
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+            </div>
+        
+          <div class="row sbs-info">
+            <h2 class="content-hd">
+                訂閱資訊<span class="news">News</span>
+            </h2>
+            <dl>
+                <dt>
+                壹、一報三刊發行：
+                </dt>
+                <dd>
+                <ol>
+                    <li>
+                    青年日報：每日發行乙份<br>
+					訂閱聯絡電話：02-23222722-813          <br><span class="invisable">訂閱聯絡電話：</span>02-23222722-814
+                    </li>
+                    <li>
+                    奮鬥月刊：不公開發行，提供線上瀏覽
+                    </li>
+                    <li>
+                    勝利之光月刊：每月發行乙次，一共 12 期<br>訂閱聯絡電話：02-23222722-814
+                    </li>
+                    <li>
+                    吾愛吾家季刊：每季發行乙次，一年共四期<br>訂閱聯絡電話：02-23222722-815（如欲更改寄送地址，請撥此專線）
+                    </li>
+                </ol>
+                </dd>
+                <dt>
+                貳、一報三刊廣告：
+                </dt>
+                <dd>
+                <ol>
+                    <li>
+                    青年日報廣告刊登<br>請逕洽聯絡電話：02-23222722-851
+                    </li>
+                    <li>
+                    奮鬥月刊、勝利之光月刊、吾愛吾家季刊等三刊廣告<br>請逕洽聯絡電話：02-23222722-855
+                    </li>
+                </ol>
+                </dd>
+				<dt>參、青年日報投稿辦法：</dt>
+				<dd>
+				 各接受外部稿件之版面收稿信箱分類如下，請依您要投稿版面之信箱寄送稿件。 
+				 <ol>
+					<li>青年論壇<br/>軍：ydns@webmail.mil.tw<br/>民：ydns01@hotmail.com
+					<li>副刊<br/>
+民：young-story@umail.hinet.net<br/>
+（投稿一經採用會另行通知）
+				  </ol>
+				</dd>
+            </dl>
+          </div>
+		  
+	    </div>
+        <div id=sidebar><ul id=accordion-nav><li class='cell active'><a class=icons-accordion-toggle href=bookclass.aspx?ydn=elj%2fq3DgfL7F1Q7Oiiqh%2fA%3d%3d>勝利之光</a><div class=content-wrapper><a href=bookclass.aspx?ydn=f2KgAkk4mpLkKacMaa%2b0zAJTyEj1KEh6aTj3bEzv7P%2fcn45GFyOMQ8QJ4A57p7Pq><img class=bg alt='勝利之光' width=217 height=286 src=/p/b_E0401/A732/A732.jpg /></a></div></li>
+<li class='cell'><a class=icons-accordion-toggle href=bookclass.aspx?ydn=STzZf0BaeEfTHqD1GCaDmw%3d%3d>奮鬥月刊</a><div class=content-wrapper><a href=bookclass.aspx?ydn=KWbqo8QWbRobnnXg2T%2bMZcP0N2lvaUVKshkymXUkv%2frWKT%2bzqK7qOJ%2b8yFBkXzn3><img class=bg alt='奮鬥月刊' width=217 height=286 src=/p/b_E0401/B746/B746.jpg /></a></div></li>
+<li class='cell'><a class=icons-accordion-toggle href=bookclass.aspx?ydn=sUwPU4381UysPh5RYnKQ0Q%3d%3d>吾愛吾家</a><div class=content-wrapper><a href=bookclass.aspx?ydn=4RFZmTFc3OnOM%2fZIeuc4GBOemwQ10cdFVK4j39DTQDZsV496zPhWPmKfTLky4e6s><img class=bg alt='吾愛吾家' width=217 height=286 src=/p/b_E0401/C372/C372.jpg /></a></div></li>
+</ul><div class='section'><a target="_blank" onfocus="document.govfl.src='./images/flickr.gif'" href="http://news.gpwb.gov.tw/mobile/flickr.aspx" title="青年日報社相簿集"><h3 class='icons-header-radio'>青年日報社相簿集</h3></a></div><div class=section><a target="_blank"  onfocus="document.govfb.src='./images/臉書專頁icon.gif'" href="https://www.facebook.com/pages/%E9%9D%92%E5%B9%B4%E6%97%A5%E5%A0%B1/462176637238611" title="青年日報社臉書專頁" onmouseover="document.govfb.src='./images/臉書專頁icon.gif'"  tabindex="" onmouseout="document.govfb.src='./images/臉書專頁icon.gif'" onblur="document.govfb.src='./images/臉書專頁icon.gif'"><h3 class=icons-header-radio><i class='fa fa-facebook'></i> 青年日報社臉書專頁</h3></a></div><div class=section style='margin-top: 8px'><iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A//www.facebook.com/ydnews123&width=242&height=427&colorscheme=light&show_faces=false&border_color&stream=true&header=true&appId=196115840462276" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:232px; height:300px;" allowTransparency="true" title="fb-recommendation"></iframe></div><div class=section><h3 class=header>重要文宣 <span class=en>Important</span></h3><div class=content><p><ul class=IDF003><li><a href="WenXuanKey.aspx?ydn=GkOsfRQm5nMiDzc%2fs%2fTnR0O1JTcJsBgR2ackBEHt6dD54FYKds5UH8NNyQ5RTK73" title="莒光園地104年10月29日（十月份第五週）播出影片「菁英部隊魔鬼營-美國陸軍特種潛水部隊」，因涉及版權問題，故不提供線上收視及下載，敬請見諒。">莒光園地104年10月29日（十月份第五週）播出影片「菁英部隊魔鬼營-美國陸軍特種潛水部隊」，因涉及版權問題，故不提供線上收視及下載，敬請見諒。</a></li></ul></br></p></div></div><div class=section><a href='pdf.aspx' style='color:white'><h3 class=header-highlight>PDF電子報紙</h3></a></div><div class=section><h3 class=header-highlight>莒光園地</h3><div class=wrapper><a href=movieclass.aspx?ydn=J%2bC0w8ykdowTwmcnujTKtHe22WOBc11xQfIEhaiKiRc%3d title=莒光收視><img alt=莒光園地 width=228 height=222 src=images/demo/side-player.png?1399538237 /></a></div></div><div class=section><h3 class=header>焦點新聞</h3><div class=wrapper></div></div><div class=section><h3 class=header>QR Code</h3><div class=wrapper><img alt ='QR Code' src=images/140421133817.jpg /></div></div><div class=section><a href='textclass.aspx?ydn=oZjCqTf%2fPbobRbdi9c2bYTg0N4fKoJBi%2bewt562xBZQ%3d' style='color:white'><h3 class=header-highlight>線上申辦</h3></a></div><div class=section><h3><a class=header tabindex=28 href=/externalLink.aspx?ydn=HPj6cwHjMuDCs8n603grAhbZlZzbKdIPCkAIYJCieOeTbFTMVsvRYMpOl%2bwWc%2b4GzU%2bB4QjC7tAWhcFcJyX13lMnh84q0DuDI%2bsyXk7bvgFvkv3ZJFIstuhWyDda6PGJPMDhaJIej%2bHG3pqMqB92JA%3d%3d>政府資訊公開(國防部)</a></h3></div><div class=section><h3><a class=header tabindex=28 href=/textclass.aspx?ydn=LDD0ccRWecpWXdyff1gFR15e9g1mkkeM%2bzgnByNNILNrBqTLwTFTGNtXEx77oJG315aGF%2f%2bQvMypmGwJezWpLg%3d%3d>願景及業務介紹</a></h3></div><div class=section><h3><a class=header tabindex=28 href=/externalLink.aspx?url=http://www.mnd.gov.tw/mnd_forum/index.aspx>民意論壇 <span style='font-size:0.5em'>(此為外部連結)</span></a></h3></div><div class=section><h3><a class=header tabindex=28 href=/externalLink.aspx?ydn=HPj6cwHjMuDCs8n603grAri2JqyiSCDY2z7c6fTexZ690%2bheDxFjv9NObS%2btyMwq2phGG%2fEBjNGu6uwFAoOfXIs%2byhuvRTYTKicyH2mrgavISvB5E4TEJljQyMiXuUoQS%2fzAaDjlOtwptAWJ694PEENJVlwQG7TyfF1%2f78goya1U62leFpM9tFYWrsTXUNwJnIDRn12WuVN9qsFDGJDbX0yiEjjFHK57w2lRKz2Wq5V150dmRihZuVXQU9Oe1KP5H2SIJa9i2Ono%2b1c5QL0dQexSMgK8VeoMH1wzaFv8rs3xYp3VeP1awLY%2fTTjZuJmzFhZqhqr01QqKxaUKXxCykeWNrKEs9wrI2CtpqGCJU3nQV3berVS1%2fDZpN3VdtKmx>專業論壇 <span style='font-size:0.5em'>(此為外部連結)</span></a></h3></div>
+<div class=section><h3 class=header>友站連結 <span class=en>Link</span></h3><div class=wrapper><a href="externalLink.aspx?url=http://enc.moe.edu.tw/" target="_blank" title='紫錐花運動網站'><img src="http://news.gpwb.gov.tw/p/b_1160002/1.JPG" alt="紫錐花運動網站" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.vac.gov.tw" target="_blank" title='國軍退除役官兵輔導委員會全球資訊網'><img src="http://news.gpwb.gov.tw/p/b_1160002/vac.jpg" alt="國軍退除役官兵輔導委員會全球資訊網" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.mnd.gov.tw/" target="_blank" title='國防部全球資訊網'><img src="http://news.gpwb.gov.tw/p/b_1160002/國防部.jpg" alt="國防部全球資訊網" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.voh.com.tw/" target="_blank" title='漢聲電台'><img src="http://news.gpwb.gov.tw/p/b_1160002/漢聲廣播.jpg" alt="漢聲電台" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://mna.gpwb.gov.tw/" target="_blank" title='軍聞社'><img src="http://news.gpwb.gov.tw/p/b_1160002/link_mnews.jpg" alt="軍聞社" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.gwsm.gov.tw/" target="_blank" title='福利事業管理處'><img src="http://news.gpwb.gov.tw/p/b_1160002/f.JPG" alt="福利事業管理處" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://rdrc.mnd.gov.tw/rdrc/index.aspx" target="_blank" title='國軍人才招募中心'><img src="http://news.gpwb.gov.tw/p/b_1160002/人才招募.jpg" alt="國軍人才招募中心" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://museum.mnd.gov.tw/" target="_blank" title='國軍歷史文物館'><img src="http://news.gpwb.gov.tw/p/b_1160002/國軍歷史文物.jpg" alt="國軍歷史文物館" width=110 height=28 /></a> </div></div>
+<div class=section><h3 class=header>相關連結 <span class=en>Link</span></h3><div class=wrapper><a href="externalLink.aspx?url=http://storytaiwan.tw/" target="_blank" title='國軍眷村文化'><img src="http://news.gpwb.gov.tw/p/b_1160002/storytaiwan.jpg" alt="國軍眷村文化" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.ey.gov.tw/news.aspx?n=3D06E532B0D8316C&sms=4ACFA38B877F185F" target="_blank" title='行政院重大政策'><img src="http://news.gpwb.gov.tw/p/b_1160002/行政院重大政策.jpg" alt="行政院重大政策" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www7.www.gov.tw/policy/2009career/" target="_blank" title='就業情報站'><img src="http://news.gpwb.gov.tw/p/b_1160002/就業情報站.jpg" alt="就業情報站" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.cwb.gov.tw/V7/index.htm" target="_blank" title='中央氣象'><img src="http://news.gpwb.gov.tw/p/b_1160002/中央氣象.jpg" alt="中央氣象" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://twtraffic.tra.gov.tw/twrail/" target="_blank" title='火車時刻'><img src="http://news.gpwb.gov.tw/p/b_1160002/火車時刻.jpg" alt="火車時刻" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.thsrc.com.tw/tc/ticket/tic_time_search.asp" target="_blank" title='台灣高鐵'><img src="http://news.gpwb.gov.tw/p/b_1160002/台灣高鐵.jpg" alt="台灣高鐵" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.tsgh.ndmctsgh.edu.tw/" target="_blank" title='三軍總醫院'><img src="http://news.gpwb.gov.tw/p/b_1160002/三軍總醫院.jpg" alt="三軍總醫院" width=110 height=28 /></a> <a href="externalLink.aspx?url=https://near.archives.gov.tw/cgi-bin/near2/nph-redirect?rname=simp_search&" target="_blank" title='檔案查詢'><img src="http://news.gpwb.gov.tw/p/b_1160002/檔案查詢網.jpg" alt="檔案查詢" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://www.energylabel.org.tw/index.asp" target="_blank" title='節能標章'><img src="http://news.gpwb.gov.tw/p/b_1160002/節能標章.jpg" alt="節能標章" width=110 height=28 /></a> <a href="externalLink.aspx?url=http://165.gov.tw/index.aspx" target="_blank" title='全民防騙'><img src="http://news.gpwb.gov.tw/p/b_1160002/防詐騙.jpg" alt="全民防騙" width=110 height=28 /></a> </div></div></div>    
+      </div>
+
+<!--footer連結-->
+<table summary="排版表格" width="1024" border="0" align="center" cellpadding="0" cellspacing="0" class="ID900"><tr><td background="./themes/WEB4/images/footer_link.jpg" height="44" align="center"><a href="sitemap.aspx" accesskey="B" title="下方導覽連結區域">:::</a>　｜　<a href="./index.aspx" title="回到首頁" >回到首頁</a>　｜　<a href="textclass.aspx?ydn=LDD0ccRWecpWXdyff1gFRxLpTf0EpNViXcO0N7iNWzo%3d" title="關於我們">關於我們</a>　｜　<a href="textclass.aspx?ydn=KdDSNw8Ct58foRq2pHSL8r%2fUOskL%2b4AIMZjqwzS4ML8%3d" title="訂購資訊">訂購資訊</a>　｜　<a href="textclass.aspx?ydn=AM5Pa15wPq0RFSOg9DPg5Vho89y9qZlTThUmMiCuH5c%3d" title="隱私權政策">隱私權政策</a>　｜　<a href="textclass.aspx?ydn=ZB7cGUJSDHjpwRX75cmDjLlKXNpgFaHMwiGY7s%2fltBU%3d" title="版權所有宣告">版權所有宣告</a>　｜　<a href="textclass.aspx?ydn=f%2bMAz4a2AQnqNMzIALnqwh0XJeV24Vhk5blhPTCKJl0%3d" title="About us">About us</a>　｜　</td></tr></table>
+
+<!--footer-->
+<table summary="排版表格" width="1024" border="0" align="center" cellpadding="0" cellspacing="0" class="footer"><tr><td height="63" align="center" background="./themes/WEB4/images/footer_bg_01.jpg" class="ID910" width="1024" alt="排版圖片">訪客人數：4004473　|　線上人數：24<br /><a href="http://www.webguide.nat.gov.tw/wSite/sp?xdUrl=/wSite/enable/valid.jsp&conId=20070823080325" title="無障礙A+" ><img border="0" src="./themes/WEB4/images/aaa.jpg" align="left" width="88" height="31" class="ID930" alt="無障礙A+" ></a>Copyright 2011 中華民國國防部青年日報社 Youth Daily News　Tel:02-23222722　Addr:台北市中正區信義路一段3號1樓<br />瀏覽器建議使用IE 9.0以上版本 最佳觀看解析度1024x768　網站更新日期：2015/12/21</td></tr></table>
+</table>
+    </div>
+  
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="202EA31B" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="tsKr8sDA51A6Luvacfev2a+iL6BSyPG2UdhABlUM88X7ccxeBtd4gxxPB1DyF+KgDnWrSqjJ3pSFjN6moEloMFQrz2NYvm2SB3M8YyfpRtBsPPlqUvulBltZQZYMdtvk15ICaLcswhxEx3vnvGgQmGpsQRs=" />
+</div></form>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.ba-throttle-debounce.min.js"></script>
+<script src="js/jquery.jcarousel.js" type="text/javascript"></script>
+<script src="js/jquery.jcarousel.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#first-carousel').jcarousel();
+        jQuery('#second-carousel').jcarousel();
+    });
+	$(function () {
+		        $("#foo01").carouFredSel({
+		            auto : false,
+		            prev : "#foo01_prev",
+		            next : "#foo01_next"
+		        });
+
+		        $("#foo02").carouFredSel({
+		            auto: false,
+		            prev: "#foo02_prev",
+		            next: "#foo02_next"
+		        });
+	});
+    $(function () {
+        // Datepicker
+        $.datepicker.regional['zh-TW'] = {
+            clearText: '清除', clearStatus: '清除已選日期',
+            closeText: '關閉', closeStatus: '取消選擇',
+            prevText: '<上一月', prevStatus: '顯示上個月',
+            nextText: '下一月>', nextStatus: '顯示下個月',
+            currentText: '今天', currentStatus: '顯示本月',
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+            '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            monthNamesShort: ['一', '二', '三', '四', '五', '六',
+            '七', '八', '九', '十', '十一', '十二'],
+            monthStatus: '選擇月份', yearStatus: '選擇年份',
+            weekHeader: '周', weekStatus: '',
+            dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+            dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+            dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+            dayStatus: '設定每周第一天', dateStatus: '選擇 m月 d日, DD',
+            dateFormat: 'yy-mm-dd', firstDay: 1,
+            initStatus: '請選擇日期', isRTL: false
+        };
+        $.datepicker.setDefaults($.datepicker.regional['zh-TW']);
+    });
+</script>
+
+
+</body>
+</html>

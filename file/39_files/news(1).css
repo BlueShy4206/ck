@@ -1,0 +1,240 @@
+@charset "utf-8";
+/*最新消息列表*/
+.headline {
+	padding-bottom:15px;
+}
+.headline h2:first-letter {
+	color:#5f52a0;
+}
+/*======================
+         分類
+========================*/
+.sort {
+	margin:15px 0;
+}
+.sort li {
+	float:left;
+	border-right:#ccc solid 1px;
+}
+.sort li:first-child {
+	border-right:0px;
+}
+.sort li a {
+	padding:0 10px 5px;
+}
+.sort li a:hover, .sort li a.active {
+	text-decoration:none;
+	color:#000;
+	border-bottom:#000 solid 2px;
+}
+/*======================
+       搜尋區塊
+========================*/
+.searchbox {
+	background-color:#eeeeee;
+	padding:10px;
+	margin:0 0 35px;
+}
+/*---------------
+      header
+-----------------*/
+.searchbox .page-header {
+	padding:10px 0 0 !important;
+	float:left;
+	text-align:center;
+}
+/*---------------
+    input區塊
+-----------------*/
+.searchbox .form-box {
+	float:left;
+	padding:0 10px;
+}
+.searchbox .page-header, .searchbox .form-box .row {
+	margin:0 0 10px;
+}
+.searchbox .Registration-Date .form-control, .searchbox .Registration-Date .text {
+	display:block;
+	float:left;
+}
+.searchbox .Registration-Date .form-control {
+	width:45.7%;
+}
+/*---------------
+      文字
+-----------------*/
+.searchbox .control-label {
+	text-align:center;
+	padding:5px 0 0;
+}
+.searchbox .text {
+	margin:0 5px;
+	padding:5px 0 0;
+}
+/*---------------
+      按鈕
+-----------------*/
+.searchbox .col-xs-12.col-sm-12.col-md-1.col-lg-1, .form-group .col-sm-10.col-md-9.col-lg-9, .form-box .col-sm-12.col-md-6.col-lg-6 {
+	padding:0px;
+}
+.searchbox .btn-default {
+	width:100%;
+	height:79px;
+	background:#555555;
+	color:#fff;
+	border:#555 solid 1px;
+}
+/*======================
+       新聞列表
+========================*/
+.list-unstyled {
+	padding:0 0 30px;
+}
+.list-unstyled .newslist {
+	width:20%;
+	min-height:320px; 
+}
+.list-unstyled li:first-child {
+	padding-left:15px;
+}
+/*---------------
+      照片
+-----------------*/
+.newslist .team-img {
+	position:relative;
+}
+.newslist a {
+	position:relative;
+	overflow:hidden;
+	display:block;
+}
+.newslist a img {
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	-ms-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+}
+.newslist .text-hover {
+	background:rgba(0, 0, 0, 0.7);
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0px;
+	top:0px;
+	color:#fff;
+	padding:30px 15px 15px 18px;
+	line-height:21px;
+	opacity:0;
+	transition: all 0.3s ease-in-out 0s;
+}
+.newslist a:hover > .text-hover {
+	opacity:10;
+}
+.newslist a:hover > img {
+	-webkit-transform: scale(2) rotate(10deg);
+	-moz-transform: scale(2) rotate(10deg);
+	-o-transform: scale(2) rotate(10deg);
+	-ms-transform: scale(2) rotate(10deg);
+	transform: scale(2) rotate(10deg);
+	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	opacity: 0.3;
+}
+/*---------------
+      標籤
+-----------------*/
+.news-Label {
+	background:url(../img/news-label.png) no-repeat;
+	width:52px;
+	height:39px;
+	position:absolute;
+	left:0px;
+	top:0;
+	color:#fff;
+	font-size:12px;
+	text-indent:3px;
+}
+/*---------------
+    收聽按鈕
+-----------------*/
+.Listen {
+	cursor:pointer;
+	box-shadow:0 1px 2px rgba(0, 0, 0, 0.7);
+	background:url(../img/Listen.png) no-repeat center center #fff;
+	border-radius:50px !important;
+	position:absolute;
+	bottom:10px;
+	right:10px;
+	width:27px;
+	height:28px;
+}
+/*---------------
+   新聞列表標題
+-----------------*/
+.list-unstyled h3 {
+	color: #000;
+	font-size: 14px;
+	font-weight: normal;
+	height: 38px;
+	line-height: normal;
+	overflow: hidden;
+	margin:10px 0 0;
+}
+.list-unstyled h4 {
+	color:#cccccc;
+	font-size:13px;
+	font-weight:normal;
+	line-height:normal;
+	border-bottom:#e0e0e0 solid 1px;
+	padding:0 0 5px;
+}
+/*---------------
+      關鍵字
+-----------------*/
+.keyword {
+	font-size:12px;
+	color:#707070;
+}
+
+
+
+/*
+直式的ipad版780px以下
+==========================================================*/
+@media (max-width: 780px) {
+   /*搜尋表單*/
+	.searchbox .page-header {
+ text-align:left;
+}
+ .searchbox .col-sm-12.col-md-6.col-lg-6 {
+ margin:0 0 10px;
+}
+ .searchbox .btn-default {
+ height:auto;
+}
+}
+/*
+手機版420px以下
+==========================================================*/
+@media (max-width: 420px) {
+ .list-unstyled .newslist {
+ width:50%;
+ margin:0 0 10px;
+}
+ .searchbox .text {
+ margin:0px;
+}
+/*======================
+             分類
+========================*/
+.sort li {
+ float:none;
+ border-right:0px;
+ border-bottom:#ccc solid 1px;
+ padding:5px 0;
+}
+ .sort li a {
+ padding:0px;
+}
+}

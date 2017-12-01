@@ -1,0 +1,55 @@
+img { border:0; }
+body,#ad300x250,#ad728x90,#ad160x600 { text-align:left;margin:0;padding:0;font:13px/1.25 arial; }
+[clickurl] {cursor:pointer;}
+
+#ad300x250_ie7-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -226px; }
+#ad300x250-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -226px; }
+#ad160x600_ie7-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -134px; }
+#ad160x600-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -134px; }
+#ad728x90_ie7-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -66px; }
+#ad728x90-logo { background:url(./ad-icon.png) no-repeat; background-position: -7px -66px;}
+
+.bg728x90 { background:url(./ad-icon.png) no-repeat;display:inline-block; }
+.bg728x90.sale_ {width:46px;height:89px;background-position:-65px -11px; }
+.bg728x90.sale2_ {width:184px;height:42px; background-position:-7px -524px;}
+.bg { background:url(./ad-icon.png) no-repeat;display:inline-block; }
+.bg.go_ { width:46px;height:18px;background-position:-9px -197px; }
+.bg.recommend_ {width:161px;height:44px;background-position:-2px -231px; }
+.bg.recommend2_ {width:154px;height:53px;background-position:-7px -331px; }
+
+
+.bg.bo_ { width:86px;height:54px; background-position:-5px -457px; }
+.bg.gogo_ { width:61px;height:49px; background-position:-94px -460px; }
+.bg.gogo-s_ { width:56px;height:36px; background-position:-182px -466px; }
+
+.bg.hand_ { width:16px;height:21px;background-position:-12px -292px;  }
+
+.opacity7 {
+  opacity:.7; /* firefox, opera, safari, chrome */  
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=70)"; /* IE 8 */  
+  filter:alpha(opacity=70);
+  zoom:1;
+}
+
+.opacity8 {
+  opacity:.8; /* firefox, opera, safari, chrome */  
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /* IE 8 */  
+  filter:alpha(opacity=0);
+  zoom:1;
+}
+
+.opacity10 {
+  opacity:1; /* firefox, opera, safari, chrome */  
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; /* IE 8 */  
+  filter:alpha(opacity100);
+  zoom:1;
+}
+
+.btn { display:inline-block;font-size:12px/1 arial;padding:0px 6px 2px 6px;border-radius:3px;color:#fff;padding:5px 6px 1px 6px \9; }
+.btn.blue_{ background:#04c;background-image: linear-gradient(#08c, #04c); }
+.btn.red_{ background:#FF0800;
+  background-image: -webkit-linear-gradient(#FF0800, #962F2B);
+  background-image: linear-gradient(#FF0800, #962F2B);
+ }
+
+.s_price{font-size:12px;font-weight:300;letter-spacing:2px;}

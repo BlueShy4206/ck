@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* base */
+/*將所有元素的內距邊界歸零*/
+body, h1, h2, h3, h4, h5, h6, blockquote, th, td, div, dl, dt, dd, ul, ol, li, pre, code, form, fieldset, legend, input, button, textarea {
+	margin: 0;
+	padding: 0;
+}
+/*重置頁面基本字型大小及行高,不希望行高被繼承可把line-height: 1拿掉*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	font-size:13px;
+}
+/*將影像及欄位集的邊框歸零*/
+img, fieldset {
+	border: 0;
+}
+/*將清單樣式清除*/
+ol, ul {
+	list-style: none;
+}
+/*將表格邊框的預設值separate(分離)改為collapse(重疊)*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*重置表格註解及標題儲存格的對齊*/
+caption, th {
+	text-align: left;
+}
+/*將連結、底線、刪除線重置*/
+a, ins, del {
+	text-decoration: none;
+}
+/*將表單元素的字型樣式設為繼承(父元素)樣式保持一致性*/
+input, button, textarea, select, optgroup, option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+/*將縮寫元素的邊框及大小寫重置，acronym對IE5瀏覽器有用(雖然已沒人用IE5了)*/
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+/*將上標、下標的樣式重置*/
+sup, sub {
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/*將引用元素重置，讓各瀏覽器的符號一致*/
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+/*消除個瀏覽器*/
+.clearfix:after,.clearfix:before {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.clearfix,.clearfloat { 
+	clear:both;
+	font-size:0;
+	height:0;
+	line-height:0;
+}
+/*float*/
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.main-footer {
+	margin-top: 30px;
+}

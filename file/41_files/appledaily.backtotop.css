@@ -1,0 +1,14 @@
+.back-to-top-side {
+  width: 44px;
+  height: 118px;
+  position: fixed;
+  right: 0;
+  top: 680px;
+  z-index: 1;
+  visibility: hidden;
+}
+.back-to-top-side .back-to-top-btn {
+  width: 44px;
+  height: 118px;
+  background: url(/appledaily/images/core/gotop_w_appledaily.png) 0 0 no-repeat;
+}

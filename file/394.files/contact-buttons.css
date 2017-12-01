@@ -1,0 +1,45 @@
+.slide-on-scroll#contact-buttons-bar {
+	float: left; display: inline-block; position: absolute;
+}
+.contact-button-link {
+	background: rgb(142, 142, 147); padding: 0px; transition:250ms; left: 0px; width: 50px; height: 50px; text-align: center; color: rgb(255, 255, 255); line-height: 50px; font-size: 22px; margin-bottom: 1px; display: block; position: relative; box-sizing: border-box; -webkit-transition: all 250ms; -moz-transition: all 250ms; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.contact-button-link:hover {
+	width: 70px; color: rgb(255, 255, 255); padding-left: 20px;
+}
+.contact-button-link:focus {
+	width: 70px; color: rgb(255, 255, 255); padding-left: 20px;
+}
+.contact-button-link:active {
+	width: 70px; color: rgb(255, 255, 255); padding-left: 20px;
+}
+.cb-hidden.contact-button-link {
+	left: -50px;
+}
+.facebook.contact-button-link {
+	background: url("../images/Facebook_letter_logo_24.png") no-repeat center rgb(59, 89, 152);
+}
+.twitter.contact-button-link {
+	background: url("../images/twitter_icon.png") no-repeat center rgb(38, 196, 241);
+}
+.gplus.contact-button-link {
+	background: url("../images/Google_plus_logo_24.png") no-repeat center rgb(219, 68, 55);
+}
+.line.contact-button-link {
+	background-position: center; background-image: url("../images/line2.png"); background-repeat: no-repeat; background-color: rgb(97, 223, 97);
+}
+.separated.contact-button-link {
+	margin-top: 1em;
+}
+.show-hide-contact-bar {
+	background: none; padding: 0px; outline: 0px; border: 0px currentColor; border-image: none; width: 50px; color: rgb(0, 0, 0);
+}
+.show-hide-contact-bar.contact-button-link:focus {
+	background: none; padding: 0px; outline: 0px; border: 0px currentColor; border-image: none; width: 50px; color: rgb(0, 0, 0);
+}
+.show-hide-contact-bar.contact-button-link:active {
+	background: none; padding: 0px; outline: 0px; border: 0px currentColor; border-image: none; width: 50px; color: rgb(0, 0, 0);
+}
+.show-hide-contact-bar.contact-button-link:hover {
+	background: rgb(204, 204, 204); padding: 0px; width: 50px; color: rgb(0, 0, 0);
+}

@@ -1,0 +1,1 @@
+document.write('<div style="text-align:left;margin-top: -8px;"><iframe id="frameid" width="660px" height="195" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" align="top" src="http://iguang.tw/webservice/IguangAD?tplID=7"></iframe></div>');

@@ -1,0 +1,19 @@
+/* Part Reset */
+.ysm-d2s-module-bd div,.ysm-d2s-module-bd dl,.ysm-d2s-module-bd dt,.ysm-d2s-module-bd dd,.ysm-d2s-module-bd ul,.ysm-d2s-module-bd ol,.ysm-d2s-module-bd li,.ysm-d2s-module-bd h1,.ysm-d2s-module-bd h2,.ysm-d2s-module-bd h3,.ysm-d2s-module-bd h4,.ysm-d2s-module-bd h5,.ysm-d2s-module-bd h6,.ysm-d2s-module-bd pre,.ysm-d2s-module-bd p,.ysm-d2s-module-bd blockquote {margin:0;padding:0;}
+.ysm-d2s-module-bd img {border:0;}
+.ysm-d2s-module-bd address,.ysm-d2s-module-bd cite,.ysm-d2s-module-bd code,.ysm-d2s-module-bd dfn,.ysm-d2s-module-bd em,.ysm-d2s-module-bd strong,.ysm-d2s-module-bd var {font-style:normal;font-weight:normal;}
+.ysm-d2s-module-bd li {list-style:none;}
+.ysm-d2s-module-bd h1,.ysm-d2s-module-bd h2,.ysm-d2s-module-bd h3,.ysm-d2s-module-bd h4,.ysm-d2s-module-bd h5,.ysm-d2s-module-bd h6 {font-size:100%;font-weight:normal;}
+.ysm-d2s-module-bd {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;text-align:left;position:relative;}
+/* No-Float style */
+.ysm-d2s-module-g {letter-spacing:-0.31em;*letter-spacing:normal;word-spacing:-0.43em;}
+.ysm-d2s-module-u {display:inline-block;zoom: 1;*display:inline;letter-spacing:normal;word-spacing:normal;vertical-align:top;}
+/* AD Style */
+.ysm-d2s-module-bd {font-family:Helvetica,Arial,'微軟正黑體',sans-serif;background-color:rgba(46, 46, 44, 0.07);height:100px;width:300px;box-shadow:0 -1px 3px rgba(0, 0, 0, 0.03) inset;}
+.ysm-d2s-module-bd ul {text-align:center;}
+.ysm-d2s-module-bd ul li {position:relative;margin:2px;height:100px;box-shadow:0 3px 10px rgba(0, 0, 0, 0.16);}
+.ysm-d2s-module-bd ul li img {width:95px;height:95px;}
+.ysm-d2s-module-bd ul li span {position:absolute;left:0;bottom:0;background:none repeat scroll 0 0 rgba(0, 0, 0, 0.65);width:95px;text-align:center;color:#fff;padding:3px 0;}
+/* AD Label */
+.ysm-d2s-module-bd .adlabel {position:absolute;right:0;top:0;width:0;height:12px;font-size:77%;color:#aaa;margin:0;padding-left:12px;line-height:12px;vertical-align:middle;background:url(d2s_adlabel.png) no-repeat;overflow:hidden;z-index:1;}
+.ysm-d2s-module-bd .adlabel:hover {width:48px;background:url(d2s_adlabel.png) no-repeat #ddd;}

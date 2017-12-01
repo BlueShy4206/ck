@@ -1,0 +1,105 @@
+.sex{
+    display:none;
+	position: absolute;
+	top:0px;
+	width:970px;
+	z-index:4000;
+	}
+.sexmask{
+    display:none;
+	position: fixed;
+	top:0px;
+	width:100%;
+	z-index:3800;
+	background:rgba(0,0,0,0.9);
+	}
+.sexicon{
+	width:100%;
+	height:200px;
+	margin-top:0px;
+	padding-top:130px;
+	background:url(../../images/news/sex_bg.png) no-repeat center top;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	font-size:1.5rem;
+	}
+.sexword{
+	font-size:14px;
+	color:#fff;
+	padding:40px 20px 10px;
+	line-height:1.8em;
+	width:800px;
+	margin:0px auto;
+	}
+.sexword h6{
+	font-size:15px;
+	font-weight:bold;
+	}
+.sexword span{
+	color:#ff0000;
+	}
+.sexbox{
+	display: table;
+	width:800px;
+	box-sizing:content-box;
+	margin:0px auto;
+	}
+.sexbox a{
+	color:#fff;
+	display: table-cell;
+	width:50%;
+	}
+a .sexno,
+a .sexyes{
+	padding:12px 7px;
+	-webkit-border-radius : 4px;
+	-webkit-border-radius:4px;
+	-o-border-radius:4px;
+	-ms-border-radius:4px;
+	border-radius:4px;
+	text-align:center;
+	font-size:0.9rem;
+	line-height:1.5em;
+	}
+a .sexno{
+	background: #db0000; /* Old browsers */
+	background: -moz-linear-gradient(top, #db0000 0%, #ad0000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#db0000), color-stop(100%,#ad0000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #db0000 0%,#ad0000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #db0000 0%,#ad0000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #db0000 0%,#ad0000 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #db0000 0%,#ad0000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db0000', endColorstr='#ad0000',GradientType=0 ); /* IE6-9 */
+	margin-right:5px;
+	margin-left:20px;
+}
+
+a .sexno:hover{
+    background: #9f0000; /* Old browsers */
+    margin-right:5px;
+    margin-left:20px;
+}
+
+a .sexyes{
+	background: #518a00; /* Old browsers */
+	background: -moz-linear-gradient(top, #518a00 0%, #386000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#518a00), color-stop(100%,#386000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #518a00 0%,#386000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #518a00 0%,#386000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #518a00 0%,#386000 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #518a00 0%,#386000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#518a00', endColorstr='#386000',GradientType=0 ); /* IE6-9 */
+	margin-left:5px;
+	margin-right:20px;
+	}
+.sexbox span{
+	display:block;
+	font-size:1.6rem;
+	font-weight:bold;
+	padding:5px;
+	}
+.sexbox span img{
+	margin-bottom:-2px;
+	padding-right:5px;
+	}

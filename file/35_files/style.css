@@ -1,0 +1,934 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/* 重設
+--------------------------------------------------- */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+/*del,*/ dfn, /*em,*/ img, ins, kbd, q, s, samp,
+/*small,*/ strike, /*strong,*/ sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+/*table,*/ caption,/* tbody, tfoot, thead, tr, th, td,*/
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;background: transparent;/*vertical-align: baseline;*/}
+ol, ul, li{list-style: none;}
+
+/*以下為針對HTML5,暫時不開放----------------*/  
+/* HTML5 display-role reset for older browsers */
+/*
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+*/
+fieldset,img { border: none; }
+
+/*-------------------基本-----------------------------*/
+a{ font-size:15px; text-decoration:none;outline: none; /* for Firefox */hlbr:expression(this.onFocus=this.blur()); color:#000 /* for IE */;}
+a:hover{ font-size:15px; text-decoration:none; color:#000;  }
+
+
+body{margin:0;-webkit-text-size-adjust:none; background:#dfddd1}
+
+.m1 {width:100%; height:90px; background:url(../images/t_bg.jpg); position:relative}
+.m1 .a1{ width:1120px; margin:0 auto; height:90px; }
+.m1 .a1 .lg{ width:290px; height:90px; float:left; }
+.m1 .a1 .hd{ width:830px; height:70px; float:right; padding:14px 0 6px}
+.m1 .a1 .hd .sh{ width:250px; height:32px; float:right ; background:url(../images/bx.png); margin-right:0px }
+.m1 .a1 .hd .sh .bx { width:197px; height:26px; float:left; margin:3px 0 5px 3px; border:0; font:15px/26px "微軟正黑體"; color:#999999; padding:0 5px; margin:2px\9 0 5px\9 3px\9}
+.m1 .a1 .hd .sh .z { width:34px; height:32px; float:right}
+.m1 .a1 .hd .hdlk{ width:30px; height:32px; float:right }
+.m1 .a1 .hd .hdlk2{ width:80px; margin:0 0 0 5px}
+.m1 .a1 .hd .tp {height:30px; float:right; margin-top:14px}
+.m1 .a1 .hd .tp .lk{ width:160px; height:30px; float:right; margin-left:5px}
+
+.m2 {width:100%; height:300px;  padding:5px 0 0 0; background:#333; position:relative}
+.m2 .btl{ width:55px; height:110px; position:absolute; top:95px; left:10px; z-index:9}
+.m2 .btr{ width:55px; height:110px; position:absolute; top:95px; right:10px; z-index:9}
+.m2 .ls1{ width:400px; height:300px; position:relative; margin:0 1px 0 0; float:left}
+.m2 .ls1 .tx { width:380px; height:60px;position:absolute; bottom:0px; left:0px; background:url(../images/ls_bg.png); padding:5px 10px;font:bold 18px/30px "微軟正黑體"; color:#333}
+.m2 .ls1 .tx .t1 { width:380px; height:30px; float:left}
+.m2 .ls1 .tx .t1 a{ font:bold 26px/32px "微軟正黑體"; color:#333}
+.m2 .ls1 .tx .t1 a:hover{ color:#353a90; text-decoration:underline}
+.m2 .ls1 .tx .t2 { width:160px; height:30px; float:left;}
+.m2 .ls1 .tx .t3 { width:220px; height:30px; float:left;text-align:right}
+.m2 .ls1 .tx .t3 h4{ font:bold 30px/30px arial; display:inline}
+
+.m3 {width:100%; height:50px;background:#333;position:relative }
+.m3 .a2{ width:1030px; height:50px;position:relative; margin:0 auto}
+.m3 .a2 .bl{ width:30px; height:40px; position:absolute; top:5px; left:-45px}
+.m3 .a2 .br{ width:30px; height:40px; position:absolute; top:5px; right:-45px}
+.m3 .a2 .ls2{ width:333px; height:40px;position:relati ve; margin:5px 10px 5px 0;font:bold 20px/40px "微軟正黑體"; color:#959bff; float:left; border-right:0px dashed #888}
+.m3 .a2 .ls2 a{font:bold 18px/40px "微軟正黑體"; color:#fff;}
+.m3 .a2 .ls2 a:hover{color:#FFcc00;}.m4 .a3 .ls3
+.m3 .a2 .ls2 h4{font:bold 12px/30px Arial; color:#ccc;display:inline}
+
+.m4 {width:1120px; height:auto; overflow:hidden; margin:10px auto 0}
+.m4 .a3{width:904px; height:auto; overflow:hidden; float:left;position:relative; margin-bottom:10px;}
+.m4 .a3 .ls3{width:402px; height:auto; overflow:hidden;margin:0 10px 10px 0; padding:20px;font:13px/20px "新細明體"; color:#555;background:url(../images/ns/bg.png); float:left; position:relative}
+.m4 .a3 .ls3  div{ width:402px;float:left; margin:0 0 10px}
+.m4 .a3 .ls3 .im1{height:auto; overflow:hidden} 
+.m4 .a3 .ls3 .ic1{width:110px; height:16px; background:#ff3e99;padding:2px 0;font:12px/18px "新細明體"; color:#fff; text-align:center} 
+.m4 .a3 .ls3 .ic1 a{ height:16px;font:12px/18px Arial; color:#fff}  
+.m4 .a3 .ls3 .ic1 a:hover{color:#fff}
+.m4 .a3 .ls3 .ic2{width:50px; height:16px; background:#ac48db ;padding:2px 5px;font:12px/18px "新細明體"; color:#fff} 
+.m4 .a3 .ls3 .ic3{width:50px; height:16px; background:#31a9ee;padding:2px 5px;font:12px/18px "新細明體"; color:#fff} 
+.m4 .a3 .ls3 .dt{ width:282px; height:20px; text-align:right;font:10px/18px Verdana; color:#003399}
+.m4 .a3 .ls3 .tt1{height:auto; overflow:hidden}
+.m4 .a3 .ls3 .tt1 a{font:bold 18px/24px "微軟正黑體"; color:#333}
+.m4 .a3 .ls3 .tt1 a:hover { color:#32388f; text-decoration:underline}
+.m4 .a3 .ls3 .c1{ margin:0 0 0 0; text-align:justify;text-justify:inter-ideograph;font:14px/20px "微軟正黑體"; color:#333}
+.m4 .a3 .ls3 .mo{ width:15px; height:15px; position:absolute; bottom:8px; right:20px; }
+
+.m4 .a3 .ls4{width:176px; height:auto; overflow:hidden; margin:0 10px 10px 0; padding:20px;font:13px/20px "新細明體"; color:#555;background:url(../images/ns/bg.png); float:left; position:relative}
+.m4 .a3 .ls4  div{ width:176px;float:left; margin:0 0 10px}
+.m4 .a3 .ls4 .im2{ height:auto; overflow:hidden}
+/*background:#ff3e99*/
+.m4 .a3 .ls4 .ic1{width:105px; height:16px; padding:2px 0;font:12px/18px "新細明體"; color:#fff; text-align:center} 
+.m4 .a3 .ls4 .ic1 a{ height:16px;font:12px/18px Arial; color:#fff}  
+.m4 .a3 .ls4 .ic1 a:hover{color:#fff}
+.m4 .a3 .ls4 .ic2{ width:50px; height:16px; background:#ac48db;padding:2px 5px;font:12px/18px "新細明體"; color:#fff} 
+.m4 .a3 .ls4 .ic3{ width:50px; height:16px; background:#31a9ee;padding:2px 5px;font:12px/18px "新細明體"; color:#fff} 
+
+.m4 .a3 .ls4 .dt2{ width:70px; height:20px; text-align:right;font:10px/18px Verdana; color:#003399}
+.m4 .a3 .ls4 .tt2{ height:auto; overflow:hidden}
+.m4 .a3 .ls4 .tt2 a{font:bold 18px/24px "微軟正黑體"; color:#333}
+.m4 .a3 .ls4 .tt2 a:hover { color:#32388f; text-decoration:underline}
+.m4 .a3 .ls4 .c2{ margin:0 0 0 0; text-align:justify;text-justify:inter-ideograph;font:14px/20px "微軟正黑體"; color:#333}
+.m4 .a3 .ls4 .mo2{ width:15px; height:15px; position:absolute; bottom:8px; right:20px;}
+
+.m4 .a4{width:216px; height:auto; overflow:hidden; float:left; }
+.m4 .a4 .ar1{ width:216px;  height:auto; overflow:hidden; margin:0 0 10px 0 }
+.m4 .a4 .ar1 .tt3{ width:216px; height:40px}
+.m4 .a4 .ar1 .amr{ width:176px; height:auto; overflow:hidden; border:1px solid #8b8ec5; border-bottom:5px solid #8b8ec5; border-top:0; background:#e7e5dd; padding:15px 19px 19px }
+.m4 .a4 .ar1 .amr .ls5{width:176px; height:auto; overflow:hidden; border-bottom:1px double #ccc; margin:0 0 1px 0}
+.m4 .a4 .ar1 .amr .ls5 div{ float:left}
+.m4 .a4 .ar1 .amr .ls5 .icc{ width:6px; height:32px; margin:0 10px 0 0 ; padding:7px 0 5px}
+.m4 .a4 .ar1 .amr .ls5 .tt4{ width:150px;height:auto; overflow:hidden;margin-bottom:3px}
+.m4 .a4 .ar1 .amr .ls5 .tt4 a{font:bold 13px/20px "微軟正黑體"; color:#555; letter-spacing:-0.5px}
+.m4 .a4 .ar1 .amr .ls5 .tt4 a:hover { color:#003399}
+.m4 .a4 .ar1 .amr .ls5 .dt3{ width:150px; height:20px; text-align:left;font:12px/16px Verdana; color:#003399}
+
+.m4 .a4{width:216px; height:auto; overflow:hidden; float:left}
+.m4 .a4 .ar2{ width:216px; height:380px;margin:0 0 10px 0}
+.m4 .a4 .ar2 .tt5{ width:216px; height:40px}
+.m4 .a4 .ar2 .amr2{ width:176px; height:305px; border:1px solid #ca7baa; border-bottom:5px solid #ca7baa; border-top:0; background:#e7e5dd; padding:13px 19px 17px }
+.m4 .a4 .ar2 .amr2 .ls6{width:176px; height:50px; border-bottom:1px double #ccc; }
+.m4 .a4 .ar2 .amr2 .ls6 div{ float:left}
+.m4 .a4 .ar2 .amr2 .ls6 .icc2{ width:6px; height:38px; margin:0 10px 0 0 ; padding:12px 0 0px}
+.m4 .a4 .ar2 .amr2 .ls6 .tt6{ width:150px;height:25px}
+.m4 .a4 .ar2 .amr2 .ls6 .tt6 a{font:bold 17px/25px "微軟正黑體"; color:#555; letter-spacing:-0.5px}
+.m4 .a4 .ar2 .amr2 .ls6 .tt6 a:hover { color:#003399}
+.m4 .a4 .ar2 .amr2 .ls6 .tt7{ width:150px; height:25px; text-align:left;font:12px/20px Verdana; color:#bf0072}
+
+.m4 .a4 .ar3{ width:216px; height:auto; margin:0 0 9px}
+
+.m5{ width:100%; height:90px; background:#333}
+.m5 .a5{ width:1120px; height:70px; margin:0 auto}
+.m5 .a5 div{ float:left}
+.m5 .a5 .lg2{width:210px; height:70px; }
+.m5 .a5 .tt8{width:760px; height:40px; padding:18px 0 12px; font:12px/20px arial; color:#ccc; float:left; letter-spacing:-0.3px}
+.m5 .a5 .tt9{ width:150px;height:40px; padding:18px 0 12px;font:12px/20px arial;color:#ccc; text-align:right}
+.m5 .a5 .tt9 a{font:12px/20px Verdana;color:#ccc;}
+.m5 .a5 .tt9 a:hover{color:#FFCC00;}
+
+.m6{ width:100%; height:40px; background:#333;padding:5px 0; border-top:2px solid #31368e}
+.m6 .a6{ width:1120px; height:40px; margin:0 auto;}
+.m6 .a6 .icc2{ width:60px; height:40px; margin:0 10px 0 0; font:bold 18px/40px "微軟正黑體"; color:#333; background:#ffcc00; float:left; text-align:center}
+.m6 .a6 .tt10{ width:1050px; height:40px;font:bold 18px/40px "微軟正黑體";color:#333;  float:left; text-align:left}
+.m6 .a6 .tt10 a{font: 20px/40px "微軟正黑體";color:#fff;}
+.m6 .a6 .tt10 a:hover{color:#ffcc00;}
+.m6 .a6 .tt10 h4{font:13px/40px Verdana, Arial; color:#ccc; display:inline}
+
+.m7 {width:1120px; height:auto; overflow:hidden; margin:10px auto 0}
+
+.m7 .gd3{ width:1120px; height:30px; margin:0 auto 10px ;font:bold 15px/30px "微軟正黑體";color:#333; }
+.m7 .gd3 .gdt2 {width:668px;height:30px; }
+.m7 .gd3 .gdt2 a{font:bold 15px/30px "微軟正黑體";color:#333;}
+.m7 .gd3 .gdt2 a:hover{ color:#cc0000; text-decoration:underline}
+
+
+.m7 .a7{width:668px; height:auto; overflow:hidden; float:left; margin:0 10px 0 0}
+.m7 .a7 .pga {width:663px; height:38px;padding:0 7px 0 8px; border-bottom:1px solid #31368e; position:relative}
+.m7 .a7 .pga .pgl{ width:50px; height:38px;background:url(../images/ns/line.png) right no-repeat ; float:left}
+.m7 .a7 .pga .pgl a{width:50px; height:38px;font:bold 18px/38px "微軟正黑體";color:#777; display:inline-block;text-align:center}
+.m7 .a7 .pga .pgl a:hover{color:#fff; background:#31368e}
+
+.m7 .a7 .mns {width:628px;height:auto;overflow:hidden;border-bottom:2px solid #31368e; border:2px solid #31368e;border-right:0;border-left:0;
+		      background:url(../images/ns/bg.png);padding:20px; margin:0 0 10px 0}
+.m7 .a7 .mns div{ float:left}
+.m7 .a7 .mns .im { width:300px; height:225px; float:left; margin:0 20px 0 0 }
+.m7 .a7 .mns .tt11{ width:308px; height:auto; overflow:hidden; margin:0 0 5px 0}
+.m7 .a7 .mns .tt11 a{font:bold 24px/30px "微軟正黑體";color:#333;}
+.m7 .a7 .mns .tt11 a:hover{color:#31368e; text-decoration:underline}
+.m7 .a7 .mns .dt4{ width:308px; height:20px;font:12px/20px Verdana; color:#333}
+.m7 .a7 .mns .c3 {width:308px; height:auto; overflow:hidden; text-align:justify;text-justify:inter-ideograph;font:16px/24px "微軟正黑體";color:#555;}
+.m7 .a7 .mns .c3 a{font:12px/30px "新細明體";color:#FF6600;}
+.m7 .a7 .mns .c3 a:hover{color:#31368e;}
+
+.m7 .a7 .mns .ls7{ width:628px; height:40px;margin:10px 0 0 0 ;}
+.m7 .a7 .mns .ls7 a h4{ font:15px/24px "微軟正黑體";color:#31368e; display:inline}
+.m7 .a7 .mns .ls7 a:hover h4{ color:#fff; }
+.m7 .a7 .mns .ls7 a{width:603px; height:40px; font:bold 20px/40px "微軟正黑體";color:#333; display:inline-block;; padding:0 10px; background:#e7e5dd; border-left:5px solid #a5a18a}
+.m7 .a7 .mns .ls7 a:hover{ background:#31368e;border-left:5px solid #ffcc00; color:#fff; }
+
+.m7 .a7 .nsa{width:668px;height:auto;overflow:hidden;margin:0 0 10px 0}
+.m7 .a7 .nsa .ns1{width:442px; height:auto;overflow:hidden; margin:0 10px 0 0; float:left}
+.m7 .a7 .nsa .ns1 .div{float:left}
+.m7 .a7 .nsa .ns1 .tt12 div{float:left}
+.m7 .a7 .nsa .ns1 .tt12{width:422px; height:30px;padding:5px 10px; background:#ffcc00;font: 18px/30px "微軟正黑體";color:#000;}
+.m7 .a7 .nsa .ns1 .tt12 .tta{ margin:0 5px 0 0}
+.m7 .a7 .nsa .ns1 .tt12 .sh2{ width:200px; height:28px; float:right; text-align:right}
+
+.m7 .a7 .nsa .ns1 .tt12 .sh2 .bx2{ width:184px; height:26px; padding:1px 1px 1px 5px;font:15px/30px Verdana;color:#333; border:1px solid #ccc; margin:2px 0 0 0}
+.m7 .a7 .nsa .ns1 .ma1{ width:402px; height:auto; overflow:hidden; background:url(../images/ns/bg.png); padding:5px 20px 15px}
+.m7 .a7 .nsa .ns1 .ma1 div {float:left;}
+.m7 .a7 .nsa .ns1 .ma1 .ls8{ width:402px; height:auto; border-bottom:1px dashed #ccc; padding:4px 0 4px}
+.m7 .a7 .nsa .ns1 .ma1 .ls8 .ic3{ width:15px;height:25px;font: 15px/30px "新細明體";color:#000;}
+.m7 .a7 .nsa .ns1 .ma1 .ls8 .tt13{ width:387px; height:auto;}
+.m7 .a7 .nsa .ns1 .ma1 .ls8 .tt13 a{font:bold 15px/25px "微軟正黑體";color:#333;}
+.m7 .a7 .nsa .ns1 .ma1 .ls8 .tt13 a:hover{color:#31368e; text-decoration:none}
+
+.m7 .a7 .nsa .ns2{width:216px;height:auto;overflow:hidden; float:left}
+.m7 .a7 .nsa .ns2 div{ float:left}
+.m7 .a7 .nsa .ns2 .tt14{width:196px; height:30px;padding:5px 10px; background:#154190;font: 18px/30px "微軟正黑體";color:#fff;}
+.m7 .a7 .nsa .ns2 .tt14 div{float:left}
+.m7 .a7 .nsa .ns2 .tt14 .tta2{ margin:0 5px 0 0}
+.m7 .a7 .nsa .ns2 .ma2{ width:191px; height:auto; overflow:hidden; background:url(../images/ns/bg.png); padding:5px 15px 8px 10px; margin:0 0 10px }
+.m7 .a7 .nsa .ns2 .ma2 .ls9{ width:191px; height:auto; overflow:hidden; border-bottom:1px dashed #ccc; padding:2px 0}
+.m7 .a7 .nsa .ns2 .ma2 .ls9 a{font:bold 15px/22px "微軟正黑體";color:#333;} 
+.m7 .a7 .nsa .ns2 .ma2 .ls9 h4{ width:15px; height:44px;font:15px/20px "新細明體"; display:inline; float:left}
+.m7 .a7 .nsa .ns2 .ma2 .ls9 a:hover{color:#31368e; text-decoration:underline}
+.m7 .a7 .nsa .ns2 .ad{ width:216px; height:60px;}
+
+.m7 .a7 .nsa2{width:668px;height:auto;overflow:hidden;margin:0 0 10px 0}
+.m7 .a7 .nsa2 div{ float:left}
+.m7 .a7 .nsa2 .tt15{width:648px; height:30px;padding:5px 10px; background:#333;font:18px/30px "微軟正黑體";color:#fff; padding:5px 10px}
+.m7 .a7 .nsa2 .tt15 .tta3{margin:0 5px 0 0}
+.m7 .a7 .nsa2 .tt15 .icc3{float:right; width:110px; height:30px; text-align:right; }
+.m7 .a7 .nsa2 .tt15 .icc3 .ic4{ width:22px; height:30px; margin:0 5px 0 0;padding:3px 0 0 0}
+.m7 .a7 .nsa2 .tt15 .icc3 a{font:13px/27px "新細明體";color:#fff;}
+.m7 .a7 .nsa2 .tt15 .icc3 a:hover{color:#ffcc00; }
+
+.m7 .a7 .nsa2 .ma3{ width:628px; height:auto; overflow:hidden; background:url(../images/ns/bg.png); padding:0 20px 10px;}
+.m7 .a7 .nsa2 .ma3 .ls10{ width:628px; height:auto; overflow:hidden;border-bottom:1px dashed #ccc; padding:10px 0;  }
+.m7 .a7 .nsa2 .ma3 .ls10 div{float:left}
+.m7 .a7 .nsa2 .ma3 .ls10 .ic5{ width:6px; margin:0 10px 0 0 ; height:80px; padding:10px 0 0 0}
+.m7 .a7 .nsa2 .ma3 .ls10 .tt16{ width:482px; height:auto; overflow:hidden  }
+.m7 .a7 .nsa2 .ma3 .ls10 .tt16 a{font:bold 20px/30px "微軟正黑體";color:#333;}
+.m7 .a7 .nsa2 .ma3 .ls10 .tt16 a:hover{color:#31368e; text-decoration:underline}
+.m7 .a7 .nsa2 .ma3 .ls10 .dat{ width:482px; height:20px;font:15px/20px "微軟正黑體";color:#666; margin:0 0 3px}
+.m7 .a7 .nsa2 .ma3 .ls10 .c4{width:482px; height:60px; overflow:hidden; text-align:justify;text-justify:inter-ideograph;font:13px/20px "新細明體";color:#555;}
+.m7 .a7 .nsa2 .ma3 .ls10 .c4 a{font:13px/20px "新細明體";color:#555;color:#555;}
+.m7 .a7 .nsa2 .ma3 .ls10 .c4 a:hover{color:#31368e; text-decoration:underline}
+.m7 .a7 .nsa2 .ma3 .ls10 .tt17{ width:612px; height:auto; overflow:hidden }
+.m7 .a7 .nsa2 .ma3 .ls10 .tt17 a{font:bold 20px/30px "微軟正黑體";color:#333;}
+.m7 .a7 .nsa2 .ma3 .ls10 .tt17 a:hover{color:#31368e;text-decoration:underline}
+.m7 .a7 .nsa2 .ma3 .ls10 .dat2{ width:612px; height:20px;font:15px/20px "微軟正黑體";color:#666; margin:0 0 3px}
+.m7 .a7 .nsa2 .ma3 .ls10 .c5{width:612px; height:60px; text-align:justify;text-justify:inter-ideograph;font:13px/20px "新細明體";color:#555;}
+.m7 .a7 .nsa2 .ma3 .ls10 .c5 a{font:13px/20px "新細明體";color:#555;color:#555;}
+.m7 .a7 .nsa2 .ma3 .ls10 .c5 a:hover{color:#31368e;text-decoration:underline}
+.m7 .a7 .nsa2 .ma3 .ls10 .im3 { width:120px; height:90px; float:right; margin:6px 0 0 0 }
+
+.m7 .a8 {width:442px;height:auto;overflow:hidden; float:left}
+.m7 .a8 .tops{width:442px;height:auto;overflow:hidden;margin:0 0 10px 0}
+.m7 .a8 .tops .tt18{width:422px; height:30px;padding:5px 10px; background:#333;font:18px/30px "微軟正黑體";color:#fff; padding:5px 10px}
+.m7 .a8 .tops .tt18 div{ float:left}
+.m7 .a8 .tops .tt18 .tta3{margin:0 5px 0 0}
+.m7 .a8 .tops .ma4{width:402px; height:auto; overflow:hidden; background:url(../images/ns/bg.png); padding:11px 20px 16px;}
+.m7 .a8 .tops .ma4 .ls11{ width:402px; height:34px; border-bottom:1px dashed #ccc}
+.m7 .a8 .tops .ma4 .ls11 div{ float:left}
+.m7 .a8 .tops .ma4 .ls11 .ic6{ width:20px; height:20px; margin:5px 10px 0 0; background:#ff0000; text-align:center; font:bold 10px/20px Verdana;color:#fff}
+.m7 .a8 .tops .ma4 .ls11 .ic7{ width:20px; height:20px; margin:5px 10px 0 0; background:#31368e; text-align:center; font:bold 10px/20px Verdana;color:#fff}
+.m7 .a8 .tops .ma4 .ls11 .tt19{ width:252px; height:34px; }
+.m7 .a8 .tops .ma4 .ls11 .tt19 a{font:bold 15px/34px "微軟正黑體";color:#555;color:#333;}
+.m7 .a8 .tops .ma4 .ls11 .tt19 a:hover{color:#31368e; text-decoration:underline}
+.m7 .a8 .tops .ma4 .ls11 .pit{ width:119px; height:24px;text-align:center;font:13px/24px "微軟正黑體";color:#555; border-left:1px solid #ddd; margin:5px 0}
+
+
+.m7 .a8 {width:442px;height:auto;overflow:hidden;}
+.m7 .a8 .tt48{width:442px; height:30px;padding:0; font:18px/30px "微軟正黑體";color:#333; padding:0 0 5px; border-bottom:1px dotted #888; margin:0 0 0}
+.m7 .a8 .tt48_2{border-bottom:1px dotted #333;}
+.m7 .a8 .tt48 div{ float:left}
+.m7 .a8 .tt48 .tta7{margin:0 5px 0 0}
+
+.m7 .a8 .ar7 {width:442px;height:auto;overflow:hidden;margin:0 0 10px 0}
+.m7 .a8 .ar7 .ls19{ width:442px; height:auto; overflow:hidden; border-bottom:1px dotted #888 ; padding:8px 0}
+
+.m7 .a8 .ar7 .ls19 div{width:442px;}
+.m7 .a8 .ar7 .ls19 .tt49{float:left;font:bold 16px/24px Georgia;color:#003399; float:left;}
+.m7 .a8 .ar7 .ls19 .tt50{height:22px; float:left;font:16px/24px "微軟正黑體";color:#333; float:left;}
+
+
+.m7 .a8 .tops .tt20{width:422px; height:30px;padding:5px 10px; background:#555;font:18px/30px "微軟正黑體";color:#fff; padding:5px 10px}
+.m7 .a8 .tops .tt20 div{ float:left}
+.m7 .a8 .tops .tt20 .tta4{margin:0 5px 0 0}
+.m7 .a8 .tops .ma5{ width:442px; height:250px}
+
+.m8{width:1120px; height:auto; overflow:hidden; margin:0 auto 10px }
+.m8 .tt21{width:1100px; height:30px;padding:5px 10px; background:#333;font:18px/30px "微軟正黑體";color:#fff; padding:5px 10px}
+.m8 .tt21 div{ float:left}
+.m8 .tt21 .tta5{margin:0 5px 0 0}
+.m8 .ma6{width:1100px; height:auto; overflow:hidden; background:url(../images/ns/bg2.png); padding:20px 0 10px 20px;}
+.m8 .ma6 .ls12{width:530px;height:auto;overflow:hidden; float:left; margin:0 20px 0 0}
+.m8 .ma6 .ls12 .no1{ width:530px; height:240px; background:url(../images/ns/no1.jpg); position:relative; margin:0 0 10px 0}
+.m8 .ma6 .ls12 .no1 .tt22{ width:130px; height:45px;font:bold 40px/45px "微軟正黑體";color:#fff55c;position:absolute; top:160px; left:168px}
+.m8 .ma6 .ls12 .no1 .tt23{ width:230px; height:45px;font:bold 28px/55px "微軟正黑體";color:#fff;position:absolute; top:159px; right:0px }
+.m8 .ma6 .ls12 .nox{ width:520px; height:30px; padding:5px;font:bold 18px/30px "微軟正黑體";color:#333; background:#e8e8e8; margin:0 0 10px}
+.m8 .ma6 .ls12 .nox div{ float:left}
+.m8 .ma6 .ls12 .nox .ic8{ width:30px; height:30px;margin:0 10px 0 0; background:#cc0000; font:bold 24px/30px Arial; color:#fff; text-align:center}
+.m8 .ma6 .ls12 .nox .ic9{ width:30px; height:30px;margin:0 10px 0 0; background:#31368e; font:bold 24px/30px Arial; color:#fff; text-align:center}
+.m8 .ma6 .ls12 .nox .tt24{width:320px; height:30px;font:bold 18px/30px "微軟正黑體";color:#333;}
+.m8 .ma6 .ls12 .nox .ic10{ width:40px; height:30px; }
+.m8 .ma6 .ls12 .nox .tt25{width:120px; height:30px;font: 16px/30px "微軟正黑體";color:#333; text-align:right}
+
+/*----------------------------新聞內頁-----------------------------*/
+
+.m7 .a7 .nsa3{width:628px;height:auto;overflow:hidden;margin:0 0 10px 0;background:url(../images/ns/bg.png); padding:0 20px 10px}
+.m7 .a7 .nsa3 div{ float:left}
+.m7 .a7 .nsa3 .bk{ width:80px; height:130px; margin:0 15px 0 0}
+.m7 .a7 .nsa3 .gd{ width:533px; height:30px; margin:10px 0 0 0 ;font:13px/30px "新細明體";color:#cc0000; text-align:right}
+.m7 .a7 .nsa3 .gd a{font:13px/30px "新細明體";color:#555;}
+.m7 .a7 .nsa3 .gd a:hover{color:#31368e; text-decoration:underline}
+.m7 .a7 .nsa3 .tt26{width:533px; height:auto; overflow:hidden; font:bold 28px/35px "微軟正黑體";color:#333; text-align:left; }
+.m7 .a7 .nsa3 .tt26-2{ width:100px; height:auto; margin:0 10px 0 0}
+.m7 .a7 .nsa3 .tt27{width:423px; height:25px; font:13px/25px Verdana;color:#31368e;}
+.m7 .a7 .nsa3 .ma7{width:628px;height:auto;overflow:hidden;font:15px/28px "微軟正黑體";color:#333;text-align:justify;text-justify:inter-ideograph; margin:10px 0 10px 0}
+.m7 .a7 .nsa3 .ma7 .im4{ width:300px; height:auto; overflow:hidden;margin:0 15px 0px 0}
+
+.m7 .a7 .nsa3 .ma7 .ft{ width:100%;float:right;font:bold 16px/24px "微軟正黑體"; color:#333; margin-right:5px;margin:0 0 10px 0}
+.m7 .a7 .nsa3 .ma7 .ft .tx{ float:right }
+.m7 .a7 .nsa3 .ma7 .ft .jfontsize.checked{background:#cc0000; color:#fff;}
+.m7 .a7 .nsa3 .ma7 .ft a{font:bold 14px/23px "微軟正黑體"; color:#333; background:#ddd;float:right; width:24px; height:24px; margin-left:5px; text-align:center}
+.m7 .a7 .nsa3 .ma7 .ft a:hover{ background:#cc0000; color:#fff; }
+
+.m7 .a7 .nsa3 .tk{ height:auto;font:15px/15px "微軟正黑體"; color:#666; margin:0 0 10px 0; overflow:hidden; width:628px}
+.m7 .a7 .nsa3 .tk .tx{ width:50px;float:left;font:15px/15px "微軟正黑體";}
+.m7 .a7 .nsa3 .tk .sher{ margin-right:5px; float:left;}
+.m7 .a7 .nsa3 .tk .sher h1{ font:13px/17px Verdana; color:#315788; display:inline}
+.cb {clear:both}
+.m7 .a7 .nsa3 .tk .ma8{ width:200px; float:right; height:auto; overflow:hidden; }
+.m7 .a7 .nsa3 .tk .ma8 .sher2{ margin-right:5px; float:right;}
+.m7 .a7 .nsa3 .tk .ma8 .tx2{ width:50px;float:right;font:15px/15px "微軟正黑體"; text-align:center}
+
+.m7 .a7 .nsa3 .oth { width:628px; height:50px;margin-bottom:10px}
+.m7 .a7 .nsa3 .oth div{ float:left}
+.m7 .a7 .nsa3 .oth .ic11{ width:40px; height:50px;  }
+.m7 .a7 .nsa3 .oth .tt28{ }
+.m7 .a7 .nsa3 .oth .tt28 a{width:548px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#666; display:inline-block;  background:#e4e4e4; }
+.m7 .a7 .nsa3 .oth .tt28 a:hover{color:#333; background:#FFdd00}
+.m7 .a7 .nsa3 .oth .tt29{ }
+.m7 .a7 .nsa3 .oth .tt29 a{width:548px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#666; display:inline-block;  background:#e4e4e4;text-align:right}
+.m7 .a7 .nsa3 .oth .tt29 a:hover{color:#333; background:#FFdd00}
+
+.m7 .a7 .nsa3 .fb{ width:628px; height:auto; overflow:hidden; margin:0 0 10px} 
+
+/*----------------------------流行網列表-----------------------------*/
+
+.m9{ width:100%; height:45px; background:#333;  border-top:2px solid #cc0000;}
+.m9_cl{border-top:2px solid #9d82c6;}
+.m9 .a9{ width:1120px; height:45px; margin:0 auto;}
+.m9 .a9  div{ float:left;}
+/*.m9 .a9 .tt30{ width:135px; float:left; margin:0 5px 0 0; padding:4px}
+.m9 .a9 .tt30 a{font: bold 15px/40px "微軟正黑體";color:#fff;}
+.m9 .a9 .tt30 a:hover{color:#ffcc00; text-decoration:underline}
+.m9 .a9 .tt30 h5{color:#ccc; display:inline;}*/
+
+
+.m9 .a9 .tt30 a{ width:63px;font:bold 14px/35px "微軟正黑體";color:#fff; background:#555;display:inline-block;  padding:5px ; text-align:center; border-right:1px solid #777}
+.m9 .a9 .tt30 a:hover{color:#333;background:#ffcc00;border-right:1px solid #ffcc00}
+.m9 .a9 .tt30 h5{color:#ccc; display:inline}
+
+.m9 .a9 .tt31 a{font:bold 14px/35px "微軟正黑體";color:#fff; border-right:1px dashed #666; display:inline-block;  padding:5px 13px }
+.m9 .a9 .tt31 a:hover{color:#fff;background:#cc0000;border-right:1px solid #cc0000;}
+.m9 .a9 .tt31 h5{color:#ccc; display:inline}
+
+.m9 .a9 .tt31_3 a{font:bold 14px/35px "微軟正黑體";color:#fff; border-right:1px dashed #666; display:inline-block;  padding:5px 8px; letter-spacing:-0.05px}
+.m9 .a9 .tt31_3 a:hover{color:#fff;background:#845fbc;border-right:1px solid #845fbc;}
+
+.m9 .a9 .tt31_4 a{ font:bold 14px/35px "微軟正黑體";color:#fff; border-left:1px dashed #666; display:inline-block;  padding:5px 30px;letter-spacing:0.5px}
+.m9 .a9 .tt31_4 a:hover{color:#fff;background:#845fbc;border-left:1px solid #845fbc;}
+
+.m9 .a9 .tt30-2{font:14px/35px "微軟正黑體";color:#333; background:#ffcc00;padding:5px 10px;text-align:center;border-right:0px dashed #777}
+
+.m9 .a9 .tt31_2{ width:300px;font:21px/30px "微軟正黑體";color:#eee;padding:5px 11px 1px 0px;  float:left}
+.m9 .a9 .tt31_2 h2{font:23px/30px "新細明體"; display:inline; color:#aaa}
+
+.m9 .a9 .bt a{font:bold 15px/35px "微軟正黑體";color:#fff;display:inline-block; background:#555; padding:5px 8px }
+.m9 .a9 .bt a:hover{color:#fff;background:#cc0000}
+
+.m9 .a9 .bt2 a{font:bold 15px/35px "微軟正黑體";color:#fff;display:inline-block; background:#555; padding:5px 8px }
+.m9 .a9 .bt2 a:hover{color:#fff;background:#845fbc}
+
+
+
+.m10{ width:100%; min-height:600px; height:auto; overflow:hidden;}
+.m10 .a10{ width:1120px; height:auto; overflow:hidden; margin:10px auto 0}
+.m10 .a10 div{ float:left}
+.m10 .a10 .ma9{ width:668px; height:auto; overflow:hidden; /*background:#fff;*/  margin:0 10px 10px 0;}
+.m10 .a10 .ma9 .ls13 div{ float:left ;height:auto; overflow:hidden;}
+.m10 .a10 .ma9 .ls13 {width:628px;height:auto;overflow:hidden; border-bottom:0px dotted #c08282; margin:0 0 1px; padding:20px; background:#e1decb;}
+.m10 .a10 .ma9 .ls13 .ar4 {width:105px;margin:0 8px 0 0}
+.m10 .a10 .ma9 .ls13 .ar4 .tm {width:105px; height:24px;font:bold 14px/24px Georgia;color:#333; margin:0 0 5px 0px; /*background:#f0f0f0; */text-align:center}
+.m10 .a10 .ma9 .ls13 .ar4 .lsn a{width:75px; height:24px;padding:0 10px;background:#ff8800;display:inline-block;font:bold 16px/24px Georgia;color:#fff;text-align:center;letter-spacing:1px}
+.m10 .a10 .ma9 .ls13 .ar4 .lsn a:hover{background:#ffcc01; color:#333}
+.m10 .a10 .ma9 .ls13 .ar5 {width:380px; margin:0 10px 0 0}
+.m10 .a10 .ma9 .ls13 .ar5 .tt32{width:275px; height:30px; float:left}
+.m10 .a10 .ma9 .ls13 .ar5 .tt32 a{font: bold 22px/20px "微軟正黑體";color:#333;}
+.m10 .a10 .ma9 .ls13 .ar5 .tt32 a:hover{color:#333; text-decoration:underline}
+.m10 .a10 .ma9 .ls13 .ar5 .fb2 {  margin:3px 0 0 0; float:right; text-align:right}
+.m10 .a10 .ma9 .ls13 .ar5 .c6{width:380px; height:110px; text-align:justify;text-justify:inter-ideograph;font:13px/22px "新細明體";color:#333;}
+.m10 .a10 .ma9 .ls13 .ar5 .c6 a{font:12px/20px "新細明體";color:#555;color:#cc0000;}
+.m10 .a10 .ma9 .ls13 .ar5 .c6 a:hover{color:#333; text-decoration:underline}
+.m10 .a10 .ma9 .ls13 .ar6 {width:120px; height:90px; margin:30px 0 0 0}
+
+.m10 .a10 .ma9 .ls13-2 div{ float:left ;height:auto; overflow:hidden;}
+.m10 .a10 .ma9 .ls13-2 {width:628px;height:auto;overflow:hidden; border-bottom:0px dotted #c08282; margin:0 0 1px; padding:20px; background:#c0bca5;}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 {width:95px;margin:0 8px 0 0}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 .tm-2 {width:95px; height:24px;font:bold 14px/24px Georgia;color:#333; margin:0 0 5px 0px; /*background:#f0f0f0; */text-align:center}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 .lsn-2 a{width:75px;height:24px;padding:0 10px;background:#d83160;display:inline-block;
+										font:bold 16px/24px Georgia;color:#fff;text-align:center;letter-spacing:1px}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 .lsn-2 a:hover{background:#ffcc01; color:#333}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 .lsn-3 a{width:75px;height:24px;padding:0 10px;background:#8966bf;display:inline-block;
+										font:bold 16px/24px Georgia;color:#fff;text-align:center;letter-spacing:1px}
+.m10 .a10 .ma9 .ls13-2 .ar4-2 .lsn-3 a:hover{background:#ffcc01; color:#333}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 {width:390px; margin:0 10px 0 0}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .tt32-2{width:285px; height:30px; float:left}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .tt32-2 a{font: italic bold 22px/20px "微軟正黑體";color:#333;}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .tt32-2 a:hover{color:#333; text-decoration:underline}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .fb2-2 { width:100px; margin:3px 0 0 0; float:left}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .c6-2{width:390px; height:110px; text-align:justify;text-justify:inter-ideograph;font:13px/22px "新細明體";color:#333;}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .c6-2 a{font:12px/20px "新細明體";color:#555;color:#cc0000;}
+.m10 .a10 .ma9 .ls13-2 .ar5-2 .c6-2 a:hover{color:#333; text-decoration:underline}
+.m10 .a10 .ma9 .ls13-2 .ar6-2 {width:120px; height:90px; margin:30px 0 0 0}
+
+.m10 .a10 .ma9 .ls14 div{ float:left}
+.m10 .a10 .ma9 .ls14 {width:628px;height:24px;border-bottom:0px dotted #c08282; margin:0 0 1px; padding:15px 20px; background:#d7d4c3;filter:alpha(opacity=100);opacity:1;zoom:1}
+.m10 .a10 .ma9 .ls14:hover{ background:#e1decb;filter:alpha(opacity=100);opacity:1;zoom:1}
+.m10 .a10 .ma9 .ls14 .tm2{ width:95px; height:24px;font:bold 14px/24px Georgia;color:#555; margin:0 10px 0 0; text-align:left}
+.m10 .a10 .ma9 .ls14 .lsn2 a{ width:60px; height:20px;padding:0 0px;background:#d83160;display:inline-block;
+								font:bold 10px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0}
+.m10 .a10 .ma9 .ls14 .lsn2 a:hover{background:#ffcc01; color:#333}
+
+.m10 .a10 .ma9 .ls14 .lsn2-2 a{ width:60px; height:20px;padding:0 0px;background:#8966bf;display:inline-block;
+								font:bold 10px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0}
+.m10 .a10 .ma9 .ls14 .lsn2-2 a:hover{background:#ffcc01; color:#333}
+.m10 .a10 .ma9 .ls14 .tt33{width:215px; height:30px; float:left}
+.m10 .a10 .ma9 .ls14 .tt33 a{font: italic bold 20px/20px "微軟正黑體";color:#555;height:30px;}
+.m10 .a10 .ma9 .ls14 .tt33 a:hover{color:#555; text-decoration:underline}
+.m10 .a10 .ma9 .ls14 .tt34{width:130px; height:30px; float:left;font:14px/25px "微軟正黑體";color:#555; float:left; margin:0 5px 0 0; }
+.m10 .a10 .ma9 .ls14 .fb3{ width:100px; margin:3px 0 0 0; float:right}
+
+.m10 .a10 .ma10{width:442px;height:auto;overflow:hidden;}
+.m10 .a10 .ma10 .tt35{width:442px; height:30px;padding:0; font:18px/30px "微軟正黑體";color:#fff; padding:0 0 5px; border-bottom:1px dotted #c08282; margin:0 0 0}
+.m10 .a10 .ma10 .tt35_2{border-bottom:1px dotted #333;}
+.m10 .a10 .ma10 .tt35 div{ float:left}
+.m10 .a10 .ma10 .tt35 .tta6{margin:0 5px 0 0}
+
+.m10 .a10 .ma10 .ar7 {width:442px;height:auto;overflow:hidden;margin:0 0 10px 0}
+.m10 .a10 .ma10 .ar7 .ls15{ width:442px; height:auto; overflow:hidden; border-bottom:1px dotted #c08282 ; padding:8px 0}
+.m10 .a10 .ma10 .ar7 .ls15_2{ border-bottom:1px dotted #333 ;}
+.m10 .a10 .ma10 .ar7 .ls15 div{width:442px;}
+.m10 .a10 .ma10 .ar7 .ls15 .tt36{float:left;font:bold 16px/24px Georgia;color:#fff; float:left;}
+.m10 .a10 .ma10 .ar7 .ls15 .tt37{height:22px; float:left;font:16px/24px "微軟正黑體";color:#fffcb4; float:left;}
+
+.m10 .a11{ width:1120px; height:auto; overflow:hidden; margin:10px auto; position:relative}
+.m10 .a11 .ma11 div{ float:left; }
+.m10 .a11 .ma11{width:1120px; height:auto; overflow:hidden; border-bottom:1px solid #D83160 ; padding-bottom:10px}
+.m10 .a11 .ma11_cl{border-bottom:1px solid #845fbc}
+.m10 .a11 .ma11 .ar8{ width:155px;height:auto; overflow:hidden;margin:0 10px 0 0}
+.m10 .a11 .ma11 .ar8 div{width:155px;}
+.m10 .a11 .ma11 .ar8 .lg{width:155px; height:auto; overflow:hidden; margin:0 0 5px 0}
+.m10 .a11 .ma11 .ar8 .tt38{height:20px; font:16px/20px "微軟正黑體"; color:#fff;border-bottom:3px solid #D83160;padding-bottom:10px; margin:0 0 5px 0; }
+.m10 .a11 .ma11 .ar8 .tt38_cl{border-bottom:3px solid #845fbc;}
+.m10 .a11 .ma11 .ar8 .bk2{width:60px; height:80px;margin:127px 0 0; clear:both}
+
+/*
+.m10 .a11 .ma11 .ar8 .tt39{height:auto;overflow:hidden;font:24px/24px Georgia; color:#FFFCB4;}
+.m10 .a11 .ma11 .ar8 .tt39 h4{font:13px/24px "微軟正黑體"; color:#fff}
+.m10 .a11 .ma11 .ar8 .tt40{height:auto;overflow:hidden;font:20px/30px "微軟正黑體"; color:#FFFCB4; clear:both}
+.m10 .a11 .ma11 .ar8 .tt40 h4{font:13px/30px "微軟正黑體"; color:#fff}*/
+
+.m10 .a11 .ma11 .ar8-2{ width:442px;min-height:140px; height:auto; overflow:hidden;margin:0 0 0 0}
+.m10 .a11 .ma11 .ar8-2 div{ clear:both}
+.m10 .a11 .ma11 .ar8-2 .tt39{height:auto;overflow:hidden;font:24px/24px Georgia; color:#fff;  margin:0 0 5px }
+.m10 .a11 .ma11 .ar8-2 .tt39 h4{font:13px/24px "微軟正黑體"; color:#fff;display:inline-block}
+.m10 .a11 .ma11 .ar8-2 .tt40{height:auto;overflow:hidden;font: 40px/40px "微軟正黑體"; color:#fff; margin:0 0 5px }
+.m10 .a11 .ma11 .ar8-2 .tt40 h4{font:13px/30px "微軟正黑體"; color:#fff;display:inline-block}
+.m10 .a11 .ma11 .ar8-2 .tt40-2{height:auto;/*overflow:hidden;*/font:20px/30px "微軟正黑體"; color:#fff; }
+.m10 .a11 .ma11 .ar8-2 .tt40-2 h4{font:13px/30px "微軟正黑體"; color:#fff;display:inline-block}
+
+.m10 .a11 .ma11 .lsn3{ width:100px; height:300px; margin:0 0px 0 0}
+.m10 .a11 .ma11 .im5{ width:400px; height:300px; margin:0 10px 0 0  }
+.m10 .a11 .ma11 .im5-2{ width:400px; height:300px; margin:0 10px 0 0  }
+
+/*.m10 .a11 .ma11 .ar9{ width:442px; height:auto; overflow:hidden; margin:0 0 0 }
+.m10 .a11 .ma11 .ar9 .tt41{ width:442px; height:40px; overflow:hidden;border-bottom:3px solid #f185a4 ;}
+.m10 .a11 .ma11 .ar9 .tt41 .ttx{ font:18px/40px "微軟正黑體"; color:#fff; float:left; margin:0 8px 0 0}
+.m10 .a11 .ma11 .ar9 .tt41 span{ height:30px; padding:6px 0 0 0; float:left}
+.m10 .a11 .ma11 .ar9 .c7{width:442px; height:149px; text-align:justify;text-justify:inter-ideograph;font:14px/24px "微軟正黑體";color:#fff; padding:10px 0 0 0;}*/
+
+.m10 .a11 .ma11 .ar9 { width:955px; height:auto; overflow:hidden; margin:0 0 0 165px }
+.m10 .a11 .ma11 .ar9 .tt41{ width:955px; height:30px; overflow:hidden; padding:10px 0 0 0}  
+.m10 .a11 .ma11 .ar9 .tt41 .ttx{ font:18px/30px "微軟正黑體"; color:#fff; float:left; margin:0 8px 0 0;border-top:3px solid #d83160 ;}
+.m10 .a11 .ma11 .ar9 .tt41 .ttx_cl{border-top:3px solid #845fbc ;}
+.m10 .a11 .ma11 .ar9 .tt41 span{ height:30px; padding:5px 0 0 0; float:left;}
+.m10 .a11 .ma11 .ar9 .c7{width:500px; min-height:80px;height:auto; overflow:hidden;text-align:justify;text-justify:inter-ideograph;font:14px/22px "微軟正黑體";color:#fff; padding:5px 0 0 0;}
+
+.m10 .a11 .ma11 .ar10 {width:442px; height:auto; overflow:hidden; margin:0 0 0;}
+.m10 .a11 .ma11 .ar10 .tt42{ width:442px; height:30px; overflow:hidden; margin:0 0 0px 0}
+.m10 .a11 .ma11 .ar10 .tt42 .ttx2{font:18px/30px "微軟正黑體"; color:#fff; float:left; margin:0 8px 0 0;border-top:3px solid #d83160 ;}
+.m10 .a11 .ma11 .ar10 .tt42 .ttx2_cl{border-top:3px solid #845fbc ;}
+.m10 .a11 .ma11 .ar10 .tt42 span{ height:30px; padding:5px 0 0 0; float:left}
+.m10 .a11 .ma11 .ar10 div{/*clear:both;*/ margin:10px 0 0}
+.m10 .a11 .ma11 .ar10 .rt1 { width:78%; height:10px;font:10px/10px Georgia;color:#000; background:url(../images/ns2/bg.png); text-align:center}
+.m10 .a11 .ma11 .ar10 .rt2 { width:88%; height:10px;font:10px/10px Georgia;color:#000; background:url(../images/ns2/bg.png); text-align:center}
+.m10 .a11 .ma11 .ar10 .rt3 { width:40%; height:10px;font:10px/10px Georgia;color:#000; background:url(../images/ns2/bg.png); text-align:center}
+.m10 .a11 .ma11 .ar10 .rt4 { width:60%; height:10px;font:10px/10px Georgia;color:#000; background:url(../images/ns2/bg.png); text-align:center}
+
+.m10 .a12{ width:1120px; height:174px;margin:0 auto 10px;position:relative; }
+.m10 .a12 .ma12 .bl{width:30px; height:60px; position:absolute; left:-10px; top:48px; z-index:2}
+.m10 .a12 .ma12 .br{width:30px; height:60px; position:absolute; right:0px; top:48px;z-index:2}
+.m10 .a12 .ma12 {float:left}
+.m10 .a12 .ma12{width:940px; height:auto; overflow:; margin:0 auto 0; position:relative}
+.m10 .a12 .ma12 .ls16{ width:178px; height:auto; overflow:hidden; margin:0 10px 0 0; float:left}
+.m10 .a12 .ma12 .ls16 .im6{ width:178px; height:134px; position:relative }
+.m10 .a12 .ma12 .ls16 .im6 .cv{ width:178px; height:178px; position:absolute; top:0px; left:0px }
+.m10 .a12 .ma12 .ls16 .im6 .cv2{width:102px;height:24px;font:bold 14px/24px "微軟正黑體"; color:#FFCC00; display:inline-block; border-top:3px solid #FFCC00;border-top:3px solid #FFCC00;
+								text-align:right; position:absolute; top:0px; right:0px; z-index:2}
+.m10 .a12 .ma12 .ls16 .im6 .cv2 h4{  display:inline;font:bold 14px/24px Georgia; } 
+
+.m10 .a12 .ma12 .ls16 .tt43 a{width:178px;height:40px;font:bold 16px/40px "微軟正黑體"; color:#fff; display:inline-block; background:#d83160; color:#fff;text-align:center;/*d83160*/ }
+.m10 .a12 .ma12 .ls16 .tt43 a:hover{background:#ffcc00; text-align:center; color:#333} 
+
+.m10 .a12 .ma12 .ls16 .tt43-2 a{width:178px;height:40px;font:bold 16px/40px "微軟正黑體"; color:#fff; display:inline-block; background:#845fbc; color:#fff;text-align:center;/*d83160*/ }
+.m10 .a12 .ma12 .ls16 .tt43-2 a:hover{background:#ffcc00; text-align:center; color:#333} 
+
+.m10 .a12 .ma13 {width:178px; height:174px; overflow:hidden; margin:0 auto 0; position:relative}
+
+.m10 .a13 { width:1120px; height:auto; overflow:hidden; margin:0 auto 10px;position:relative; border-bottom:1px solid #D83160; padding-bottom:10PX }
+.m10 .a13_cl{ border-bottom:1px solid #845fbc; }
+.m10 .a13 div{ float:left}
+.m10 .a13 .ma14{ width:555px; /*height:300px;*/ height:auto; margin:0 10px 0 0; background:url(../images/ns/bg.png);}
+.m10 .a13 .ma15{ width:535px; /*height:300px;*/ height:700px; background:url(../images/ns/bg.png); padding:0 10px; overflow:auto;}
+
+.m4 .a3_2{width:1130px;}
+
+
+.m10 .a10 .ma9 .ls17{ width:668px; height:auto; overflow:hidden; background:url(../images/ns/bg.png);}
+.m10 .a10 .ma9 .ls17 .bxa{ background:#6c42ad; width:668px;height:auto; overflow:hidden;}
+.m10 .a10 .ma9 .ls17 .bxa div{float:left; height:auto; overflow:hidden;border-right:1px dotted #aaa;font:bold 14px/40px "微軟正黑體"; color:#fff;text-align:center;  padding:0 5px}
+.m10 .a10 .ma9 .ls17 .bxa .btx0{ width:129px;}
+.m10 .a10 .ma9 .ls17 .bxa .btx1{ width:79px;}
+.m10 .a10 .ma9 .ls17 .bxa .btx1-2{ border-right:0}
+.m10 .a10 .ma9 .ls17 .bxa .btx2{ width:118px;}
+
+.m10 .a10 .ma9 .ls17 .bxa2{ width:668px;height:auto; overflow:hidden;border-bottom:1px dashed #aaa;}
+.m10 .a10 .ma9 .ls17 .bxa2_bg{ background:#e4e4e4}
+.m10 .a10 .ma9 .ls17 .bxa2 div{float:left; height:auto; overflow:hidden;border-right:0px dotted #aaa;font:13px/20px "微軟正黑體";color:#333;text-align:center; padding:10px 5px;display:table; max-width:536px;word-wrap:break-word;word-break:break-all;}
+
+.m10 .a10 .ma9 .ls17 .bxa2 .btx3{ width:130px ;display:table-cell; vertical-align:middle;}
+.m10 .a10 .ma9 .ls17 .bxa2 .btx4{ width:80px ;}
+.m10 .a10 .ma9 .ls17 .bxa2 .btx5{ width:119px;}
+
+.m10 .a10 .ma9 .ls17 .pga2 {width:668px;height:auto; overflow:hidden; font:15px/40px "微軟正黑體";color:#333;text-align:center}
+
+.m10 .gd2{ width:1120px; height:30px; margin:10px auto 10px ;font:bold 15px/30px "微軟正黑體";color:#fff; }
+.m10 .gd2 .gdt {width:668px;height:30px; }
+.m10 .gd2 .gdt a{font:bold 15px/30px "微軟正黑體";color:#FFFCB4;}
+.m10 .gd2 .gdt a:hover{ color:#fff; text-decoration:underline}
+
+.ma16{width:678px; float:left; margin:0}
+
+.m10 .a10 .ma10 .ar11 {width:402px;height:auto;overflow:hidden;margin:0 0 10px 0; background:url(../images/ns/bg.png); padding:20px}
+.m10 .a10 .ma10 .ar11 .ls18{ width:402px; height:auto; overflow:hidden; }
+.m10 .a10 .ma10 .ar11 .ls18 div{ float:left}
+.m10 .a10 .ma10 .ar11 .ls18 .im7{ width:120px; height:90px; margin: 0 10px 5px 0 }
+.m10 .a10 .ma10 .ar11 .ls18 .tt44 { width:272px; height:50px; }
+.m10 .a10 .ma10 .ar11 .ls18 .tt44 a{ font: italic bold 22px/30px "微軟正黑體";color:#333; }
+.m10 .a10 .ma10 .ar11 .ls18 .tt44 a:hover{text-decoration:underline}
+.m10 .a10 .ma10 .ar11 .ls18 .tt45{ width:120px; height:25px;font:bold 18px/24px Georgia; color:#555; margin:0 10px 0 0;}
+.m10 .a10 .ma10 .ar11 .ls18 .c8{width:272px; height:auto; overflow:hidden; text-align:justify;text-justify:inter-ideograph;font:16px/24px "微軟正黑體";color:#555; float:right}
+.m10 .a10 .ma10 .ar11 .ls18 .c8 a{font:12px/30px "新細明體";color:#CC0000;}
+.m10 .a10 .ma10 .ar11 .ls18 .c8 a:hover{color:#333; text-decoration:underline}
+.m10 .a10 .ma10 .ar11 .ls18 .lsn4 a{ width:120px; height:20px;padding:0 0px;background:#d83160;display:inline-block;
+								font:bold 12px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0; }
+.m10 .a10 .ma10 .ar11 .ls18 .lsn4 a:hover{background:#ffcc01; color:#333}
+.m10 .a10 .ma10 .ar11 .ls18 .lsn5 a{ width:120px; height:20px;padding:0 0px;background:#8966bf;display:inline-block;
+								font:bold 12px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0; }
+.m10 .a10 .ma10 .ar11 .ls18 .lsn5 a:hover{background:#ffcc01; color:#333}
+
+.m10 .a10 .ma10 .ar11 .ls18 .c9{width:272px; height:auto; overflow:hidden; text-align:justify;text-justify:inter-ideograph;font:16px/24px "微軟正黑體";color:#555; float:right}
+.m10 .a10 .ma10 .ar11 .ls18 .c9 a{font:12px/30px "新細明體";color:#CC0000;}
+.m10 .a10 .ma10 .ar11 .ls18 .c9 a:hover{color:#333; text-decoration:underline}
+
+.m11{margin:0; width:678px}
+.m7 .a7 .nsa3 .tp1{height:30px;font:20px/28px "微軟正黑體";color:#fff; text-align:center; float:right; background:#FF3E99; margin:0 -20px 0 0; padding:0 8px}
+.m7 .a7 .nsa3 .tp2{height:30px;font:20px/29px "微軟正黑體";color:#fff; text-align:center; float:right; background:#AC48DB;margin:0 -20px 0 0; padding:0 8px}
+
+/*-----------------------20131007------------------*/
+.m12 .a14{ width:668px; height:45px; margin:0 auto; border-bottom:1px dotted #ddd; /*margin-bottom:1px;*/  }
+.m12 .a14 .bt3 a{font:bold 15px/35px "微軟正黑體";color:#fff;display:inline-block; background:#C0BCA5; padding:5px 0; width:31px; text-align:center}
+.m12 .a14 .bt3 a:hover{color:#fff;background:#79755c}
+.m12 .a14 .tt46 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #666; display:inline-block;  padding:5px 0px;background:#E1DECB;width:103px; text-align:center}
+.m12 .a14 .tt46 a:hover{color:#333;background:#ffcc00;border-right:1px solid #ffcc00;}
+.m12 .a14 .tt47 a{width:75px;font:italic bold 18px/35px "微軟正黑體";color:#333;background:#E1DECB;display:inline-block;padding:5px 10px 5px  0;text-align:center;border-right:1px dotted #666}
+.m12 .a14 .tt47 a:hover{color:#333;background:#ffcc00;border-right:1px solid #ffcc00}
+
+
+.m13{text-align:center; height:auto; overflow:hidden;position:absolute; top:0px; right:20px ; }
+
+.m14 { height:auto; overflow:hidden; width:80px}
+.m14 li {} 
+/* 設置選單區塊*/
+.m14 li dl {}
+/* 設置主選單dt */
+.m14 li dt{ float:right}
+.m14 li dt a{display:block;width:50px; height:28px;font:bold 18px/18px "微軟正黑體";color:#888; display:inline-block;text-align:center; background:#bbb; padding:10px 0 0 0}
+.m14 li dt a:hover{color:#333; background:#ffcc00}
+ /* 設置子選單dd */
+.m14 li dd { text-align:right}
+.m14 li dd a{ width:80px;display:block; font:15px/28px "微軟正黑體";color:#333; display:inline-block;text-align:center; background:#DFDDD1; border-top:1px dotted #888; padding:0 5px}
+.m14 li dd a:hover{color:#fff; background:#31368e}
+/*隱藏子選單*/
+.m14 li dd { display:none;}
+/* 滑鼠滑入顯示子選單 */
+.m14 li:hover dd, .m14 li a:hover dd { display:block;}
+
+
+
+/*-----------------------20131009------------------*/
+
+.m15{ width:442px; height:auto; overflow:hidden; margin:5px 0 10px} 
+.m15 div{ float:left}
+.m15 .bxa4{width:362px; height:auto; overflow:hidden; }
+.m15 .bx4{ width:351px; height:32px; padding:0 10px;font:16px/30px "微軟正黑體";color:#888; background:#fff; border:1px solid #aaa; float:left; border-right:0}
+.m15 .bt4 a{width:60px;font:bold 18px/34px "微軟正黑體";color:#fff;background:#aaa;display:inline-block;padding:0 5px;text-align:center;border-right:0px dotted #666}
+.m15 .bt4 a:hover{color:#333;background:#ffcc00;}
+
+/*-----------------------20131011------------------*/
+
+.m16{ width:628px;height:auto;overflow:hidden; padding:14px 0; /*background:#eee; */margin-bottom:15px}
+
+/*---------------20131104---------------*/
+.m7 .a7 .nsa3 .ma17{width:618px; height:30px; float:left; padding:20px 0 0 11px; border-bottom:1px solid #31368e; }
+.m7 .a7 .nsa3 .ma17 .bx9{width:200px; height:30px; padding:1px;font:16px/22px "微軟正黑體";color:#333; background:#fff; border:1px solid #ccc; float:left; border-right:0; float:right}
+.m7 .a7 .nsa3 .ma17 .mn a{width:144px; height:30px; float:left;font:bold 14px/30px "微軟正黑體";color:#888; background:#eee; text-align:center; display:inline-block; margin-right:10px}
+.m7 .a7 .nsa3 .ma17 .mn a:hover { background:#31368e;  color:#fff}
+.m7 .a7 .nsa3 .ma18{width:608px; height:auto;overflow:hidden;float:left;padding:10px 0 0 11px;border-bottom:0px solid #31368e;margin:0 0 10px 0;font:bold 14px/30px "微軟正黑體"; color:#666}
+.m7 .a7 .nsa3 .ma18 .bxa3 td{border-bottom:1px dashed #ddd;}
+.m7 .a7 .nsa3 .ma18 .bxa3 .bx5{width:200px; height:22px; padding:1px;font:14px/22px "微軟正黑體";color:#888; background:#fff; border:1px solid #ccc; float:left; border-right:0}
+.m7 .a7 .nsa3 .ma18 .bxa3 .bx6{ width:280px; height:22px; padding:0 5px;font:14px/22px "微軟正黑體";color:#888; background:#fff; border:1px solid #ccc;  }
+.m7 .a7 .nsa3 .ma18 .bxa3 .bx7{ width:280px; height:70px; padding:5px;font:14px/22px "微軟正黑體";color:#888; background:#fff; border:1px solid #ccc;  }
+.m7 .a7 .nsa3 .ma18 .bxa3 .bx8{ width:100px; height:22px; padding:0 5px;font:14px/22px "微軟正黑體";color:#888; background:#fff; border:1px solid #ccc;  }
+.m7 .a7 .nsa3 .ma18 .bxa3 .nol{ border:0}
+.m7 .a7 .nsa3 .ma18 .bxa3 .sd{ width:100px; float:right}
+.m7 .a7 .nsa3 .ma18 .bxa3 .sd a{width:100px; height:30px;font:bold 14px/30px "微軟正黑體";color:#666; background:#ccc; text-align:center; display:inline-block; }
+.m7 .a7 .nsa3 .ma18 .bxa3 .sd a:hover{ background:#31368e; color:#fff }
+.m7 .a7 .nsa3 .ma19{width:625px; height:auto;overflow:hidden;float:left;padding:10px 0 0 2px ;border-bottom:0px solid #31368e; margin:0 auto 20px;}
+.m7 .a7 .nsa3 .ma19 .bxa4{ width:625px; height:auto; overflow:hidden;font: 14px/22px "微軟正黑體"; color:#555; margin:10px 0 10px}
+.m7 .a7 .nsa3 .ma19 .bxa4 img{ width:100%}
+.m7 .a7 .nsa3 .ma19 .bxa4 h4{ color:#ff0000; display:inline} 
+.m7 .a7 .nsa3 .ma19 .bxa4 h5{ color:#000099; display:inline; font:bold 16px/26px "微軟正黑體"; } 
+
+
+/*-----------------------20131105----------------------*/
+
+.m17{ width:442px; height:auto; overflow:hidden; margin:5px 0 10px} 
+
+.m17 .tm3{ font:bold 12px/34px "微軟正黑體";color:#333;float:left; border-bottom:1px solid #31368e; width:261px; letter-spacing:-0.5px}
+.m17 .lst2{ height:auto; overflow:hidden;width:90px;float:right; margin:0 0 0 1px}
+.m17 .lst2 a{ width:90px; height:33px;background:#31368e;display:inline-block;font:bold 12px/33px "微軟正黑體";color:#fff;text-align:center; margin:2px 0; }
+.m17 .lst2 a:hover{background:#ffcc01; color:#333; border-bottom:1px solid #31368e;height:32px}
+
+
+
+.m7 .a7 .ns{width:628px;height:auto;overflow:hidden;border-top:1px solid #31368e;background:#31368e;padding:10px 20px; margin:0 10px 0 0 }
+.m7 .a7 .ns div{ float:left} 
+.m7 .a7 .ns .tt51{ width:60px; height:30px; font:bold 18px/24px "微軟正黑體";color:#fff;margin:0 0 0 0}
+.m7 .a7 .ns .tt52 { width:548px; height:auto; overflow:hidden;}
+.m7 .a7 .ns .tt52 a h4{font:14px/24px "微軟正黑體";color:#fff; display:inline}
+.m7 .a7 .ns .tt52 a{font:bold 17px/24px "微軟正黑體";color:#ffdd00; }
+.m7 .a7 .ns .tt52 a:hover{ text-decoration:underline}
+.m7 .a7 .ns .tt53{ width:20px; height:30px; text-align:right}
+.m7 .a7 .ns .tt53 a{ font:18px/24px Verdana;color:#9ea1d9;}
+.m7 .a7 .ns .tt53 a:hover{ color:#ffdd00;}
+.m7 .a7 .ns .tt54 { width:568px; height:auto; overflow:hidden; margin:0 0 0 60px;font:15px/24px "微軟正黑體";color:#fff;}
+
+/*-----------------------20131106流行網專用----------------------*/
+
+.m18{ border-top:1px dotted #aaa; border-left:1px dotted #aaa;font:15px/20px "微軟正黑體";color:#666; background:#fff4f4 }
+.m18 td{ border-right:1px dotted #aaa; border-bottom:1px dotted #aaa;}
+.m18 .tt55{ background:#dd0000; color:#fff;font:bold 15px/20px "微軟正黑體";}
+.m18 .tt56{ background:#ffeaea;}
+
+/*-----------------------20131106音樂網專用----------------------*/
+.m19{ border-top:1px dotted #aaa; border-left:1px dotted #aaa;font:15px/20px "微軟正黑體";color:#666; background:#f6f0ff }
+.m19 td{ border-right:1px dotted #aaa; border-bottom:1px dotted #aaa;}
+.m19 .tt57{ background:#9D82C6; color:#fff;font:bold 15px/20px "微軟正黑體";}
+.m19 .tt58{ background:#f2e9ff;}
+
+/*-----------------------20131106新聞網專用----------------------*/
+.m20{ border-top:1px dotted #aaa; border-left:1px dotted #aaa;font:15px/20px "微軟正黑體";color:#666; background:#f4faff }
+.m20 td{ border-right:1px dotted #aaa; border-bottom:1px dotted #aaa;}
+.m20 .tt59{ background:#3f89c8; color:#fff;font:bold 15px/20px "微軟正黑體";}
+.m20 .tt60{ background:#e5f4ff;}
+
+/*-----------------------20131108新聞網專用----------------------*/
+.m4 .m21{ width:894px;height:50px ; margin:10px 0 0 0}
+.ma20_2{ margin:0 10px 0 0}
+.m4 .m21 .ma20 {width:442px; float:left}
+.m4 .m21 .ma20 .bt5{ width:40px; height:50px; float:left  }
+.m4 .m21 .ma20 .tt61{ float:left}
+.m4 .m21 .ma20 .tt61 a{width:362px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#333; /*background:#f8f8f8;*/display:inline-block; float:left;display:inline-block}
+.m4 .m21 .ma20 .tt61 a:hover{color:#333; background:#FFdd00}
+.m4 .m21 .ma20 .tt61 a h4{font:14px/50px Verdana; color:#888; display:inline}
+
+.m4 .m21 .ma20 .bt6{ width:40px; height:50px; float:right  }
+.m4 .m21 .ma20 .tt62{ float:right}
+.m4 .m21 .ma20 .tt62 a{width:362px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#333; /*background:#f8f8f8;*/display:inline-block; text-align:right}
+.m4 .m21 .ma20 .tt62 a:hover{color:#333; background:#FFdd00}
+.m4 .m21 .ma20 .tt62 a h4{font:14px/50px Verdana; color:#888; display:inline}
+
+/*-----------------------20131126流行往和音樂網專用----------------------*/
+.m4 .m22{ width:668px;height:50px ; margin:10px 0 0 0}
+.ma21_2{ margin:0 10px 0 0}
+.m4 .m22 .ma21 {width:329px; float:left}
+.m4 .m22 .ma21 .bt7{ width:40px; height:50px; float:left  }
+.m4 .m22 .ma21 .tt63{ float:left}
+.m4 .m22 .ma21 .tt63 a{width:249px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#333; /*background:#f8f8f8;*/display:inline-block; float:left;display:inline-block}
+.m4 .m22 .ma21 .tt63 a:hover{color:#333; background:#FFdd00}
+.m4 .m22 .ma21 .tt63 a h4{font:14px/50px Verdana; color:#888; display:inline}
+
+.m4 .m22 .ma21 .bt8{ width:40px; height:50px; float:right  }
+.m4 .m22 .ma21 .tt64{ float:right}
+.m4 .m22 .ma21 .tt64 a{width:249px; height:50px;padding:0 20px;font:bold 18px/50px "新細明體";color:#333;/*background:#f8f8f8;*/display:inline-block; text-align:right}
+.m4 .m22 .ma21 .tt64 a:hover{color:#333; background:#FFdd00}
+.m4 .m22 .ma21 .tt64 a h4{font:14px/50px Verdana; color:#888; display:inline}
+
+/*-----------------------20131126流行往和音樂網專用----------------------*/
+.m23{ width:442px; min-height:100px ;height:auto; overflow:hidden; margin:0 auto}
+.m23 div{width:442px;height:auto; overflow:hidden;}
+.m23 .mg{ margin:0 0 10px}
+.m23 .lg3{height:120px;}
+.m23 .rd {min-height:40px; height:auto; overflow:hidden;background:#333; }
+.m23 .rd a{font:bold 16px/40px "微軟正黑體";color:#fff;}
+.m23 .rd a:hover{ color:#FFCC00}
+.m23 .ma24{ width:402px; padding:20px; background:#eee}
+.m23 .ma24 div{ float:left}
+.m23 .ma24 .im8{ width:120px; height:90px; margin:0 10px 0 0 }
+.m23 .ma24 .tt65{width:272px; height:30px;font:bold italic 18px/30px Georgia;color:#555;}
+.m23 .ma24 .tt65 a{font:bold italic 22px/30px "微軟正黑體";color:#555;}
+.m23 .ma24 .tt65 a:hover{ color:#003399; text-decoration:underline}
+
+.m23 .ma25{ width:422px;font:bold 18px/30px "微軟正黑體";color:#fff;background:#333 ; padding:5px 10px; margin:0}
+.m23 .ma25 h4{ font: italic bold 12px/20px Arial;color:#aaa; display:inline; text-transform:uppercase}
+
+.m23 .ma26{ width:402px; padding:10px 20px 20px; background:#eee}
+.m23 .ma26 .ls20 { width:402px; height:auto; overflow:hidden; padding:10px 0; border-bottom:1px dashed #aaa}
+.m23 .ma26 .ls20 .im9{ width:120px; height:90px; float:right}
+.m23 .ma26 .ls20 .tt66{width:272px; min-height:30px; height:auto; overflow:hidden;font:13px/30px Arial;color:#555; float:left}
+.m23 .ma26 .ls20 .tt66 a{font:bold 20px/30px "微軟正黑體";color:#555;}
+.m23 .ma26 .ls20 .tt66 a:hover{color:#003399;text-decoration:underline}
+.m23 .ma26 .ls20 .tt67{width:272px; height:30px;font:15px/30px Arial;color:#555;float:left}
+
+.m23 .ma26 .ls20 .tt68{width:402px; min-height:30px; height:auto;overflow:hidden;font:13px/30px Arial;color:#555;float:left}
+.m23 .ma26 .ls20 .tt68 a{font:bold 20px/30px "微軟正黑體";color:#555;}
+.m23 .ma26 .ls20 .tt68 a:hover{ color:#003399; text-decoration:underline}
+.m23 .ma26 .ls20 .tt69{width:402px; height:30px;font:15px/30px Arial;color:#555; float:left}
+
+.m23 .ma27{ text-align:right; position:relative; }
+.m23 .ma27 .cv3 { position:absolute; left:0px; top:0px} 
+
+.m23 .ma28{ width:442px; padding:5px 0; background:#6C42AD;font:bold 15px/30px "微軟正黑體";color:#fff;}
+.m23 .ma28 div{ padding:0 5px; text-align:center; float:left; min-height:30px; height:auto; overflow:hidden}
+.m23 .ma28 .tt70{ border-right:1px dotted #aaa; width:99px;}
+.m23 .ma28 .tt71{ border-right:0 ;width:101px;}
+
+.m23 .ma29 { width:442px; height:auto; overflow:hidden; margin:0 0 10px}
+.m23 .ma29 .ls21{ width:442px; padding:5px 0; background:#eee;font:13px/20px "微軟正黑體";color:#333;}
+.m23 .ma29 .ls21-2{background:#dfdfdf;}
+.m23 .ma29 .ls21 div{ padding:0 5px; text-align:center; float:left; min-height:30px; height:auto; overflow:hidden}
+.m23 .ma29 .ls21 .tt72{ width:99px;}
+.m23 .ma29 .ls21 .tt73{ width:101px;}
+
+/*-----------------------20131128 首頁時段節目資訊----------------------*/
+.ar3 .m24{ width:206px; min-height:20px ;height:auto; overflow:hidden;font:bold 14px/20px "微軟正黑體";color:#fff; background:#666; 
+padding:5px; text-align:center; border-bottom:0px solid #aaa; }
+
+
+/*---------------20140123------------*/
+.m7 div{ float:left}
+.m7 .ma9-2{ width:668px; height:auto; overflow:hidden; /*background:#fff;*/  margin:0 10px 10px 0;}
+
+.m7 .ma9-2 .ls14-2 div{ float:left}
+.m7 .ma9-2 .ls14-2 {width:628px;height:24px;border-bottom:0px dotted #c08282; margin:0 0 1px; padding:15px 20px; background:#d7d4c3;filter:alpha(opacity=100);opacity:1;zoom:1}
+.m7 .ma9-2 .ls14-2:hover{ /*background:#e1decb;*/ background:#ccc; filter:alpha(opacity=100);opacity:1;zoom:1}
+.m7 .ma9-2 .ls14-2 .tm2_2{ width:95px; height:24px;font:bold 14px/24px Georgia;color:#555; margin:0 10px 0 0; text-align:left}
+.m7 .ma9-2 .ls14-2 .lsn2_2 a{ width:60px; height:20px;padding:0 0px;background:#d83160;display:inline-block;
+								font:bold 10px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0}
+.m7 .ma9-2 .ls14-2 .lsn2_2 a:hover{background:#ffcc01; color:#333}
+
+.m7 .ma9-2 .ls14-2 .lsn2-2_2 a{ width:60px; height:20px;padding:0 0px;background:#8966bf;display:inline-block;
+								font:bold 10px/20px Georgia;color:#fff;text-align:center;letter-spacing:1px; margin:2px 0}
+.m7 .ma9-2 .ls14-2 .lsn2-2_2 a:hover{background:#ffcc01; color:#333}
+.m7 .ma9-2 .ls14-2 .tt33_2{width:215px; height:30px; float:left}
+.m7 .ma9-2 .ls14-2 .tt33_2 a{font: italic bold 20px/20px "微軟正黑體";color:#555;height:30px;}
+.m7 .ma9-2 .ls14-2 .tt33_2 a:hover{color:#555; text-decoration:underline}
+.m7 .ma9-2 .ls14-2 .tt34_2{width:130px; height:30px; float:left;font:14px/25px "微軟正黑體";color:#555; float:left; margin:0 5px 0 0; }
+.m7 .ma9-2 .ls14-2 .fb3_2{ width:100px; margin:3px 0 0 0; float:right}
+
+
+
+/*-------------------20140124--------------------------*/
+.m17 .lst2-2{ height:auto; overflow:hidden;width:90px;float:right; margin:0 0 0 0px}
+.m17 .lst2-2 a{ width:90px; height:33px;background:#31368e;display:inline-block;font:bold 12px/33px "微軟正黑體";color:#fff;text-align:center; margin:2px 0; }
+.m17 .lst2-2 a:hover{background:#ffcc01; color:#333; border-bottom:1px solid #31368e;height:32px}
+
+
+
+/*-------------------20140225寶島--------------------------*/
+.m7 .a8 .ar7 .ls19 .m25{ color:#589c2b}
+
+.m12 .a14 .m26 a{width:75px;font:italic bold 18px/35px "微軟正黑體";color:#fff;background:#E1DECB;display:inline-block;padding:5px 10px 5px  0;text-align:center;border-right:1px dotted #666}
+.m12 .a14 .m26 a:hover{background:#589c2b;border-right:1px solid #589c2b}
+.m12 .a14 .m26 .checked { background:#589c2b; color:#fff;border-right:1px solid #589c2b}
+
+.m12 .a14 .m27 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #888; display:inline-block;  padding:5px 0px;background:#E1DECB;width:103px; text-align:center}
+.m12 .a14 .m27 a:hover{color:#fff;background:#589c2b;border-right:1px solid #589c2b;}
+.m12 .a14 .m27 .checked { background:#589c2b; color:#fff}
+
+.m17 .m27_2 a{background:#077ec0; }
+.m17 .m27_2 a:hover{background:#666; color:#fff;}
+.m17 .m27_3 a{background:#077ec0; }
+.m17 .m27_3 a:hover{background:#666; color:#fff;}
+.m17 .m27_4{ border-bottom:1px solid #077ec0}
+.m27_5{ border-top:2px solid #589c2b;}
+.m9 .a9 .m27_6 a{border-right:0px solid #333 }
+/*-------------------20140225鄉親--------------------------*/
+.m7 .a8 .ar7 .ls19 .m28{ color:#f84377}
+
+.m12 .a14 .m29 a{width:75px;font:italic bold 18px/35px "微軟正黑體";color:#fff;background:#E1DECB;display:inline-block;padding:5px 10px 5px  0;text-align:center;border-right:1px dotted #666}
+.m12 .a14 .m29 a:hover{background:#f84377;border-right:1px solid #f84377}
+.m12 .a14 .m29 .checked { background:#f84377; color:#fff;border-right:1px solid #f84377;}
+
+.m12 .a14 .m30 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #888; display:inline-block;  padding:5px 0px;background:#E1DECB;width:103px; text-align:center}
+.m12 .a14 .m30 a:hover{color:#fff;background:#f84377;border-right:1px solid #f84377;}
+.m12 .a14 .m30 .checked { background:#f84377; color:#fff}
+.m30_1{ border-top:2px solid #f84377;}
+.m9 .a9 .m30_2 a{border-right:0px solid #333 }
+.m17 .m30_3{width:352px; font-size:15px; border-bottom:1px solid #f84377 }
+.m17 .m30_4 a{background:#f84377; }
+.m17 .m30_4 a:hover{background:#666; color:#fff;}
+
+/*-------------------20140225/igo531--------------------------*/
+
+.m12 .a14 .m31 a{width:75px;font:italic bold 18px/35px "微軟正黑體";color:#fff;background:#222;display:inline-block;padding:5px 10px 5px  0;text-align:center;border-right:1px dotted #666}
+.m12 .a14 .m31 a:hover{background:#333;border-right:1px solid #333}
+.m12 .a14 .m31 .checked { background:#333; color:#ffbb66;border-right:1px dotted #888; }
+
+.m12 .a14 .m32 a{font:bold 14px/35px "微軟正黑體";color:#333; border-right:1px dotted #888; display:inline-block;  padding:5px 0px;background:#E1DECB;width:103px; text-align:center}
+.m12 .a14 .m32 a:hover{color:#ffbb66;background:#333;border-right:1px solid #333;}
+.m12 .a14 .m32 .checked { background:#333; color:#ffbb66}
+
+.m12 .a14 .m33 a{font:bold 15px/35px "微軟正黑體";color:#aaa;display:inline-block; background:#333; padding:5px 0; width:30px; text-align:center; border-right:1px dotted #888}
+.m12 .a14 .m33 a:hover{color:#333;background:#ffbb66}
+.m7 .a8 .ar7 .ls19 .m34{ color:#fff}
+.m17 .m35 a {background:#333 }
+.m17 .m35 a:hover { background:#ffbb66}
+.m17 .m36 a { background:#333}
+.m17 .m36 a:hover { background:#ffbb66}
+.m17 .m37 { border-bottom:1px  solid #333}
+.m7 .a8 .ar7 .ls19 .m38{ color:#fff}
+.m7 .a8 .ar7 .m39{ border-bottom:1px dotted #333}
+.m7 .a8 .m40 {border-bottom:1px dotted #333 }
+.m41{ border-top:2px solid #f7921c;}
+
+/*-----------------------20140226 首頁時段節目資訊----------------------*/
+.ar3 .m50{ width:146px; min-height:20px ;height:auto; overflow:hidden;font:bold 13px/20px "微軟正黑體";color:#fff; background:#777;padding:5px; text-align:center;float:left; }
+.ar3 .m51{float:left }
+.ar3 .m51 a{ width:60px; height:20px; display:inline-block; background:#444; font:bold 13px/20px "微軟正黑體";color:#fff;padding:5px 0; text-align:center}
+.ar3 .m51 a:hover{ background:#FFCC00; color:#333 }
+.m4 .a4 .m52{box-shadow:0px 2px 3px #aaa; overflow:hidden; border-bottom:0px solid #aaa;}
+
+/*-----------------------20140226列表區域--------------------------*/
+.m2{ padding:3px 0 0  }
+.m2 .ls1 { margin:0px; border-right:1px dotted #fff}
+.m4 .a3 .ls3 {box-shadow:0px 1px 4px #bbb; }
+.m4 .a3 .ls4 {box-shadow:0px 1px 4px #bbb; }
+
+
+/*-----------------------20140226內頁次選單--------------------------*/
+.m9 .a9 .tt30 a{ width:63px;font:bold 14px/35px "微軟正黑體";color:#fff; background:#333;display:inline-block;  padding:5px ; text-align:center; border-right:1px dotted #888}
+
+/*-----------------------20140226--top修正----------------------*/
+.m1 {height:105px;}
+.m1 .a1{ height:105px;}
+.m1 .a1 .hd{ height:84px;width:790px; padding-bottom:0px}
+.m1 .a1 .hd .tp { width:790px; height:45px}
+.m1 .a1 .hd .tp .lk2 { width:105px; height:45px;float:right; margin-left:1px;}
+.m1 .a1 .lg{ width:330px; height:80px; float:left; margin:15px 0 0 0  }
+
+.lgs { width:156px; float:left; height:32px; }
+.tplk{ width:442px; height:70px; margin:20px 0 10px; float:left}
+.tplk .box{ width:440px; height:60px; padding:1px 1px 1px 5px; border:1px solid #ccc;font:bold 32px/35px "微軟正黑體";color:#333; margin-left:2px ; text-align:center}
+
+
+
+/*-----------------------20140306--top修正----------------------*/
+.sch{ width:437px; height:58px; border:1px solid #ccc; float:left; margin-left:3px ; position:relative}
+.sch .zm{ width:60px; height:60px; position:absolute; top:0px; right:0px }
+.sch .box2{width:360px; height:58px; padding:0 5px; border:0px; font:bold 32px/35px "微軟正黑體";color:#333; margin-left:2px ; text-align:center}
+
+
+/*-----------------20140314----------------------------------*/
+
+
+.m7 .a7 .m42 {width:668px; height:42px;padding:0 0px 0 0px; border-bottom:1px solid #31368e; position:relative}
+.m7 .a7 .m42 .a15{ width:48px; height:34px;float:left; padding:8px 0 0 0;margin-right:2px;}
+.m7 .a7 .m42 .a15 a{width:48px; height:34px;font:bold 16px/34px "微軟正黑體";color:#555; display:inline-block;text-align:center;border-radius:5px 5px 0 0; background:#eee; 
+				 box-shadow: 0px -1px 2px #bbb}
+.m7 .a7 .m42 .a15 a:hover{color:#fff; background:#31368e}
+.m7 .a7 .m42 .a15 a.checked{color:#fff; background:#31368e}
+.m7 .a7 .m42 .a16{ width:63px; height:34px;float:left; padding:8px 0 0 0;margin-right:2px; position:relative}
+.m7 .a7 .m42 .a16 .new{ width:17px; height:5px; background:url(../images/0314/ns.png); position:absolute; left:8px; top:14px} 
+.m7 .a7 .m42 .a16 a{width:63px; height:34px;font:bold 16px/42px "微軟正黑體";color:#fff; display:inline-block;text-align:center;border-radius:5px 5px 0 0; background:#dd0000; 
+				 box-shadow: 0px -1px 2px #bbb}
+.m7 .a7 .m42 .a16 a:hover{color:#fff; background:#31368e}
+.m7 .a7 .m42 .a16 a.checked{color:#fff; background:#31368e}
+
+
+.m7 .a7 .m42 .a17 { height:34px;width:46px; float:right; margin-left:2px; position:relative; padding:8px 0 0 0 }
+.m7 .a7 .m42 .a17 .aa1{  position:absolute; right:0px; top:8px;  }
+.m7 .a7 .m42 .a17 .aa1 li1 { } 
+/* 設置選單區塊*/
+.m7 .a7 .m42 .a17 .aa1 li dl {}
+/* 設置主選單dt */
+.m7 .a7 .m42 .a17 .aa1 li dt {float:right;}
+.m7 .a7 .m42 .a17 .aa1 li dt a{display:block;font:bold 15px/34px "微軟正黑體";color:#aaa; text-align:center; background:#f0f0f0;width:53px; height:34px; 
+								text-align:center;border-radius:5px 5px 0 0; box-shadow: 0px -1px 2px #bbb}
+.m7 .a7 .m42 .a17 .aa1 li dt a:hover{color:#ffcc00; background:#333}
+ /* 設置子選單dd */
+.m7 .a7 .m42 .a17 .aa1 li dd { text-align:right}
+.m7 .a7 .m42 .a17 .aa1 li dd a{ width:53px; font:bold 16px/34px "微軟正黑體";color:#fff; display:inline-block;text-align:center;background:#333;
+						border-top:1px solid #444; border-radius:0 0 0 0; box-shadow: 0px 1px 2px #bbb}
+.m7 .a7 .m42 .a17 .aa1 li dd a:hover{color:#fff; background:#31368e}
+/*.m7 .a7 .m42 .a17 .aa1 li dd a:hover{color:#fff; background:#31368e}*/
+/*隱藏子選單*/
+.m7 .a7 .m42 .a17 .aa1 li dd { display:none;}
+/* 滑鼠滑入顯示子選單 */
+.m7 .a7 .m42 .a17 .aa1 li:hover dd, .m7 .a7 .m42 .a17 .aa1 li a:hover dd { display:block;}
+
+

@@ -1,0 +1,35 @@
+﻿.fix{ width:100%; float:left; margin:0px; padding:15px 0px 20px; border-bottom:1px solid #dcdcdc; min-height:80px;}
+.fix a{color:#2e6ab0;}
+.fix a:hover{color:#56bdff;}
+.data{ font-size:15px; letter-spacing:1px; line-height:25px; clear:both;}
+.fixvs{ display:table-cell; vertical-align:bottom; float:left; }/* vs. */
+.fixvs span{display:table-cell; height:55px; vertical-align:bottom; width:70px; text-align:center}
+.fixr{ float:right; max-width:310px; margin-top:15px;}
+.fixr img{ margin:0px 10px; float:right; border:1px solid #ccc;}
+.fixr_w{display:table-cell; width:90px; padding:0; margin:0; vertical-align:middle; float:right; text-align:left;}/*隊名*/
+.fixr_w span{display:table-cell; width:90px; height:46px; vertical-align:middle; text-align:left;}
+.fixr_res{display:table-cell; width:108px; color:#CC0000; font-size:40px; font-family:Consolas; font-weight:bold; float:right; letter-spacing:0px; text-align:center}/*分數*/
+.fixl{ float:left; max-width:310px;  margin-top:15px;}
+.fixl img{ margin:0px 10px; float:left; border:1px solid #ccc;}
+.fixl_w{display:table-cell; width:90px; padding:0; margin:0; vertical-align:middle; float:left; text-align:right;}/*隊名*/
+.fixl_w span{display:table-cell; width:90px; height:46px; vertical-align:middle; text-align:right;}
+.fixl_res{display:table-cell; width:108px; color:#CC0000; font-size:40px; font-family:Consolas; font-weight:bold; float:right; letter-spacing:0px; text-align:center}/*分數*/
+.fixres{color: #999;}
+.fixQ{ width:290px;}
+.fixQ span{ text-align:center; height:55px;}
+.fixall{ margin:0px 0px 40px; overflow:hidden;}/*下撐開*/
+.fixFB{width:270px;text-align:center;height:20px; overflow:hidden;}
+.fixVote{text-align:center;margin-top:15px;width:109px}
+/* 右300明日賽程 */
+.tomogame{ border-bottom:2px solid #2f6ab0; border-top:2px solid #2f6ab0;  background-color:#f2fafd;  letter-spacing:1px; margin:10px 0; overflow:auto;}
+.tomogame strong{ display:block; line-height:35px; background-color:#2f6ab0; color:#fff; padding:0px 10px; }
+.fix300{padding:8px 0px; min-height:40px; font-size:13px; border-bottom:1px dotted #dcdcdc; margin:0px 0px; border-bottom:1px solid #999;}
+a.fixA:link, a.fixA:visited, a.fixA:active, a.fixA:hover{color:#333;text-decoration:none}
+.fix300 img{ width:40px; margin:2px 8px 0px 5px;}
+.fix300 span{width:30px; height:30px; }
+.fixrl{width:135px; margin:5px 0px;}
+.fixrl a{width:80px;}
+.fixrl span{width:80px; height:32px;}
+.half{ display:inline-block; text-align:center; width:89%}/*margin:0px 19px;*/
+.grade{display: inline-block; width:132px; text-align:center; color:#CC0000; font-size:18px; font-weight:bold;}
+.gametime{ text-align:center;}

@@ -1,0 +1,1 @@
+crtg_content = 'AP300600TR=1;AP300250B=1;AP336280B=1;'; (function(){document.cookie = 'crtg_rta=' + escape(crtg_content) + '; path=/; expires=Sun, 03 Jan 2016 05:27:16 GMT; domain=appledaily.com.tw';})();
