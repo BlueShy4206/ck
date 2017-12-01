@@ -1,0 +1,32 @@
+<?php
+
+//phpinfo();
+//require_once('PHPMailer_old/PHPMailerAutoload.php');
+require_once('PHPMailer_old/class.phpmailer.php');
+
+//require_once('PHPMailer_FE/PHPMailer-FE_v4.11/_lib/class.phpmailer.php');
+
+$mail = new PHPMailer(); // the true param means it will throw exceptions on errors, which we need to catch
+$mail->IsSMTP(); // telling the class to use SMTP
+$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+$mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+$mail->Port       = 465;                   // set the SMTP port for the GMAIL server
+$mail->Username   = "ckassessment@gmail.com";  // GMAIL username
+$mail->Password   = "ntcub507";            // GMAIpassword
+$mail->AddAddress('ckassessment@gmail.com', 'John Doe');
+
+//$mail->FromName = "ck系統管理員";
+//$mail->From = "lty.billy@gmail.com";
+
+$mail->SetFrom('lty.billy@gmail.com', 'First Last'); //'First Last
+$mail->Subject = 'PHPMailer Test Subject via mail(), advanced';
+$mail->MsgHTML("123");
+if (!$mail->send()) {
+    echo "Mailer Error: " . $this->_mail->ErrorInfo;
+} else {
+    echo "Message sent!";
+}
+
+?>

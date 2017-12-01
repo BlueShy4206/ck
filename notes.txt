@@ -1,0 +1,1 @@
+udo keytool -import -alias smtp.gmail.com -keystore $JAVA_HOME/jre/lib/security/cacerts -file /home/sysop/文件/gmail.cert
