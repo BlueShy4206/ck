@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="MM_URL1" value="news_id" />
+	<infoitem key="MM_URL_Count" value="8" />
+	<infoitem key="PageAccessControlMethod" value="useAccessList" />
+	<infoitem key="MM_Session1" value="MM_Username" />
+	<infoitem key="MM_Session_Count" value="3" />
+	<infoitem key="PageAccessControl" value="admin,member" />
+	<infoitem key="MM_URL2" value="epaper_id" />
+	<infoitem key="MM_Form1" value="email" />
+	<infoitem key="MM_Form_Count" value="2" />
+	<infoitem key="MM_URL3" value="forum_id" />
+	<infoitem key="MM_URL4" value="shop_id" />
+	<infoitem key="MM_Form2" value="shop_id" />
+	<infoitem key="MM_URL5" value="p_name" />
+	<infoitem key="MM_URL6" value="p_price" />
+	<infoitem key="MM_URL7" value="p_pic" />
+	<infoitem key="MM_Session2" value="order_sid" />
+	<infoitem key="MM_Session3" value="order_group" />
+	<infoitem key="MM_URL8" value="keyword" />
+</info>

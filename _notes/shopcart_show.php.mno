@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_orderList" value="name:odlist_id;datatype:int,name:p_name;datatype:string,name:p_price;datatype:string,name:p_pic;datatype:string,name:odlist_qty;datatype:string,name:odlist_ok;datatype:string,name:odlist_date;datatype:datetime,name:order_sid;datatype:string,name:order_group;datatype:string" />
+</info>

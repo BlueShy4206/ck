@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_news" value="name:news_id;datatype:int,name:news_title;datatype:string,name:news_type;datatype:string,name:news_date;datatype:date" />
+	<infoitem key="UD_web_banner1" value="name:banner_id;datatype:int,name:banner_type;datatype:string,name:banner_title;datatype:string,name:banner_pic;datatype:string,name:banner_url;datatype:string" />
+	<infoitem key="UD_web_banner2" value="name:banner_id;datatype:int,name:banner_type;datatype:string,name:banner_title;datatype:string,name:banner_pic;datatype:string,name:banner_url;datatype:string" />
+	<infoitem key="UD_web_shop" value="name:p_id;datatype:int,name:shop_id;datatype:int,name:p_name;datatype:string,name:p_price;datatype:string,name:p_open;datatype:string,name:p_pic;datatype:string,name:p_content;datatype:blob,name:p_date;datatype:date" />
+</info>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_viewTotal" value="name:view_id;datatype:int,name:view_time;datatype:datetime,name:view_ip;datatype:string" />
+	<infoitem key="UD_web_thisYear" value="name:view_id;datatype:int,name:view_time;datatype:datetime,name:view_ip;datatype:string" />
+	<infoitem key="UD_web_thisMonth" value="name:view_id;datatype:int,name:view_time;datatype:datetime,name:view_ip;datatype:string" />
+	<infoitem key="UD_web_today" value="name:view_id;datatype:int,name:view_time;datatype:datetime,name:view_ip;datatype:string" />
+</info>

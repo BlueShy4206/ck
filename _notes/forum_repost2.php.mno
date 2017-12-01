@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_forumRe" value="name:re_id;datatype:int,name:forum_id;datatype:string,name:re_title;datatype:string,name:re_img;datatype:string,name:re_content;datatype:blob,name:re_quoteUser;datatype:string,name:re_quote;datatype:blob,name:re_quoteDate;datatype:int,name:re_date;datatype:int,name:re_username;datatype:string,name:re_ip;datatype:string" />
+</info>

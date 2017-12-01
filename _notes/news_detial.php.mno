@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_news" value="name:news_id;datatype:int,name:news_title;datatype:string,name:news_type;datatype:string,name:news_date;datatype:date,name:news_movie;datatype:blob,name:news_pic;datatype:string,name:news_content;datatype:blob,name:news_download;datatype:string,name:news_count;datatype:int" />
+	<infoitem key="UD_web_newpic" value="name:newspic_id;datatype:int,name:news_id;datatype:int,name:newspic_pic;datatype:string,name:newspic_title;datatype:string" />
+	<infoitem key="UD_web_newspic" value="name:newspic_id;datatype:int,name:news_id;datatype:int,name:newspic_pic;datatype:string,name:newspic_title;datatype:string" />
+</info>

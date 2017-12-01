@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_shop2" value="name:shop_id;datatype:int,name:shop_name;datatype:string,name:p_id;datatype:int,name:p_name;datatype:string,name:p_price;datatype:string,name:p_open;datatype:string,name:p_pic;datatype:string,name:p_content;datatype:blob" />
+</info>
