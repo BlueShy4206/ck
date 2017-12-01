@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_orders" value="name:order_id;datatype:int,name:order_username;datatype:string,name:order_name1;datatype:string,name:order_name2;datatype:string,name:order_phone;datatype:string,name:order_cusadr;datatype:string,name:order_paytype;datatype:string,name:order_total;datatype:string,name:order_payok;datatype:string,name:order_paynumber;datatype:string,name:order_sid;datatype:string,name:order_group;datatype:string,name:order_date;datatype:datetime" />
+</info>

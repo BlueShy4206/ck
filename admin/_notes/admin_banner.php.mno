@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_banner" value="name:banner_id;datatype:int,name:banner_type;datatype:string,name:banner_title;datatype:string,name:banner_pic;datatype:string,name:banner_url;datatype:string" />
+</info>

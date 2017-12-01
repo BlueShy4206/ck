@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_forum" value="name:forum_id;datatype:int,name:forum_title;datatype:string,name:forum_type;datatype:string,name:forum_img;datatype:string,name:forum_top;datatype:string,name:forum_content;datatype:blob,name:forum_date;datatype:int,name:forum_lastman;datatype:string,name:forum_lastdate;datatype:int,name:forum_replies;datatype:int,name:forum_view;datatype:int,name:forum_username;datatype:string,name:forum_ip;datatype:string" />
+</info>

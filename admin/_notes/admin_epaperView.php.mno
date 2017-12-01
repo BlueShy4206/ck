@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_epaper" value="name:epaper_id;datatype:int,name:epaper_title;datatype:string,name:epaper_content;datatype:blob,name:epaper_date;datatype:date,name:epaper_send;datatype:string" />
+	<infoitem key="UD_web_paper" value="name:epaper_id;datatype:int,name:epaper_title;datatype:string,name:epaper_content;datatype:blob,name:epaper_date;datatype:date,name:epaper_send;datatype:string" />
+</info>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_web_viewCount" value="name:view_id;datatype:int,name:view_time;datatype:datetime,name:view_ip;datatype:string" />
+</info>
