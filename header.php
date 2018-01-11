@@ -1,17 +1,17 @@
 <?php
 //http轉為https
-if ($_SERVER["HTTPS"]<>"on")
-{
-// $xredir='https://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-// header("Location:".$xredir);
-}
+// if ($_SERVER["HTTPS"]<>"on")
+// {
+// // $xredir='https://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+// // header("Location:".$xredir);
+// }
 ?>
 <body ><div id="header">
 <?php //echo "group=".$_SESSION["MM_UserGroup"]."<br>"?>
   <table width="770" border="0" cellspacing="0" cellpadding="0">
-    
+
       <td width="770" rowspan="2"><a href="index.php"><img src="images/header_1.png" width="770" height="124" border="0" usemap="#Map" /></a></td>
-         
+
     <tr>
      </table>
      <table width="770" border="0" cellspacing="0" cellpadding="0" align="center"  >

@@ -2,10 +2,10 @@
 A:hover{color:#ff0000; position:relative;top:3px;left:3px}
 </style>
 <?php require_once('Connections/conn_web.php'); ?>
-<? $originUrl=$_SERVER["HTTP_REFERER"];?>
+<?php $originUrl=$_SERVER["HTTP_REFERER"];?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -16,7 +16,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -99,36 +99,36 @@ if (isset($_POST['uCheck'])) {
   $MM_redirectLoginFailed = "index.php?loginerror=1";
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
-  	
+
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
-  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));  
+  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
-  
+
   if ($loginFoundUser) {
-    
+
     $loginStrGroup  = mysql_result($LoginRS,0,'level');//登入者的層級:admin,member
     $loginStrType = mysql_result($LoginRS,0,'EForm_MK');//登入者的類型:老師,師資生
     $loginStrId = mysql_result($LoginRS,0,'id');//登入者的ID //add by coway 2016.8.31
-    
+
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
     $_SESSION['MM_UserGroup'] = $loginStrGroup;
-    $_SESSION['MM_UserType'] = $loginStrType;    
-    $_SESSION['MM_UserId'] = $loginStrId;  //add by coway 2016.8.31 
+    $_SESSION['MM_UserType'] = $loginStrType;
+    $_SESSION['MM_UserId'] = $loginStrId;  //add by coway 2016.8.31
 
     if (isset($_SESSION['PrevUrl']) && true) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
+      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
     }
 
     //修改如下，解決會員登入區被include()載入引用的錯誤
     echo("<script language='javascript'>location.href='".$originUrl."'</script>");
 	//header("Location: " . $MM_redirectLoginSuccess );
-	
+
   }
   else {
     //修改如下，解決會員登入區被include()載入引用的錯誤
-    echo("<script language='javascript'>location.href='".$MM_redirectLoginFailed."'</script>");  
+    echo("<script language='javascript'>location.href='".$MM_redirectLoginFailed."'</script>");
 	//header("Location: ". $MM_redirectLoginFailed );
   }
 }
@@ -169,7 +169,7 @@ $publishDate='15-07-15'; //簡章公告日期
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui-lang-zh_TW.js"></script>
-     
+
 	<? if(empty($_SESSION["MM_Username"])){
 		if($_GET["link"] == '2' ){ $member_img = 'images/member_region2.png';}
 		else $member_img = 'images/member_region.png';
@@ -230,7 +230,7 @@ $publishDate='15-07-15'; //簡章公告日期
         <td align="center" bgcolor="#FFFFFF"><img src="<?php echo $member_img;?>" width="184" height="36" /></td>
       </tr>
       <tr>
-     
+
         <td height="20" align="center" valign="top" bgcolor="#FFFFFF">親愛的會員<span class="font_red">&nbsp;<?php echo $_SESSION['MM_Username']; ?> &nbsp;&nbsp; &nbsp;</span>您好</td>
       </tr>
       <tr>
@@ -250,7 +250,7 @@ $publishDate='15-07-15'; //簡章公告日期
     </table>
     <br /><? }?>
    <? if(isset($_SESSION["cart"])){?>
-   <div align="center"> <?PHP //<a href="shopcart_show.php"><img src="images/btn_car1.gif" width="84" height="18" border="0" /></a>?> </div> 
+   <div align="center"> <?PHP //<a href="shopcart_show.php"><img src="images/btn_car1.gif" width="84" height="18" border="0" /></a>?> </div>
     <br />
     <? }?>
 <!-- 國小教師連結 -->
@@ -272,7 +272,7 @@ $publishDate='15-07-15'; //簡章公告日期
       <tbody id="tbody_t" style="display:none;">
       <tr>
         <td height="67" align="center" valign="middle" bgcolor="#FFFFFF"><?php //if($_SESSION["MM_UserGroup"]=='member'){
-		if($_SESSION['MM_Username'] != NULL){	
+		if($_SESSION['MM_Username'] != NULL){
 			if($_SESSION['MM_UserType'] =='0'){
 					?>
 		        <a href="examAdd1.php?id=3"><img src="images/sign_t.png" width="115"  height="67" /></a><br />
@@ -294,13 +294,13 @@ $publishDate='15-07-15'; //簡章公告日期
          </td>
        </tr>
   	<? if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] =='0'){?>
-   		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >         
+   		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
             <a href="progress.php?status=1"><img src="images/progress_check_t.png"  /></a> <?php } ?>
 		</td>
       </tr>
       <tr>
-<?php if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] !=""){?>  
-		<?php if($_SESSION['MM_UserType'] =='0') {?>     
+<?php if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] !=""){?>
+		<?php if($_SESSION['MM_UserType'] =='0') {?>
 		<td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
         <a href="examOutprint.php"><img src="images/print_t.png" /></a>
         </td><?php }?>
@@ -312,7 +312,7 @@ $publishDate='15-07-15'; //簡章公告日期
       				$download='ShowLink2()';
         		}else {$showresult='Results.php';
 		        		$download='ShowLink()';}?>
-        
+
         <a href="<?php echo $showresult;?>"><img src="images/check_t.png" /></a><br /></td></tr>
         <tr>
         <td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
@@ -329,7 +329,7 @@ $publishDate='15-07-15'; //簡章公告日期
         <td height="10" align="center" valign="middle" bgcolor="#FFFFFF">
         </td>
       </tr>
-    </table> 
+    </table>
     <br>
 <!-- 師資生連結 -->
     <table width="184" border="0" cellspacing="0" cellpadding="0">
@@ -350,7 +350,7 @@ $publishDate='15-07-15'; //簡章公告日期
       <tbody id="tbody_ts" style="display:none;">
       <tr>
         <td height="67" align="center" valign="middle" bgcolor="#FFFFFF"><?php //if($_SESSION["MM_UserGroup"]=='member'){
-		if($_SESSION['MM_Username'] != NULL){	
+		if($_SESSION['MM_Username'] != NULL){
 			if($_SESSION['MM_UserType'] =='0'){
 					?>
 		        <a href="examAdd.php" ><img src="images/sign.png" width="115"  height="67" /></a><br /><!-- onclick="alert('提醒您：本梯次僅提供在學師資生報名，感謝您。')" -->
@@ -372,14 +372,14 @@ $publishDate='15-07-15'; //簡章公告日期
          </td>
       </tr>
   	<? if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] =='0'){?>
-   		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >         
+   		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
             <a href="progress.php?status=0"><img src="images/progress_check.png"  /></a> <?php } ?>
 		</td>
       </tr>
       <tr>
-<?php if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] !=""){?>  
-		<?php if($_SESSION['MM_UserType'] =='0') {?>     
-		<td height="32" align="center" valign="middle" bgcolor="#FFFFFF"> 
+<?php if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] !=""){?>
+		<?php if($_SESSION['MM_UserType'] =='0') {?>
+		<td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
         <a href="examOutprint_ts.php"><img src="images/print.png" /></a>
         </td><?php }?>
       </tr>
@@ -390,7 +390,7 @@ $publishDate='15-07-15'; //簡章公告日期
       				$download='ShowLink2()';
         		}else {$showresult='Results.php';
 		        		$download='ShowLink()';}?>
-        
+
         <a href="<?php echo $showresult;?>"><img src="images/check.png" /></a><br /></td></tr>
         <tr>
         <td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
@@ -398,9 +398,9 @@ $publishDate='15-07-15'; //簡章公告日期
         <!-- <a href="./file/20151120151612.doc"><img src="images/duble_check.png" /></a> -->
       <tr>
         <td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
-        <!-- <img src="images/certificate_ok3.png" onclick="<?php echo $download?>" />  -->    
+        <!-- <img src="images/certificate_ok3.png" onclick="<?php echo $download?>" />  -->
         <?php }?>
-        </td>               
+        </td>
       </tr>
       <tr>
         <td height="10" align="center" valign="middle" bgcolor="#FFFFFF">

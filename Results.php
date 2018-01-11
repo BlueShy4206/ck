@@ -2,7 +2,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -13,7 +13,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -109,13 +109,13 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
   <div id="main2">
       <?php include("leftzone.php")?>
   </div>
-  <?php 
+  <?php
   $queryScore_mk = false;
   if ($row_examyear['scoreTime'] <= date("Y-m-d H:i:s")){
-  	$queryScore_mk = true;
+  	$queryScore_mk = false;//改
   }
   //判斷成績是否開放查詢
-//   if ($queryScore_mk){
+  if ($queryScore_mk){
   ?>
   <div id="main3">
     <table width="540" border="0" cellspacing="0" cellpadding="0">
@@ -140,8 +140,8 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
 		  <td width="79" align="center" class="underline1">系別</td>
           <td width="79" align="center" class="underline1">年級</td>
         </tr>
-    
-      
+
+
         <tr>
           <td width="20" height="25" align="right" class="underline1">‧</td>
 		  <!--id, name, school, Student_ID, Department, Grade-->
@@ -152,12 +152,12 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
 		  <td width="79" align="center" class="underline1"> <?php echo $row_web_news['Department']; ?> </td>
           <td width="79" align="center" class="underline1"> <?php echo $row_web_news['Grade']; ?> </td>
         </tr>
-       
-    </table>  
-	
+
+    </table>
+
 	<br />
 	<img src="images/Results.png" width="540" height="48" />
-	
+
     <table width="540" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
     <tr>
           <td width="20" height="25" align="right" class="underline1"></td>
@@ -166,43 +166,43 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
 		  <td width="79" align="center" class="underline1">數學領域</td>
 		  <td width="79" align="center" class="underline1">自然領域</td>
         </tr>
-    
+
       <?php do { ?>
         <tr>
           <td width="20" height="25" align="right" class="underline1">‧</td>
 		 <!--chinese_level, chinese, math_level, math, social_level, social, physical_level, physical-->
-          <td width="79" align="center" class="underline1"> 
+          <td width="79" align="center" class="underline1">
           <?php if($row_web_news['chinese'] == ""){echo "";}
           	else{
-          		echo '<a href="resultsOutprint.php?type=c">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';} 
+          		echo '<a href="resultsOutprint.php?type=c">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';}
           	IF($row_web_news['chinese_level']=='精熟' || $row_web_news['chinese_level']=='基礎'){
           		echo ' <img class="img-20" src="images/icon_mail.png" onclick="ShowLink()" />';
           	}
           		?> </td>
           <!-- <td width="79" align="center" class="underline1"> <?php if($row_web_news['chinese'] == 0){echo " ";}else{echo $row_web_news['chinese'];} ?> </td> -->
-          
-		  <td width="79" align="center" class="underline1"> 
+
+		  <td width="79" align="center" class="underline1">
 		  <?php if($row_web_news['social'] == ""){echo "";}
 		  else{
-		  	echo '<a href="resultsOutprint.php?type=s">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';} 
+		  	echo '<a href="resultsOutprint.php?type=s">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';}
 			IF($row_web_news['social_level']=='精熟' || $row_web_news['social_level']=='基礎'){
           		echo ' <img class="img-20" src="images/icon_mail.png" onclick="ShowLink()" />';
           	}
 		  	?> </td>
           <!-- <td width="79" align="center" class="underline1"> <?php if($row_web_news['social'] == 0){echo " ";}else{echo $row_web_news['social'];} ?> </td> -->
-          <td width="79" align="center" class="underline1"> 
+          <td width="79" align="center" class="underline1">
           <?php if($row_web_news['math'] == ""){echo " ";}
           else{
-          	echo '<a href="resultsOutprint.php?type=m">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';} 
+          	echo '<a href="resultsOutprint.php?type=m">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';}
           	IF($row_web_news['math_level']=='精熟' || $row_web_news['math_level']=='基礎'){
           		echo ' <img class="img-20" src="images/icon_mail.png" onclick="ShowLink()" />';
           	}
           	?> </td>
           <!-- <td width="79" align="center" class="underline1"> <?php if($row_web_news['math'] == 0){echo " ";}else{echo $row_web_news['math'];} ?> </td> -->
-          <td width="79" align="center" class="underline1"> 
+          <td width="79" align="center" class="underline1">
           <?php if($row_web_news['physical'] == ""){echo " ";}
           else{
-          	echo '<a href="resultsOutprint.php?type=p">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';} 
+          	echo '<a href="resultsOutprint.php?type=p">'.' <img class="img-20" src="images/icon_print.png" />'.'</a>';}
           	IF($row_web_news['physical_level']=='精熟' || $row_web_news['physical_level']=='基礎'){
           		echo ' <img class="img-20" src="images/icon_mail.png" onclick="ShowLink()" />';
           	}
@@ -210,7 +210,7 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
           <!-- <td width="79" align="center" class="underline1"> <?php if($row_web_news['physical'] == 0){echo " ";}else{echo $row_web_news['physical'];} ?> </td> -->
         </tr>
         <?php } while ($row_web_news = mysql_fetch_assoc($web_news)); ?>
-        
+
     </table>
 
      <table width="540" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
@@ -243,8 +243,8 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
         </tr>
         <tr><td width="20" height="30" align="right" >‧</td>
         <td><img class="img-20" src="images/icon_mail.png" />：證明書申請</td>
-        </tr> 
-       </table>  
+        </tr>
+       </table>
      <?php if ($totalRows_web_news == 0) { // Show if recordset empty ?>
   <table width="540" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -252,13 +252,13 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
     </tr>
   </table>
   <?php } // Show if recordset empty ?>
-  
+
   </div>
-	<?PHP //}else{?><!--table width="540" border="0" cellspacing="0" cellpadding="0" align="center">
-      	<p align="center" class="font_red2">目前尚未開放105學年度成績查詢<br>(目前系統維護中，104學年度成績預計於3/15恢復開放查詢)</p>
+	<?PHP }else{?><table width="540" border="0" cellspacing="0" cellpadding="0" align="center">
+      	<p align="center" class="font_red2">目前尚未開放成績查詢<br></p>
       	<p align="center"><a href="index.php">[返回首頁]</a></p>
-	<?PHP //}?>
-  <div id="main4"></div-->
+	<?PHP }?>
+  <div id="main4"></div>
 
 <?php include("footer.php"); ?>
 </div>

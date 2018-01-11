@@ -4,9 +4,9 @@
 # HTTP="true"
 $hostname_conn_web = "localhost";
 $database_conn_web = "ck";
-$username_conn_web = "ckuser";
-$password_conn_web = "kbc78!@#$%";
-$conn_web = mysql_pconnect($hostname_conn_web, $username_conn_web, $password_conn_web) or trigger_error(mysql_error(),E_USER_ERROR); 
+$username_conn_web = "root";
+$password_conn_web = "";
+$conn_web = mysql_pconnect($hostname_conn_web, $username_conn_web, $password_conn_web) or trigger_error(mysql_error(),E_USER_ERROR);
 //��Ʈw�s�u�]�w�ϥ�UTF8�s�X
 mysql_query("SET NAMES UTF8");
 //�����ҥ�session�\��(���ϥγs�u�]�w�ɪ�����)
@@ -29,14 +29,6 @@ date_default_timezone_set("Asia/Taipei");
  $mailPassword = "ntcub507";
 
 
-//��Ʈw�]�w
-$dbtype='mysql';
-$hostspec='localhost';
-$dbuser=$db_user='ckuser';
-$dbpass=$db_user_passwd='kbc78!@#$%';
-$database=$db_dbn='ck';  //��Ʈw�W��
-//grant all privileges on mftWS.* to mftadmin@localhost identified by '2wsx7ujm';
-
 $dbhost = 'localhost';
 //�����{�Ҫ���ƪ�
 $auth_table='member';
@@ -52,8 +44,8 @@ $expire = 36000;
 
 //PDO
 $config['db']['dsn']='mysql:host=localhost;dbname=ck;charset=utf8';
-$config['db']['user'] = 'ckuser';
-$config['db']['password'] = 'kbc78!@#$%';
+$config['db']['user'] = 'root';
+$config['db']['password'] = '';
 $dbh = new PDO(
 	$config['db']['dsn'],
 	$config['db']['user'] ,
