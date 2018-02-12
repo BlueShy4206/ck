@@ -1,5 +1,5 @@
 <?php require_once('Connections/conn_web.php'); ?>
- <?php 
+ <?php
 // echo $_REQUEST["i2d"];
 // echo $_REQUEST["i2d2"];
 // echo $_REQUEST["id"];
@@ -36,7 +36,7 @@ if (!function_exists("GetSQLValueString")) {
 }
 
 function EngNameStr($eng_name){
-	list($firstname, $lastname, $lastname2) = explode(" ", trim($eng_name));//去掉英文欄位前後空白 
+	list($firstname, $lastname, $lastname2) = explode(" ", trim($eng_name));//去掉英文欄位前後空白
 	$firstname = strtoupper (substr($firstname,0,1)).strtolower(substr($firstname,1));
 
 	if(isset($lastname2)){
@@ -87,10 +87,10 @@ $row_web_examinee = mysql_fetch_assoc($web_examinee);
 
 $id_number=$row_web_examinee['id_number'];
 mysql_select_db($database_conn_web, $conn_web);
-$query_web_news = sprintf("SELECT ff.*, a1.no level_eng1, a2.no level_eng2, a3.no level_eng3, a4.no level_eng4 
-		FROM score as ff left join allguide as a1 ON ff.c_level = a1.nm 
-		left join allguide as a2 ON ff.m_level = a2.nm 
-		left join allguide as a3 ON ff.s_level = a3.nm 
+$query_web_news = sprintf("SELECT ff.*, a1.no level_eng1, a2.no level_eng2, a3.no level_eng3, a4.no level_eng4
+		FROM score as ff left join allguide as a1 ON ff.c_level = a1.nm
+		left join allguide as a2 ON ff.m_level = a2.nm
+		left join allguide as a3 ON ff.s_level = a3.nm
 		left join allguide as a4 ON ff.p_level = a4.nm WHERE score_id = %s ORDER BY id ASC", GetSQLValueString($id_number, "text"));
 $web_score = mysql_query($query_web_news, $conn_web) or die(mysql_error());
 $row_web_score = mysql_fetch_assoc($web_score);
@@ -148,7 +148,7 @@ if($scoreSub=='0') $scoreSub='--';
 ?>
 <? session_start();?>
 
-<?php 
+<?php
 // Include the main TCPDF library (search for installation path).
 include_once ('Pdf/tcpdf.php');
 
@@ -223,7 +223,7 @@ $tmparray = explode("啓",$row_web_examinee[uname]);//難字使用droidsansfallb
 if(count($tmparray)>1){
 $pdf->SetFont('droidsansfallback', '', 20, '', true);//使用者端電腦的預設字型 ,msungstdlight
 }else{
-$pdf->SetFont('msungstdlight', '', 20, '', true);//使用者端電腦的預設字型 ,msungstdlight	
+$pdf->SetFont('msungstdlight', '', 20, '', true);//使用者端電腦的預設字型 ,msungstdlight
 }
 
 // remove default header
@@ -258,7 +258,7 @@ $pdf->setPageMark();
 
 
 $html = <<<EOF
-<style type='text/css'>			
+<style type='text/css'>
  .title {
 	font-family: 'Times New Roman', Georgia, Serif;
 	font-size: 16pt;
@@ -310,14 +310,14 @@ $html = <<<EOF
 		<tr><td colspan='3'><span style='font-size: 8px;'>$note</span><span style='font-size: 12px;'>成績效期：成績公布日$pub_time 起算三年内有效</span></td></tr>
 		<tr><td width='120'></td>
         	<td width='120' align='right'></td>
-        	<td width='240' colspan='2'><span style='font-size: 14px;'><br><br>教師專業能力測驗中心</span><br>
+        	<td width='240' colspan='2'><span style='font-size: 14px;'>教師專業能力測驗中心</span><br>
 			<span style='font-size: 10px;'>(教育部104年7月14日臺教師(二)字第1040091018號函委託國立臺中教育大學辦理)
         		<br>地址：臺中市西區民生路140號
 				<br>電話：(04) 2218-3651
 				<br>網站：</span><span class='footer'>https://tl-assessment.ntcu.edu.tw</span>
         	</td>
         </tr>
-		
+
     </table>
 EOF;
 $html=str_replace("'",'"',$html);

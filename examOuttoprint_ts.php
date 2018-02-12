@@ -2,7 +2,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -13,7 +13,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -116,15 +116,15 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
   <div id="main111" background= "#FFFFFF"></div>
  <?
  if($colname_web_member != "-1"){
- 
-          
-  
+
+
+
   ?>
- 
- 
- 
+
+
+
   <div id="exam" align="center" style="line-height:10px;">
-  
+
   <table width="600" border="0" cellspacing="0" cellpadding="0" >
     <td align="center">
     <div style="font-family:標楷體;">
@@ -141,10 +141,10 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 	        <?php if($row_web_examinee['pic_name'] != ""){ ?>
 	        <img src="images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="115" id="pic" />
 	        <?php }else{ ?>
-	        
+
 	        (請上傳近3個月內1吋正面脫帽半身照片)
-	
-	        <?php  } ?>        
+
+	        <?php  } ?>
 	        <!-- </td> -->
         </tr>
         <tr>
@@ -164,10 +164,10 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 		  if (!(strcmp($row_web_examinee['school'],"04_國立東華大學"))) {echo "國立東華大學";}
 		  if (!(strcmp($row_web_examinee['school'],"05_國立臺北教育大學"))) {echo "國立臺北教育大學";}
 		  if (!(strcmp($row_web_examinee['school'],"06_輔仁大學"))) {echo "輔仁大學";}
-		  if (!(strcmp($row_web_examinee['school'],"07_南臺科技大學"))) {echo "南臺科技大學";}		 
+		  if (!(strcmp($row_web_examinee['school'],"07_南臺科技大學"))) {echo "南臺科技大學";}
 		  if (!(strcmp($row_web_examinee['school'],"08_國立屏東大學"))) {echo "國立屏東大學";}
 		  if (!(strcmp($row_web_examinee['school'],"09_靜宜大學"))) {echo "靜宜大學";}
-		  if (!(strcmp($row_web_examinee['school'],"10_國立清華大學"))) {echo "國立清華大學";}  
+		  if (!(strcmp($row_web_examinee['school'],"10_國立清華大學"))) {echo "國立清華大學";}
 		  if (!(strcmp($row_web_examinee['school'],"11_國立臺南大學"))) {echo "國立臺南大學";}
 		  if (!(strcmp($row_web_examinee['school'],"12_國立高雄師範大學"))) {echo "國立高雄師範大學";}
 		  if (!(strcmp($row_web_examinee['school'],"13_國立臺中教育大學"))) {echo "國立臺中教育大學";}
@@ -176,10 +176,10 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 		  if (!(strcmp($row_web_examinee['school'],"17_國立臺灣海洋大學"))) {echo "國立臺灣海洋大學";}
 		  ?></td>
 	        <td width="40" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">年級</td> <td width="60" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">
-	        <?php 
+	        <?php
 	        	if((int)$row_web_examinee['Grade'] < 6){
 	        		echo '大學'.$row_web_examinee['Grade'].'年級';
-	        	} 
+	        	}
 	        	if((int)$row_web_examinee['Grade'] == 6){echo '研究所';};
 	        	if((int)$row_web_examinee['Grade'] == 7){echo '已畢業';};
 	         ?></td>
@@ -196,17 +196,17 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 	        		elseif($row_web_allguideC['no'] == '5'){ echo "(五)";}
 	        echo $row_web_allguideC['nm'];?></td>
             <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">緊急<br>連絡人<br>姓名</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2">
-            <?php echo $row_web_examinee['contact'];?>            
+            <?php echo $row_web_examinee['contact'];?>
             </td>
             <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">緊急<br>連絡人<br>電話</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="1"><?php echo $row_web_examinee['contact_ph'];?></td>
         </tr>
-        
+
         <tr>
 	        <td height="40" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">評量考區</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2">
 	        <?php echo $row_allguide['note'];?>
-	        <?php /*if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {echo "北區(國立臺北教育大學)";} 
-	         if (!(strcmp($row_web_examinee['exarea'],"Central"))) {echo "中區(國立臺中教育大學)";}  
-	         if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {echo "南區(國立臺南大學)";} 
+	        <?php /*if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {echo "北區(國立臺北教育大學)";}
+	         if (!(strcmp($row_web_examinee['exarea'],"Central"))) {echo "中區(國立臺中教育大學)";}
+	         if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {echo "南區(國立臺南大學)";}
 	         if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {echo "東區(國立臺東大學)";} */ ?> </td>
             <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">評量日期</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2">
             <?php echo $row_allguide['data1'];?>
@@ -218,12 +218,12 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 				  $dateline=strtotime($row_web_new['cdate']);
 				  echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['cdate']).")";}
-			  if (!(strcmp($row_web_examinee['exarea'],"Southern"))) { 
+			  if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {
 			  	$dateline=strtotime($row_web_new['sdate']);
 		      echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['sdate']).")";}
 			  if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {
-			  $dateline=strtotime($row_web_new['edate']);	  
+			  $dateline=strtotime($row_web_new['edate']);
 			  echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['edate']).")";} */ ?>
             </td>
@@ -241,7 +241,7 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
         </td>
         </tr-->
        </table>
-            
+
      <table width="750" height="520" border="0" cellspacing="0" cellpadding="7">
      <tr>
 	     <td width="300" align="center" class="board_add" style="font-size:16px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; border: 2px dashed;">國民身分證影本<br />
@@ -266,64 +266,64 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
      </table>
      <table width="750" border="0" cellspacing="0" cellpadding="8">
      <tr>
-        <td width="50" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "rowspan="2">備註</td> <td width="530"  height="80" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="6" rowspan="2"><p>本表請於<u>106年10月3日（星期二）前</u>填妥並貼妥國民身分證及學生證（務必加蓋當學期的註冊章，或提供在學證明書）的正、反面影本1份或相關表件，以掛號寄達本試務行政組收（40306臺中市西區民生路140號教育樓5樓教師專業能力測驗中心），逾期視同未完成報名（以郵局郵戳為憑）。【所有資料依個資法辦理】備註：<u>應考人所填寫相關資料，將與就讀學校師培單位進行確認<b>(報考資格(三)(四)之應考人)</b>，經查核呈報資料如有虛報不實者，將取消應考資格</u>。</p></td>
+        <td width="50" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "rowspan="2">備註</td> <td width="530"  height="80" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="6" rowspan="2"><p>本表請於<u>107年3月27日（星期二）前</u>填妥並貼妥國民身分證及學生證的正、反面影本1份或相關表件，以掛號寄達本試務行政組收（40306臺中市西區民生路140號教育樓5樓教師專業能力測驗中心），未郵寄報名表件或逾期寄件視同未完成報名（以郵局郵戳為憑）。<br>【所有資料依個資法辦理】備註：<u>應考人所填寫相關資料，將與就讀學校師培單位進行確認<b>(報考資格(三)(四)(五)之應考人)</b>，經查核呈報資料如有虛報不實者，將取消應考資格</u>。</p></td>
           <td width="60" align="center"  style="font-size:12px; background-color: #E8E8E8;  border-color:#000000; border-width:5px; border-style:double; " colspan="2" >申請人簽章
      </td>
      <!--td width="320" align="center" class="board_add" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="3">准考證號碼：________________ (由試務人員填寫)
      </td-->
-     <tr>	 
+     <tr>
      <td width="120" align="center"  style=" background-color: #FFFFFF; border-color:#000000; border-width:5px;  border-bottom-style:double; border-right-style:double; border-left-style:double;"colspan="2"  ><font  color="#F8F8FF"> (無法親自簽名者由其監護、代理人代簽並註明原因)</font>
      </td></tr>
      </tr>
      </table>
-     
-                 
-         
-        <table width="750" border="0" cellspacing="0" cellpadding="0" >  
-     
+
+
+
+        <table width="750" border="0" cellspacing="0" cellpadding="0" >
+
           <tr>
-              
+
           <td height="40" colspan="3" align="center"><label>
-          
+
   <?PHP    //      <input type="button" name="Submit" value="列印本頁" onclick="javascript:window.print()">
           //  <input type="button" value="回首頁" onclick="location.href='index.php'" />
 ?>            <input name="date" type="hidden" id="date" value="<? echo date("Y-m-d H:i:s");?>" />
           </label></td>
-          
+
         </tr>
       </table>
       <input type="hidden" name="MM_insert" value="memberadd" />
-      
-      <table border="0" width="770">  
+
+      <table border="0" width="770">
       <tr><td ><div style="font-family:標楷體;"><p><font size="4px" color="red"  ></div></font></p></td>
       <td width="100" align="right" colspan="3"><div style="font-family:標楷體;"><p><font size="5px" color="red" >流水號：<?php echo $cert_number;?></div></font></p></td>
       </tr>
-      <tr>  
+      <tr>
       <td align="center" colspan="4" ><div style="font-family:標楷體;">
 	  <p><font size="5px" ><?php echo (date('Y')-1911); ?>年第二梯次國民小學師資類科師資生學科知能評量<br></div></font></p> <!---->
-	  </td> 
-	  </tr>  
+	  </td>
+	  </tr>
 	  <tr>
 	  <td align="center" colspan="2"><div style="font-family:標楷體;"><p><font size="5px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「報名信封封面」</div></font></p></td>
 	  <td align="center" width="100" style="font-size:12px; background-color: #E8E8E8;  border-color:#000000;  border-width:1px;border-style:solid; ">掛號</td>
 	  </tr>
 	  <tr>
-	  <td height="100"  colspan="2"></td>  
-	  <td width="80"  align="center" style="font-size:12px; background-color: #E8E8E8;  border-color:#000000; border-width:2px; border-style:dotted; ">請貼足<br>掛號<br>郵資</td> 
+	  <td height="100"  colspan="2"></td>
+	  <td width="80"  align="center" style="font-size:12px; background-color: #E8E8E8;  border-color:#000000; border-width:2px; border-style:dotted; ">請貼足<br>掛號<br>郵資</td>
 	  </tr>
       </table>
       <table border="1" width="770" style="border:3px #000000 solid;"  >
       <tr><td width="770" rowspan="3" align="left" style="font-size:22px; border-width:5px; border-style:solid;border-color:#000000;">
       <div style="font-family:標楷體;"><br>&nbsp;&nbsp;<BIG><TT>收件地址：<span style="font-weight:bolder;"><u>40306臺中市西區民生路140號教育樓5樓</u></TT></span></BIG><br><br>&nbsp;&nbsp;<TT><BIG>收件單位：<span style="font-weight:bolder;">教師專業能力測驗中心 (04-2218-3651)</span></BIG></TT><br>
       <br><div align="center"><font size="4px" ><BIG><span style="font-weight:bolder;"><?php echo (date('Y')-1911); ?>年第二梯次國民小學師資類科師資生學科知能評量 試務行政組&nbsp;&nbsp;收</span></BIG></div></font><br></div></td>
-      </tr> 
+      </tr>
       </table><br>
       <table border="0" width="770"   >
       <tr>
-      	<td colspan="2"><div align="left" style="font-family:標楷體;"><font size="4px" ><b>郵寄報名表件截止時間：106年10月3日(星期二)止，以郵局郵戳為憑</b>
+      	<td colspan="2"><div align="left" style="font-family:標楷體;"><font size="4px" ><b>郵寄報名表件截止時間：107年3月27日（星期二）止，以郵局郵戳為憑</b>
       	</font></div></td>
-      </tr> 
-      <tr><td><div align="left" style="font-family:標楷體;"><font size="3px" >寄件人姓名：</font></div></td>      
+      </tr>
+      <tr><td><div align="left" style="font-family:標楷體;"><font size="3px" >寄件人姓名：</font></div></td>
       </tr>
       <tr><td colspan="2"><div align="left" style="font-family:標楷體;"><font size="3px">寄件人行動電話：</font></div></td></tr>
       <tr><td colspan="2"><div align="left" style="font-family:標楷體;"><font size="3px" >寄件人地址：</font></div></td></tr>
@@ -334,8 +334,8 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
       <tr><td colspan="2"><div align="left" style="font-family:標楷體;"><font size="3px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐一般在學生</font></td></tr>
       </tr>
       </table><br>
-      <table width="750" height="230" border="0" cellspacing="0" cellpadding="6">          
-      
+      <table width="750" height="230" border="0" cellspacing="0" cellpadding="6">
+
      <tr>
      <td width="300" align="left" class="board_add" style="font-size:16px; background-color: #FFFFFF;border-width:2px; border-style:dashed;border-color:#000000;"><div align="left" style="font-family:標楷體;"><font size="4px" >＊請將下列文件依序整理備齊(請打勾)，平整裝入信封內：</br>
 <p>☐ 一、線上列印報表1份(貼妥國民身份証正、反面影印本)。(須簽名)</p>
@@ -349,12 +349,12 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(例：改名致與檢附之學生證上所記載之姓名不同者)</p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ 其他：<u>______________________________________________________________</u></p>
       </font></div></td>
-     
+
      </tr>
      </table>
-     
+
     </form>
-    
+
   </div>
   <div id="main111" background= "#FFFFFF"></div>
 </div>
@@ -371,7 +371,7 @@ $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
 <?PHP }?>
 </body>
 </html>
-<?php 
+<?php
 function get_chinese_weekday($datetime)
 {
     $weekday  = date('w', strtotime($datetime));

@@ -2,7 +2,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -13,7 +13,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -112,14 +112,14 @@ $showPrint_mk = false;
 引入easyui-->
 <!--已在leftzone引入easyui-->
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
-function resultOnload() { 
+function resultOnload() {
 	//MM_preloadImages('images/index_button2.png','images/aboutCK_button2.png','images/download_button2.png','images/Q&A_button2.png');
 	$('#dlg_score').dialog('close');
-} 
+}
 
-</script> 
+</script>
 </head>
 
 <body onload="resultOnload()" background="images/background.jpg">
@@ -130,7 +130,7 @@ function resultOnload() {
   <div id="main2">
       <?php include("leftzone.php")?>
   </div>
-  <?php 
+  <?php
   $queryScore_mk = true;//false
   if ($row_examyear['scoreTimeCK'] <= date("Y-m-d H:i:s")){
   	$queryScore_mk = true;
@@ -149,7 +149,7 @@ function resultOnload() {
       </tr>
     </table>
 	<table width="540" border="0" cellspacing="0" cellpadding="0">
- 
+
 	</table>
 <!-- 	<button id="test">clik it</button>
 <script>
@@ -168,7 +168,7 @@ function resultOnload() {
   				console.log(err);
               });
           })
-          
+
           </script> -->
     <img src="images/Results.png" width="540" height="48" /><br />
     <table width="540" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
@@ -183,7 +183,7 @@ function resultOnload() {
 <!--           <td width="90" align="center" class="underline1">列印成績單</td> -->
           <td width="90" align="center" class="underline1">申請證明書</td>
         </tr>
-    
+
       <?php do { ?>
         <tr>
           <td width="20" height="25" align="right" class="underline1">‧</td>
@@ -191,8 +191,8 @@ function resultOnload() {
           <?php echo $row_web_news['score_time']; ?> </td>
           <td width="100" class="underline1" align="center" id="underline1">
           <?php echo $row_web_news['score_id']; ?> </td>
-          <td width="50" align="center" class="underline1"> 
-          <?php 
+          <td width="50" align="center" class="underline1">
+          <?php
           if($row_web_news['score_cpoint'] == NULL){
 //           	if($row_web_news['score_cpoint'] == 0) echo " "; else echo '不計分';
           }
@@ -201,17 +201,17 @@ function resultOnload() {
           	echo $row_web_news['score_cpoint']."<br>($row_web_news[c_level])<br><a href='".$url_str_c."' target='_blank' >"."<img class='img-40' src='images/icon_print.png' alt='列印成績單'/>"."</a>";
           	if($row_web_news['c_level'] == '精熟') $showPrint_mk=true;
           } ?> </td>
-          <td width="50" align="center" class="underline1"> 
-          <?php 
+          <td width="50" align="center" class="underline1">
+          <?php
           if($row_web_news['score_mpoint'] == NULL){
 //           	if($row_web_news['score_mpoint'] == 0) echo " "; else echo '不計分';
-          }else{ 
+          }else{
 			$url_str_m="resultsPDF.php?type=m&id=".$row_web_news['score_id']."&status=".$row_web_news['status']."&examyear_id=".$row_web_news['examyear_id'];
           	echo $row_web_news['score_mpoint']."<br>($row_web_news[m_level])<br><a href='".$url_str_m."' target='_blank'>"."<img class='img-40' src='images/icon_print.png'>"."</a>";
           	if($row_web_news['m_level'] == '精熟') $showPrint_mk=true;
           } ?> </td>
-          <td width="50" align="center" class="underline1"> 
-          <?php 
+          <td width="50" align="center" class="underline1">
+          <?php
           if($row_web_news['score_spoint'] == NULL){
 //           	if($row_web_news['score_spoint'] == 0) echo " "; else echo '不計分';
           }
@@ -220,9 +220,9 @@ function resultOnload() {
           	echo $row_web_news['score_spoint']."<br>($row_web_news[s_level])<br><a href='".$url_str_s."' target='_blank'>"."<img class='img-40' src='images/icon_print.png'>"."</a>";
           	if($row_web_news['s_level'] == '精熟') $showPrint_mk=true;
           } ?> </td>
-          <td width="50" align="center" class="underline1"> 
-          <?php 
-          if($row_web_news['score_ppoint'] ==NULL){ 
+          <td width="50" align="center" class="underline1">
+          <?php
+          if($row_web_news['score_ppoint'] ==NULL){
 //           	if($row_web_news['score_ppoint'] == 0) echo " "; else echo '不計分';
           }
           else{
@@ -257,18 +257,18 @@ function resultOnload() {
 					　<?php //if($row_web_news['score_spoint'] != 0){echo '<option value="s">社會</option>';}?>
 					　<?php //if($row_web_news['score_ppoint'] != 0){echo '<option value="p">自然</option>';}?>
 					</select>
-					
+
 					<input type="hidden" name="id" value="<?php //echo $row_web_news['score_id']; ?>">
 					<input type="hidden" name="status" value="<?php //echo $_GET['status']; ?>">
 					<input type="hidden" name="examyear_id" value="<?php // echo $row_web_news['examyear_id']; ?>">
 				</form>
-				
+
           	  </div>
-          
-          
+
+
           <?php //}?>
           </td> -->
-          
+
           <td align="center" class="underline1">
           <?php if($showPrint_mk) {
           	if($row_web_news["status"] == '1') $onclick_fun = 'ShowLink3()';
@@ -279,7 +279,7 @@ function resultOnload() {
         </tr>
         <?php } while ($row_web_news = mysql_fetch_assoc($web_news)); ?>
     </table>
-    
+
     <table width="540" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
         <tr>
           <td align="left" valign="bottom">&nbsp;
@@ -303,7 +303,7 @@ function resultOnload() {
             記錄 <?php echo ($startRow_web_news + 1) ?> 到 <?php echo min($startRow_web_news + $maxRows_web_news, $totalRows_web_news) ?> 共 <?php echo $totalRows_web_news ?></td>
         </tr>
       </table>
-    
+
      <?php if ($totalRows_web_news == 0) { // Show if recordset empty ?>
     <table width="540" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -311,14 +311,14 @@ function resultOnload() {
       </tr>
     </table>
     <?php } // Show if recordset empty ?>
-  
+
   </div>
 	<?PHP }else{?><table width="540" border="0" cellspacing="0" cellpadding="0" align="center">
       	<p align="center" class="font_red2">目前尚未開放成績查詢</p>
       	<p align="center"><a href="index.php">[返回首頁]</a></p>
 	<?PHP }?>
-  
-  
+
+
   <div id="main4"></div>
 <div style="border:5px #FFCC66 solid;border-radius:10px;width:50%;background-color:#FFFFCC;padding:10px;margin:10px;">
     <table width="100%" style="border:2px #ffdd70 solid;padding:5px;" cellpadding='5';>
@@ -327,7 +327,7 @@ function resultOnload() {
     	<tr align="center"><td>數學</td><td>0-420</td><td>421-579</td><td>580以上</td></tr>
     	<tr align="center" bgcolor="#FFFFFF"><td>社會</td><td>0-446</td><td>447-589</td><td>590以上</td></tr>
     	<tr align="center"><td>自然</td><td>0-415</td><td>416-573</td><td>574以上</td></tr>
-    </table> 
+    </table>
     </div>
 <?php include("footer.php"); ?>
 </div>.

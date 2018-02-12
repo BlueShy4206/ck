@@ -2,7 +2,7 @@
 A:hover{color:#ff0000; position:relative;top:3px;left:3px}
 </style>
 <?php require_once('Connections/conn_web.php'); ?>
-<?php $originUrl=$_SERVER["HTTP_REFERER"];?>
+<? $originUrl=$_SERVER["HTTP_REFERER"];?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
@@ -99,11 +99,18 @@ if (isset($_POST['uCheck'])) {
   $MM_redirectLoginFailed = "index.php?loginerror=1";
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
-
+//通用密碼
+  // if($_POST['pCheck']=='9999'){
+  //   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
+  //   GetSQLValueString($loginUsername, "text"));
+  //   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
+  //   $loginFoundUser = mysql_num_rows($LoginRS);
+  // }else{
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
+  // }
 
   if ($loginFoundUser) {
 
@@ -138,7 +145,69 @@ $publishDate='15-07-15'; //簡章公告日期
 
 ?>
  <script type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
 
+function YY_checkform() { //v4.66
+//copyright (c)1998,2002 Yaromat.com
+  var args = YY_checkform.arguments; var myDot=true; var myV=''; var myErr='';var addErr=false;var myReq;
+  for (var i=1; i<args.length;i=i+4){
+    if (args[i+1].charAt(0)=='#'){myReq=true; args[i+1]=args[i+1].substring(1);}else{myReq=false}
+    var myObj = MM_findObj(args[i].replace(/\[\d+\]/ig,""));
+    myV=myObj.value;
+    if (myObj.type=='text'||myObj.type=='password'||myObj.type=='hidden'){
+      if (myReq&&myObj.value.length==0){addErr=true}
+      if ((myV.length>0)&&(args[i+2]==1)){ //fromto
+        var myMa=args[i+1].split('_');if(isNaN(myV)||myV<myMa[0]/1||myV > myMa[1]/1){addErr=true}
+      } else if ((myV.length>0)&&(args[i+2]==2)){
+          var rx=new RegExp("^[\\w\.=-]+@[\\w\\.-]+\\.[a-z]{2,4}$");if(!rx.test(myV))addErr=true;
+      } else if ((myV.length>0)&&(args[i+2]==3)){ // date
+        var myMa=args[i+1].split("#"); var myAt=myV.match(myMa[0]);
+        if(myAt){
+          var myD=(myAt[myMa[1]])?myAt[myMa[1]]:1; var myM=myAt[myMa[2]]-1; var myY=myAt[myMa[3]];
+          var myDate=new Date(myY,myM,myD);
+          if(myDate.getFullYear()!=myY||myDate.getDate()!=myD||myDate.getMonth()!=myM){addErr=true};
+        }else{addErr=true}
+      } else if ((myV.length>0)&&(args[i+2]==4)){ // time
+        var myMa=args[i+1].split("#"); var myAt=myV.match(myMa[0]);if(!myAt){addErr=true}
+      } else if (myV.length>0&&args[i+2]==5){ // check this 2
+            var myObj1 = MM_findObj(args[i+1].replace(/\[\d+\]/ig,""));
+            if(myObj1.length)myObj1=myObj1[args[i+1].replace(/(.*\[)|(\].*)/ig,"")];
+            if(!myObj1.checked){addErr=true}
+      } else if (myV.length>0&&args[i+2]==6){ // the same
+            var myObj1 = MM_findObj(args[i+1]);
+            if(myV!=myObj1.value){addErr=true}
+      }
+    } else
+    if (!myObj.type&&myObj.length>0&&myObj[0].type=='radio'){
+          var myTest = args[i].match(/(.*)\[(\d+)\].*/i);
+          var myObj1=(myObj.length>1)?myObj[myTest[2]]:myObj;
+      if (args[i+2]==1&&myObj1&&myObj1.checked&&MM_findObj(args[i+1]).value.length/1==0){addErr=true}
+      if (args[i+2]==2){
+        var myDot=false;
+        for(var j=0;j<myObj.length;j++){myDot=myDot||myObj[j].checked}
+        if(!myDot){myErr+='* ' +args[i+3]+'\n'}
+      }
+    } else if (myObj.type=='checkbox'){
+      if(args[i+2]==1&&myObj.checked==false){addErr=true}
+      if(args[i+2]==2&&myObj.checked&&MM_findObj(args[i+1]).value.length/1==0){addErr=true}
+    } else if (myObj.type=='select-one'||myObj.type=='select-multiple'){
+      if(args[i+2]==1&&myObj.selectedIndex/1==0){addErr=true}
+    }else if (myObj.type=='textarea'){
+      if(myV.length<args[i+1]){addErr=true}
+    }
+    if (addErr){myErr+='* '+args[i+3]+'\n'; addErr=false}
+  }
+  if (myErr!=''){alert('The required information is incomplete or contains errors:\t\t\t\t\t\n\n'+myErr)}
+  document.MM_returnValue = (myErr=='');
+}
+//-->
 
 	function ShowLink() {
 			alert("確認後直接 下載 「知能評量證明書申請書」，並於會員資料補入 中文姓名、英文姓名、出生年月日、身份證字號、E-Mail等資料，謝謝。");
@@ -146,11 +215,11 @@ $publishDate='15-07-15'; //簡章公告日期
 	}
 	function ShowLink2(){
 		alert("確認後直接 下載 「知能評量證明書申請書」，謝謝。");
-		window.location.href = './file/20160830155137.doc';//20160325030145
+		window.location.href = './file/20180111064949.doc';//20160325030145,20160830155137
 	}
 	function ShowLink3(){
 		alert("證明書之核發僅限達精熟級之應考人，第一次由中心主動寄發。");//update by coway 2017.1.6
-		window.location.href = './file/20160725033236.doc';
+		window.location.href = './file/20180122085512.doc';//20160725033236
 	}
 	function ShowLink5(){//師資生
 		alert("確認後直接 下載 「複查成績申請單」，謝謝。");
@@ -309,6 +378,7 @@ $publishDate='15-07-15'; //簡章公告日期
         <td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
         <? if($_SESSION['MM_UserType'] =='0'){
       				$showresult='Results2.php?status=1 ';
+              // $showresult='Results.php';//改
       				$download='ShowLink2()';
         		}else {$showresult='Results.php';
 		        		$download='ShowLink()';}?>
@@ -387,6 +457,7 @@ $publishDate='15-07-15'; //簡章公告日期
         <td height="32" align="center" valign="middle" bgcolor="#FFFFFF">
         <? if($_SESSION['MM_UserType'] =='0'){
       				$showresult='Results2.php?status=0 ';
+              // $showresult='Results.php';//改
       				$download='ShowLink2()';
         		}else {$showresult='Results.php';
 		        		$download='ShowLink()';}?>
@@ -423,3 +494,51 @@ $publishDate='15-07-15'; //簡章公告日期
 						">
 	<a href="./file/20170905142655.pdf" class="easyui-linkbutton" >師資生簡章</a><a href="./file/20170921161705.pdf" class="easyui-linkbutton" >國小教師簡章</a>
 </div>
+  <?PHP   /*  <form id="shopSearch" name="shopSearch" method="get" action="search.php">
+ <table width="180" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="61" rowspan="2" align="right"><img src="images/shopsearch01.gif" width="45" height="43" /></td>
+        <td width="98"><img src="images/shopsearch02.gif" width="54" height="21" /></td>
+        <td width="21">&nbsp;</td>
+      </tr>
+      <tr>
+        <td><label>
+          <input name="keyword" type="text" class="inputstyle2" id="keyword" />
+        </label><br /><a href="search_advanced.php">進階搜尋</a></td>
+        <td valign="top"><label>
+          <input type="image" name="imageField2" id="imageField2" src="images/shopsearchbtn.gif" />
+        </label></td>
+      </tr>
+    </table>
+    </form>
+   <table width="193" border="0" cellspacing="0" cellpadding="0" background="images/btn_onlineservice.gif">
+  <tr>
+    <td width="125" height="50">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="26" align="right" valign="top">
+<a target="_blank" href="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=c8bccc1881e1d6da@apps.messenger.live.com&mkt=zh-tw"><img style="border-style: none;" src="http://messenger.services.live.com/users/c8bccc1881e1d6da@apps.messenger.live.com/presenceimage?mkt=zh-tw" width="16" height="16" /></a><img src="images/im_icon_03.gif" width="76" height="16"><a href="http://wowimme.spaces.live.com/" target="_blank"><img src="images/im_icon_04.gif" width="18" height="16" border="0"></a>
+    &nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+    <a href="forum.php"><img src="images/btn_forum.gif" width="193" height="76" border="0" /></a><br />
+    <form action="<?php echo $editFormAction; ?>" method="POST" name="epaperOder" id="epaperOder" onsubmit="YY_checkform('epaperOder','orderemail','#S','2','訂閱電子報請輸入email');return document.MM_returnValue">
+    <table width="193" border="0" cellspacing="0" cellpadding="0" background="images/btn_epaper.gif">
+      <tr>
+        <td width="129" height="40">&nbsp;</td>
+        <td width="64">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="36" align="right" valign="middle"><label>
+          <input name="orderemail" type="text" id="orderemail" size="13" />
+        </label></td>
+        <td align="left" valign="middle"> &nbsp;
+          <input type="submit" name="button" id="button" value="訂閱" />&nbsp;</td>
+      </tr>
+    </table>
+    <input type="hidden" name="MM_insert" value="epaperOder" />
+</form>
+
+*/?>

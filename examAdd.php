@@ -1,4 +1,4 @@
-<?php require_once('login_check.php'); 
+<?php require_once('login_check.php');
 require_once "PEAR183/HTML/QuickForm.php";
 ?>
 <?
@@ -40,10 +40,10 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 		$_ext_ = explode(".", $_name_);
 		$attach = $_POST['username'];
 		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title=$_file_['name'];		
+		$news_pic_title=$_file_['name'];
 		$pic_type = $_file_['type'];
 		//echo "$pic_type";
-		
+
 		//取原圖的大小進行比例處理
 		switch ($pic_type){
 			case "image/jpeg":
@@ -65,7 +65,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 			$thumb_h2 = intval($src_w2 / $src_h2 * 130);
 			$thumb_w2 = intval($src_w2 / $src_h2 * 100);
 		}
-		
+
 		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
 			$errStr = "Estensione non valida";
 			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
@@ -90,8 +90,8 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 					$resultOK= imagegif($thumb2, "images/smallPic/".$newPicname);
 					break;
 			}
-			
-				
+
+
 			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
 				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
 				//header("Location: " . no_error);
@@ -115,7 +115,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -126,7 +126,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -156,13 +156,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // echo "dept.=".$_POST['exarea1'][1]."<br>";
 // die();
 	$allSubjects=$_POST['Subjects'];
-	$allSubjects= implode(',' , $allSubjects);	
+	$allSubjects= implode(',' , $allSubjects);
 
 	$Ticket=substr(($_POST['exarea'][0]),0,1).$_POST['times'].substr(($_POST['endday']),0,4);
 	mysql_select_db($database_conn_web, $conn_web);
-	
+
 	//$Ticket抓取(正取)師資生的報名資料 status=0 //update by coway 2016.8.11
-	$query_web_search = sprintf("SELECT id FROM examinee WHERE id LIKE %s 
+	$query_web_search = sprintf("SELECT id FROM examinee WHERE id LIKE %s
 			AND Qualify=1 AND status=0  ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"));//AND exarea_note = %s , GetSQLValueString($_POST['exarea'][2], "text")
 	//2016/03/04 teresa mark
 	//$query_web_search = sprintf("SELECT id FROM examinee WHERE id LIKE %s ORDER BY id DESC LIMIT 0,1", GetSQLValueString("%" . $Ticket . "%", "text"));
@@ -171,15 +171,15 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	$row_web_search = mysql_fetch_assoc($web_search);
 	$totalRows_web_search = mysql_num_rows($web_search);
 	//$Ticket抓取(備取)師資生的報名資料 status=0 //update by coway 2016.8.11
-	$query_web_search_last = sprintf("SELECT id FROM examinee WHERE id LIKE %s 
+	$query_web_search_last = sprintf("SELECT id FROM examinee WHERE id LIKE %s
 			AND Qualify=0 AND status=0  ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"));//AND exarea_note = %s , GetSQLValueString($_POST['exarea'][2], "text")
 	$web_search_last = mysql_query($query_web_search_last, $conn_web) or die(mysql_error());
 
 	$row_web_search_last = mysql_fetch_assoc($web_search_last);
 	$totalRows_web_search_last = mysql_num_rows($web_search_last);
-	
+
 	//抓取(正取)師資生的報名資料 status=0 //add身份別1(cert_no='1')判斷 ,add by coway 2016.9.22
-	$query_web_search2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s 
+	$query_web_search2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s
 			AND Qualify=1 AND status=0 AND exarea_note = %s AND apply_mk=1 AND cert_no='1' ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($_POST['exarea'][2], "text"));
 // 	echo "sql=".$query_web_search2."<br>";
 // 	die();
@@ -187,18 +187,18 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 
 	$row_web_search2 = mysql_fetch_assoc($web_search2);
 	$totalRows_web_search2 = mysql_num_rows($web_search2);
-	
+
 	//抓取(備取)師資生的報名資料 status=0
 	$query_web_search_last2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s
 			AND Qualify=0 AND status=0 AND exarea_note = %s AND apply_mk=1 ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($_POST['exarea'][2], "text"));
 	$web_search_last2 = mysql_query($query_web_search_last2, $conn_web) or die(mysql_error());
 	$row_web_search_last2 = mysql_fetch_assoc($web_search_last2);
 	$totalRows_web_search_last2 = mysql_num_rows($web_search_last2);
-	
+
 	$query_web_allguide2 = sprintf("SELECT * FROM allguide Where up_no='EA2' AND nm= %s AND data2= %s",GetSQLValueString($_POST['exarea'][0], "text"), GetSQLValueString($_POST['exarea'][2], "text"));
 	$web_allguide2 = mysql_query($query_web_allguide2, $conn_web) or die(mysql_error());
 	$row_web_allguide2 = mysql_fetch_assoc($web_allguide2);
-	
+
 	$exam_date = $row_web_allguide2['data1'];
 
 	if($totalRows_web_search == 0){
@@ -223,13 +223,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // 			if($totalRows_web_search_last2 >= (int)$row_web_allguide2['data4']){
 				//echo "last:$totalRows_web_search_last, data4: $row_web_allguide2[data4]";
 // 			echo "<script>javascript:alert(\"超過限制檔案大小\");exit;</script>";
-			echo "<script>javascript:alert(\"本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。\");</script>";
+			echo "<script>javascript:alert(\"本考場第一錄取順序應考人之網路登錄報名人數已超過簡張開放名額，請考慮是否選擇其他考場參與評量。\");</script>";
 // 			echo "<script>if(confirm('本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。')){history.go(-1);} </script>";
-			
+
 		?>
-		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 			    <script type="text/javascript">
-// 		if(confirm("本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。")){history.go(-1) ; 
+// 		if(confirm("本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。")){history.go(-1) ;
 		<?php //die();?>
 // 		}else{exit;}
 // 			    break;
@@ -238,30 +238,38 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // // 				exit();
 // 				window.history.back();
 				</script>;
-<?php	
+<?php
 // 			$qualify=1;
 // echo "<script>alert('報名人數已滿，是否選擇其他場次。');exit; </script>";
 // die();
-			
+
 // 				die("<script>if(confirm('本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。')){history.go(-1) ;}</script>");
 // 				exit();
 // 			}else{
 // 				$qualify=0;
 // 			}
 		}//else $qualify=1;
-		
+
 	}else{
 		?>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <script type="text/javascript">
 		alert("報名場次有誤，請重新報名。");
 		window.history.back();
-		</script>;	
-<?php	
+		</script>;
+<?php
 	}
+	//判斷其他欄位有無填入，其他欄位優先
 	$_POST['Department'] = (trim($_POST['Department_other']) != "") ? $_POST['Department_other'] : $_POST['Department'];
-	
+$_POST['High_college'] = (trim($_POST['High_college_other']) != "") ? $_POST['High_college_other'] : $_POST['High_college'];
 
+if($_POST['Department']=="" || $_POST['High_college']==""){
+	?>
+        <script language="JavaScript">
+                alert("學院/科系填寫不完整！");
+                history.go(-1); //回上一頁
+        </script> <?
+}
 	//取得報考資格流水號
 	$query_web_cert = sprintf("SELECT IFNULL(max(cert_id),0)+1 AS cert_id FROM `examinee` WHERE examyear_id=%s AND cert_no=%s ",GetSQLValueString($_POST['examyear_id'], "text"), GetSQLValueString($_POST['id'], "text"));
 	$web_cert = mysql_query($query_web_cert, $conn_web) or die(mysql_error());
@@ -269,19 +277,19 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // 	echo "cert_no=".$_POST['id']."<br>";
 // 	echo "examyear_id=".$_POST['examyear_id']."<br>";
 // 	echo "cert_id=".$row_web_cert['cert_id']."<br>";
-	// die();	
-	
- $insertSQL = sprintf("INSERT INTO examinee (birthday, username, uname, eng_uname, sex, email, 
- 		phone, Area, cityarea, cuszip, cusadr, per_id, category, exarea, exarea_date, exarea_note, school, Grade, Student_ID, 
- 		Department, pic_title, pic_name, `date`, id, contact, contact_ph, Qualify, status, cert_no, cert_id,examyear_id,High_college) 
+	// die();
+
+ $insertSQL = sprintf("INSERT INTO examinee (birthday, username, uname, eng_uname, sex, email,
+ 		phone, Area, cityarea, cuszip, cusadr, per_id, category, exarea, exarea_date, exarea_note, school, Grade, Student_ID,
+ 		Department, pic_title, pic_name, `date`, id, contact, contact_ph, Qualify, status, cert_no, cert_id,examyear_id,High_college)
  		VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
  		%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",//, certificate
                        GetSQLValueString($_POST['birthday'], "text"),
-					   GetSQLValueString($_POST['username'], "text"),					   
+											 GetSQLValueString($_POST['username'], "text"),
                        GetSQLValueString($_POST['uname'], "text"),
- 					   GetSQLValueString($_POST['eng_uname'], "text"),
+											 GetSQLValueString($_POST['eng_uname'], "text"),
                        GetSQLValueString($_POST['sex'], "text"),
-                       GetSQLValueString($_POST['email'], "text"),                      
+                       GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['phone'], "text"),
                        GetSQLValueString($_POST['Area'], "text"),
                        GetSQLValueString($_POST['cityarea'], "text"),
@@ -298,9 +306,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 					   GetSQLValueString($_POST['Grade'], "text"),
 					   GetSQLValueString($_POST['Student_ID'], "text"),
 					   GetSQLValueString($_POST['Department'], "text"),
-					   GetSQLValueString($news_pic_title, "text"),					   
+					   GetSQLValueString($news_pic_title, "text"),
                        GetSQLValueString($newPicname, "text"),
-                       GetSQLValueString($_POST['date'], "date"),					   
+                       GetSQLValueString($_POST['date'], "date"),
                        GetSQLValueString($Ticket, "text"),
  					   GetSQLValueString($_POST['contact'], "text"),
 					   GetSQLValueString($_POST['contact_ph'], "text"),
@@ -311,7 +319,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 					   GetSQLValueString($row_web_cert['cert_id'], "text"),//cert_id, add by coway 2016.8.25
 					   GetSQLValueString($_POST['examyear_id'], "text"),//examyear_id, add by coway 2016.8.25
 					   GetSQLValueString($_POST['High_college'], "text")//High_college, add by coway 2017.4.6
- 					
+
  		);
 
   mysql_select_db($database_conn_web, $conn_web);
@@ -382,21 +390,21 @@ while ($row_web_allguide = mysql_fetch_assoc($web_allguide)){
 //查詢正/備取資料 2016/3/4 teresa add
 $lot = array();
 mysql_select_db($database_conn_web, $conn_web);
-$query_web_lot = sprintf("SELECT IFNULL(num,0) num, nm as exarea, data2 as exarea_note, 
-		data3, data4, (data3-IFNULL(num,0)) lot1 FROM allguide a2 left join 
-		( SELECT count(*) num, exarea, exarea_note FROM examinee WHERE id LIKE %s 
-		AND apply_mk=1 AND Qualify=1 group by exarea, exarea_note) as a1 on 
-		(a1.exarea = a2.nm and a1.exarea_note = a2.data2) 
+$query_web_lot = sprintf("SELECT IFNULL(num,0) num, nm as exarea, data2 as exarea_note,
+		data3, data4, (data3-IFNULL(num,0)) lot1 FROM allguide a2 left join
+		( SELECT count(*) num, exarea, exarea_note FROM examinee WHERE id LIKE %s
+		AND apply_mk=1 AND Qualify=1 group by exarea, exarea_note) as a1 on
+		(a1.exarea = a2.nm and a1.exarea_note = a2.data2)
 		WHERE a2.up_no = %s", GetSQLValueString("%" .$todayyear . "%", "text"), GetSQLValueString('EA2', "text"));
 // echo"query_web_lot=".$query_web_lot."<br>";
 // die();
 $web_examinee_lot = mysql_query($query_web_lot, $conn_web) or die(mysql_error());
 
 mysql_select_db($database_conn_web, $conn_web);
-$query_web_lot2 = sprintf("SELECT IFNULL(num2,0) num2, nm as exarea, data2 as exarea_note, 
-		data3, data4, (data4-IFNULL(num2,0)) lot2 FROM allguide a2 left join 
-		(SELECT count(*) num2, exarea as exarea2, exarea_note as exarea_note2 FROM examinee WHERE id LIKE %s 
-		AND apply_mk=1 AND Qualify=0 group by exarea, exarea_note) as a3 on 
+$query_web_lot2 = sprintf("SELECT IFNULL(num2,0) num2, nm as exarea, data2 as exarea_note,
+		data3, data4, (data4-IFNULL(num2,0)) lot2 FROM allguide a2 left join
+		(SELECT count(*) num2, exarea as exarea2, exarea_note as exarea_note2 FROM examinee WHERE id LIKE %s
+		AND apply_mk=1 AND Qualify=0 group by exarea, exarea_note) as a3 on
 		(a3.exarea2 = a2.nm and a3.exarea_note2 = a2.data2) WHERE a2.up_no = %s", GetSQLValueString("%" .$todayyear . "%", "text"), GetSQLValueString('EA2', "text"));
 $web_examinee_lot2 = mysql_query($query_web_lot2, $conn_web) or die(mysql_error());
 
@@ -435,7 +443,7 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
 //取得學院系所資料
 $form1 = new HTML_QuickForm('examAdd1','post','');
 $init1='';
-$sele1[$init1]='請 選 擇-類 科';
+$sele1[$init1]='請 選 擇-學 院';
 $sele2[$init1][$init1]='請 選 擇-系 所';
 
 // $query_web_allguide = sprintf("SELECT * FROM `allguide` where up_no='Edu' order by no,CAST(CONVERT(data1 USING big5) AS BINARY)",GetSQLValueString('%', "text"));
@@ -491,8 +499,8 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		//});
 		}
 	});
-	
-	
+
+
 	//驗證
 	$().ready(function() {
 		// validate the comment form when it is submitted
@@ -523,7 +531,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 					required: "請檢查科系欄位",
 					minlength: "科系輸入請勿少於4個字元"
 				},
-				email:"請檢查email欄位",	
+				email:"請檢查email欄位",
 				phone: "請檢查電話欄位",
 				//exam_school: "請選擇考場"
 			}
@@ -539,7 +547,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 // 		}
 	}
 
-	function showData(str,index) { 
+	function showData(str,index) {
 		if (str == "") {
 		   document.getElementById("msg").innerHTML = "";
 		   return;
@@ -559,9 +567,9 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		xmlhttp.open("GET", "prodb_queryol.php?area="+str[0]+"&note="+str[2]+"&todayyear="+index, true);
 		xmlhttp.send();
 	}
-	
+
 	function popIdMsg(){
-		var winvar;	
+		var winvar;
 			window.open('popIdMsg.php','msg','resizable=no,top=220,left=900,height=200,width=400,scrollbars=no,menubar=no,location=no,status=no,titlebar=no,toolbar=no');
 // 		winvar = window.open('localhost', '', config='toolbar=no,top=220,left=900,height=200,width=400,scrollbars=no,resizable=0,menubar=no,location=no,status=no');
 // 		var text1 ="※請確實點選應考資格， 經查核資料不實者，即取消本次應考資格※";
@@ -584,7 +592,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 // 		test_value = document.form.i.value();
 // 		form.Other2_dept.value="123";
 // 		alert(test_value);
-		
+
 // 		var form1 = document.getElementById("form3")
 		var High_college_str=$(".input-normal[name^='edu1[0]'").val();
 		var Department_str=$(".input-normal[name^='edu1[1]'").val();
@@ -599,15 +607,15 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 // 			}
 // 		alert(High_college_str+Department_str);
 
-		
-		
+
+
 // 		i = form.cityarea.selectedIndex;
 // 		form.Mcode.value = cityareacode[cityarea_account[form.Area.selectedIndex]+i+1];
 // 		form.cuszip.value = cityareacode[cityarea_account[form.Area.selectedIndex]+i+1];
 // 		form.cusadr.value = form.Area.options[form.Area.selectedIndex].value+form.cityarea.options[form.cityarea.selectedIndex].value;
 	}
 
-	
+
 	//update by coway 2016.8.9
 // 	function ShowMsg(sel, index){
 // 		var length = data.length;
@@ -615,7 +623,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 // 		var name = sel.name.substr(7,1);
 // 		if(name == '0') data.length = 0;
 // 		if(name == '1') data.length = 1;
-// 		data[name] = value; 
+// 		data[name] = value;
 // 		//console.log(index);
 // 		if(data.length == 3){
 // 			//console.log(data);
@@ -644,9 +652,9 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 <?php include("header.php"); ?>
 <div id="main">
   <div id="main1"></div>
-  
+
   <div id="exam" align="center">
-  <?php 
+  <?php
 //   echo "開始時間=".strtotime($row_web_new['startday'])."<br>";
 //   echo "開始時間H:i=".strtotime('2016-09-23 08:30:00')."<br>";
 //   echo "now=".date('Y-m-d')."<br>";
@@ -658,7 +666,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
   ?>
   <? if(strtotime($row_web_new['startday']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime($row_web_new['endday'])&& $row_web_new['status'] == '0'){?>
   <? if(($row_web_examinee['username'] != $row_web_member['username']) or  strtotime(substr(($row_web_examinee['date']),0,19)) < (strtotime($row_web_new['startday']))){?>
-  
+
     <form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" >
       <table width="640" border="0" cellspacing="0" cellpadding="0" >
         <tr>
@@ -677,14 +685,14 @@ while ($row_college = mysql_fetch_assoc($web_college)){
         <tr>
           <td width="82" height="30" align="right" class="board_add">英文姓名：</td>
           <td width="458" align="left" class="board_add" colspan="2"><label>
-          <?php 
+          <?php
 	          list($firstname, $lastname, $lastname2) = explode(" ", $row_web_member['eng_uname']);
 	          if($firstname !=""){
 	          	$eng_name="$firstname, $lastname $lastname2";
 	          }
-	          echo $eng_name; //$row_web_member['eng_uname']; 
+	          echo $eng_name; //$row_web_member['eng_uname'];
           ?><?php //echo $row_web_member['eng_uname']; //update by coway 2016.8.8?>
-            <input name="eng_uname" type="hidden" id="eng_uname" value="<?php echo $row_web_member['eng_uname']; ?>" /> 
+            <input name="eng_uname" type="hidden" id="eng_uname" value="<?php echo $row_web_member['eng_uname']; ?>" />
           </label><!-- (例如：李大同，英文名:Li Da Tong) -->
           </td>
         </tr>
@@ -702,7 +710,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           男
           <input <?php if (!(strcmp($row_web_member['sex'],"女"))) {echo "checked=\"checked\"";} ?> type="radio" name="sex" id="radio2" value="女" />
           女</label>
-          
+
           </td>
         </tr>
         <tr>
@@ -759,7 +767,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
                           <!-- <span id="spryselect5"> -->
                           <select onchange="areachange(this.form)" name="cityarea">
                                 <option value="<?php echo $row_web_member['cityarea']; ?>" selected="selected"><?php echo $row_web_member['cityarea']; ?></option>
-                                
+
                           </select><!-- <span class="textfieldRequiredMsg">請選擇地址區域</span></span> -->
                           <input type="hidden" value="100" name="Mcode" />
                           <input name="cuszip" value="<?php echo $row_web_member['cuszip']; ?>" size="5" maxlength="5" readonly="readOnly" />
@@ -774,7 +782,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
             <span class="textfieldRequiredMsg">請輸入地址</span><span class="textfieldMinCharsMsg">請輸入地址</span></span></span></td>
         </tr>
         <tr>
-          <td height="30" align="right" colspan="2" class="board_add">=========================================================================================</td>   
+          <td height="30" align="right" colspan="2" class="board_add">=========================================================================================</td>
         </tr>
         <tr>
         </tr>
@@ -814,7 +822,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>報名科目：</td>
           <td align="left" class="board_add">
-         
+
             <input name="Subjects[]" type="checkbox" id="Subjects[]" value="1" checked="checked" />
            <label>國語 </label>
           <input type="checkbox" name="Subjects[]" id="Subjects[]" value="2" />
@@ -828,7 +836,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
         </tr>
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>
-          <?php 
+          <?php
 //           		$event="required onchange=\"ShowMsg(this,'$todayyear')\"";
           		$event="required";
           		// Create the Element
@@ -837,7 +845,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           <td align="left" class="board_add">
           <label>
           	<span id="spryselect3">
-          	<?php 
+          	<?php
 				// And add the selection options
 				$sel->setOptions(array($select1, $select2, $select3));
 				$form->display();
@@ -865,15 +873,15 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 	          		<option value="06_國立臺南大學" >國立臺南大學考場</option>
 	          		<option value="07_國立屏東大學" >國立屏東大學考場</option>
 	          		<option value="08_國立臺東大學" >國立臺東大學考場</option>
-	          		<option value="09_國立東華大學" >國立東華大學考場</option> 
+	          		<option value="09_國立東華大學" >國立東華大學考場</option>
 	          </select>
           <span class="selectRequiredMsg">請選擇考場名稱</span></span> -->
           </label>
-          <?php 
+          <?php
 			$datelineN=strtotime($row_web_new['ndate']);
 			$datelineC=strtotime($row_web_new['cdate']);
 			$datelineS=strtotime($row_web_new['sdate']);
-			$datelineE=strtotime($row_web_new['edate']);	  
+			$datelineE=strtotime($row_web_new['edate']);
           ?>
           <!--<span id="spryselect2">
            <select name="exam_date">
@@ -882,7 +890,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           		<option value="02"><?php echo (date('Y',$datelineC)-1911).date('年m月d日 ',$datelineC). "(".get_chinese_weekday($row_web_new['cdate']).")";?></option>
           		<option value="03"><?php echo (date('Y',$datelineS)-1911).date('年m月d日 ',$datelineS). "(".get_chinese_weekday($row_web_new['sdate']).")";?></option>
           		<option value="04"><?php echo (date('Y',$datelineE)-1911).date('年m月d日 ',$datelineE). "(".get_chinese_weekday($row_web_new['edate']).")";?></option>
-          </select> 
+          </select>
           <span class="selectRequiredMsg">請選擇考場場次</span>
           </span>-->
           </td>
@@ -909,7 +917,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
                 <option value="14_臺北市立大學" <?php if (!(strcmp($row_web_examinee2['school'],"14_臺北市立大學"))) {echo "selected=\"selected\"";} ?> >臺北市立大學</option>
                 <option value="15_國立嘉義大學" <?php if (!(strcmp($row_web_examinee2['school'],"15_國立嘉義大學"))) {echo "selected=\"selected\"";} ?> >國立嘉義大學</option>
                 <option value="17_國立臺灣海洋大學" <?php if (!(strcmp($row_web_examinee2['school'],"17_國立臺灣海洋大學"))) {echo "selected=\"selected\"";} ?> >國立臺灣海洋大學</option>
-                              
+
             </select>
             <span class="selectRequiredMsg">請輸入學校</span></span>
           </td>
@@ -938,37 +946,38 @@ while ($row_college = mysql_fetch_assoc($web_college)){
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>學號：</td>
           <td align="left" class="board_add"><label>
-            
+
           <span id="sprytextfield1">
             <input type="text" name="Student_ID" id="Student_ID"  value="<?php echo $row_web_examinee2['Student_ID']; ?>" />(已畢業者請填畢業時之學號)
           <span class="textfieldRequiredMsg">請輸入學號</span><span class="textfieldMinCharsMsg">請輸入學號</span></span></label></td>
         </tr>
-        <?php 
+        <?php
           		$events=' class="input-normal" height="30" width="200" required onchange="areachange1(this.form)"';?>
         <tr>
-        <?php 
+        <?php
 				$sel1 =& $form1->addElement('hierselect', 'edu1', '',$events);?>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>就讀科系：</td>
           <td align="left" class="board_add">
           <span id="spryselect5">
-          <!-- <span id="sprytextfield2"> -->  
-          <?php 
+          <!-- <span id="sprytextfield2"> -->
+          <?php
         		$sel1->setOptions(array($sele1, $sele2));
         		$form1->display();
-        ?> 
+        ?>
           <span class="selectRequiredMsg">請選擇科系</span></span>
-		  <input name="High_college" type="hidden" ></input> 
-		  <input name="Department"  type="hidden" ></input>        
-          其他：<input type="text" name="Department_other" id="Department_other"  />(已畢業者請填最高學歷之就讀科系)<!-- value="<?php //echo $row_web_examinee2['Department']; ?>" -->
+		  <input name="High_college" type="hidden" ></input>
+		  <input name="Department"  type="hidden" ></input>
+          其他：<input type="text" name="High_college_other" id="High_college_other" style="width: 100px;" />學院 / <input type="text" name="Department_other" id="Department_other"  style="width: 100px;"/>系所 (已畢業者請填最高學歷之就讀科系)<!-- value="<?php //echo $row_web_examinee2['Department']; ?>" -->
           <!-- <span class="textfieldRequiredMsg">請輸入科系</span><span class="textfieldMinCharsMsg">請輸入科系</span></span> --></td>
         </tr>
+
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>緊急聯絡人：</td>
           <td align="left" class="board_add" colspan="2">
           <label>
-           <span id="sprytextfield8">            
+           <span id="sprytextfield8">
             <input name="contact" type="text" id="contact" value="<?php echo $row_web_examinee2['contact']; ?>" />
-			<span class="textfieldRequiredMsg">請輸入聯絡人</span><span class="textfieldMinCharsMsg">請輸聯絡人</span></span>            
+			<span class="textfieldRequiredMsg">請輸入聯絡人</span><span class="textfieldMinCharsMsg">請輸聯絡人</span></span>
           </label>
           </td>
         </tr>
@@ -976,9 +985,9 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>緊急聯絡人<br />電話：</td>
           <td align="left" class="board_add" colspan="2">
           <label>
-           <span id="sprytextfield9">          
+           <span id="sprytextfield9">
             <input name="contact_ph" type="text" id="contact_ph" value="<?php echo $row_web_examinee2['contact_ph']; ?>" />
-			<span class="textfieldRequiredMsg">請輸入聯絡電話</span><span class="textfieldMinCharsMsg">請輸聯絡電話</span></span>            
+			<span class="textfieldRequiredMsg">請輸入聯絡電話</span><span class="textfieldMinCharsMsg">請輸聯絡電話</span></span>
           </label>
           </td>
         </tr>
@@ -989,10 +998,10 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           <img src="images/examinee/<?php //echo $row_web_examinee2['pic_name']; ?>" alt="" name="pic" width="70" id="pic" />
           <?php //} /*END_PHP_SIRFCIT*/ ?>
           <input name="oldPic" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_name']; ?>" />
-          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_title']; ?>" />          
+          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_title']; ?>" />
           <?php //echo $row_web_examinee2['pic_title']; ?><br />
           <label>
-          <span id="sprytextfield10"> 
+          <span id="sprytextfield10">
             <input type="file" name="news_pic" id="news_pic" />
             <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
           </span>
@@ -1000,7 +1009,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
           <br/>
           <span class="font_red">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span></span>
        </td>
-        
+
         <tr>
           <td height="40" colspan="2" align="center"><label>
             <input type="submit" name="button" id="button" value="報名資料儲存" onclick="SaveAlert()" />
@@ -1010,7 +1019,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
             <input name="times" type="hidden" id="times" value="<?php echo $row_web_new['times']; ?>" />
             <input name="endday" type="hidden" id="endday" value="<?php echo $row_web_new['endday']; ?>" />
             <input name="examyear_id" type="hidden" id="examyear_id" value="<?php echo $row_web_new['id']; ?>" />
-            
+
           </label></td>
         </tr>
       </table>
@@ -1018,17 +1027,17 @@ while ($row_college = mysql_fetch_assoc($web_college)){
     </form>
      <?php
      	}elseif($row_web_examinee['username'] == $row_web_member['username'] && $row_web_examinee['apply_mk']=='1' && ($_GET["action"]!="delete")){
-		
+
 	?>
 	<!-- 2016/03/07 teresa add -->
 	<table width="555" border="0" cellspacing="0" cellpadding="0">
 	    <tr>
 	      <td height="80" align="center" class="font_red2">您已經完成報名了，請點選 <a href="progress.php?status=0"><img src="images/progress_check_t.png"  /></a> 查看審核情況。</td>
-	     
+
 	      </tr>
 	      <tr> <td align="center" style="color: blue; font-weight: bold; font-size: 16px;">若您需取消本梯次報名，請點選 <input type="button" name="btnSentDel" value="刪除報名>>" onclick="DeleteAlert();"/> 取消報名資格。 </td></tr>
-	</table> 	
-	<?php 
+	</table>
+	<?php
 	}elseif( ($_GET["action"]!="delete")){//否則顯示另依個區塊內容 (isset($_GET["action"])) ||
 	?>
 	<table width="555" border="0" cellspacing="0" cellpadding="0">
@@ -1039,15 +1048,15 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 <?php
     //header('Location: examOut.php');
 	}?>
-    
+
 <?PHP }else{?><table width="555" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td height="80" align="center" class="font_red2">目前尚未開放報名!</td>
       </tr>
   </table><?PHP }?>
-<?php  
+<?php
   //刪除報名表 ,add by coway 2016.8.17
-	
+
 if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 	$ResultDel="";
 	$deleteSQL = sprintf("DELETE FROM examinee WHERE no=%s",
@@ -1056,7 +1065,7 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 	mysql_select_db($database_conn_web, $conn_web);
 		$ResultDel = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
 		if($ResultDel)
-		{			
+		{
 // 			echo "result=".$ResultDel;
 		$deleteGoTo = "examAdd.php";
 		header(sprintf("Location: %s", $deleteGoTo));
@@ -1066,13 +1075,13 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
   				<td height="80" align="center" class="font_red2">您已取消本梯次報名資格，欲重新報名者，請點選<a href="examAdd.php"><img src="images/sign.png"  /></a> 重新報名。</td>
   			</tr>
   			</table>
-	<?php 
+	<?php
 	include("footer.php");
 	exit();
 		}
 }
-?>  
- 
+?>
+
   </div>
   <div id="main4"></div>
 
@@ -1097,7 +1106,7 @@ var sprytextfield10 = new Spry.Widget.ValidationTextField("sprytextfield10", "no
 </script>
 </body>
 </html>
-<?php 
+<?php
 function get_chinese_weekday($datetime)
 {
     $weekday  = date('w', strtotime($datetime));

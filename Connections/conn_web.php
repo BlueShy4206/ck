@@ -26,7 +26,7 @@ if(isset($_POST['uCheck']) and isset($_POST['pCheck'])) {
 date_default_timezone_set("Asia/Taipei");
 
  $mailUsername = "ckassessment@gmail.com";
- $mailPassword = "ntcub507";
+ $mailPassword = "tryckckck";//ntcub507
 
 
 $dbhost = 'localhost';

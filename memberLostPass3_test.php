@@ -15,7 +15,7 @@ $mail->Port = 465;               //Gamil的SMTP主機的SMTP埠位為465埠。
 $mail->CharSet = "utf-8";         //設定郵件編碼，預設UTF-8
 
 $mail->Username = "ckassessment@gmail.com";  //Gmail帳號
-$mail->Password = "ntcub507";  //Gmail密碼
+$mail->Password = "tryckckck";  //Gmail密碼 
 
 $mail->From = 'lty.billy@gmail.com'; //設定寄件者信箱
 $mail->FromName = 'First Last';           //設定寄件者姓名
