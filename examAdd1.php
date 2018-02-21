@@ -38,9 +38,9 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 		$_ext_ = explode(".", $_name_);
 		$attach = $_POST['username'];//$_ext_[0];
 		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title=$_file_['name'];	
+		$news_pic_title=$_file_['name'];
 		$pic_type = $_file_['type'];
-		
+
 		//取原圖的大小進行比例處理
 		switch ($pic_type){
 			case "image/jpeg":
@@ -62,7 +62,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 			$thumb_h2 = intval($src_w2 / $src_h2 * 130);
 			$thumb_w2 = intval($src_w2 / $src_h2 * 100);
 		}
-		
+
 		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
 			$errStr = "Estensione non valida";
 			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
@@ -87,7 +87,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 					$resultOK= imagegif($thumb2, "images/smallPic/".$newPicname);
 					break;
 			}
-			
+
 			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
 				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
 				//header("Location: " . no_error);
@@ -111,7 +111,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -122,7 +122,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -157,7 +157,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // 	echo "college4=".$_POST['edu4'][0]."<br>";
 // 	echo "dept4.=".$_POST['edu4'][1]."<br>";
 // 	die();
-	//判斷有無報名 BlueS 20171019 
+	//判斷有無報名 BlueS 20171019
 	$check_add_sql = sprintf("SELECT count(*) sum FROM examinee where per_id=%s and username=%s and examyear_id=%s",GetSQLValueString($_POST['per_id'], "text"),GetSQLValueString($_POST['username'], "text"),GetSQLValueString($_POST['examyear_id'], "text"));
 	$check_add = mysql_query($check_add_sql, $conn_web) or die(mysql_error());
 	$check_double_add = mysql_fetch_assoc($check_add);
@@ -169,21 +169,21 @@ if ($check_double_add['sum']>0){?>
 		alert("此梯次已有報明資料！請勿重複報名。");
 		location.href="examAdd1.php";;
 	</script>
-	<?php 
+	<?php
 	exit();
-	
+
 }
 // echo $_POST['per_id']; //B255940366
 // echo $_POST['username']; //blue
 // echo $_POST['examyear_id']; //37
-	
+
 	$Ticket=substr(($_POST['exarea']),0,1).$_POST['times'].substr(($_POST['endday']),0,4);
 	mysql_select_db($database_conn_web, $conn_web);
 	$query_web_search = sprintf("SELECT id FROM examinee WHERE id LIKE %s AND Qualify=1 ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"));
 	$web_search = mysql_query($query_web_search, $conn_web) or die(mysql_error());
 	$row_web_search = mysql_fetch_assoc($web_search);
 	$totalRows_web_search = mysql_num_rows($web_search);
-	
+
 	$query_web_search_last = sprintf("SELECT id FROM examinee WHERE id LIKE %s AND Qualify=0 ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"));
 	$web_search_last = mysql_query($query_web_search_last, $conn_web) or die(mysql_error());
 	$row_web_search_last = mysql_fetch_assoc($web_search_last);
@@ -194,7 +194,7 @@ if ($check_double_add['sum']>0){?>
 	$row_web_allguide2 = mysql_fetch_assoc($web_allguide2);
 	//新增寫入考試日期 examinee/exarea_date, add by coway 2017.3.22
 	$exam_date = $row_web_allguide2['data1'];
-	
+
 	if($totalRows_web_search == 0){
 		$number=1;
 		$Ticket=$Ticket.sprintf("%04d", $number);
@@ -214,7 +214,7 @@ if ($check_double_add['sum']>0){?>
 // 		echo '<script> var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "none", {minChars:4, validateOn:["blur", "change"]});</script>';
 // 		echo '<script>alert("請輸入任職學校!");</script>';
 // // 		echo '<script language=Javascript>window.location.href="examAdd1.php"</script>';
-// 		//echo 'die()1';		
+// 		//echo 'die()1';
 // // 		break;
 // // 		die();
 // 		$updateGoTo = "examAdd1.php?certificate=".$_REQUEST['certificate']."&Other2=".$_REQUEST['Other2']."&Other2_college=".$_REQUEST['Other2_college']."&Other2_dept=".$_REQUEST['Other2_dept'];
@@ -232,7 +232,7 @@ if ($check_double_add['sum']>0){?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript">
 
-	
+
 // 					var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "none", {minChars:4, validateOn:["blur", "change"]});
 
 // 					alert('請輸入任職學校');
@@ -249,28 +249,28 @@ if ($check_double_add['sum']>0){?>
 // 		{
 // 			var idVal = form.id[i].value;
 // 			alert(idVal);
-// 			if(idVal != 3){	
-// 				// 		    	  school.removeAttr("disabled");	
+// 			if(idVal != 3){
+// 				// 		    	  school.removeAttr("disabled");
 // // 				var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "none", {minChars:4, validateOn:["blur", "change"]});
 // 				window.go(-2);
 // 				alert('123');
 // 				break;
 // 			}
-				
+
 // 		}
 // 	}
 	</script>
-	
-	<?php 
+
+	<?php
 
 // 	die();
 // 	}
 
-	
-	
-	
+
+
+
 	if(substr(($_POST['exarea']),0,1) == $row_web_allguide2['no']){
-		if($totalRows_web_search >= (int)$row_web_allguide2['data3']){ 
+		if($totalRows_web_search >= (int)$row_web_allguide2['data3']){
 			if($totalRows_web_search_last >= (int)$row_web_allguide2['data4']){
 		?>
 			    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -278,21 +278,21 @@ if ($check_double_add['sum']>0){?>
 				alert("報名人數已滿，請選擇其他場次。");
 				window.history.back();
 				</script>
-		<?php	
+		<?php
 				die();
 			}else{
 				$qualify=0;
 			}
 		}else $qualify=1;
-	
+
 	}else{
 	?>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <script type="text/javascript">
 		alert("報名場次有誤，請重新報名。");
 		window.history.back();
-		</script>;	
-	<?php	
+		</script>;
+	<?php
 
 	}
 
@@ -313,7 +313,7 @@ if ($check_double_add['sum']>0){?>
 	echo "Highest=".$_POST['Highest']."<br>";
 	echo "Sec_highest=".$_POST['Sec_highest']."<br>";
 	echo "Other1=".$_POST['Other1']."<br>";
-	
+
 // 	die();
 	//若其他學院/系所有填寫則以此為主,add by coway 2017.4.11
 	$_POST['Other2_college'] = (trim($_POST['Other2_college_other']) != "") ? $_POST['Other2_college_other'] : $_POST['Other2_college'];
@@ -329,7 +329,7 @@ if ($check_double_add['sum']>0){?>
 			'2'=>array($_POST['Highest'],$_POST['Department'],$_POST['eduRec2'],$_POST['High_college']),
 			'3'=>array($_POST['Sec_highest'],$_POST['Sec_dept'],$_POST['eduRec3'],$_POST['Sec_college']),
 			'4'=>array($_POST['Other1'],$_POST['Other1_dept'],$_POST['eduRec4'],$_POST['Other1_college'])
-			
+
 	);
 	IF($_POST['Other2']!=""){//專科
 		$maxlevel=1;
@@ -358,22 +358,22 @@ if ($check_double_add['sum']>0){?>
 					window.history.back();
 					</script>
 			<?php 	// && ($_POST['High_college_other']=='' || $_POST['Department_other']=='' )
-		}  
+		}
 		if ($_POST['edu2'][0]=='其他'){ ?>
 					<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 					<script type="text/javascript">
 					alert("學士系所未填！");
 					window.history.back();
 					</script>
-	
-		<?php 
+
+		<?php
 		}
 			if($_POST['Sec_highest']!='' ){
 				if ($_POST['edu3'][1]=='' && ($_POST['Sec_college_other']=='' || $_POST['Sec_dept_other'] =='')){ ?>
 							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 							<script type="text/javascript">
 							alert("碩士系所未填！");
-							
+
 							window.history.back();
 							</script>
 			<?php 	}
@@ -381,7 +381,7 @@ if ($check_double_add['sum']>0){?>
 							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 							<script type="text/javascript">
 							alert("碩士系所未填！");
-							
+
 							window.history.back();
 							</script>
 				<?php }
@@ -390,7 +390,7 @@ if ($check_double_add['sum']>0){?>
 									<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 									<script type="text/javascript">
 									alert("博士系所未填！");
-									
+
 									window.history.back();
 									</script>
 		<?php 	}
@@ -398,7 +398,7 @@ if ($check_double_add['sum']>0){?>
 							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 							<script type="text/javascript">
 							alert("博士系所未填！");
-							
+
 							window.history.back();
 							</script>
 				<?php }
@@ -411,22 +411,22 @@ if ($check_double_add['sum']>0){?>
 // 		echo "cert_id=".$row_web_cert['cert_id']."<br>";
 // 	die();
 
-	
-	$insertSQL = sprintf("INSERT INTO examinee (birthday, username, uname, eng_uname ,sex, 
- 		email, phone, Area, cityarea, cuszip, cusadr, certificate, per_id, category, 
+
+	$insertSQL = sprintf("INSERT INTO examinee (birthday, username, uname, eng_uname ,sex,
+ 		email, phone, Area, cityarea, cuszip, cusadr, certificate, per_id, category,
  		exarea, exarea_date, school, Highest, Department, Edu_level, Edu_MK, contact, contact_ph,
  		pic_title, pic_name, `date`, id, Sec_highest, Sec_dept, Edu_level2, Edu_MK2,
  		Other1, Other1_dept, Edu_level3, Edu_MK3, Other2, Other2_dept, Edu_level4, Edu_MK4, Qualify, status, cert_no,
-		High_college,Sec_college,Other1_college,Other2_college, cert_id,examyear_id) 
- 		VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+		High_college,Sec_college,Other1_college,Other2_college, cert_id,examyear_id)
+ 		VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
  		%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
 			%s,%s,%s,%s,%s,%s)",
                        GetSQLValueString($_POST['birthday'], "text"),
-					   GetSQLValueString($_POST['username'], "text"),					   
+					   GetSQLValueString($_POST['username'], "text"),
                        GetSQLValueString($_POST['uname'], "text"),
 					   GetSQLValueString($_POST['eng_uname'], "text"),
                        GetSQLValueString($_POST['sex'], "text"),
-                       GetSQLValueString($_POST['email'], "text"),                      
+                       GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['phone'], "text"),
                        GetSQLValueString($_POST['Area'], "text"),
                        GetSQLValueString($_POST['cityarea'], "text"),
@@ -444,9 +444,9 @@ if ($check_double_add['sum']>0){?>
  					   GetSQLValueString($degreeArray[$maxlevel][2], "text"),
 					   GetSQLValueString($_POST['contact'], "text"),//contact
 					   GetSQLValueString($_POST['contact_ph'], "text"),//contact_ph
-					   GetSQLValueString($news_pic_title, "text"),					   
+					   GetSQLValueString($news_pic_title, "text"),
                        GetSQLValueString($newPicname, "text"),
-                       GetSQLValueString($_POST['date'], "date"),					   
+                       GetSQLValueString($_POST['date'], "date"),
                        GetSQLValueString($Ticket, "text"),//id
  					   GetSQLValueString($degreeArray[$maxlevel-1][0], "text"),//Sec_highest
 					   GetSQLValueString($degreeArray[$maxlevel-1][1], "text"),//Sec_dept
@@ -481,8 +481,8 @@ if ($check_double_add['sum']>0){?>
 	  $mail->Username = $mailUsername;
       $mail->Password = $mailPassword;
       $mail->FromName = "ck系統管理員";
-      $webmaster_email = "ckassessment@gmail.com"; 
-	  
+      $webmaster_email = "ckassessment@gmail.com";
+
 	  $mail->CharSet = "utf8";
       $email=$_POST['email'];// 收件者信箱
       $name=$_POST['username'];// 收件者的名稱or暱稱
@@ -496,8 +496,8 @@ if ($check_double_add['sum']>0){?>
       $mail->IsHTML(true); // send as HTML
       $subject="國民小學教師學科知能評量通知";
       $mail->Subject = $subject; // 信件標題
-      
-	  
+
+
       $body="親愛的".$_POST['uname']."您好： <br />感謝您報名本次測驗，請再次確認您所填寫的個人資料是否正確，上傳的大頭照是否符合規定，以免影響應考權益，謝謝。<br />
 	  如有任何問題歡迎與我們聯絡。";
       $mail->Body = $body;//信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
@@ -506,9 +506,9 @@ if ($check_double_add['sum']>0){?>
       if(!$mail->Send()){
        echo "寄信發生錯誤：" . $mail->ErrorInfo;//如果有錯誤會印出原因
         }
-       else{ 
+       else{
        echo "寄信成功";
-           }	   
+           }
 */
 
   $insertGoTo = "examOut1.php";
@@ -517,7 +517,7 @@ if ($check_double_add['sum']>0){?>
     $updateGoTo .= $_SERVER['QUERY_STRING'];
   }
    header(sprintf("Location: %s", $insertGoTo));
-//要開 
+//要開
   exit();//
 }
 
@@ -688,7 +688,7 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
         }
         /************jQuery.Validate樣式********************/
     </style>
-  
+
 <script>
 	$.validator.setDefaults({
 		submitHandler: function() {
@@ -715,7 +715,7 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
 // 			rules: {
 // 				email: "required",
 // 				phone: "required",
-				
+
 // 				Student_ID: {
 // 					required: true,
 // 					minlength: 4
@@ -730,7 +730,7 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
 // 								school: {
 // 										required: true,
 // 										minlength: 4,
-// 										},	
+// 										},
 							<?php //} ?>
 // 				agree: "required"
 // 			},
@@ -745,31 +745,31 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
 // 					minlength: "科系輸入請勿少於4個字元"
 // 				},
 // 				email:"請檢查email欄位",
-					
+
 // 				phone: "請檢查電話欄位",
 // 				//
 // 				school: {
 // 					required: "請檢查學校欄位",
 // 					minlength: "請檢查學校欄位",
-// 				},	
-				
+// 				},
+
 // 			}
-// 		});	
+// 		});
 // 	});
 
 	function ShowAlert(){
-		alert("本梯次暫不開放代理代課教師報名");		
+		alert("本梯次暫不開放代理代課教師報名");
 	}
 
 	function SaveAlert(){
 		alert("提醒您，報名尚未完成。");
-		
+
 	}
 
 	function popIdMsg(){
-		var winvar;	
+		var winvar;
 			window.open('popIdMsg.php','msg','resizable=no,top=220,left=900,height=200,width=400,scrollbars=no,menubar=no,location=no,status=no,titlebar=no,toolbar=no');
-// 			checkSchool();		
+// 			checkSchool();
 		var idValue = getSchoolVal();
 			location.href='examAdd1.php?id='+idValue
 	}
@@ -848,7 +848,7 @@ while ($row_allguide = mysql_fetch_assoc($web_allguide)){
 
 // 		alert(Other1_dept_str);
 	}
-	
+
 	</script>
 
 
@@ -886,7 +886,7 @@ $o = unserialize($s);
   ?>
   <? if(strtotime($row_web_new['startday']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime($row_web_new['endday']) && $row_web_new['status'] == '1'){?>
   <? if(($row_web_examinee['username'] != $row_web_member['username']) or  strtotime(substr(($row_web_examinee['date']),0,19)) < (strtotime($row_web_new['startday']))){?>
-  
+
     <form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" >
       <table width="620" border="0" cellspacing="0" cellpadding="0" >
         <tr>
@@ -899,19 +899,19 @@ $o = unserialize($s);
         <tr>
           <td width="82" height="30" align="right" class="board_add">姓名：</td>
           <td width="458" align="left" class="board_add" colspan="3"><label>
-			<?php echo $row_web_member['uname']; ?>          
+			<?php echo $row_web_member['uname']; ?>
             <input name="uname" type="hidden" id="uname" value="<?php echo $row_web_member['uname']; ?>" />
           </label></td>
         </tr>
         <tr>
           <td width="82" height="30" align="right" class="board_add">英文姓名：</td>
           <td width="458" align="left" class="board_add" colspan="3"><label>
-          <?php 
+          <?php
 	          list($firstname, $lastname, $lastname2) = explode(" ", $row_web_member['eng_uname']);
 	          if($firstname !=""){
 	          	$eng_name="$firstname, $lastname $lastname2";
 	          }
-// 	          echo $eng_name; //$row_web_member['eng_uname']; 
+// 	          echo $eng_name; //$row_web_member['eng_uname'];
           ?>
             <input name="eng_uname"  id="eng_uname" value="<?php echo $row_web_member['eng_uname']; ?>" /><!-- type="hidden"調整可以修改英文名字,update by coway 2017.4.28 -->
           </label>(例如：李大同，英文名:Li Da Tong)</td>
@@ -919,9 +919,9 @@ $o = unserialize($s);
         <tr>
           <td height="30" align="right" class="board_add">E-mail：</td>
           <td align="left" class="board_add" colspan="3"><label>
-          <span id="sprytextfield0">          
+          <span id="sprytextfield0">
             <input name="email" type="text" id="email" value="<?php echo $row_web_member['email']; ?>" size="35" />
-   			<span class="textfieldRequiredMsg">請輸入mail</span><span class="textfieldMinCharsMsg">請輸入mail</span></span>             
+   			<span class="textfieldRequiredMsg">請輸入mail</span><span class="textfieldMinCharsMsg">請輸入mail</span></span>
           </label>
           <br />
 			<span class="font_black">請勿使用會檔信的yahoo、pchome信箱，以免收不到信。</span></td>
@@ -933,7 +933,7 @@ $o = unserialize($s);
           男
           <input <?php if (!(strcmp($row_web_member['sex'],"女"))) {echo "checked=\"checked\"";} ?> type="radio" name="sex" id="radio2" value="女" />
           女</label>
-          
+
           </td>
         </tr>
         <tr>
@@ -942,7 +942,7 @@ $o = unserialize($s);
           <span id="sprytextfield4">
             <input name="birthday" type="text" id="birthday" value="<?php echo $row_web_member['birthday']; ?>" />
           格式為：YYYY-MM-DD
-   			<span class="textfieldRequiredMsg">請輸入生日</span><span class="textfieldMinCharsMsg">請輸入生日</span></span>        
+   			<span class="textfieldRequiredMsg">請輸入生日</span><span class="textfieldMinCharsMsg">請輸入生日</span></span>
           </label></td>
         </tr>
         <tr>
@@ -950,7 +950,7 @@ $o = unserialize($s);
           <td align="left" class="board_add" colspan="3"><label>
           <span id="sprytextfield5">
             <input name="phone" type="text" id="phone" value="<?php echo $row_web_member['phone']; ?>" />
-   			<span class="textfieldRequiredMsg">請輸入電話</span><span class="textfieldMinCharsMsg">請輸入電話</span></span>            
+   			<span class="textfieldRequiredMsg">請輸入電話</span><span class="textfieldMinCharsMsg">請輸入電話</span></span>
           </label></td>
         </tr>
         <tr>
@@ -1002,7 +1002,7 @@ $o = unserialize($s);
             <span class="textfieldRequiredMsg">請輸入地址</span><span class="textfieldMinCharsMsg">請輸入地址</span></span></span></td>
         </tr>
         <tr>
-          <td height="30" align="right" colspan="4" class="board_add">=================================================================================================</td>   
+          <td height="30" align="right" colspan="4" class="board_add">=================================================================================================</td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add">錄取順序一.<br>錄取順序二.<br>錄取順序三.</td><!-- 報考資格：<br> -->
@@ -1021,16 +1021,16 @@ $o = unserialize($s);
           <td height="30" align="right" class="board_add">教師證號碼：</td>
           <td align="left" class="board_add" colspan="3">
            <label>
-           	<span id="sprytextfield6">          
+           	<span id="sprytextfield6">
             <input name="certificate" type="text" id="certificate" value="<?php echo ($row_web_examinee2['certificate']==null)? ($_REQUEST['certificate']): $row_web_examinee2['certificate']; ?>" /><!-- onclick="ShowAlert()" -->
-   			<span class="textfieldRequiredMsg">請輸入教師證號碼</span><span class="textfieldMinCharsMsg">請輸入教師證號碼</span></span>            
+   			<span class="textfieldRequiredMsg">請輸入教師證號碼</span><span class="textfieldMinCharsMsg">請輸入教師證號碼</span></span>
           </label>
           </td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add">報名科目：</td>
           <td align="left" class="board_add" colspan="3">
-         
+
          <!--   <input name="Subjects[]" type="checkbox" id="Subjects[]" value="1"  />
            <label>國語 </label>
           <input type="checkbox" name="Subjects[]" id="Subjects[]" value="2" />
@@ -1047,7 +1047,7 @@ $o = unserialize($s);
           <td align="left" class="board_add" colspan="3">
           <label>
             <input name="exarea" type="radio" id="radio" value="Northern" checked="checked" onClick="alert('※提醒：基於成本考量，各考區報考人數若低於20人，則該場次不舉辦評量，本中心將另外安排應考人至其他考區應試。')"/>
-          	臺北(國立臺灣大學)，106年12月10日(星期日) 
+          	臺北(國立臺灣大學)，107年7月1日(星期日)
           	<!-- 尚餘名額：<?php //echo (300-$oln); ?>人
 	          <?php //if((300-$oln) <= 0){
 	          	//$over = 90-$overn;
@@ -1055,7 +1055,7 @@ $o = unserialize($s);
           		//} ?> --> <br /></label>
           <label>
           <input type="radio" name="exarea" id="radio2" value="Central" onClick="alert('※提醒：基於成本考量，各考區報考人數若低於20人，則該場次不舉辦評量，本中心將另外安排應考人至其他考區應試。')" />
-          	臺中(國立臺中教育大學)，106年12月17日(星期日) 
+          	臺中(國立臺中教育大學)，107年6月24日(星期日)
           	<!-- 尚餘名額：<?php //echo (250-$olc); ?>人
           		<?php //if((250-$olc) <= 0){
           			//$over = 75-$overc;
@@ -1063,15 +1063,15 @@ $o = unserialize($s);
           		//} ?>  --><br /></label>
           <label>
           <input type="radio" name="exarea" id="radio3" value="Southern" onClick="alert('※提醒：基於成本考量，各考區報考人數若低於20人，則該場次不舉辦評量，本中心將另外安排應考人至其他考區應試。')" />
-          	高雄(私立三信家事商業職業學校)，106年12月17日(星期日)
-          	<!-- 尚餘名額：<?php //echo (160-$ols); ?>人 
+          	高雄(私立三信家事商業職業學校)，107年6月24日(星期日)
+          	<!-- 尚餘名額：<?php //echo (160-$ols); ?>人
           		<?php //if((160-$ols) <= 0){
           			//$over = 48-$overs;
           			//echo "<font color='#FF0000'>(已額滿)</font> 備取尚餘名額：$over 人";
           		//} ?>  --><br/></label>
           <label>
           <input type="radio" name="exarea" id="radio4" value="Eastern" onClick="alert('※提醒：基於成本考量，各考區報考人數若低於20人，則該場次不舉辦評量，本中心將另外安排應考人至其他考區應試。')" />
-          	花蓮(國立花蓮高級商業職業學校)，106年12月10日(星期日) 
+          	花蓮(國立花蓮高級商業職業學校)，107年7月1日(星期日)
           	<!-- 尚餘名額：<?php //echo (40-$ole); ?>人
           		<?php //if((40-$ole) <= 0){
           			//$over = 12-$overe;
@@ -1087,7 +1087,7 @@ $o = unserialize($s);
             <input name="school" type="text" id="school" value="<?php echo $row_web_examinee2['school']; ?>" />
     			<!-- <span class="textfieldRequiredMsg">請輸入(縣市)學校名稱</span><span class="textfieldMinCharsMsg">請輸入(縣市)學校名稱</span></span> -->
 		</label>
-         
+
           </td>
         </tr>
     <!--    <tr>
@@ -1116,7 +1116,7 @@ $o = unserialize($s);
           <td align="center" class="board_add"></td><!-- 學院 -->
           <td align="center" class="board_add">就讀科系<font color="red" ><br>須與畢業証書或學生証上<br>科系名稱一致(勿縮寫)</font><br><font color="red" size="1px" >* 若無相符選項請於欄位填入</font></td>
         </tr>
-                  <?php 
+                  <?php
 //           		$event="required onchange=\"ShowMsg(this,'$todayyear')\"";
 //           		$event="required onchange=\"ShowMsg(this,'$todayyear')\"";
           		$events=' class="input-normal" height="30" width="200" onchange="areachange2(this.form)" ';/* style="width: 220px;" */
@@ -1138,17 +1138,17 @@ $o = unserialize($s);
 			<input name="eduRec1" type="radio" id="radio" value="1" />畢業)
           <label>
             <span>
-            
+
             <input type="text" name="Other2" id="Other2"  value="<?php echo ($row_web_examinee2['Other2']==null)?($_REQUEST['Other2']):($row_web_examinee2['Other2']); ?>" />
           <span class="textfieldRequiredMsg"><br>請輸入學校</span><span class="textfieldMinCharsMsg">請輸學校</span></span></label>
           </td>
           <!--td align="left" class="board_add" width="200" colspan="2" rowspan="4"-->
-          
-          <span> 
+
+          <span>
           <td align="center" class="board_add" width="30" colspan="2">
-          
-          <span>  
-          <br>           
+
+          <span>
+          <br>
           <input type="text" name="Other2_dept" id="Other2_dept"  value="<?php echo ($row_web_examinee2['Other2_dept']==null)?($_REQUEST['Other2_dept']):($row_web_examinee2['Other2_dept']); ?>"/>
           <span class="textfieldRequiredMsg">請輸入科系</span><span class="textfieldMinCharsMsg">請輸入科系</span></span>
           </td>
@@ -1167,22 +1167,22 @@ $o = unserialize($s);
           <?php
 				$sel1 =& $form2->addElement('hierselect', 'edu2', '',$events);?>
           <td align="left" class="board_add" colspan="2">
-          
-          <span id="spryselect3"><!-- sprytextfield11 -->            
-          <?php 
+
+          <span id="spryselect3"><!-- sprytextfield11 -->
+          <?php
 				$sel1->setOptions(array($select1, $select2));
 				$form2->display();
-				?> 
+				?>
           	<span class="selectRequiredMsg">請選擇學院科系</span></span>
-				 <input name="High_college" type="hidden" ></input> 
+				 <input name="High_college" type="hidden" ></input>
 				 <!-- <span id="sprytextfield2"> -->
-				 <input name="Department"  type="hidden" ></input>  
+				 <input name="Department"  type="hidden" ></input>
 				 <!-- <span class="textfieldRequiredMsg">請輸入科系</span><span class="textfieldMinCharsMsg">請輸入科系</span>  -->
 				 <div id="divHigh" > <!-- style="display:none" -->
 				 <!--span id="sprytextfield12" > style="display:none" -->
 				 <input type="text" name="High_college_other" id="High_college_other" style="width: 60px;" ></input>
 				 <span class="textfieldRequiredMsg">請輸入學院系所</span>學院／<input type="text" name="Department_other" id="Department_other" style="width: 100px;" ></input>系所<!-- </span> -->
-				 </div>       
+				 </div>
           </td>
         </tr>
         <tr>
@@ -1196,18 +1196,18 @@ $o = unserialize($s);
           <span class="textfieldRequiredMsg"><br>請輸入學校</span><span class="textfieldMinCharsMsg">請輸學校</span></span></label>
           </td>
           <td align="left" class="board_add" colspan="2">
-          
-          <span>           
-          <?php 
+
+          <span>
+          <?php
           		$events=' class="input-normal" height="30" width="200" onchange="areachange3(this.form)"';
 				// And add the selection options
 				$sel2 =& $form1->addElement('hierselect', 'edu3', '',$events);
 				$sel2->setOptions(array($select3, $select4));
 				$form1->display();
-				?>            
-				 <input name="Sec_college" id="Sec_college" type="hidden" ></input> 
-				 <input name="Sec_dept" id="Sec_dept" type="hidden" ></input>  
-				 <div id="divSec">  
+				?>
+				 <input name="Sec_college" id="Sec_college" type="hidden" ></input>
+				 <input name="Sec_dept" id="Sec_dept" type="hidden" ></input>
+				 <div id="divSec">
 				 <span id="sprytextfield13">
 				 <input type="text" name="Sec_college_other" id="Sec_college_other" style="width: 60px;" ></input>學院／<input type="text" name="Sec_dept_other" id="Sec_dept_other"  style="width: 100px;"></input>系所
 				 <span class="textfieldRequiredMsg">請輸入學院系所</span><span class="textfieldMinCharsMsg">請輸入學院系所</span></span>
@@ -1226,18 +1226,18 @@ $o = unserialize($s);
           <span class="textfieldRequiredMsg"><br>請輸入學校</span><span class="textfieldMinCharsMsg">請輸學校</span></span></label>
           </td>
           <td align="left" class="board_add" colspan="2">
-          
-          <span>           
-          <?php 
+
+          <span>
+          <?php
           		$events=' class="input-normal" height="30" width="200" onchange="areachange4(this.form)"';
 				// And add the selection options
 				$sel3 =& $form3->addElement('hierselect', 'edu4', '',$events);
 				$sel3->setOptions(array($select1, $select2));
 				$form3->display();
-				?>              
-				 <input name="Other1_college" type="hidden" ></input> 
-				 <input name="Other1_dept" type="hidden" ></input> 
-				 <div id="divOther1"> 
+				?>
+				 <input name="Other1_college" type="hidden" ></input>
+				 <input name="Other1_dept" type="hidden" ></input>
+				 <div id="divOther1">
 				 <span id="sprytextfield14">
 				 <input type="text" name="Other1_college_other" id="Other1_college_other" style="width: 60px;" ></input>學院／<input type="text" name="Other1_dept_other" id="Other1_dept_other"  style="width: 100px;"></input>系所
 				 <span class="textfieldRequiredMsg">請輸入學院系所</span><span class="textfieldMinCharsMsg">請輸入學院系所</span></span>
@@ -1246,34 +1246,34 @@ $o = unserialize($s);
           <span class="textfieldRequiredMsg">請輸入學院</span><span class="textfieldMinCharsMsg">請輸入學院</span></span>
           </td>
           <td align="left" class="board_add">
-          
-          <span>   
-          <br>          
+
+          <span>
+          <br>
           <input type="text" name="Other1_dept" id="Other1_dept"  value="<?php echo ($row_web_examinee2['Other1_dept']==null)?($_REQUEST['Other1_dept']):($row_web_examinee2['Other1_dept']); ?>"/>
           <span class="textfieldRequiredMsg">請輸入科系</span><span class="textfieldMinCharsMsg">請輸入科系</span--></span>
           </td>
         </tr>
-        
+
         <tr>
           <td height="30" align="right" class="board_add">緊急聯絡人：</td>
           <td align="left" class="board_add" colspan="3">
           <label>
-           <span id="sprytextfield8">            
+           <span id="sprytextfield8">
             <input name="contact" type="text" id="contact" value="<?php echo ($row_web_examinee2['contact']==null)?($_REQUEST['contact']):($row_web_examinee2['contact']); ?>" />
-			<span class="textfieldRequiredMsg">請輸入聯絡人</span><span class="textfieldMinCharsMsg">請輸聯絡人</span></span>            
+			<span class="textfieldRequiredMsg">請輸入聯絡人</span><span class="textfieldMinCharsMsg">請輸聯絡人</span></span>
           </label>
-         
+
           </td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add">緊急聯絡人<br />電話：</td>
           <td align="left" class="board_add" colspan="3">
           <label>
-           <span id="sprytextfield9">          
+           <span id="sprytextfield9">
             <input name="contact_ph" type="text" id="contact_ph" value="<?php echo ($row_web_examinee2['contact_ph']==null)?($_REQUEST['contact_ph']):($row_web_examinee2['contact_ph']); ?>" />
-			<span class="textfieldRequiredMsg">請輸入聯絡電話</span><span class="textfieldMinCharsMsg">請輸聯絡電話</span></span>            
+			<span class="textfieldRequiredMsg">請輸入聯絡電話</span><span class="textfieldMinCharsMsg">請輸聯絡電話</span></span>
           </label>
-         
+
           </td>
         </tr>
         <tr>
@@ -1283,17 +1283,17 @@ $o = unserialize($s);
           <img src="images/examinee/<?php //echo $row_web_examinee2['pic_name']; ?>" alt="" name="pic" width="70" id="pic" />
           <?php //} /*END_PHP_SIRFCIT*/ ?>
           <input name="oldPic" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_name']; ?>" />
-          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_title']; ?>" />          
+          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_title']; ?>" />
           <?php //echo $row_web_examinee2['pic_title']; ?><br />
           <label>
-          <span id="sprytextfield10"> 
+          <span id="sprytextfield10">
             <input type="file" name="news_pic" id="news_pic" />
-			<span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span></span>               
+			<span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span></span>
           </label>
           <br />
           <span class="font_red">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span></span>
        </td>
-        
+
         <tr>
           <td height="40" colspan="3" align="center"><label>
             <input type="submit" name="button" id="button" value="報名資料儲存" onclick="SaveAlert()"/>  </label>
@@ -1304,7 +1304,7 @@ $o = unserialize($s);
             <input name="times" type="hidden" id="times" value="<?php echo $row_web_new['times']; ?>" />
             <input name="endday" type="hidden" id="endday" value="<?php echo $row_web_new['endday']; ?>" />
             <input name="examyear_id" type="hidden" id="examyear_id" value="<?php echo $row_web_new['id']; ?>" />
-            
+
           </label></td>
         </tr>
       </table>
@@ -1318,32 +1318,32 @@ $o = unserialize($s);
       <td height="80" align="center" class="font_red2">您已經完成報名了，請點選 <a href="progress.php?status=1"><img src="images/progress_check_t.png"  /></a> 查看審核情況。</td>
       </tr>
       <tr> <td align="center" style="color: blue; font-weight: bold; font-size: 16px;">若您需取消本梯次報名，請點選 <input type="button" name="btnSentDel" value="刪除報名>>" onclick="DeleteAlert();"/> 取消報名資格。 </td></tr>
-</table>      
+</table>
 <!-- <script>
-   alert("您已經完成報名了，請點選[報名進度查詢]查看審核情況。"); 
+   alert("您已經完成報名了，請點選[報名進度查詢]查看審核情況。");
  document.location.href=".";
  </script>
---> 	 
-<?php	 
+-->
+<?php
   }elseif(($_GET["action"]!="delete")){//否則顯示另依個區塊內容?>
   	<table width="555" border="0" cellspacing="0" cellpadding="0">
   	<tr>
   	<td height="80" align="center" class="font_red2">您已經填寫報名資料，請點選<a href="examOut1.php"><img src="images/sign_t.png"  /></a>送出報名資料。</td>
   	</tr>
   	</table>
-<?php     	
+<?php
 	//header("Location: examOut1.php");
 	//exit();
   }?>
-    
+
 <?PHP }else{?><table width="555" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td height="80" align="center" class="font_red2">目前尚未開放報名!</td>
       </tr>
   </table><?PHP }?>
-  <?php  
+  <?php
   //刪除報名表 ,add by coway 2016.8.17
-	
+
 if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 	$ResultDel="";
 	$deleteSQL = sprintf("DELETE FROM examinee WHERE no=%s",
@@ -1352,7 +1352,7 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 	mysql_select_db($database_conn_web, $conn_web);
 		$ResultDel = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
 		if($ResultDel)
-		{			
+		{
 // 			echo "result=".$ResultDel;
 		$deleteGoTo = "examAdd1.php";
 		header(sprintf("Location: %s", $deleteGoTo));
@@ -1362,13 +1362,13 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
   				<td height="80" align="center" class="font_red2">您已取消本梯次報名資格，欲重新報名者，請點選<a href="examAdd1.php"><img src="images/sign.png"  /></a> 重新報名。</td>
   			</tr>
   			</table>
-	<?php 
+	<?php
 	include("footer.php");
 	exit();
 		}
 }
-?>  
-    
+?>
+
   </div>
   <div id="main4"></div>
 
@@ -1398,7 +1398,7 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 // }else{
 
 // 	var sprytextfield12 = new Spry.Widget.ValidationTextField("sprytextfield12", "none", {isRequired:false});
-// 	alert(form1.High_college.value);	
+// 	alert(form1.High_college.value);
 // }
 
 function checkSchool(){
@@ -1408,11 +1408,11 @@ var school = document.getElementById("school2")
 // var sprytextfield7_obj = new Object();
 // var sprytextfield7_val=null;
 for (var i=0; i<form.id.length; i++)
-		{				
-		   if (form.id[i].checked)				
-		   {				
+		{
+		   if (form.id[i].checked)
+		   {
 		      var idVal = form.id[i].value;
-// 		      alert('idVal='+idVal);	
+// 		      alert('idVal='+idVal);
 		      if(idVal != 3){
 
 // 		    	  school.removeAttr("disabled");
@@ -1429,8 +1429,8 @@ for (var i=0; i<form.id.length; i++)
 // 		    	  $('.textfieldRequiredState').attr('disabled', 'disabled');
 // 		    	  $('#sprytextfield7').removeChild(field7.lastChild);
 // 		    	  field7.attr("disabled", "disabled");
-// 		    	  field7.removeChild(field7.lastChild); 
-// 		    	  field7.removeChild(field7.lastChild);   
+// 		    	  field7.removeChild(field7.lastChild);
+// 		    	  field7.removeChild(field7.lastChild);
 // 		    	  sprytextfield7_obj=null;
 // 					delete sprytextfield7_obj;
 // 					result_class=null;
@@ -1443,12 +1443,12 @@ for (var i=0; i<form.id.length; i++)
 		    	  var result_style = document.getElementById('tr_school').style;
 		    	  result_style.display = 'none';
 // 		    	  alert(sprytextfield7_obj);
-		      }	
-		      break;		
-			
-		   }				
+		      }
+		      break;
+
+		   }
 		}
-}				
+}
 var sprytextfield8 = new Spry.Widget.ValidationTextField("sprytextfield8", "none", {minChars:2, validateOn:["blur", "change"]});
 var sprytextfield9 = new Spry.Widget.ValidationTextField("sprytextfield9", "none", {minChars:9, validateOn:["blur", "change"]});
 var sprytextfield10 = new Spry.Widget.ValidationTextField("sprytextfield10", "none", {minChars:3, validateOn:["blur", "change"]});

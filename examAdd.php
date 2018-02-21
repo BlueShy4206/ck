@@ -1012,7 +1012,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 
         <tr>
           <td height="40" colspan="2" align="center"><label>
-            <input type="submit" name="button" id="button" value="報名資料儲存" onclick="SaveAlert()" />
+            <input title="為協助各校師培單位研擬&#10;教學精進等相關措施&#10;您的應考資料本中心將開放予&#10;就讀學校師培處查詢" type="submit" name="button" id="button" value="報名資料儲存" onclick="SaveAlert()" />
             <input type="button" name="submit" value="回上一頁" onClick=window.history.back();>
             <input name="username" type="hidden" id="username" value="<?php echo $row_web_member['username']; ?>" />
             <input name="date" type="hidden" id="date" value="<? echo date("Y-m-d H:i:s");?>" />
