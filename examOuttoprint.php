@@ -1,8 +1,45 @@
 
-<?php require_once('Connections/conn_web.php'); ?>
+<?php require_once('Connections/conn_web.php');
+require_once "PEAR183/HTML/QuickForm.php";?>
+<script type="text/javascript">
+	function SaveAlert(cert_number){
+		var str=document.getElementsByName("chk[]");
+		var objarray=str.length;
+// 		break;
+		var iCnt=0;
+		var iCnt_n=0;
+		//判斷checkbox是否已全部勾選
+		for (i=0;i<objarray;i++){
+			 if(str[i].checked == true){iCnt++;
+			 }else{iCnt_n++;}
+		}
+// 		alert("iCnt_n="+iCnt_n);
+// 		if(iCnt != 16)
+		if(iCnt_n > 0)
+		{
+			alert("請重新確認報名資料，是否已逐筆☑勾選完成!!");
+// 			history.go(-1) ;
+// 			history.back();
+			window.event.returnValue=false;
+
+		}else{
+		if(confirm("一旦點選  【確認】 即不得再修正報名表資訊!")){
+// 		alert("您已完成線上報名登錄，您的網路登錄報名流水號為："+cert_number+"。\n提醒您：請至「報名進度查詢」中列印報名表，檢附相關證件，始完成報名流程");
+			}else{window.event.returnValue=false;}
+
+		}//history.go(-1) ;
+	}
+
+	function DeleteAlert(){
+// 		var str=document.getElementsByName("MM_delete");
+// 		alert(str.length);
+		if(confirm('確定刪除本資料?')){
+		location.href='examOut1.php?action=delete';}
+	}
+</script>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -13,7 +50,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -32,27 +69,6 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-function EngNameStr($eng_name){
-	list($firstname, $lastname, $lastname2) = explode(" ", $eng_name);
-	$firstname = strtoupper (substr($firstname,0,1)).strtolower(substr($firstname,1));
-
-	if(isset($lastname2)){
-		$lastname=strtoupper (substr($lastname,0,1)).strtolower(substr($lastname,1));
-		$lastname2=strtoupper (substr($lastname2,0,1)).strtolower(substr($lastname2,1));
-	}else {
-
-		list($lastname, $lastname2)=explode("-", $lastname);
-		if(isset($lastname2)){
-			$lastname=strtoupper (substr($lastname,0,1)).strtolower(substr($lastname,1));
-			$lastname2=strtoupper (substr($lastname2,0,1)).strtolower(substr($lastname2,1));
-		}else {
-			$lastname=strtoupper (substr($lastname,0,1)).substr($lastname,1);
-		}
-	}
-	$eng_name="$firstname,$lastname $lastname2";
-	return $eng_name;
-}
-
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -65,56 +81,154 @@ if (isset($_SESSION['MM_Username'])) {
 }
 
 mysql_select_db($database_conn_web, $conn_web);
-//update by coway 2016.8.18
+//$query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s ORDER BY SUBSTR( id, 3, 4 ) DESC , SUBSTR( id, 2, 9 ) DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"));
+//update by coway 2016.8.11
+// $query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s ORDER BY no DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"));
+// $web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
+// $row_web_examinee = mysql_fetch_assoc($web_examinee);
+// $totalRows_web_member = mysql_num_rows($web_examinee);
+
+mysql_select_db($database_conn_web, $conn_web);
+//update by coway 2016.8.19
 // $query_web_new = "SELECT * FROM examyear ORDER BY id DESC LIMIT 0,1";
 $query_web_new = "SELECT * FROM examyear WHERE status='1' ORDER BY id DESC LIMIT 0,1";
 $web_new = mysql_query($query_web_new, $conn_web) or die(mysql_error());
 $row_web_new = mysql_fetch_assoc($web_new);
 $totalRows_web_new = mysql_num_rows($web_new);
 
-$todayyear = $row_web_new['times'];
-$todayyear .= date("Y");
+$todayyear=$row_web_new['times'].substr(($row_web_new['endday']),0,4);//第幾次+西元年
 mysql_select_db($database_conn_web, $conn_web);
-//update by coway 2016.8.18
-// $query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s AND id LIKE %s ORDER BY SUBSTR( id, 3, 4 ) DESC , SUBSTR( id, 2, 9 ) DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"),GetSQLValueString("%" . $todayyear . "%", "text"));
-$query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s AND id LIKE %s ORDER BY no DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"),GetSQLValueString("%" . $todayyear . "%", "text"));
+$query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s AND id LIKE %s ORDER BY DATE DESC", GetSQLValueString($colname_web_member, "text"),
+		GetSQLValueString("%" . $todayyear . "%", "text"));
 $web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
 $row_web_examinee = mysql_fetch_assoc($web_examinee);
-$totalRows_web_member = mysql_num_rows($web_examinee);
+$totalRows_web_examinee = mysql_num_rows($web_examinee);
 
-//取得報考資格_流水號 ,add by coway 2016.8.30
+//取得報考資格_流水號 ,add by coway 2016.8.25
 $cert_number= sprintf("%s-%s",$row_web_examinee['cert_no'],sprintf("%04d", $row_web_examinee['cert_id']));
+
+//取得學歷資料 ,add by coway 2016.8.19
+$degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['Other2'],$row_web_examinee['Other2_dept'],$row_web_examinee['Edu_MK4'],$row_web_examinee['Other2_college']),
+		$row_web_examinee['Edu_level']=>array($row_web_examinee['Highest'],$row_web_examinee['Department'],$row_web_examinee['Edu_MK'],$row_web_examinee['High_college']),
+		$row_web_examinee['Edu_level2']=>array($row_web_examinee['Sec_highest'],$row_web_examinee['Sec_dept'],$row_web_examinee['Edu_MK2'],$row_web_examinee['Sec_college']),
+		$row_web_examinee['Edu_level3']=>array($row_web_examinee['Other1'],$row_web_examinee['Other1_dept'],$row_web_examinee['Edu_MK3'],$row_web_examinee['Other1_college'])
+
+);
+
 
 //取得報考資格 add by coway 2016.8.18
 mysql_select_db($database_conn_web, $conn_web);
 $query_web_allguideC = sprintf("SELECT * FROM allguide WHERE up_no='IDt' and no=%s " , GetSQLValueString($row_web_examinee['cert_no'], "text"));
 $web_allguideC = mysql_query($query_web_allguideC, $conn_web) or die(mysql_error());
 $row_web_allguideC = mysql_fetch_assoc($web_allguideC);
-//取得評量考區與日期 add by coway 2016.8.19
+
+
+if($row_web_examinee["status"] == '0'){
+	$up_no ='EA2';
+}else $up_no ='EA';
+
 mysql_select_db($database_conn_web, $conn_web);
-$query_web_allguide = sprintf("SELECT * FROM allguide Where up_no='EA' AND nm= %s",GetSQLValueString($row_web_examinee['exarea'], "text"));
+$query_web_allguide = sprintf("SELECT * FROM allguide Where up_no= %s AND nm= %s AND data2= %s", GetSQLValueString($up_no, "text"),GetSQLValueString($row_web_examinee['exarea'], "text"), GetSQLValueString($row_web_examinee['exarea_note'], "text"));
 $web_allguide = mysql_query($query_web_allguide, $conn_web) or die(mysql_error());
 $row_allguide = mysql_fetch_assoc($web_allguide);
 
-function getLevel($value){
-	IF(isset($value)){
-		switch ($value) {
-			case "1":
-				$level = "專科學位";
-				break;
-			case "2":
-				$level = "學士學位";
-				break;
-			case "3":
-				$level = "碩士學位";
-				break;
-			case "4":
-				$level = "博士學位";
-				break;
-		}
-	}
-	return $level;
+//刪除報名表 ,add by coway 2016.8.12
+if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
+	$deleteSQL = sprintf("DELETE FROM examinee WHERE no=%s",
+                       GetSQLValueString($row_web_examinee['no'], "text"));
+// 	echo "no=".$row_web_examinee["no"]."<br>";
+  mysql_select_db($database_conn_web, $conn_web);
+  $Result1 = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
+
+  $deleteGoTo = "index.php";
+  header(sprintf("Location: %s", $deleteGoTo));
+
 }
+//examinee_check 資料撈取 add by BlueS 20180302
+mysql_select_db($database_conn_web, $conn_web);
+$web_examinee_pic = sprintf("SELECT * FROM `examinee_pic` where examinee_no = %s " , GetSQLValueString($row_web_examinee['no'], "text"));
+$examinee_pic = mysql_query($web_examinee_pic, $conn_web) or die(mysql_error());
+$row_examinee_pic = mysql_fetch_assoc($examinee_pic);
+
+// echo "chkMK=".$_POST["chkMK"]."<br>";
+
+if (isset($_POST["btnSentOK"]) ){
+	//再次抓取人數，確認可否報名
+	$check = false;
+	$Ticket =substr($row_web_examinee['id'], 0,6);
+	//抓取(正取)師資生的報名資料 status=0
+	$query_web_search2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s
+			AND Qualify=1 AND status=0 AND exarea_note = %s AND apply_mk=1 ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($row_web_examinee['exarea_note'], "text"));
+	$web_search2 = mysql_query($query_web_search2, $conn_web) or die(mysql_error());
+	$row_web_search2 = mysql_fetch_assoc($web_search2);
+	$totalRows_web_search2 = mysql_num_rows($web_search2);
+
+	//抓取(備取)師資生的報名資料 status=0
+	$query_web_search_last2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s
+			AND Qualify=0 AND status=0 AND exarea_note = %s AND apply_mk=1 ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($row_web_examinee['exarea_note'], "text"));
+	$web_search_last2 = mysql_query($query_web_search_last2, $conn_web) or die(mysql_error());
+	$row_web_search_last2 = mysql_fetch_assoc($web_search_last2);
+	$totalRows_web_search_last2 = mysql_num_rows($web_search_last2);
+
+	$query_web_allguide2 = sprintf("SELECT * FROM allguide Where up_no='EA2' AND nm= %s AND data2= %s",GetSQLValueString($_POST['exarea'][0], "text"), GetSQLValueString($_POST['exarea'][2], "text"));
+	$web_allguide2 = mysql_query($query_web_allguide2, $conn_web) or die(mysql_error());
+	$row_web_allguide2 = mysql_fetch_assoc($web_allguide2);
+
+	$exam_date = $row_web_allguide2['data1'];
+
+	//echo "報名:$totalRows_web_search2, 正取:$row_allguide[data3]<br>";
+	//echo "報名:$totalRows_web_search_last2, 備取:$row_allguide[data4]<br>";
+	if($totalRows_web_search2 >= (int)$row_allguide['data3']){
+		if($totalRows_web_search_last2 >= (int)$row_allguide['data4']){
+			?>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<script type="text/javascript">
+			alert("報名人數已滿，請選擇其他場次。");
+			window.history.back();
+			</script>;
+			<?php
+		}else $check = true;
+	}else $check = true;
+
+
+	//echo "check:$check";
+
+	if($check){
+		$insertSQL = sprintf("UPDATE examinee SET apply_mk=%s  WHERE id=%s",
+						GetSQLValueString('1', "text"),
+						GetSQLValueString($row_web_examinee['id'], "text"));
+		mysql_select_db($database_conn_web, $conn_web);
+		$Result1 = mysql_query($insertSQL, $conn_web) or die(mysql_error());
+		//echo "<br>sql:$insertSQL";
+		$updateGoTo = "progress.php?status=1&check=ok&cert_number=$cert_number";
+
+		header(sprintf("Location: %s", $updateGoTo));
+	}
+}
+
+
+$form = new HTML_QuickForm('examOut1','post','');
+$init='';
+$select1[$init]='請選擇-地區';
+$select2[$init][$init]='請選擇-考場';
+$select3[$init][$init][$init]='請選擇-日期場次';
+$select3[$init]['考場'][$init]='日期場次';
+
+//查詢各考場正/備取人數
+mysql_select_db($database_conn_web, $conn_web);
+//$query_web_allguide = sprintf("SELECT * FROM allguide Where up_no='EA2' AND nm= %s AND data2= %s",GetSQLValueString($row_web_examinee['exarea'], "text"), GetSQLValueString($row_web_examinee['exarea_note'], "text"));
+$query_web_allguideEA = "SELECT * FROM allguide Where up_no='EA2'";
+$web_allguideEA = mysql_query($query_web_allguideEA, $conn_web) or die(mysql_error());
+$i=0;
+while ($row_allguideEA = mysql_fetch_assoc($web_allguideEA)){
+	$select1[$row_allguideEA['nm']]=substr($row_allguideEA['note'], 0, 6);
+	$select2[$row_allguideEA['nm']][$init]='請選擇-考場';
+	$select3[$row_allguideEA['nm']][$init][$init]='請選擇-日期場次';
+	$select2[$row_allguideEA['nm']][$row_allguideEA['note']]=$row_allguideEA['note'];
+	$select3[$row_allguideEA['nm']][$row_allguideEA['note']][$init]='請選擇-日期場次';
+	$select3[$row_allguideEA['nm']][$row_allguideEA['note']][$row_allguideEA['data2']]=$row_allguideEA['data1'];
+}
+
 function getStatus($value){
 	IF(isset($value)){
 		IF ($value =="1"){
@@ -131,253 +245,315 @@ function getStatus($value){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>報名表</title>
 <meta http-equiv="Content-Language" content="zh-tw" />
-<meta name="description" content="報名表列印" />
-<meta name="keywords" content="報名表列印" />
+<meta name="description" content="報名考試" />
+<meta name="keywords" content="報名考試" />
 <meta name="author" content="國立臺中教育大學 測驗統計與適性學習中心" />
 <link href="web.css" rel="stylesheet" type="text/css" />
 
 </head>
 
-<body>
+<body  background="images/background.jpg">
+<div id="wrapper">
+<?php include("header.php"); ?>
+<div id="main">
+  <div id="main1"></div>
 
-<div id="main111" background= "#FFFFFF">
+  <div id="exam" align="center">
+	<form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" onsubmit="YY_checkform">
 
- <?
- if($colname_web_member != "-1" && $row_web_new['status'] == '1'){
-   
-  ?>
-
-  <div id="exam" align="center" >
-  <table width="650" border="0" cellspacing="0" cellpadding="0" >
-    <td align="center"><div style="font-family:標楷體;">
-  <p><font size="5px" ><?php echo (date('Y')-1911); ?>年第二梯次國民小學教師「自然領域」 <br>學科知能評量報名表</div></font></p> <br /><!---->
-  </td>
-  <td><div align="right" style="font-family:標楷體;"><font size="3px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;准考證號碼：</font><br/><br/>________________________</div></td>
-  </table>
-     <table width="650" border="0" cellspacing="0" cellpadding="9" >
+    <table width="540" border="0" cellspacing="0" cellpadding="0" >
         <tr>
-        <td width="130" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; width: 76px;">姓名</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['uname']."<br>".EngNameStr($row_web_examinee['eng_uname']); ?></td>
-        <td width="80" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">性別</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['sex']; ?></td>
-        <td width="80" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">身分證字號</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['per_id']; ?></td>
-        <td width="120" height="130" align="left" class="board_add" rowspan="3" colspan="2" style="background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px;">
-        <?php if($row_web_examinee['pic_name'] != ""){ ?>
-        <img src="images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="115" id="pic" />
-        <?php }else{ ?>
-        
-        (請上傳近3個月內1吋正面脫帽半身照片)
-
-        <?php  } ?>        
-        </td>
+          <td width="25" align="left"><img src="images/board03.gif" /></td>
+          <td width="505" align="left" background="images/board04.gif">報名表<span class="font_black" style="float: right; color:red;">流水號：<?php echo $cert_number;?></span></td>
+          <td width="10" align="right"><img src="images/board05.gif" width="10" height="28" /></td>
         </tr>
-        <tr>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">聯絡<br>電話</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['phone']; ?></td>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">Email</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo cutSubString($row_web_examinee['email'],18); ?></td>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">生日</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['birthday']; ?></td>
-        </tr>
-        <tr>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">郵遞區號</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['cuszip']; ?></td>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">詳細地址</td> <td  align="left" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="3"><?php echo $row_web_examinee['cusadr']; ?></td>
-        </tr>
-        <tr>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">報名科目</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">自然領域</td>
-        <td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">評量考區</td> <td  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2">
-        	<?php echo $row_allguide['note']."-".$row_allguide['data1'];?>
-           <?php //if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {echo "臺北(國立臺灣大學考場)"."-".$row_allguide['data1'];} ?> 
-           <?php //if (!(strcmp($row_web_examinee['exarea'],"Central"))) {echo "臺中(國立臺中教育大學考場)"."-".$row_allguide['data1'];} ?> 
-           <?php //if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {echo "高雄(高雄市私立三信家事商業職業學校考場)"."-".$row_allguide['data1'];} ?> 
-           <?php //if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {echo "花蓮(國立花蓮高級商業職業學校考場)"."-".$row_allguide['data1'];} ?> </td>
-         <td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">任職學校</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2"><?php echo $row_web_examinee['school']; ?></td>
-         <!-- <td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">身份</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo "現職專任教師"; ?></td>  -->   
-        </tr>
-        <tr>
-        	<td  align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">報考資格</td> <td  align="left" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="6">
-	        <?php if($row_web_allguideC['no'] == '1'){ echo "(一)";}
-	        		elseif($row_web_allguideC['no'] == '2'){ echo "(二)";}
-	        		elseif($row_web_allguideC['no'] == '3'){ echo "(三)";}
-	        echo $row_web_allguideC['nm'];?></td>
-        </tr>
-        <tr>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; " rowspan="2">教師證<br>號碼</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " rowspan="2"><?php echo $row_web_examinee['certificate']; ?></td>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "></td>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">畢業學校名稱</td> 
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; " colspan="2">系所名稱</td> 
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "></td>
-        	
-        </tr>
-        <tr>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "><?php 
-			$level1=getLevel($row_web_examinee['Edu_level']);
-			echo "$level1";?></td>
-        	<td height="40" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['Highest']; ?></td>
-			<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2"><?php echo $row_web_examinee['Department']; //$row_web_examinee['High_college']."-".?></td>
-			<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">
-			<?php 
-			//$level1=getLevel($row_web_examinee['Edu_level']);
-			$status_leve1=getStatus($row_web_examinee['Edu_MK']);
-			echo "$status_leve1";?>
-			</td>
-        </tr>
-        <tr>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; ">緊急聯絡<br>人姓名</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['contact']; ?></td>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "><?php 
-			$level2=getLevel($row_web_examinee['Edu_level2']);
-			echo "$level2";?></td>
-        	<td height="40"  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['Sec_highest']; ?></td>
-        	<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2"><?php echo $row_web_examinee['Sec_dept']; //$row_web_examinee['Sec_college']."-".?></td>
-			<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">
-			<?php 
-			//$level2=getLevel($row_web_examinee['Edu_level2']);
-			$status_leve2=getStatus($row_web_examinee['Edu_MK2']);
-			if (isset($row_web_examinee['Sec_highest'])) echo "$status_leve2";?>
-			</td>
-        </tr>
-        <tr>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; " rowspan="2">緊急聯絡<br>人電話</td> <td width="100" align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " rowspan="2"><?php echo $row_web_examinee['contact_ph']; ?></td>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "><?php 
-			$level2=getLevel($row_web_examinee['Edu_level3']);
-			echo "$level2";?></td>
-        	<td height="40"  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['Other1']; ?></td>
-        	<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2"><?php echo $row_web_examinee['Other1_dept'];  //$row_web_examinee['Other1_college']."-".?></td>
-			<td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">
-			<?php 
-			//$level2=getLevel($row_web_examinee['Edu_level3']);
-			$status_leve2=getStatus($row_web_examinee['Edu_MK3']);
-			if(isset($row_web_examinee['Other1'])) echo "$status_leve2";?>
-			</td>
-        </tr>
-        <tr>
-        	<td align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; "><?php 
-			$level2=getLevel($row_web_examinee['Edu_level4']);
-			echo "$level2";?></td>
-	        <td height="40"  align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; "><?php echo $row_web_examinee['Other2']; ?></td>
-	        <td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="2"><?php echo $row_web_examinee['Other2_dept'];//$row_web_examinee['Other2_college']."-". ?></td>
-	        <td align="center" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; ">
-	        <?php 
-			//$level2=getLevel($row_web_examinee['Edu_level4']);
-			$status_leve2=getStatus($row_web_examinee['Edu_MK4']);
-			if(isset($row_web_examinee['Other2'])) echo "$status_leve2";?>
-	        </td>
-	    </tr>
-       </table>
-            
-     <table width="650" height="230" border="0" cellspacing="0" cellpadding="6">
-     <tr>
-     <td width="300" align="center" class="board_add" style="font-size:16px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; border: 2px dashed;">國民身分證影本<br />
-                                                 正面<br />
-                                                 (請影印清晰並黏貼)
-     </td>
-     <td width="300" align="center" class="board_add" style="font-size:16px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; border: 2px dashed;">國民身分證影本<br />
-                                                 反面<br />
-                                                 (請影印清晰並黏貼)
-     </td>
-     </tr>
-     </table>
-     <table width="650" border="0" cellspacing="0" cellpadding="7">
-     <tr>
-        <td width="50" align="center" style="font-size:12px; background-color: #E8E8E8; border-style:solid; border-color:#000000; border-width:1px; " rowspan="2">備註</td> <td width="550" align="life" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="5" rowspan="2">本表請於<u>106年10月17日</u>前填妥並貼妥國民身分證正、反面影本，並檢附最高學歷學位證書影本1份、國民小學教師證書影本1份、在職證明書正本1份（自開立日起二個月內有效）（附表3）或相關表件，以掛號寄達本試務行政組收（40306臺中市西區民生路140號教育樓5樓教師專業能力測驗中心），逾期視同未完成報名（以郵局郵戳為憑）。【所有資料依個資法辦理】</td>
-        
-         <td width="60" align="center"  style="font-size:12px; background-color: #E8E8E8;  border-color:#000000; border-width:5px; border-style:double; " colspan="2" >申請人簽章
-     </td>
-     <!--td width="320" align="center" class="board_add" style="font-size:12px; background-color: #FFFFFF; border-style:solid; border-color:#000000; border-width:1px; " colspan="3">准考證號碼：________________ (由試務人員填寫)
-     </td-->
-     <tr>	 
-     <td width="140" align="center"  style=" background-color: #FFFFFF; border-color:#000000; border-width:5px;  border-bottom-style:double; border-right-style:double; border-left-style:double;"colspan="2"  ><font  color="#F8F8FF"> (無法親自簽名者由其監護、代理人代簽並註明原因) </font> 
-     </td></tr>
-     </tr>
-     </table><div style="page-break-after: always;"></div>
-
-<!--         <table width="650" border="0" cellspacing="0" cellpadding="0" >   -->
-     
-<!--           <tr> -->
-              
-<!--           <td height="40" colspan="3" align="center"><label> 
-           <input name="date" type="hidden" id="date" value="<? echo date("Y-m-d H:i:s");?>" />
-          </label></td> -->
-          
-<!--         </tr> -->
-<!--       </table> -->
-      <input type="hidden" name="MM_insert" value="memberadd" />
-      <table border="0"  width="750">  
-      <tr><td ><div style="font-family:標楷體;"><p><font size="4px" color="red"  ></div></font></p></td>
-      <td width="100" align="right" colspan="3"><div style="font-family:標楷體;"><p><font size="5px" color="red" >流水號：<?php echo $cert_number;?></div></font></p></td>
-      </tr>
-      <tr>  
-      <td align="center" colspan="4" ><div style="font-family:標楷體;">
-	  <p><font size="5px" ><?php echo (date('Y')-1911); ?>年第二梯次國民小學教師「自然領域」 學科知能評量<br></div></font></p> <!---->
-	  </td> 
-	  </tr>  
-	  <tr>
-	  <td align="center" colspan="2"><div style="font-family:標楷體;"><p><font size="5px" >「報名信封封面」</div></font></p></td>
-	  <td align="center" width="100" style="font-size:12px; background-color: #E8E8E8;  border-color:#000000;  border-width:1px;border-style:solid; ">掛號</td>
-	  </tr>
-	  <tr>
-	  <td height="100"  colspan="2"></td>  
-	  <td width="80"  align="center" style="font-size:12px; background-color: #E8E8E8;  border-color:#000000; border-width:2px; border-style:dotted; ">請貼足<br>掛號<br>郵資</td> 
-	  </tr>
       </table>
-      <table border="1" width="750" style="border:3px #000000 solid;"  >
-      <tr><td width="650" rowspan="3" align="left" style="font-size:22px; border-width:5px; border-style:solid;border-color:#000000;">
-      <div style="font-family:標楷體;"><br>&nbsp;&nbsp;<BIG><TT>收件地址：<strong><u>40306臺中市西區民生路140號教育樓5樓</u></strong></TT></BIG><br><br>&nbsp;&nbsp;<BIG><TT>收件單位：<span style="font-weight:bolder;">教師專業能力測驗中心 (04-2218-3651)</span></TT></BIG><br>
-      <br><div align="center"><font size="5px" ><BIG><span style="font-weight:bolder;"><?php echo (date('Y')-1911); ?>年第二梯次國民小學教師「自然領域」&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;學科知能評試務行政組&nbsp;&nbsp;收</span></BIG></div></font><br></div></td>
-      </tr> 
-      </table><br>
-      <table border="0" width="750"   >
-      <tr>
-      	<td colspan="2"><div align="left" style="font-family:標楷體;"><font size="4px" ><b>郵寄報名表件截止時間：106年10月17日(星期二)止，以郵局郵戳為憑</b>
-      	</font></div><br></td>
-      </tr> 
-      <tr><td><div align="left" style="font-family:標楷體;"><font size="3px" >寄件人姓名：</font></div></td>
-      <td><div align="right" style="font-family:標楷體;"><font size="4px" >報考資格：☐現職教師;☐現職代理代課教師;☐儲備教師</font></div></td>
-      </tr>
-      <tr><td colspan="2"><div align="left" style="font-family:標楷體;"><font size="3px"><br>寄件人行動電話：</font></div></td></tr>
-      <tr><td colspan="2"><div align="left" style="font-family:標楷體;"><font size="3px" ><br>寄件人地址：</font></div></td></tr>
-      </table><br>
-      <table width="750" height="230" border="0" cellspacing="0" cellpadding="6">          
-      
-     <tr>
-     <td width="300" align="left" class="board_add" style="font-size:16px; background-color: #FFFFFF;border-width:5px; border-style:double;border-color:#000000;"><div align="left" style="font-family:標楷體;"><font size="4px" >＊請將下列文件依序整理備齊(請打勾)，平整裝入信封內：</br>
-<p>☐ 一、線上列印報表1份(貼妥國民身份証正、反面影印本)。(須簽名)</p>
-<p>☐ 二、大專以上學歷學位證書影印本各1份(縮印成A4紙張影印)。</p>
-<p>☐ 三、國民小學教師證書影印本1份。</p>
-<p>☐ 四、在職證明書正本1份(自開立日起二個月內有效)(一律使用本中心提供之<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表格，請線上自行下載)。</p>
-<p>☐ 五、其他(請視需要檢附)：</p>
-     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ 特殊考場服務申請表正本1份(貼妥身心障礙手冊或證明正、反面<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;影印本)。<b>(須簽名)</b></p>
-     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ 身心障礙應考人申請應考服務診斷證明書正本1份。</p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ 身心障礙應考人申請應考切結書正本1份。<b>(須簽名)</b></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ 戶口名簿影本或戶籍謄本正本1份。</p></font></div></td>
-     
-     </tr>
-     </table>
-     
-	  </div>
+      <table width="540" border="0" cellspacing="0" cellpadding="2">
+        <tr>
+        <td width="110" height="30" align="right" class="board_add">姓名：</td>
+          <td width="180" align="left" class="board_add"><?php echo $row_web_examinee['uname'];
+		   if($row_web_examinee['eng_uname']!=""){
+			  list($firstname, $lastname, $lastname2) = explode(" ", $row_web_examinee['eng_uname']);
+			  if($firstname !=""){
+			   	$eng_name="$firstname, $lastname $lastname2";
+
+			  }
+			   echo "<br>".$eng_name;//$row_web_examinee['eng_uname'];
+		  }?></td>
+          <td width="140" height="130" align="center" class="board_add"  rowspan="4"><img src="images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="100" id="pic" /></tr>
+          <tr>
+          <td height="30" align="right" class="board_add">性別：</td>
+          <td align="left" class="board_add"><?php if (!(strcmp($row_web_examinee['sex'],"男"))) {echo "男";}
+		  if (!(strcmp($row_web_examinee['sex'],"女"))) {echo "女";}
+		   ?> </td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="board_add">出生年月日：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['birthday']; ?></td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="board_add">身分證字號：</td>
+          <td align="left" class="board_add">
+          <p><?php echo $row_web_examinee['per_id']; ?>
+          </td>
+        </tr>
+        <!-- <tr>
+           <td height="30" align="right" class="board_add">身份：</td>
+          <td align="left" class="board_add">
+          <?php if($row_web_examinee['status'] == '0') echo "國民小學師資類科師資生";
+          		if($row_web_examinee['status'] == '1') echo "現職專任教師";
+          ?></td>
+           <td height="30" align="right" class="board_add"></td>
+        </tr>-->
+        <?php if($row_web_examinee['certificate'] != ""){ ?>
+        <tr>
+        <td height="30" align="right" class="board_add">教師證號碼：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['certificate']; ?></td>
+           <td height="30" align="right" class="board_add"></td>
+        </tr>
+        <?php }?>
+        <tr>
+          <td height="30" align="right" class="board_add">E-mail：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['email']; ?></td>
+           <td height="30" align="right" class="board_add"></td>
+        </tr>
+        <tr>
+            <td height="30" align="right" class="board_add">聯絡電話：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['phone']; ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="board_add">通訊地址：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['cuszip'];  echo $row_web_examinee['cusadr']; ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="board_add"><?php if($row_web_examinee['status'] == '1') echo "任職學校："; else echo "就讀學校："; ?><br></td>
+          <td align="left" class="board_add">
+          <?php if (!(strcmp($row_web_examinee['school'],"01_國立臺灣藝術大學"))) {echo "國立臺灣藝術大學";}
+		  if (!(strcmp($row_web_examinee['school'],"02_文藻外語大學"))) {echo "文藻外語大學";}
+		  if (!(strcmp($row_web_examinee['school'],"03_國立臺東大學"))) {echo "國立臺東大學";}
+		  if (!(strcmp($row_web_examinee['school'],"04_國立東華大學"))) {echo "國立東華大學";}
+		  if (!(strcmp($row_web_examinee['school'],"05_國立臺北教育大學"))) {echo "國立臺北教育大學";}
+		  if (!(strcmp($row_web_examinee['school'],"06_輔仁大學"))) {echo "輔仁大學";}
+		  if (!(strcmp($row_web_examinee['school'],"07_南臺科技大學"))) {echo "南臺科技大學";}
+		  if (!(strcmp($row_web_examinee['school'],"08_國立屏東教育大學"))) {echo "國立屏東教育大學";}
+		  if (!(strcmp($row_web_examinee['school'],"09_靜宜大學"))) {echo "靜宜大學";}
+		  if (!(strcmp($row_web_examinee['school'],"10_國立新竹教育大學"))) {echo "國立新竹教育大學";}
+		  if (!(strcmp($row_web_examinee['school'],"11_國立臺南大學"))) {echo "國立臺南大學";}
+		  if (!(strcmp($row_web_examinee['school'],"12_國立高雄師範大學"))) {echo "國立高雄師範大學";}
+		  if (!(strcmp($row_web_examinee['school'],"13_國立臺中教育大學"))) {echo "國立臺中教育大學";}
+		  if (!(strcmp($row_web_examinee['school'],"14_臺北市立大學"))) {echo "臺北市立大學";}
+		  if (!(strcmp($row_web_examinee['school'],"15_國立嘉義大學"))) {echo "國立嘉義大學";}
+		  if (!(strcmp($row_web_examinee['school'],"17_國立臺灣海洋大學"))) {echo "國立臺灣海洋大學";}
+		  ?>
+		  <?php if($row_web_examinee['status'] == '1') echo $row_web_examinee['school']; ?>
+          </td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>
+        <?php if($degreeArray[4][0] != ""){ //if($row_web_examinee['Other1'] != ""){
+        		$status_leve=getStatus($row_web_examinee['Edu_MK']);
+        		$status_leve2=getStatus($row_web_examinee['Edu_MK2']);
+
+        	?>
+        <tr>
+          <td height="30" align="right" class="board_add">博士學歷：</td>
+          <td align="left" class="board_add"><?php echo $degreeArray[4][0].'('.getStatus($degreeArray[4][2]).')'; ?><br>
+			<?php echo $degreeArray[4][3]." ".$degreeArray[4][1]; ?></td>
+        <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+<!--         <tr>
+        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
+<!--           <td height="30" align="right" class="board_add">學院與科系：</td>
+          <td align="left" class="board_add"><?php //echo $row_web_examinee['High_college']." ".$row_web_examinee['Department']; ?></td>
+<!--           <td height="30" align="right" class="board_add"></td>
+<!--         </tr> -->
+        <?php if($degreeArray[3][0] != ""){//if($row_web_examinee['Sec_highest'] != ""){ ?>
+        <tr>
+          <td height="30" align="right" class="board_add">碩士學歷：</td>
+          <td align="left" class="board_add"><?php echo $degreeArray[3][0].'('.getStatus($degreeArray[3][2]).')'; ?><br>
+			<?php echo $degreeArray[3][3]." ".$degreeArray[3][1]; ?></td>
+        <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <?php //if($row_web_examinee['Sec_dept'] != ""){ ?>
+<!--         <tr>
+                 <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
+<!--           <td height="30" align="right" class="board_add">學院與科系：</td>
+          <td align="left" class="board_add"><?php //echo $row_web_examinee['Sec_college']." ".$row_web_examinee['Sec_dept']; ?></td>
+<!--         <td height="30" align="right" class="board_add"></td>
+        </tr>-->  <?php// } ?>
+        <?php if($degreeArray[2][0] != ""){//if($row_web_examinee['Highest'] != ""){ ?>
+        <tr>
+            <td height="30" align="right" class="board_add">學士學歷：</td>
+          <td align="left" class="board_add"><?php echo $degreeArray[2][0].'('.getStatus($degreeArray[2][2]).')'; ?><br>
+			<?php echo $degreeArray[2][3]." ".$degreeArray[2][1]; ?></td>
+        <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <?php if($degreeArray[1][0] != ""){//if($row_web_examinee['Other2'] != ""){ ?>
+        <tr>
+          <td height="30" align="right" class="board_add">大專學歷：</td>
+          <td align="left" class="board_add"><?php echo $degreeArray[1][0].'('.getStatus($degreeArray[1][2]).')'; ?><br>
+			<?php echo $degreeArray[1][3]." ".$degreeArray[1][1]; ?></td>
+        <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <?php if($row_web_examinee['Student_ID'] != ""){ ?>
+        <tr>
+          <td height="30" align="right" class="board_add">學號：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['Student_ID']; ?></td>
+        <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+
+        <?php if($row_web_examinee['Grade']!=""){ ?>
+        <tr>
+          <td height="30" align="right" class="board_add">年級：</td>
+          <td align="left" class="board_add"><?php if (!(strcmp($row_web_examinee['Grade'],"1"))) {echo "大一";}
+		  if (!(strcmp($row_web_examinee['Grade'],"2"))) {echo "大二";}
+		  if (!(strcmp($row_web_examinee['Grade'],"3"))) {echo "大三";}
+		  if (!(strcmp($row_web_examinee['Grade'],"4"))) {echo "大四";}
+		  if (!(strcmp($row_web_examinee['Grade'],"5"))) {echo "大五以上";}
+		  if (!(strcmp($row_web_examinee['Grade'],"6"))) {echo "研究所";}
+		  if (!(strcmp($row_web_examinee['Grade'],"7"))) {echo "研究所";}		   ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <?php if($row_web_examinee['cert_no']!=""){ ?><!-- add by coway 2016.8.9 -->
+        <tr>
+          <td height="30" align="right" class="board_add">報考資格：</td>
+          <td align="left" class="board_add" colspan="2"><?php echo $row_web_allguideC['nm'];
+		  ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <tr>
+          <td height="30" align="right" class="board_add">報名科目：</td>
+          <td align="left" class="board_add"><?php $str=split("," , $row_web_examinee['category']);
+			foreach ($str as $val){
+			if (!(strcmp($val,"1"))) {echo "國語領域&nbsp;,&nbsp;";}
+			if (!(strcmp($val,"2"))) {echo "數學領域&nbsp;,&nbsp;";}
+			if (!(strcmp($val,"3"))) {echo "社會領域&nbsp;,&nbsp;";}
+			if (!(strcmp($val,"4"))) {echo "自然領域";}} ?></td>
+		<td height="30" align="right" class="board_add"></td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="board_add"><?php
+//           		$event="required onchange=\"ShowMsg(this,'$todayyear')\"";
+//           		// Create the Element
+// 				$sel =& $form->addElement('hierselect', 'exarea', '',$event);
+				?>
+          	評量考區：</td>
+          <td align="left" class="board_add">
+          <?php echo $row_allguide['note']." ， ".$row_allguide['data1'];?>
+
+          <label>
+          <!--<span id="spryselect1">
+	           <select name="exam_school">
+	          		<option>請選擇</option>
+	          		<option value="01_國立臺北教育大學">國立臺北教育大學考場</option>
+	          		<option value="02_臺北市立大學" >臺北市立大學考場</option>
+	          		<option value="03_國立新竹教育大學" >國立新竹教育大學考場</option>
+	          		<option value="04_國立臺中教育大學">國立臺中教育大學考場</option>
+	          		<option value="05_國立嘉義大學" >國立嘉義大學考場</option>
+	          		<option value="06_國立臺南大學" >國立臺南大學考場</option>
+	          		<option value="07_國立屏東大學" >國立屏東大學考場</option>
+	          		<option value="08_國立臺東大學" >國立臺東大學考場</option>
+	          		<option value="09_國立東華大學" >國立東華大學考場</option>
+	          </select>
+          <span class="selectRequiredMsg">請選擇考場名稱</span></span> -->
+          </label></td>
+           <td height="30" align="right" class="board_add"></td>
+        </tr>
+      <?php if($row_web_examinee['contact'] != ""){ ?>
+        <tr>
+          <td height="30" align="right" class="board_add">緊急聯絡人：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['contact']; ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+        <?php if($row_web_examinee['contact_ph']!=""){ ?>
+        <tr>
+        <td height="30" align="right" class="board_add">緊急聯絡人電話：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['contact_ph']; ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>  <?php } ?>
+
+				<!-- 顯示上傳照片 BlueS 20180307  -->
+				<?php
+				if(null !== $row_examinee_pic[pic1_name]){?>
+					<tr>
+	        <td width="20" height="30" align="right" class="board_add">身分證正面：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic1_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic2_name]){?>
+					<tr>
+	          <td width="20" height="30" align="right" class="board_add">身分證反面：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic2_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic3_name]){?>
+					<tr>
+	          <td width="20" height="30" align="right" class="board_add">最高學歷學位證書：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic3_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic4_name]){?>
+					<tr>
+	         <td width="20" height="30" align="right" class="board_add">國民小學教師證書：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic4_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic5_name]){?>
+					<tr>
+	         <td width="20" height="30" align="right" class="board_add">在職證明書：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic5_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[special_pic_name1]){?>
+					<tr>
+	         <td width="20" height="30" align="right" class="board_add">特殊考場服務<br>申請表：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name1']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[special_pic_name2]){?>
+					<tr>
+          <td width="20" height="30" align="right" class="board_add">應考服務診斷<br>證明書：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name2']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[special_pic_name3]){?>
+					<tr>
+	          <td width="20" height="30" align="right" class="board_add">應考切結書：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name3']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[rename_pic_name]){?>
+					<tr>
+						<td width="20" height="30" align="right" class="board_add">戶口名簿：</td>
+						<td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['rename_pic_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+					<td height="30" align="right" class="board_add"></td>
+					</tr>
+				<?php }
+?>
+				<!--  -->
+
+        <tr>
+          <td height="40" colspan="3" align="center"><label>
+            <input type="button" name="submit" value="回上一頁" onClick=window.history.back();>
+          </label></td>
+
+        </tr>
+      </table>
     </form>
-    
+
   </div>
-  <div id="main111" background= "#FFFFFF"></div>
+  <div id="main4"></div>
+
+<?php //include("footer.php"); ?>
 </div>
-<script language="Javascript">window.print();</script>
-<?PHP }else{?>
-  <table width="555" border="0" cellspacing="0" cellpadding="0" align="center">
-    <tr>
-      <td height="80" align="center" class="font_red2">列印報名表請先登入會員</td>
-      </tr>
-      <tr>
-      <td height="80" align="center"><a href="index.php">[返回首頁]</a></td>
-      </tr>
-  </table>
-<?PHP }?>
 </body>
 </html>
-<?php 
-function get_chinese_weekday($datetime)
-{
-    $weekday  = date('w', strtotime($datetime));
-    $weeklist = array('日', '一', '二', '三', '四', '五', '六');
-    return '星期' . $weeklist[$weekday];
-}
-function cutSubString($string,$len){//取得字串長度後依$len長度做斷行 ,add by coway 2016.8.11
-	return mb_substr($string, 0, $len, 'UTF-8')."<br>".mb_substr($string, $len, mb_strlen($string, 'UTF-8'), 'UTF-8');
-}
-mysql_free_result($web_new);
-mysql_free_result($web_examinee);
-?>

@@ -352,13 +352,17 @@ function YY_checkform() { //v4.66
       <tr>
         <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
         <?php if(date('y-m-d')>= $publishDate){//國小日程表 ./file/20160927221237.pdf?>
-  			<a href="./file/20170921161652.pdf"><img src="images/106schedule_t.png" /></a>
+          <a href="./file/20180309103058.pdf"><img src="images/106schedule_t.png" /></a>
+
   		<?php }else { ?> <img src="images/106schedule_t.png" /><? }?>
   		</td>
       <tr>
          <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
          <?php if(date('y-m-d')>= $publishDate){//國小報名流程 ./file/20160927221256.pdf?>
-         	<a href="./file/20170921161700.pdf"><img src="images/flow_t.png"  /></a>
+
+           <a href="./file/20180309103047.pdf"><img src="images/flow_t.png"  /></a>
+
+
          <?php }else { ?><img src="images/flow_t.png"  /><? }?>
          </td>
        </tr>
@@ -431,13 +435,18 @@ function YY_checkform() { //v4.66
       <tr>
         <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
         <?php if(date('y-m-d')>= $publishDate){//師資生日程表?>
-  			<a href="./file/20170905142647.pdf"><img src="images/106schedule.png" /></a>
+
+          <a href="./file/20180309102843.pdf"><img src="images/106schedule.png" /></a>
+
   		<?php }else { ?> <img src="images/106schedule.png" /><? }?>
   		</td>
       <tr>
          <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
          <?php if(date('y-m-d')>= $publishDate){//師資生報名流程?>
-         	<a href="./file/20170905142638.pdf"><img src="images/flow.png"  /></a>
+
+           <a href="./file/20180309102829.pdf"><img src="images/flow.png"  /></a>
+        
+
          <?php }else { ?><img src="images/flow.png"  /><? }?>
          </td>
       </tr>
@@ -492,7 +501,8 @@ function YY_checkform() { //v4.66
 								}
 							}]
 						">
-	<a href="./file/20170905142655.pdf" class="easyui-linkbutton" >師資生簡章</a><a href="./file/20170921161705.pdf" class="easyui-linkbutton" >國小教師簡章</a>
+
+    <a href="./file/20180309100438.pdf" class="easyui-linkbutton" >師資生簡章</a><a href="./file/20180309100452.pdf" class="easyui-linkbutton" >國小教師簡章</a>
 </div>
   <?PHP   /*  <form id="shopSearch" name="shopSearch" method="get" action="search.php">
  <table width="180" border="0" cellspacing="0" cellpadding="0">

@@ -1,7 +1,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +12,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -71,7 +71,8 @@ if (isset($_GET['pageNum_web_shop'])) {
 }
 $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
 
-
+$t=time();
+$t=(date("Y-m-d",$t));
 ?>
 <? session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -106,24 +107,36 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
       </tr>
     </table>
 <table width="540" border="0" cellspacing="0" cellpadding="0">
- 
+
 </table>
     <img src="images/Q&A.png" width="540" height="48" /><br />
-    
-    
-    
+
+
+
   <table width="540" border="0" cellspacing="0" cellpadding="0">
   	<tr>
       <td height="80" align="center" class="font_red2" bgcolor="#FFFFFF">
+        <? if($t >'2018-03-09'){ ?>
+      <a href="file\20180309102911.pdf">107年第一梯次國民小學師資類科師資生學科知能評量Q&A</a></td>
+    <?php }else{ ?>
       <a href="file\20170921112605.pdf">106年第二梯次國民小學師資類科師資生學科知能評量Q&A</a></td>
+    <?php }?>
     </tr>
     <tr>
+
       <td height="80" align="center" class="font_red2" bgcolor="#FFFFFF">
+        <? if($t >'2018-03-09'){ ?>
+          <a href="file\20180309103118.pdf">107年第一梯次國民小學教師「自然領域」學科知能評量 Q&A</a></td>
+        <?php }else{ ?>
       <a href="file\20170922024544.pdf">106年第二梯次國民小學教師「自然領域」學科知能評量 Q&A</a></td>
+      <?php }?>
     </tr>
   </table>
- 
-  
+ <?php
+
+
+ ?>
+
   </div>
   <div id="main4"></div>
   <?php include("footer.php"); ?>

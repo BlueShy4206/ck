@@ -9,7 +9,7 @@
 
 
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -20,7 +20,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -66,7 +66,7 @@ $row_web_new = mysql_fetch_assoc($web_new);
 $totalRows_web_new = mysql_num_rows($web_new);
 
 mysql_select_db($database_conn_web, $conn_web);
-//update by coway 2016.8.19 
+//update by coway 2016.8.19
 // $query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s AND status = %s ORDER BY SUBSTR( id, 3, 4 ) DESC , SUBSTR( id, 2, 9 ) DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"), GetSQLValueString($exam_type, "text"));
 //update by coway 2016.9.24  (增加已確認報名表方可列印報名表，apply_mk='1')
 //add by coway 2016.10.14  (增加本梯次報名方可列印報名表，examyear_id)
@@ -106,15 +106,18 @@ $rowee = $rowee['apply_mk'];
 
 if($_GET['check']=='ok'){
 	if($rowee==1){
-		echo '<script type="text/javascript">alert("您已完成線上報名登錄，您的網路登錄報名流水號為：'.$_GET['cert_number'].'。\n提醒您：請至「報名進度查詢」中列印報名表，檢附相關證件並郵寄，始完成報名流程");location.href = "progress.php?status=1";</script>';
+		echo '<script type="text/javascript">alert("您已完成線上報名登錄，您的網路登錄報名流水號為：'.$_GET['cert_number'].'。");location.href = "progress.php?status=1";</script>';
 	}else{
 		echo '<script type="text/javascript">alert("報名尚未完成！\n請再次勾選確認報名表資料!!");location.href = "examOut1.php";</script>';
-		
-		
+
+
 // 		header(sprintf("Location: %s", $returncheck));$returncheck="examOut1.php";
 	}
 }
-
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
 ?>
 <? session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -145,7 +148,7 @@ if($_GET['check']=='ok'){
   <div id="main2">
       <?php include("leftzone.php")?>
   </div>
-  <div id="main3">
+  <div id="main3" style="height:600px;">
     <table width="545" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td height="20">
@@ -156,12 +159,12 @@ if($_GET['check']=='ok'){
       </tr>
     </table>
 <table width="545" border="0" cellspacing="0" cellpadding="0">
- 
+
 </table>
     <img src="images/progress.png" width="540" height="48" /><br />
-    
-    
-<?php if($totalRows_web_member == 0){ //判斷本次是否有報名 ?>    
+
+
+<?php if($totalRows_web_member == 0){ //判斷本次是否有報名 ?>
   <table width="540" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td height="80" align="center" class="font_red2" bgcolor="#FFFFFF">您尚未報名本次測驗</td>
@@ -175,9 +178,9 @@ if($_GET['check']=='ok'){
           <td width="140" height="130" align="center"  rowspan="4" style="border-style:solid; border-color:#999999; border-width:1px;"><img src="images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="100" id="pic" /></tr>
          <!-- <tr>
           <td height="30" align="right" class="board_add4"></td>
-          
+
           <td align="left" class="board_add4"><font color="#FF0000">請確認右方大頭照是否已正確上傳。</font> </td>
-          
+
            </tr>-->
            <tr>
           <td height="30" align="right" class="board_add4">報名科目：</td>
@@ -200,29 +203,33 @@ if($_GET['check']=='ok'){
           </td>
           </tr>
         <tr>
-          <td height="30" align="right" class="board_add4">列印報名表：</td>
+          <td height="30" align="right" class="board_add4">檢視報名表：</td>
           <td align="left" class="board_add4">
-          <?php 
+          <?php
           	if($row_web_examinee['status'] == 1){
           		$report_url='examOuttoprint.php';
           	}else $report_url='examOuttoprint_ts.php';
-          	
+
           	if($row_web_member['status']== 0){
           		$report_url = "$MailHost/EasyMVC/Home/queryList/$row_web_member[id]";
           	}
           ?>
           <a href="<?php echo $report_url;?>">
-          	<img src="images/click_to_print.png"  onclick="<?php if($row_web_member['status'] == 0) echo "CheckMailVal()";?>" /></a> &nbsp;請於郵寄報名表件截止日前，將相關資料以掛號寄出，未郵寄或逾期者視為報名資格不符。</td>
+          	<img src="images/progress_look.png"  onclick="<?php if($row_web_member['status'] == 0) echo "CheckMailVal()";?>" /></a></td>
            <td height="30" align="right" class="board_add4"></td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add4">資料審查：</td>
           <td align="left" class="board_add4">
-           <?php if(strtotime($row_web_new['endday']) < strtotime(date('Y-m-d')) && strtotime(date('Y-m-d')) ){//add by coway 2016.9.20?>
-          <?php if($row_web_examinee['allow']=="Y"){
-					echo "<font color='#FF0000'>通過</font>";	  
-				  }elseif($row_web_examinee['allow']=="N"){
-					echo "<font color='#FF0000'>不通過</font>";	  
+
+           <?php
+
+           if(strtotime($row_web_new['endday']) < strtotime(date('Y-m-d')) && strtotime(date('Y-m-d')) ){//add by coway 2016.9.20?>
+          <?php
+          if($row_web_examinee['allow']=="Y"){
+					echo "<font color='#FF0000'>通過</font>";
+        }elseif($row_web_examinee['allow']!="Y" && $row_web_examinee['allow']!="0"){
+					echo "<font color='#FF0000'>不通過</font>";
 // 				  }else {
 // 				  	echo "<font color='#FF0000'>審核中</font>"; //maker by coway 2017.9.5,"審核中"不顯示
 				  } ?>
@@ -234,8 +241,186 @@ if($_GET['check']=='ok'){
           <td align="left" class="board_add4"><?php echo $row_web_examinee['allow_note']?></td>
            <td height="30" align="right" class="board_add4"></td>
         </tr>
+        <!-- 20180305 BlueS 補件上傳處 -->
+        <?php
+        if($row_web_examinee['allow'] != 0 && $exam_type == '0'){ ?>
+          <form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" >
+        <tr>
+          <td height="30" ></td>
+          <td height="30" align="center" style="font-size: 21px; color: #F00;">補件資料上傳</td>
+          <td height="30" ><?php //echo $row_web_examinee['allow'];?></td>
+        </tr>
+        <?php
+        echo $row_web_examinee['allow'];
+        $tmp1=strpos($row_web_examinee['allow'], '1');
+        echo $tmp1;
+          if( false !== $tmp1 ){
+            ?>
+
+        <tr>
+          <td height="30" align="right" class="board_add4">國民身分證正面：</td>
+          <td align="left" class="board_add4">
+            <div id="optionDiv2-1" style="display:inline-block;">
+             <span id="sprytextfield14">
+               <input type="file" name="news_pic4" id="news_pic4" />
+             </span><br/>
+            </div>
+          </td>
+           <td height="30" align="right" class="board_add4"></td>
+        </tr>
+      <?php }
+      $tmp2=strpos($row_web_examinee['allow'], '2');
+        if(false !== $tmp2){
+        ?>
+        <tr>
+          <td height="30" align="right" class="board_add4">國民身分證反面：</td>
+          <td align="left" class="board_add4">
+            <div id="optionDiv2-1" style="display:inline-block;">
+             <span id="sprytextfield14">
+               <input type="file" name="news_pic4" id="news_pic4" />
+             </span><br/>
+            </div>
+          </td>
+           <td height="30" align="right" class="board_add4"></td>
+        </tr>
+      <?php }
+        $tmp3=strpos($row_web_examinee['allow'], '3');
+        if(false !== $tmp3){
+        ?>
+        <tr>
+          <td height="30" align="right" class="board_add4">修畢師資職前<br>教育證明書：</td>
+          <td align="left" class="board_add4">
+            <div id="optionDiv2-1" style="display:inline-block;">
+             <span id="sprytextfield14">
+               <input type="file" name="news_pic4" id="news_pic4" />
+             </span><br/>
+            </div>
+          </td>
+           <td height="30" align="right" class="board_add4"></td>
+        </tr>
+      <?php }
+        $tmp4=strpos($row_web_examinee['allow'], '4');
+        if(false !== $tmp4){
+        ?>
+        <tr>
+          <td height="30" align="right" class="board_add4">實習學生證：</td>
+          <td align="left" class="board_add4">
+            <div id="optionDiv2-1" style="display:inline-block;">
+             <span id="sprytextfield14">
+               <input type="file" name="news_pic4" id="news_pic4" />
+             </span><br/>
+            </div>
+          </td>
+           <td height="30" align="right" class="board_add4"></td>
+        </tr>
+      <?php }
+        $tmp5=strpos($row_web_examinee['allow'], '5');
+        if(false !== $tmp5){
+        ?>
+        <tr>
+          <td height="30" align="right" class="board_add4">學生證正面：</td>
+          <td align="left" class="board_add4">
+            <div id="optionDiv2-1" style="display:inline-block;">
+             <span id="sprytextfield14">
+               <input type="file" name="news_pic4" id="news_pic4" />
+             </span><br/>
+            </div></td>
+           <td height="30" align="right" class="board_add4"></td>
+        </tr>
+      <?php }
+    }else if ($row_web_examinee['allow'] != 0 && $exam_type == '1'){ ?>
+    <tr>
+      <td height="30" ></td>
+      <td height="30" align="center" style="font-size: 21px; color: #F00;">補件資料上傳</td>
+      <td height="30" ><?php //echo $row_web_examinee['allow'];?></td>
+    </tr>
+    <?php
+
+    $tmp1=strpos($row_web_examinee['allow'], '1');
+      if( $tmp1 !== false){
+        ?>
+    <tr>
+      <td height="30" align="right" class="board_add4" style="width: 110px;">國民身分證正面：</td>
+      <td align="left" class="board_add4">
+        <div id="optionDiv2-1" style="display:inline-block;">
+         <span id="sprytextfield14">
+           <input type="file" name="news_pic4" id="news_pic4" />
+         </span><br/>
+        </div>
+      </td>
+       <td height="30" align="right" class="board_add4"></td>
+    </tr>
+  <?php }
+  $tmp2=strpos($row_web_examinee['allow'], '2');
+    if($tmp2 != flase){
+    ?>
+    <tr>
+      <td height="30" align="right" class="board_add4">國民身分證反面：</td>
+      <td align="left" class="board_add4">
+        <div id="optionDiv2-1" style="display:inline-block;">
+         <span id="sprytextfield14">
+           <input type="file" name="news_pic4" id="news_pic4" />
+         </span><br/>
+        </div>
+      </td>
+       <td height="30" align="right" class="board_add4"></td>
+    </tr>
+  <?php }
+    $tmp3=strpos($row_web_examinee['allow'], '3');
+    if($tmp3 !== flase){
+    ?>
+    <tr>
+      <td height="30" align="right" class="board_add4">最高學歷學位證書：</td>
+      <td align="left" class="board_add4">
+        <div id="optionDiv2-1" style="display:inline-block;">
+         <span id="sprytextfield14">
+           <input type="file" name="news_pic4" id="news_pic4" />
+         </span><br/>
+        </div>
+      </td>
+       <td height="30" align="right" class="board_add4"></td>
+    </tr>
+  <?php }
+    $tmp4=strpos($row_web_examinee['allow'], '4');
+    if($tmp4 !== flase){
+    ?>
+    <tr>
+      <td height="30" align="right" class="board_add4">國民小學教師證書：</td>
+      <td align="left" class="board_add4">
+        <div id="optionDiv2-1" style="display:inline-block;">
+         <span id="sprytextfield14">
+           <input type="file" name="news_pic4" id="news_pic4" />
+         </span><br/>
+        </div>
+      </td>
+       <td height="30" align="right" class="board_add4"></td>
+    </tr>
+  <?php }
+    $tmp5=strpos($row_web_examinee['allow'], '5');
+    if($tmp5 !== flase){
+    ?>
+    <tr>
+      <td height="30" align="right" class="board_add4">在職證明書：</td>
+      <td align="left" class="board_add4">
+        <div id="optionDiv2-1" style="display:inline-block;">
+         <span id="sprytextfield14">
+           <input type="file" name="news_pic4" id="news_pic4" />
+         </span><br/>
+        </div></td>
+       <td height="30" align="right" class="board_add4"></td>
+    </tr>
+  <?php }
+  }
+  ?>
       </table>
-  <?php } ?>
+      <?php
+
+        if($row_web_examinee['allow'] != 0 && $exam_type == '0'){ ?>
+      <div align="center">
+      <input  type="submit" name="button" id="button" value="確認上傳檔案" onclick="SaveAlert()" />
+    </div>
+  <?php }
+}?>
   </div>
   <div id="main4"></div>
 <?php include("footer.php"); ?>
