@@ -8,40 +8,40 @@ $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
-function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
-  // For security, start by assuming the visitor is NOT authorized. 
-  $isValid = False; 
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
+  // For security, start by assuming the visitor is NOT authorized.
+  $isValid = False;
 
-  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
-  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
-  if (!empty($UserName)) { 
-    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
-    // Parse the strings into arrays. 
-    $arrUsers = Explode(",", $strUsers); 
-    $arrGroups = Explode(",", $strGroups); 
-    if (in_array($UserName, $arrUsers)) { 
-      $isValid = true; 
-    } 
-    // Or, you may restrict access to only certain users based on their username. 
-    if (in_array($UserGroup, $arrGroups)) { 
-      $isValid = true; 
-    } 
-    if (($strUsers == "") && false) { 
-      $isValid = true; 
-    } 
-  } 
-  return $isValid; 
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username.
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank.
+  if (!empty($UserName)) {
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login.
+    // Parse the strings into arrays.
+    $arrUsers = Explode(",", $strUsers);
+    $arrGroups = Explode(",", $strGroups);
+    if (in_array($UserName, $arrUsers)) {
+      $isValid = true;
+    }
+    // Or, you may restrict access to only certain users based on their username.
+    if (in_array($UserGroup, $arrGroups)) {
+      $isValid = true;
+    }
+    if (($strUsers == "") && false) {
+      $isValid = true;
+    }
+  }
+  return $isValid;
 }
 
 $MM_restrictGoTo = "../index.php";
-if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0)
   $MM_referrer .= "?" . $QUERY_STRING;
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
-  header("Location: ". $MM_restrictGoTo); 
+  header("Location: ". $MM_restrictGoTo);
   exit;
 }
 ?>
@@ -49,7 +49,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <?php
 header("Cache-control:private");//解決session 引起的回上一頁表單被清空
 ?>
-	
+
 <?php
 // $text = "人文與藝術學院
 // 		應用歷史學系碩士在職專班";
@@ -97,7 +97,7 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 		}
 		$_ext_ = explode(".", $_name_);
 		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		
+
 
 		$file_name_title=$_file_['name'];
 
@@ -130,7 +130,7 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 <?php require_once('../Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -141,7 +141,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -167,8 +167,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-	
-	
+
+
 	include 'Excel/PHPExcel.php';
 	$file='frist/'.$newFilename;
 	if(is_file($file)){
@@ -187,19 +187,19 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 			$arr="";
 			//讀EXL 以行
 		foreach ($col as $colkey => $colvalue) {
-				 //$arr=$arr."{$colvalue},^"; //字串連接 
+				 //$arr=$arr."{$colvalue},^"; //字串連接
 	             //echo $arr;
 		}
-					
+
 			//$score=explode(",^",$arr); 		//切割
-		if($key != 1){		
-	        mysql_select_db($database_conn_web, $conn_web);  
+		if($key != 1){
+	        mysql_select_db($database_conn_web, $conn_web);
 			$query_web_member = sprintf("SELECT * FROM examinee WHERE id LIKE %s AND per_id LIKE %s ORDER BY id DESC LIMIT 0,1", GetSQLValueString($score[2], "text"),GetSQLValueString($score[6], "text"));
 			//echo $query_web_member;
 	        $web_member = mysql_query($query_web_member, $conn_web) or die(mysql_error());
 	        $row_web_member = mysql_fetch_assoc($web_member);
 	        $totalRows_web_member = mysql_num_rows($web_member);
-	        		   
+
 			if($totalRows_web_member == 0){
 				//系別,切割學院與科系
 				$High_college = explode(" ",$col['T'])[0];
@@ -224,63 +224,59 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 				}else{
 					$Sec_mk ="0";
 				}
-	       
-	       
+
+
 	       //變數$password取得新的隨機密碼
 	       //$password8=getRandNewPassword();
-		    
-		   		$insertSQL = sprintf("UPDATE examinee SET allow = %s , id_number = %s , con_mk = %s , 
-		   				con2_mk = %s , con3_mk = %s , copy_mk = %s , copy2_mk = %s , copy3_mk = %s , 
-		   				remark = %s , allow_note = %s , Highest = %s, Department = %s, High_college = %s , Edu_MK = %s, 
-		   				Sec_highest = %s, Sec_dept = %s, Sec_college = %s , Edu_MK2 = %s ,
-		   				eng_uname = %s, uname = %s, sex = %s, phone = %s , birthday = %s ,
-		   				cusadr = %s , school = %s, certificate = %s, contact_ph = %s, cert_no = %s, cert_id = %s
-		   				WHERE id LIKE %s",
-	                       GetSQLValueString($col['AD'], "text"), //allow
-						   GetSQLValueString($col['AE'], "text"), //id_number
-		   				   GetSQLValueString($col['AF'], "text"), //con_mk
-		   				   GetSQLValueString($col['AG'], "text"), //con2_mk
-		   				   GetSQLValueString($col['AH'], "text"), //con3_mk
-		   				   GetSQLValueString($col['AI'], "text"), //copy_mk
-		   				   GetSQLValueString($col['AJ'], "text"), //copy2_mk
-		   				   GetSQLValueString($col['AK'], "text"), //copy3_mk
-		   				   GetSQLValueString($col['AL'], "text"), //remark
-		   				   GetSQLValueString($col['AM'], "text"), //allow_note
-		   				   GetSQLValueString($col['S'], "text"), //Highest
-		   				   GetSQLValueString($High_dep, "text"), //Department ,update by coway 2016.11.2
-		   				   GetSQLValueString($High_college, "text"), //High_college,update by coway 2016.11.2
-		   				   GetSQLValueString($High_mk, "text"), //High_MK,update by coway 2016.11.2
-		   				   GetSQLValueString($col['V'], "text"), //Sec_highest
-		   				   GetSQLValueString($Sec_dep, "text"), //Sec_dept,update by coway 2016.11.2
-		   				   GetSQLValueString($Sec_college, "text"), //Sec_college,update by coway 2016.11.2
-		   				   GetSQLValueString($Sec_mk, "text"), //Sec_MK,update by coway 2016.11.2
-		   				   GetSQLValueString($col['D'], "text"), //eng_uname
-		   				   GetSQLValueString($col['C'], "text"), //uname
-		   				   GetSQLValueString($col['E'], "text"), //sex
-		   				   GetSQLValueString($col['H'], "text"), //phone
-		   				   GetSQLValueString($col['J'], "text"), //birthday
-		   				   GetSQLValueString($col['L'], "text"), //cusadr
-		   				   GetSQLValueString($col['O'], "text"),//school
-		   				   GetSQLValueString($col['P'], "text"),//certificate
-		   				   GetSQLValueString($col['R'], "text"),//contact_ph
-		   				   GetSQLValueString($col['AN'], "text"),//cert_no 身份別 ,add by coway 2016.10.25
-		   				   GetSQLValueString($col['AO'], "text"),//cert_id 身份流水號,add by coway 2016.10.25
-	                       GetSQLValueString($col['B'], "text")//,  //id  
+
+		   		$insertSQL = sprintf("UPDATE examinee SET allow = %s  , allow_note = %s , id_number = %s
+		   				WHERE id = %s",
+	                       GetSQLValueString($col['AE'], "text"), //allow
+
+		   				   // GetSQLValueString($col['AF'], "text"), //con_mk
+		   				   // GetSQLValueString($col['AG'], "text"), //con2_mk
+		   				   // GetSQLValueString($col['AH'], "text"), //con3_mk
+		   				   // GetSQLValueString($col['AI'], "text"), //copy_mk
+		   				   // GetSQLValueString($col['AJ'], "text"), //copy2_mk
+		   				   // GetSQLValueString($col['AK'], "text"), //copy3_mk
+		   				   // GetSQLValueString($col['AL'], "text"), //remark
+		   				   GetSQLValueString($col['AN'], "text"), //allow_note
+                 GetSQLValueString($col['AF'], "text"), //id_number
+		   				   // GetSQLValueString($col['S'], "text"), //Highest
+		   				   // GetSQLValueString($High_dep, "text"), //Department ,update by coway 2016.11.2
+		   				   // GetSQLValueString($High_college, "text"), //High_college,update by coway 2016.11.2
+		   				   // GetSQLValueString($High_mk, "text"), //High_MK,update by coway 2016.11.2
+		   				   // GetSQLValueString($col['V'], "text"), //Sec_highest
+		   				   // GetSQLValueString($Sec_dep, "text"), //Sec_dept,update by coway 2016.11.2
+		   				   // GetSQLValueString($Sec_college, "text"), //Sec_college,update by coway 2016.11.2
+		   				   // GetSQLValueString($Sec_mk, "text"), //Sec_MK,update by coway 2016.11.2
+		   				   // GetSQLValueString($col['D'], "text"), //eng_uname
+		   				   // GetSQLValueString($col['C'], "text"), //uname
+		   				   // GetSQLValueString($col['E'], "text"), //sex
+		   				   // GetSQLValueString($col['H'], "text"), //phone
+		   				   // GetSQLValueString($col['J'], "text"), //birthday
+		   				   // GetSQLValueString($col['L'], "text"), //cusadr
+		   				   // GetSQLValueString($col['O'], "text"),//school
+		   				   // GetSQLValueString($col['P'], "text"),//certificate
+		   				   // GetSQLValueString($col['R'], "text"),//contact_ph
+		   				   // GetSQLValueString($col['AN'], "text"),//cert_no 身份別 ,add by coway 2016.10.25
+		   				   // GetSQLValueString($col['AO'], "text"),//cert_id 身份流水號,add by coway 2016.10.25
+	                       GetSQLValueString($col['B'], "text")//,  //id
 						   //GetSQLValueString($col['F'], "text")   //per_id
 						   );
-						   
+
 						  // echo $insertSQL;
 
 	       		mysql_select_db($database_conn_web, $conn_web);
 	       		$Result1 = mysql_query($insertSQL, $conn_web) or die(mysql_error());
-		   
+
 	       		if($Result1) $sumSuccess++;
-		   
+
 			}else{
 	        	$sumexist++;
 			}
 		}
-	      	 
+
 	}
 	$sumFail=$sumSheet-1-$sumexist-$sumSuccess;
 	$_SESSION[sumFail]=$sumFail;
@@ -326,14 +322,14 @@ $totalRows_web_new = mysql_num_rows($web_new);
         <td width="416" align="left" background="../images/board04.gif"></td>
         <td width="10" align="right"><img src="../images/board05.gif" width="10" height="28" /></td>
       </tr>
-    
+
       <tr>
         <td width="25" align="left"></td>
         <td width="140" align="left">
 <div><span class="font_red">管理員</span>您好
- </div>      
+ </div>
         </td>
-        <td width="416" align="left" >&nbsp;</td>     
+        <td width="416" align="left" >&nbsp;</td>
       </tr>
     </table>
     <table width="550" border="0" align="center" cellpadding="5" cellspacing="0">
@@ -349,7 +345,7 @@ $totalRows_web_new = mysql_num_rows($web_new);
           </label>
           <br />
         <span class="font_red">**接受格式：</span><span class="font_red">xls、xlsx，</span><span class="font_red">大小目前限制30MB!!</span></p></td>
-      </tr>            
+      </tr>
       <tr>
         <td height="20" align="right" class="board_add">範 例 檔 案：</td>
         <td align="left" class="board_add"><a href="downloadFile/dateY-test.xls">Excel範例檔</a>

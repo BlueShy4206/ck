@@ -380,7 +380,7 @@ $html = <<<EOF
 		<tr><td colspan='3'><span style='font-size: 8px;'>$note</span><span style='font-size: 12px;'>成績效期：成績公布日$pub_time 起算三年内有效</span></td></tr>
 		<tr><td width='120'></td>
         	<td width='120' align='right'></td>
-        	<td width='240' colspan='2'><span style='font-size: 14px;'><br><br>教師專業能力測驗中心</span><br>
+        	<td width='240' colspan='2'><span style='font-size: 14px;'><br>><br>教師專業能力測驗中心</span><br>
 			<span style='font-size: 10px;'>(教育部104年7月14日臺教師(二)字第1040091018號函委託國立臺中教育大學辦理)
         		<br>地址：臺中市西區民生路140號
 				<br>電話：(04) 2218-3651

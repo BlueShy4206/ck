@@ -1,7 +1,9 @@
-<?php require_once('Connections/conn_web.php'); ?>
+<?php
+ini_set("session.cookie_httponly", 1);
+require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +14,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -139,12 +141,12 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
         </td>
       </tr>
     </table>
-  
+
 
 <div id="content">
     <img src="images/news.png" width="500" height="48" /><br />
-   
-    
+
+
     <table width="500" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
       <?php do { ?>
         <tr>
@@ -166,8 +168,8 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
           <td width="292" align="left" class="underline1"> &nbsp; <a href="news_detial.php?news_id=<?php echo $row_web_news['news_id']; ?>"><?php echo $row_web_news['news_title']; ?></a>&nbsp; &nbsp; <?php /*START_PHP_SIRFCIT*/ if ($row_web_news['news_date'] > date("Y-m-d",strtotime("-7 day"))){ ?>
               <img src="images/icon_new.gif" width="23" height="9" />
               <?php } /*END_PHP_SIRFCIT*/ ?>
-              
-                <?php 
+
+                <?php
 		  //若為置頂公告則增添TOP圖示
 		  /*START_PHP_SIRFCIT*/ if ($row_web_news['news_top']==1){ ?>
               <img src="images/icon_top.gif" width="23" height="9" />
@@ -218,8 +220,8 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
           <td width="292" align="left" class="underline1"> &nbsp; <a href="news_detial.php?news_id=<?php echo $row_web_news2['news_id']; ?>"><?php echo $row_web_news2['news_title']; ?></a>&nbsp; &nbsp; <?php /*START_PHP_SIRFCIT*/ if ($row_web_news2['news_date'] > date("Y-m-d",strtotime("-7 day"))){ ?>
               <img src="images/icon_new.gif" width="23" height="9" />
               <?php } /*END_PHP_SIRFCIT*/ ?>
-              
-                <?php 
+
+                <?php
 		  //若為置頂公告則增添TOP圖示
 		  /*START_PHP_SIRFCIT*/ if ($row_web_news2['news_top']==1){ ?>
               <img src="images/icon_top.gif" width="23" height="9" />
@@ -230,14 +232,14 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
     </table>
    </div>
   </div>
-   
+
   <div id="main4"></div>
 
 
 <?php include("footer.php"); ?>
 <script type="text/javascript">
 <!--
-//swfobject.registerObject("FlashID"); 
+//swfobject.registerObject("FlashID");
 //-->
 </script>
 

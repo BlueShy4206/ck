@@ -1,5 +1,6 @@
 <?php require_once('login_check.php');
 require_once "PEAR183/HTML/QuickForm.php";
+require_once "examAdd_function.php";
 ?>
 <?php
 header("Cache-control:private");//解決session 引起的回上一頁表單被清空
@@ -7,8 +8,9 @@ header("Cache-control:private");//解決session 引起的回上一頁表單被�
 
 <?php
 //	---------------------------------------------
-//	Pure PHP PIC Upload version 1.1
+//  師資生報名頁面
 //	-------------------------------------------
+
 if (phpversion() > "4.0.6") {
 	$HTTP_POST_FILES = &$_FILES;
 }
@@ -17,6 +19,7 @@ define("DESTINATION_PIC_FOLDER", "images/examinee");
 define("DESTINATION_PIC_FOLDER_ID", "images/examinee/id_check");
 define("no_error", "examOut.php");
 define("yes_error", "examAdd2.php");
+
 $_accepted_PIC_extensions_ = "jpg,gif,png";
 if(strlen($_accepted_PIC_extensions_) > 0){
 	$_accepted_PIC_extensions_ = @explode(",",$_accepted_PIC_extensions_);
@@ -26,89 +29,92 @@ if(strlen($_accepted_PIC_extensions_) > 0){
 /*	modify */
 @$news_pic_title=$_POST["oldPictitle"];
 @$newPicname=$_POST["oldPic"]; //變數$news_pic_title先儲存之前舊圖片檔名，如果沒有更新圖片，news_pic圖片欄位就繼續存入舊圖檔名
-if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
-	if(is_uploaded_file($HTTP_POST_FILES['news_pic']['tmp_name']) && $HTTP_POST_FILES['news_pic']['error'] == 0){
-		$_file_ = $HTTP_POST_FILES['news_pic'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		if($src_w2 > 100){
-			$thumb_w2 = intval($src_h2 / $src_w2 * 100);
-			$thumb_h2 = intval($src_h2 / $src_w2 * 130);
-		}else{
-			$thumb_h2 = intval($src_w2 / $src_h2 * 130);
-			$thumb_w2 = intval($src_w2 / $src_h2 * 100);
-		}
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER) && is_writeable(DESTINATION_PIC_FOLDER)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname=date("YmdHis")."_$attach.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/".$newPicname);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/".$newPicname);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/".$newPicname);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-		    exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+if(!empty($HTTP_POST_FILES['upload_hpic'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
+	if(is_uploaded_file($HTTP_POST_FILES['upload_hpic']['tmp_name']) && $HTTP_POST_FILES['upload_hpic']['error'] == 0){
+		$_file_ = $HTTP_POST_FILES['upload_hpic'];
+		upload_pic('upload_hpic',$_file_);
+		print_r($_file_);
+		die();
+		// $errStr = "";
+		// $_name_ = $_file_['name'];
+		// $_type_ = $_file_['type'];
+		// $_tmp_name_ = $_file_['tmp_name'];
+		// $_size_ = $_file_['size'];
+		// header ('Content-type: text/html; charset=utf-8');//指定編碼
+		// if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
+		// 	$errStr = "File troppo pesante";
+		// 	echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
+		// }
+		// $_ext_ = explode(".", $_name_);
+		// $attach = $_POST['username'];
+		// $_ext_ = strtolower($_ext_[count($_ext_)-1]);
+		// $news_pic_title=$_file_['name'];
+		// $pic_type = $_file_['type'];
+		// //echo "$pic_type";
+		//
+		// //取原圖的大小進行比例處理
+		// switch ($pic_type){
+		// 	case "image/jpeg":
+		// 		$src2 = imagecreatefromjpeg($_FILES['upload_hpic']['tmp_name']);
+		// 		break;
+		// 	case "image/png":
+		// 		$src2 = imagecreatefrompng($_FILES['upload_hpic']['tmp_name']);
+		// 		break;
+		// 	case "image/gif":
+		// 		$src2 = imagecreatefromgif($_FILES['upload_hpic']['tmp_name']);
+		// 		break;
+		// }
+		// $src_w2 = imagesx($src2);
+		// $src_h2 = imagesy($src2);
+		// if($src_w2 > 100){
+		// 	$thumb_w2 = intval($src_h2 / $src_w2 * 100);
+		// 	$thumb_h2 = intval($src_h2 / $src_w2 * 130);
+		// }else{
+		// 	$thumb_h2 = intval($src_w2 / $src_h2 * 130);
+		// 	$thumb_w2 = intval($src_w2 / $src_h2 * 100);
+		// }
+		//
+		// if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
+		// 	$errStr = "Estensione non valida";
+		// 	echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
+		// }
+		// if(!is_dir(DESTINATION_PIC_FOLDER) && is_writeable(DESTINATION_PIC_FOLDER)){
+		// 	$errStr = "Cartella di destinazione non valida";
+		// 	echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
+		// }
+		// if(empty($errStr)){
+		// 	$newPicname=date("YmdHis")."_$attach.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
+		// 	//進行縮圖
+		// 	$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
+		// 	imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
+		// 	switch ($pic_type){
+		// 		case "image/jpeg":
+		// 			$resultOK= imagejpeg($thumb2, "images/smallPic/".$newPicname);
+		// 			break;
+		// 		case "image/png":
+		// 			$resultOK= imagepng($thumb2, "images/smallPic/".$newPicname);
+		// 			break;
+		// 		case "image/gif":
+		// 			$resultOK= imagegif($thumb2, "images/smallPic/".$newPicname);
+		// 			break;
+		// 	}
+		//
+		//
+		// 	if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
+		// 		@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
+		// 		//header("Location: " . no_error);
+		// 	} else {
+		// 		echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
+		// 		echo "<script>history.back()</script>";//回上一頁
+		// 		exit;                                  //停止後續程式碼的繼續執行
+		// 		//header("Location: " . yes_error);
+		// 	}
+		// } else {
+		// 	echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
+		// 	echo "<script>history.back()</script>";//回上一頁
+		//     exit;	                               //停止後續程式碼的繼續執行
+		// 	//header("Location: " . yes_error);
+		// }
 	}
 }
 //1********************  BlueS 20180302 將身分證等資料傳至網頁
@@ -1333,12 +1339,14 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		// 	});
 		// })(radio3_upload,radio3);
 
-		$('#optionDiv1').hide();
-		$('#optionDiv1-1').hide();
+		$('#optionDiv1').show();//修畢師資職前教育證明書
+		$('#optionDiv1-1').show();
 		$('#optionDiv2').hide();
 		$('#optionDiv2-1').hide();
-		$('#optionDiv3').show();
-		$('#optionDiv3-1').show();
+		$('#optionDiv3').hide();
+		$('#optionDiv3-1').hide();
+		$('#optionDiv4').hide();
+		$('#optionDiv4-1').hide();
 		$('#special_upload').hide();
 		$('.radio-inline').change(function(){
 
@@ -1352,6 +1360,8 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 					$('#optionDiv2-1').hide();
 					$('#optionDiv3').hide();
 					$('#optionDiv3-1').hide();
+					$('#optionDiv4').hide();
+					$('#optionDiv4-1').hide();
 			}else if(selected_radio_value == '2') {
 					$('#optionDiv1').hide();
 					$('#optionDiv1-1').hide();
@@ -1359,6 +1369,8 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 					$('#optionDiv2-1').show();
 					$('#optionDiv3').hide();
 					$('#optionDiv3-1').hide();
+					$('#optionDiv4').hide();
+					$('#optionDiv4-1').hide();
 			}else if(selected_radio_value == '3') {
 					$('#optionDiv1').hide();
 					$('#optionDiv1-1').hide();
@@ -1366,6 +1378,17 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 					$('#optionDiv2-1').hide();
 					$('#optionDiv3').show();
 					$('#optionDiv3-1').show();
+					$('#optionDiv4').hide();
+					$('#optionDiv4-1').hide();
+			}else if(selected_radio_value == '4') {
+					$('#optionDiv1').hide();
+					$('#optionDiv1-1').hide();
+					$('#optionDiv2').hide();
+					$('#optionDiv2-1').hide();
+					$('#optionDiv3').hide();
+					$('#optionDiv3-1').hide();
+					$('#optionDiv4').show();
+					$('#optionDiv4-1').show();
 			}
 		});
 		$('.radio-special').change(function(){
@@ -1468,7 +1491,13 @@ if(input_sp==1){
 
 	function popIdMsg(){
 		var winvar;
-			window.open('popIdMsg.php','msg','resizable=no,top=220,left=900,height=200,width=400,scrollbars=no,menubar=no,location=no,status=no,titlebar=no,toolbar=no');
+		swal({
+  			title: "同類別中以完成網路報名時間先後為錄取順序之排定報名完成時間較早者為優先",
+  			text: "※請確實點選報考資格，經查核資料不實者，即取消本次應考資格※",
+  			icon: "warning",
+  			button: "確定!",
+		});
+			// window.open('popIdMsg.php','msg','resizable=no,top=220,left=900,height=200,width=400,scrollbars=no,menubar=no,location=no,status=no,titlebar=no,toolbar=no');
 // 		winvar = window.open('localhost', '', config='toolbar=no,top=220,left=900,height=200,width=400,scrollbars=no,resizable=0,menubar=no,location=no,status=no');
 // 		var text1 ="※請確實點選應考資格， 經查核資料不實者，即取消本次應考資格※";
 // 		winvar.document.writeln("&nbsp;&nbsp;&nbsp;&nbsp;教師專業能力測驗中心將依報考資格開放錄取順序，於郵寄報名表件審查時列為正取或備取。<br>各考場正取應考人經審核後若有報名資格不符等情事，由本中心依序通知備取應考人遞補。<br><br>"+text1.bold().fontcolor('red'));
@@ -1584,7 +1613,8 @@ if(input_sp==1){
         <tr>
           <td width="82" height="30" align="right" class="board_add"><span class="font_red">* </span>姓名：</td>
           <td width="458" align="left" class="board_add"><label>
-            <input name="uname" type="text" id="uname" value="<?php echo $row_web_member['uname']; ?>" />
+			  <?php echo $row_web_member['uname'];?>
+            <input name="uname" type="hidden" id="uname" value="<?php echo $row_web_member['uname']; ?>" />
           </label></td>
         </tr>
 				<tr>
@@ -1619,7 +1649,7 @@ if(input_sp==1){
           <?php //echo $row_web_examinee2['pic_title']; ?><br />
           <label>
           <span id="sprytextfield10">
-            <input type="file" name="news_pic" id="news_pic" />
+            <input type="file" name="upload_hpic" id="upload_hpic" />
             <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
           </span>
           </label>
@@ -1705,13 +1735,15 @@ if(input_sp==1){
           </td>
         </tr>
         <tr>
-          <td height="30" align="right" class="board_add"><span class="font_red">* </span>詳細地址：</td>
+          <td height="30" align="right" class="board_add"><span class="font_red">* </span>詳細地址：<br><br></td>
           <td align="left" class="board_add"><span class="bs">
             <span id="sprytextfield3">
             <label for="cusadr"></label>
             <input type="text" name="cusadr" id="cusadr" value="<?php echo $row_web_member['cusadr']; ?>" size="60" />
-            <span class="textfieldRequiredMsg">請輸入地址</span><span class="textfieldMinCharsMsg">請輸入地址</span></span></span></td>
-        </tr>
+            <span class="textfieldRequiredMsg">請輸入地址</span><span class="textfieldMinCharsMsg">請輸入地址</span></span></span>
+		<br><span class="font_red"><?php echo "**(請填寫有效地址，寄發精熟級證書用)";?></span> </td>
+
+		</tr>
         <tr>
           <td height="30" align="right" colspan="2" class="board_add">=========================================================================================</td>
         </tr>
@@ -1734,28 +1766,35 @@ if(input_sp==1){
             </td>
         </tr> -->
          <tr>
-          <td height="30" align="right" class="board_add"><span class="font_red">* </span>報考資格：<br>錄取順序一.<br>錄取順序二.<br>錄取順序三.</td>
+          <td height="30" align="right" class="board_add"><span class="font_red">* </span>報考資格：<br>錄取順序一.<br>錄取順序二.<br>錄取順序三.<br>錄取順序四.</td>
            <td align="left" class="board_add">
-          <label>本評量報考資格分為五類，其錄取順序如下：<br>
+          <label>本評量報考資格分為四類，其錄取順序如下：<br>
 							<label class="radio-inline">
-	          	<input <?php if (!(strcmp($row_web_examinee2['cert_no'],"1"))) {echo "checked=\"checked\"";} ?> type="radio" name="id" id="radio1" value="1"  onclick="popIdMsg();" />
-			          	<?php echo $allguide_lot[0]['nm']."<br>"?>
+	          					<input type="radio" name="id" id="radio1" value="1"  onclick="popIdMsg();"  Checked/>
+			          			<?php echo $allguide_lot[0]['nm']."<br>"?>
 							</label>
 							<label class="radio-inline">
-			          	<input <?php if (!(strcmp($row_web_examinee2['cert_no'],"2"))) {echo "checked=\"checked\"";} ?> type="radio" name="id" id="radio2" value="2" onclick="popIdMsg();" />
-			          	<?php echo $allguide_lot[1]['nm']."<br>"?>
+			          			<input type="radio" name="id" id="radio2" value="2" onclick="popIdMsg();" />
+			          			<?php echo $allguide_lot[1]['nm']."<br>"?>
 							</label>
 							<label class="radio-inline">
-			          	<input <?php if (!(strcmp($row_web_examinee2['cert_no'],"3"))) {echo "checked=\"checked\"";} ?> type="radio" name="id" id="radio3" value="3" checked onclick="popIdMsg();" />
-			          	<?php echo $allguide_lot[2]['nm']."<br>"?>
+			          			<input type="radio" name="id" id="radio3" value="3"  onclick="popIdMsg();" />
+			          			<?php echo $allguide_lot[2]['nm']."<br>"?>
+							</label>
+							<label class="radio-inline">
+			          			<input type="radio" name="id" id="radio4" value="4"  onclick="popIdMsg();" />
+			          			<?php echo $allguide_lot[3]['nm']."<br>"?>
 							</label>
           </label>
           </td>
          </tr>
 				 <!-- 上傳相片 BlueS 20180307 -->
 				 <tr>
-					 <td height="30" align="right" class="board_add" valign="top" style="line-height: 24px;"><span class="font_red">* </span>國民身分證正面：<br><span class="font_red">* </span>國民身分證反面：<br><div id="optionDiv1" style="display:inline-block;"><span class="font_red">* </span>修畢師資職前教育<br>
-						 證明書：<br></div><div id="optionDiv2" style="display:inline-block;"><span class="font_red">* </span>實習學生證：<br></div><div id="optionDiv3" style="display:inline-block;"><span class="font_red">* </span>學生證正面：</div></td>
+					 <td height="30" align="right" class="board_add" valign="top" style="line-height: 24px;"><span class="font_red">* </span>國民身分證正面：<br><span class="font_red">* </span>國民身分證反面：<br>
+						 <div id="optionDiv1" style="display:inline-block;"><span class="font_red">* </span><span style="text-align:left;">學生證正面</span><br>(需有個人資訊)：<br></div>
+						 <div id="optionDiv2" style="display:inline-block;"><span class="font_red">* </span>修畢師資職前教育<br>證明書：<br></div>
+						 <div id="optionDiv3" style="display:inline-block;"><span class="font_red">* </span>實習學生證：</div>
+						 <div id="optionDiv4" style="display:inline-block;"><span class="font_red">* </span>國小教師證書：</div></td>
 					 <td class="board_add">
 						 <span id="sprytextfield11">
 							 <input type="file" name="news_pic1" id="news_pic1" />
@@ -1765,24 +1804,30 @@ if(input_sp==1){
 							 <input type="file" name="news_pic2" id="news_pic2" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
 						 </span><br/>
-						<div id="optionDiv1-1" style="display:inline-block;">
+						<div id="optionDiv1-1" style="display:inline-block;"><br>
 						 <span id="sprytextfield13">
 							 <input type="file" name="news_pic3" id="news_pic3" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
 						 </span><br/>
 					 	</div>
-						<div id="optionDiv2-1" style="display:inline-block;">
+						<div id="optionDiv2-1" style="display:inline-block;"><br>
 						 <span id="sprytextfield14">
 							 <input type="file" name="news_pic4" id="news_pic4" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
 						 </span><br/>
-					 </div>
-						 <div id="optionDiv3-1" style="display:inline-block;">
+					 	</div>
+						<div id="optionDiv3-1" style="display:inline-block;">
 							 <span id="sprytextfield15">
 								 <input type="file" name="news_pic5" id="news_pic5" />
 								 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
 							 </span><br/>
-					 	</div><br/>
+					 	</div>
+						<div id="optionDiv4-1" style="display:inline-block;">
+							<span id="sprytextfield16">
+								<input type="file" name="news_pic6" id="news_pic6" />
+								<span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
+							</span><br/>
+					   </div><br/>
 						<span class="font_red">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span>
 					 </td>
 				 </tr>
@@ -2069,6 +2114,7 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 
 <?php include("footer.php"); ?>
 </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {minChars:4, validateOn:["blur", "change"]});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "none", {minChars:2, validateOn:["blur", "change"]});

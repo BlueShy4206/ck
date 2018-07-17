@@ -1,7 +1,3 @@
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=big5">
-</head>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -71,6 +67,7 @@ if(strlen($_accepted_FILE_extensions_) > 0){
 	$_accepted_FILE_extensions_ = array();
 }
 /*	modify */
+
 if(!empty($HTTP_POST_FILES['file_name'])){
 	if(is_uploaded_file($HTTP_POST_FILES['file_name']['tmp_name']) && $HTTP_POST_FILES['file_name']['error'] == 0){
 		$_file_ = $HTTP_POST_FILES['file_name'];
@@ -99,10 +96,11 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 			$errStr = "Cartella di destinazione non valida";
 			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
 		}
+
 		if(empty($errStr)){
 			if(@copy($_tmp_name_,DESTINATION_FILE_FOLDER . "/" . date("YmdHis.").$_ext_)){ //修改自動重新命名
 				$newFilename=date("YmdHis.").$_ext_;//變數$newname取得新檔案名，供寫入資料庫
-				header("Location: " . no_error);
+				// header("Location: " . no_error);
 			} else {
 				echo "<script>javascript:alert(".$errStr.");</script>";//回上一頁history.back()
 				exit;                                  //停止後續程式碼的繼續執行
@@ -158,7 +156,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$data = new Spreadsheet_Excel_Reader();
 	$data->setOutputEncoding('UTF-8');
-  $data->setUTFEncoder('mb');
 	$data->read('score/'.$newFilename);
 	error_reporting(E_ALL ^ E_NOTICE);
 
@@ -171,7 +168,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 		for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
 			 $score[$j]=$data->sheets[0]['cells'][$i][$j];
 		}
-
+        // print_r($score);
+        // die();
 		mysql_select_db($database_conn_web, $conn_web);
 		/*$query_web_member = sprintf("SELECT * FROM examinee WHERE id_number like %s ORDER BY id DESC LIMIT 0,1", GetSQLValueString($score[2].'%', "text"));
 		$web_member = mysql_query($query_web_member, $conn_web) or die(mysql_error());
@@ -195,10 +193,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 		//待調整為:先檢查資料(准考證)是否存在，若存在則更新成績與等級，若不存在則新增
 		//add note1~note4,各科違規備註 , by coway 2017.1.3
-    // $score[6]=iconv(“UTF-8″,"BIG5″,$score[6]);
 		$insertSQL = sprintf("INSERT INTO score (score_id, score_time, score_cpoint, c_level, score_mpoint, m_level, score_spoint, s_level, score_ppoint, p_level, note1, note2, note3, note4) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($score[2], "text"),
-                       GetSQLValueString($score[3], date("Y-m-d")),//
+                       GetSQLValueString($score[3], "text"),//
 					   GetSQLValueString($score[5], "text"),
 					   GetSQLValueString($score[6], "text"),
 					   GetSQLValueString($score[7], "text"),
@@ -207,15 +204,17 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 					   GetSQLValueString($score[10], "text"),
 					   GetSQLValueString($score[11], "text"),
 					   GetSQLValueString($score[12], "text"),
-					   GetSQLValueString($score[13], "text"),//國語1,違規備註
-					   GetSQLValueString($score[14], "text"),//數學2,違規備註
-					   GetSQLValueString($score[15], "text"),//社會3,違規備註
-					   GetSQLValueString($score[16], "text"));//自然4,違規備註
+					   "'".$score[13]."'",//國語1,違規備註
+					   "'".$score[14]."'",//數學2,違規備註
+					   "'".$score[15]."'",//社會3,違規備註
+					   "'".$score[16]."'");//自然4,違規備註
 
 		mysql_select_db($database_conn_web, $conn_web);
+        // echo $insertSQL;
 		$Result1 = mysql_query($insertSQL, $conn_web) or die(mysql_error());
 		if($Result1) $sumSuccess++;
 	}
+
 	$sumFail=$sumSheet-1-$sumexist-$sumSuccess;
 	$_SESSION[sumFail]=$sumFail;
 	$_SESSION[sumexist]=$sumexist;

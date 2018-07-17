@@ -6,40 +6,40 @@ $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
-function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
-  // For security, start by assuming the visitor is NOT authorized. 
-  $isValid = False; 
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
+  // For security, start by assuming the visitor is NOT authorized.
+  $isValid = False;
 
-  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
-  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
-  if (!empty($UserName)) { 
-    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
-    // Parse the strings into arrays. 
-    $arrUsers = Explode(",", $strUsers); 
-    $arrGroups = Explode(",", $strGroups); 
-    if (in_array($UserName, $arrUsers)) { 
-      $isValid = true; 
-    } 
-    // Or, you may restrict access to only certain users based on their username. 
-    if (in_array($UserGroup, $arrGroups)) { 
-      $isValid = true; 
-    } 
-    if (($strUsers == "") && false) { 
-      $isValid = true; 
-    } 
-  } 
-  return $isValid; 
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username.
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank.
+  if (!empty($UserName)) {
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login.
+    // Parse the strings into arrays.
+    $arrUsers = Explode(",", $strUsers);
+    $arrGroups = Explode(",", $strGroups);
+    if (in_array($UserName, $arrUsers)) {
+      $isValid = true;
+    }
+    // Or, you may restrict access to only certain users based on their username.
+    if (in_array($UserGroup, $arrGroups)) {
+      $isValid = true;
+    }
+    if (($strUsers == "") && false) {
+      $isValid = true;
+    }
+  }
+  return $isValid;
 }
 
 $MM_restrictGoTo = "../index.php";
-if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0)
   $MM_referrer .= "?" . $QUERY_STRING;
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
-  header("Location: ". $MM_restrictGoTo); 
+  header("Location: ". $MM_restrictGoTo);
   exit;
 }
 ?>
@@ -47,7 +47,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <?
 header("Cache-control:private");//解決session 引起的回上一頁表單被清空
 ?>
-	
+
 <?php
 
 //	---------------------------------------------
@@ -82,7 +82,7 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 		}
 		$_ext_ = explode(".", $_name_);
 		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		
+
 
 		$file_name_title=$_file_['name'];
 
@@ -98,7 +98,7 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 		if(empty($errStr)){
 			if(@copy($_tmp_name_,DESTINATION_FILE_FOLDER . "/" . date("YmdHis.").$_ext_)){ //修改自動重新命名
 				$newFilename=date("YmdHis.").$_ext_;//變數$newname取得新檔案名，供寫入資料庫
-				header("Location: " . no_error);
+				// header("Location: " . no_error);
 			} else {
 				echo "<script>javascript:alert(".$errStr.");</script>";//回上一頁history.back()
 				exit;                                  //停止後續程式碼的繼續執行
@@ -115,18 +115,18 @@ if(!empty($HTTP_POST_FILES['file_name'])){
 <?php require_once('../Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 	{
 	  if (PHP_VERSION < 6) {
 	    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
 	  }
-	
+
 	  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-	
+
 	  switch ($theType) {
 	    case "text":
 	      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-	      break;    
+	      break;
 	    case "long":
 	    case "int":
 	      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -156,17 +156,17 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$data->setOutputEncoding('UTF-8');
 	$data->read('score/'.$newFilename);
 	error_reporting(E_ALL ^ E_NOTICE);
-	
+
 	$sumSheet = $data->sheets[0]['numRows'];
 	$sumSuccess = 0;
 	$sumFail = 0;
 	$sumexist = 0;
-	
+
 	for ($i = 2; $i <= $data->sheets[0]['numRows']; $i++) {
 		for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
 			 $score[$j]=$data->sheets[0]['cells'][$i][$j];
 		}
-		
+
 		mysql_select_db($database_conn_web, $conn_web);
 		$query_web_member = sprintf("SELECT * FROM examinee WHERE id_number like %s ORDER BY id DESC LIMIT 0,1", GetSQLValueString($score[2].'%', "text"));
 		$web_member = mysql_query($query_web_member, $conn_web) or die(mysql_error());
@@ -187,14 +187,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 		}elseif ($score[6]=="高雄"){
 			$examyear = $row_web_time["sdate"];
 		}
-		
+        // echo $score[2]."<br>".$examyear."<br>".$score[4]."<br>".$score[5];
 		//待調整為:先檢查資料(准考證)是否存在，若存在則更新成績與等級，若不存在則新增
 		$insertSQL = sprintf("INSERT INTO score (score_id, score_time, $score_point, $score_level) VALUES (%s, %s, %s, %s)",
 	                       GetSQLValueString($score[2], "text"),
 	                       GetSQLValueString($examyear, date),
 						   GetSQLValueString($score[4], "text"),
 						   GetSQLValueString($score[5], "text"));
-	
+
 		mysql_select_db($database_conn_web, $conn_web);
 		$Result1 = mysql_query($insertSQL, $conn_web) or die(mysql_error());
 		if($Result1) $sumSuccess++;
@@ -239,15 +239,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
         <td width="416" align="left" background="../images/board04.gif"></td>
         <td width="10" align="right"><img src="../images/board05.gif" width="10" height="28" /></td>
       </tr>
-    
+
       <tr>
         <td width="25" align="left"></td>
         <td width="140" align="left">
 <div><span class="font_red">管理員</span>您好
- </div>      
+ </div>
         </td>
         <td width="416" align="left" >&nbsp;</td>
-               
+
       </tr>
     </table>
     <table width="550" border="0" align="center" cellpadding="5" cellspacing="0">

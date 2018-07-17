@@ -400,6 +400,12 @@ function getStatus($value){
           <td align="left" class="board_add"><?php echo $row_web_examinee['Highest'].'('.$status_leve.')'; ?></td>
         <td height="30" align="right" class="board_add"></td>
         </tr>  <?php } ?>
+		<tr>
+        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
+          <td height="30" align="right" class="board_add">學院：</td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['High_college']; ?></td>
+          <td height="30" align="right" class="board_add"></td>
+        </tr>
         <tr>
         <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
           <td height="30" align="right" class="board_add">科系：</td>
@@ -535,7 +541,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic3_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">修畢師資職前教育<br>證明書：</td>
+	          <td width="20" height="30" align="right" class="board_add">學生證正面：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic3_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -543,7 +549,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic4_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">實習學生證：</td>
+	          <td width="20" height="30" align="right" class="board_add">修畢師資職前教育<br>證明書：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic4_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -551,10 +557,18 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic5_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">學生證正面：</td>
+	          <td width="20" height="30" align="right" class="board_add">實習學生證：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic5_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic6_name]){?>
+					<tr>
+	        			<td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
+	          			<td width="20" height="30" align="right" class="board_add">實習學生證：</td>
+	          			<td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic6_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        			<td height="30" align="right" class="board_add"></td>
+	        		</tr>
 				<?php }
 				if(null !== $row_examinee_pic[special_pic_name1]){?>
 					<tr>

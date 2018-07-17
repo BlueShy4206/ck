@@ -161,8 +161,8 @@ function resultOnload() {
           <td width="90" align="center" class="underline1">列印成績單</td>
           <td width="90" align="center" class="underline1">申請證明書</td>
         </tr>
-        <?php $i=0; ?>
-      <?php while ($row_web_news = mysql_fetch_assoc($web_news)) { ?>
+
+      <?php do { ?>
         <tr>
           <td width="20" height="25" align="right" class="underline1">‧</td>
           <td width="100" class="underline1" align="center">
@@ -189,10 +189,8 @@ function resultOnload() {
           } ?> </td>
 
           <td width="50" align="center" class="underline1">
-          <?php
-          if($row_web_news['score_spoint'] == 0){
-            if($row_web_news['score_spoint'] == null) echo " "; else echo '不計分';
-          }
+          <?php if($row_web_news['score_spoint'] == 0){
+          if($row_web_news['score_spoint'] == null) echo " "; else echo '不計分';}
           else{
           	echo $row_web_news['score_spoint']."<br>($row_web_news[s_level])";
           	if($row_web_news['s_level'] == '精熟') $showPrint_mk=true;
@@ -208,36 +206,36 @@ function resultOnload() {
           } ?> </td>
           <td align="center" class="underline1">
           <?php if($row_web_news['score_id'] !=""){ ?>
-          	<img class="img-40" id=<?php echo $i; ?> src="images/icon_print.png" onclick="$('#dlg_score').dialog('open')" />
-            <div style="display:none;" id="dlg_score" class="easyui-dialog" title="選擇成績單列印科目" style="width:400px;height:200px;padding:10px"
-          data-options="
-            buttons: [{
-              text:'Print',
-              iconCls:'icon-ok',
-              method:'get',
-              handler:function(){
-                $('#login-form').submit();
-              }
-            },{
-              text:'Cancel',
-              handler:function(){
-                $('#dlg_score').dialog('close');
-              }
-            }]
-          ">
-          <script>$('#dlg_score').dialog('close');</script>
-        <form id="login-form" method="get" action="resultsPDF.php">
-        請先選擇評量科目：<select name="type">
-        　<?php if($row_web_news['score_cpoint'] != null){echo '<option value="c">國語</option>';}?>
-        　<?php if ($row_web_news['score_mpoint'] != null){echo '<option value="m">數學</option>';}?>
-        　<?php if($row_web_news['score_spoint'] != null){echo '<option value="s">社會</option>';}?>
-        　<?php if($row_web_news['score_ppoint'] != null){echo '<option value="p">自然</option>';}?>
-        </select>
-        <input type="hidden" id=<?php echo $i; ?> name="id" value="<?php echo $row_web_news['score_id']; ?>">
-        <input type="hidden" id=<?php echo $i; ?> name="status" value="<?php echo $_GET['status']; ?>">
-        <input type="hidden" id=<?php echo $i; ?> name="examyear_id" value="<?php echo $row_web_news['examyear_id']; ?>">
-        </form>
-            </div>
+          	<img class="img-40" src="images/icon_print.png" onclick="$('#dlg_score').dialog('open')" />
+          	  <div id="dlg_score" class="easyui-dialog" title="選擇成績單列印科目" style="width:400px;height:200px;padding:10px"
+						data-options="
+							buttons: [{
+								text:'Print',
+								iconCls:'icon-ok',
+								method:'get',
+								handler:function(){
+									$('#login-form').submit();
+								}
+							},{
+								text:'Cancel',
+								handler:function(){
+									$('#dlg_score').dialog('close');
+								}
+							}]
+						">
+				<form id="login-form" method="get" action="resultsPDF.php">
+					請先選擇評量科目：<select name="type">
+					　<?php if($row_web_news['score_cpoint'] != null){echo '<option value="c">國語</option>';}?>
+					　<?php if ($row_web_news['score_mpoint'] != null){echo '<option value="m">數學</option>';}?>
+					　<?php if($row_web_news['score_spoint'] != null){echo '<option value="s">社會</option>';}?>
+					　<?php if($row_web_news['score_ppoint'] != null){echo '<option value="p">自然</option>';}?>
+					</select>
+					<input type="hidden" name="id" value="<?php echo $row_web_news['score_id']; ?>">
+					<input type="hidden" name="status" value="<?php echo $_GET['status']; ?>">
+					<input type="hidden" name="examyear_id" value="<?php echo $row_web_news['examyear_id']; ?>">
+				</form>
+          	  </div>
+
 
           <?php }?>
           </td>
@@ -247,16 +245,10 @@ function resultOnload() {
           	else $onclick_fun = 'ShowLink2()';
           	?>
           	<img class="img-40" src="images/icon_mail.png" onclick="<?php echo $onclick_fun;?>" />
-          <?php } $i++;
-
-          ?>
-        <!-- <script>$('#dlg_score').dialog('close');</script> -->
-      </td>
+          <?php }?></td>
         </tr>
-
-        <?php } ?>
+        <?php } while ($row_web_news = mysql_fetch_assoc($web_news)); ?>
     </table>
-
 
     <table width="540" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
         <tr>

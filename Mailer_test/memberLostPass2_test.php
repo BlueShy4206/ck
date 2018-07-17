@@ -36,7 +36,7 @@ $mail->SMTPAuth = true;
 $mail->Username = "ckassessment@gmail.com";
 
 //Password to use for SMTP authentication
-$mail->Password = "tryckckck";//ntcub507
+$mail->Password = "ntcub507";
 
 //Set who the message is to be sent from
 $mail->setFrom('ckassessment@gmail.com');
@@ -60,3 +60,4 @@ if (!$mail->send()) {
 } else {
     echo "Message sent!";
 }
+

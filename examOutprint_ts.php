@@ -2,7 +2,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -13,7 +13,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -35,12 +35,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 function EngNameStr($eng_name){
 	list($firstname, $lastname, $lastname2) = explode(" ", $eng_name);
 	$firstname = strtoupper (substr($firstname,0,1)).strtolower(substr($firstname,1));
-	
+
 	if(isset($lastname2)){
 		$lastname=strtoupper (substr($lastname,0,1)).strtolower(substr($lastname,1));
 		$lastname2=strtoupper (substr($lastname2,0,1)).strtolower(substr($lastname2,1));
 	}else {
-	
+
 		list($lastname, $lastname2)=explode("-", $lastname);
 		if(isset($lastname2)){
 			$lastname=strtoupper (substr($lastname,0,1)).strtolower(substr($lastname,1));
@@ -90,10 +90,10 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>准考證</title>
+<title>考試通知</title>
 <meta http-equiv="Content-Language" content="zh-tw" />
-<meta name="description" content="准考證" />
-<meta name="keywords" content="准考證" />
+<meta name="description" content="考試通知" />
+<meta name="keywords" content="考試通知" />
 <meta name="author" content="國立臺中教育大學 測驗統計與適性學習中心" />
 <link href="web.css" rel="stylesheet" type="text/css" />
 
@@ -105,32 +105,32 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
   <div id="main111" background= "#FFFFFF"></div>
  <?
  if($colname_web_member != "-1"){
- 
+
  	if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {$exdate=$row_web_new['ndate'];}
  	if (!(strcmp($row_web_examinee['exarea'],"Central"))) {$exdate=$row_web_new['cdate'];}
  	if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {$exdate=$row_web_new['sdate'];}
- 	if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {$exdate=$row_web_new['edate'];}  
+ 	if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {$exdate=$row_web_new['edate'];}
  	$times1=substr(($row_web_examinee['id']),1,1);
  	$times2=substr(($row_web_examinee['id']),2,4);
- 
+
  	$exyear=date('Y');
  if($row_web_new['times']=="A"){
  	//$exyear=date('Y')+1;
  }
- 
- if(strtotime($row_web_new['printtime']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d')) <= strtotime($exdate) && $times1 == $row_web_new['times'] && $row_web_examinee['allow'] == "Y" &&($times2 == date('Y') or $times2 == $exyear)){ //判斷否符合列印准考證的資格
+
+ if(strtotime($row_web_new['printtime']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d')) <= strtotime($exdate) && $times1 == $row_web_new['times'] && $row_web_examinee['allow'] == "YY" &&($times2 == date('Y') or $times2 == $exyear)){ //判斷否符合列印准考證的資格
  	$dateline=strtotime($row_web_new['ndate']);
-  
+
   ?>
- 
- 
- 
+
+
+
   <div id="exam" align="center">
   <table width="600" border="0" cellspacing="0" cellpadding="0" >
     <td align="center">
   <p><font size="+2" ><?php echo (date('Y',$dateline)-1911); ?>年第二梯次國民小學師資類科師資生學科知能評量
   </font></p>
-  <p><font size="+3" >准考證</font> </p>
+  <p><font size="+3" ><strong>考試通知</strong></font> </p>
   </td>
   </table>
    <!--  <table width="600" border="0" cellspacing="0" cellpadding="0" >
@@ -143,7 +143,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
       <table width="600" border="0" cellspacing="0" cellpadding="3" >
         <tr>
         	<td width="120" height="104" align="left" class="board_add" rowspan="3" style="background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;"><img src="images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="100" id="pic" /></td>
-			<td width="120" height="30"  align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">准考證號碼：</td>
+			<td width="120" height="30"  align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">應試號碼：</td>
 			<td width="350" align="center" class="board_add" style="font-size:20px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;"><b><?php echo $row_web_examinee['id_number']; ?> </b></td>
        </tr>
        <tr>
@@ -152,10 +152,33 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 			<b><?php echo $row_web_examinee['uname']."<br>".EngNameStr($row_web_examinee['eng_uname']); ?> </b>
 			</td>
        </tr>
-       <!-- -->  
+       <tr>
+			<td height="10" align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">身分證字號：</td>
+			<td width="300" align="center" class="board_add" style="font-size:20px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px; ">
+			<b><?php echo $row_web_examinee['per_id']; ?> </b>
+			</td>
+       </tr>
+       <!-- -->
+       <tr>
+        <td width="150" height="10" align="right" class="board_add" style="font-size:18px;  border-style:solid; border-color:#f3f3f3; border-width:1px;">應考領域：</td>
+           <td align="left" class="board_add" style="font-size:18px; border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2">
+           <?php $str=split("," , $row_web_examinee['category']);
+             $strSubject="";
+             foreach ($str as $val){//update by coway 2017.9.19
+                 $subjectStr="";
+             if (!(strcmp($val,"1"))) {$subjectStr = $subjectStr ."國語領域," ; } //echo "國語領域&nbsp;,&nbsp;";}
+             if (!(strcmp($val,"2"))) {$subjectStr = $subjectStr . "數學領域,"; }//echo "數學領域&nbsp;,&nbsp;";}
+             if (!(strcmp($val,"3"))) {$subjectStr = $subjectStr . "社會領域,"; }//echo "社會領域&nbsp;,&nbsp;";}
+             if (!(strcmp($val,"4"))) {$subjectStr = $subjectStr . "自然領域";}//echo "自然領域";}}
+             $strSubject = $strSubject.$subjectStr;
+             }
+             echo rtrim($strSubject,",");
+
+             ?></td>
+    </tr>
        <tr>
 			<td height="10" align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">評量日期：</td>
-			<td width="300" align="center" class="board_add" style="font-size:20px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;"><b> 
+			<td align="left" class="board_add" style="font-size:18px; border-style:solid; border-color:#f3f3f3; background-color: #FFFFFF; border-width:1px;" colspan="2"><b>
 			<?php echo $row_allguide['data1'];?>
 			<? /*if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {
 				$dateline=strtotime($row_web_new['ndate']);
@@ -165,52 +188,37 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 				  $dateline=strtotime($row_web_new['cdate']);
 				  echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['cdate']).")";}
-			  if (!(strcmp($row_web_examinee['exarea'],"Southern"))) { 
+			  if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {
 			  	$dateline=strtotime($row_web_new['sdate']);
 		      echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['sdate']).")";}
 			  if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {
-			  $dateline=strtotime($row_web_new['edate']);	  
+			  $dateline=strtotime($row_web_new['edate']);
 			  echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 			  echo "(".get_chinese_weekday($row_web_new['edate']).")";}*/ ?>
-			</b></td> 
-		</tr> 
-		<tr>
+			</b></td>
+		</tr>
+		<!-- <tr>
        		<td width="150" height="10" align="left" class="board_add" style="font-size:16px;" colspan="3">
           	注意：<br />
           	1.參加評量時，請攜帶本准考證及身分證件入場，以便查驗。<br />
           	2.應考人請依規定之評量時間入場，並請遵守相關之試場規則。<br />
        		</td>
+       </tr> -->
+
+       <tr>
+			<td width="150" height="10" align="right" class="board_add" style="font-size:18px;  border-style:solid; border-color:#f3f3f3; border-width:1px;">評量考區：</td>
+			<td align="left" class="board_add" style="font-size:18px;  border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2"><?php echo $row_allguide['note'];?></td>
        </tr>
-       <tr>
-	       <td width="150" height="10" align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">應考領域：</td>
-	          <td align="left" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2">
-	          <?php $str=split("," , $row_web_examinee['category']);
-	          	$strSubject="";	          	
-				foreach ($str as $val){//update by coway 2017.9.19
-					$subjectStr="";
-				if (!(strcmp($val,"1"))) {$subjectStr = $subjectStr ."國語領域," ; } //echo "國語領域&nbsp;,&nbsp;";}
-				if (!(strcmp($val,"2"))) {$subjectStr = $subjectStr . "數學領域,"; }//echo "數學領域&nbsp;,&nbsp;";}
-				if (!(strcmp($val,"3"))) {$subjectStr = $subjectStr . "社會領域,"; }//echo "社會領域&nbsp;,&nbsp;";}
-				if (!(strcmp($val,"4"))) {$subjectStr = $subjectStr . "自然領域";}//echo "自然領域";}}  
-				$strSubject = $strSubject.$subjectStr;
-				}
-				echo rtrim($strSubject,",");
-				
-				?></td>
-	   </tr>
-       <tr>
-			<td width="150" height="10" align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">評量考區：</td>
-			<td align="left" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2"><?php echo $row_allguide['note'];?></td>
-       </tr>
-       <tr>
+       <!-- <tr>
 			<td width="150" height="10" align="right" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;">成績查詢：</td>
 			<td align="left" class="board_add" style="font-size:18px; background-color: #FFFFFF; border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2"><span class="board_add" style="font-size:18px;"><u>https://tl-assessment.ntcu.edu.tw </u></span>
           	</td>
-       </tr>
+       </tr> -->
         </table>
+        <font size="+1"><span class="font_red" >注意：考試通知請勿攜帶至應試座位</span></font>
         <br />
-      <table  width="600" border="0" cellspacing="0" cellpadding="0" > 
+      <table  width="600" border="0" cellspacing="0" cellpadding="0" >
       	<tr><td rowspan="2"><img src="images/pctc.png"></td>
       	<td align="left" style="font-size:16px;">教師專業能力測驗中心</td>
       	</tr>
@@ -220,7 +228,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
       </table>
         <p><b> <font color="#0033FF">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</font> </b></p>
          <br />
-         
+
         <!-- <table width="600" border="0" cellspacing="0" cellpadding="0" >
         <tr>
         <td  align="center"><b><font size="+2">測驗日期：<? /*if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {
@@ -235,16 +243,16 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 	      echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 		  echo "(".get_chinese_weekday($row_web_new['sdate']).")";}
 		  if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {
-		  $dateline=strtotime($row_web_new['edate']);	  
+		  $dateline=strtotime($row_web_new['edate']);
 		  echo (date('Y',$dateline)-1911).date('年m月d日 ',$dateline);
 		  echo "(".get_chinese_weekday($row_web_new['edate']).")";} */ ?></font> </b> </td>
-        
+
         </tr>
-        </table> --> 
-         
-        <table width="600" border="1" cellspacing="0" cellpadding="0" >  
-        
-               
+        </table> -->
+
+        <table width="600" border="1" cellspacing="0" cellpadding="0" >
+
+
       <?php $str=split("," , $row_web_examinee['category']);
 		foreach ($str as $val){
 		if (!(strcmp($val,"1"))) {$color1="color:#000000;";}
@@ -256,22 +264,22 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
        <tr class="board_add"><td><center>10:05〜10:10</center></td><td>試場規則說明暨預備時間</td></tr>
        <tr class="board_add"><td><center>10:10〜11:00</center></td><td>數學領域學科知能評量</td></tr>
        <tr><td></td><td><center>11:00〜11:20</center></td><td>中場休息</td></tr>
-       
-       
+
+
        <tr class="board_add"><td rowspan="3"><center>國語領域</center></td><td><center>11:20〜11:25</center></td><td>應考人入場</td></tr>
        <tr class="board_add"><td><center>11:25〜11:30</center></td><td>試場規則說明暨預備時間</td></tr>
        <tr class="board_add"><td><center>11:30〜12:20</center></td><td>國語領域學科知能評量</td></tr>
        <tr><td></td><td><center>12:20〜13:30</center></td><td>午餐時間</td></tr>
-       
+
        <tr class="board_add"><td rowspan="3"><center>自然領域</center></td><td><center>13:30〜13:35</center></td><td>應考人入場</td></tr>
        <tr class="board_add"><td><center>13:35〜13:40</center></td><td>試場規則說明暨預備時間</td></tr>
        <tr class="board_add"><td><center>13:40〜14:30</center></td><td>自然領域學科知能評量</td></tr>
-       
+
        <tr><td></td><td><center>14:30〜14:50</center></td><td>中場休息</td></tr>
        <tr class="board_add"><td rowspan="3"><center>社會領域</center></td><td><center>14:50〜14:55</center></td><td>應考人入場</td></tr>
        <tr class="board_add"><td><center>14:55〜15:00</center></td><td>試場規則說明暨預備時間</td></tr>
        <tr class="board_add"><td><center>15:00〜15:50</center></td><td>社會領域學科知能評量</td></tr>
-       
+
 
        <!-- <tr>
        <td width="150" height="200" align="center" class="board_add" style="font-size:18px;border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;" rowspan="3">考試時間</td>
@@ -280,25 +288,25 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
           <td width="300" align="center" class="illustrate" style="font-size:18px; color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px;">
                              14:20<br />
                                |  <br />
-                             14:30<br />       
-          </td>  
+                             14:30<br />
+          </td>
           <td width="300" align="center" class="illustrate" style="font-size:18px; color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px;">
                              14:30<br />
                                |  <br />
-                             14:40<br />       
-          </td>          
+                             14:40<br />
+          </td>
            <td width="150" height="10" align="center" class="illustrate" style="font-size:18px; color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px;">
                             14:40<br />
                               |  <br />
-                            15:30<br /> 
-           
-           
+                            15:30<br />
+
+
            </td>
-          </tr> 
+          </tr>
           <tr height="10" >
 	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">應考人入場</td>
 	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">試場規則說明暨預備時間</td>
-	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">自然領域學科知能評量</td>          
+	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">自然領域學科知能評量</td>
           </tr> -->
           <tr align="left">
           	<td colspan="4">
@@ -308,40 +316,39 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 		    </td>
           </tr>
     </table>
-         <p style="page-break-after:always"></p> 
-    <table width="600" border="0" cellspacing="0" cellpadding="0" > 
+         <p style="page-break-after:always"></p>
+    <table width="600" border="0" cellspacing="0" cellpadding="0" >
     	<tr><br>
           <td height="40" align="center"><?php //echo (date('Y',$dateline)-1911); ?><!-- 年第二梯次國民小學師資類科 -->
           <p><font size="+2" ><strong>國民小學師資類科師資生學科知能評量<br><br>試場規則(簡略版)</strong></font></p>
             </td>
         </tr>
-        <tr>  
+        <tr>
           <td height="70" align="left"><font size="+1" >
-          	‧應考人應攜帶自行列印之「<strong>准考證</strong>」及「<strong>國民身分證</strong>」正本（或以駕照、具照片之健保卡或尚未過期之有效護照代替國民身分證）到場應試。未能提供身分證明文件者，即取消應試資格，不得參加本次評量。應考人於評量當日無准考證者應攜帶本人身分證件至各考區試務中心辦理補發。未能提供身分證明文件者，如經監試委員查核確認係應考人本人無誤者，得先准予應試，惟身分證明文件至當日最後一節評量結束鈴（鐘）響畢前仍未送達者，所有領域不予計分。
-          </font></td>
-          
+          	‧應考人應攜帶「<strong>國民身分證</strong>」正本（或有效駕照、護照代替國民身分證）到場應試。未能提供身分證明文件者，如經監試委員查核確認係應考人本人無誤者，得先准予應試，惟身分證明文件至當日最後一節評量結束鈴（鐘）響畢前仍未送達者，所有領域不予計分。
+        </font></td>
         </tr>
+        <tr>
+          <td height="70" align="left"><font size="+1" >‧應考人除身分證件外，其他非應試用品均須置於教室前面地板上，不得攜帶入座。
+          </font></td></tr>
         <tr>
           <td height="70" align="left"><font size="+1" >‧本次評量將由承辦單位提供計算紙及原子筆供試題計算用，應考人試後計算紙不得攜出考場，違者該領域不予計分。
-        </font></td></tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧非應試用品包括：水、簡章、書籍、紙張、皮包、任何文具用品（如筆、尺、橡皮擦、鉛筆盒……）、穿戴式裝置及任何具有資訊傳輸、感應、攝影、錄音、記憶、發聲等功能或有礙試場安寧、妨害評量公平/智慧財產權之各類器材、設備及物品（如行動電話、收錄音機、MP3、鬧鐘/錶、計時器、翻譯機、智慧型手錶……）等，違者扣減其該領域成績100分。有關個人之醫療器材如助聽器等，須先報備並經檢查方可使用，違者扣減其該領域成績50分。前述各類事件並得視其使用情節加重扣分或該領域不予計分。
           </font></td>
         </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧<strong>評量開始後逾15分鐘即不得入場應試，且評量未達25分鐘不得離開考場。
-          </strong></font></td>
+          <td height="70" align="left"><font size="+1" >‧評量開始後逾15分鐘即不得入場應試，且評量未達25分鐘不得離開考場，違者該領域不予計分。
+          </font></td>
         </tr>
         <tr>
           <td height="70" align="left"><font size="+1" >‧評量進行間行動電話、計時器及其他電子設備不得發出任何聲響（含振動聲），違者將扣減該領域成績50分，並得視違規情節加重扣分或不予計分。
           </font></td>
         </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧應考人不得破壞考場的配置（<strong><u>例如撕開或未經監試委員同意即自行帶走座位貼條、自行調整電腦螢幕亮度、自行離開測驗系統全螢幕、未經監試委員同意先行輸入測驗系統帳號與密碼…等</u></strong>），違者將扣減該領域成績50分，並得視違規情節加重扣分或不予計分。
+          <td height="70" align="left"><font size="+1" >‧應考人不得破壞考場的配置（例如撕開或未經監試委員同意即自行帶走座位貼條、自行調整電腦螢幕亮度、自行離開測驗系統全螢幕、未經監試委員同意先行輸入測驗系統帳號與密碼…等），違者將扣減該領域成績50分，並得視違規情節加重扣分或不予計分。
           </font></td>
         </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧除在規定處作答擬稿外，<strong><u>不得在准考證、身分證件、文具、桌面、肢體上或其他物品上書寫任何文字、符號等</u></strong>，違者以監試委員發現時之評量領域不予計分。
+          <td height="70" align="left"><font size="+1" >‧除在規定處作答擬稿外，不得在身分證件、文具、桌面、肢體上或其他物品上書寫任何文字、符號等，違者以監試委員發現時之評量領域不予計分。
           </font></td>
         </tr>
         <tr>
@@ -356,23 +363,23 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
           <td height="70" align="left"><font size="+1" >‧其他未盡事宜，除依本中心訂頒之試場規則辦理外，由各該考區負責人處理之。
           </font></td>
         </tr>
-        <tr>   
+        <tr>
           <td height="40" colspan="3" align="center"><label>
-          
+
   <?PHP    //      <input type="button" name="Submit" value="列印本頁" onclick="javascript:window.print()">
           //  <input type="button" value="回首頁" onclick="location.href='index.php'" />
 ?>            <input name="date" type="hidden" id="date" value="<? echo date("Y-m-d H:i:s");?>" />
           </label></td>
-          
+
         </tr>
       </table>
       <input type="hidden" name="MM_insert" value="memberadd" />
     </form>
-    
+
   </div>
   <div id="main111" background= "#FFFFFF"></div>
 </div>
-<script language="Javascript">window.print();</script>
+<!-- <script language=" Javascript">window.print();</script> -->
 <?PHP }elseif(strtotime($row_web_new['printtime']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d')) <= strtotime($exdate) && $times1 == $row_web_new['times'] && $row_web_examinee['allow'] == "N" &&($times2 == date('Y') or $times2 == $exyear)){
 		?><table width="555" border="0" cellspacing="0" cellpadding="0" align="center">
     <tr>
@@ -391,7 +398,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
   </table><?PHP }}else{?>
   <table width="555" border="0" cellspacing="0" cellpadding="0" align="center">
     <tr>
-      <td height="80" align="center" class="font_red2">列印准考證請先登入會員</td>
+      <td height="80" align="center" class="font_red2">列印考試通知請先登入會員</td>
       </tr>
       <tr>
       <td height="80" align="center"><a href="index.php">[返回首頁]</a></td>
@@ -400,7 +407,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 <?PHP }?>
 </body>
 </html>
-<?php 
+<?php
 function get_chinese_weekday($datetime)
 {
     $weekday  = date('w', strtotime($datetime));

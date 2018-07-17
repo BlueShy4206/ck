@@ -37,7 +37,6 @@ mysql_select_db($database_conn_web, $conn_web);
 //$query_web_member = sprintf("SELECT * FROM examinee WHERE allow='Y' and email is not null and exarea in ('Northern')");
 
 // $query_web_member = sprintf("SELECT * FROM `member` where username in (SELECT username FROM `examinee` where examyear_id=35 and allow='Y' and exarea_date in ('106年6月18日(日)','106年6月21日(三)'))");
-$query_web_member = sprintf("SELECT * FROM `member` WHERE EForm_MK = 0 AND id >100 AND level='member' and status=1 and username not in (SELECT RecUsername FROM `tosendmail` where subject='106年第二梯次國民小學師資類科師資生學科知能評量簡章公告通知') order by id desc limit 0,50 ");
 $web_member = mysql_query($query_web_member, $conn_web) or die(mysql_error());
 //$row_web_member = mysql_fetch_assoc($web_member);
 echo 'start....';

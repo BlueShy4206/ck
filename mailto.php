@@ -1,7 +1,7 @@
 <?php require_once('Connections/conn_web.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +12,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -106,12 +106,12 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
       </tr>
     </table>
 <table width="540" border="0" cellspacing="0" cellpadding="0">
- 
+
 </table>
     <img src="images/about_CK.png" width="540" height="48" /><br />
-    
-    
-    
+
+
+
   <table width="540" border="0" cellspacing="0" cellpadding="0">
     <tr>
     	<td colspan="2" height="30" class="font_title3" bgcolor="#FFFFFF">主辦單位連絡資訊</td>
@@ -119,20 +119,20 @@ $startRow_web_shop = $pageNum_web_shop * $maxRows_web_shop;
     <tr>
       <td width="20" height="25" align="right" class="underline1">‧</td>
       <td height="30" class="font_title3" bgcolor="#FFFFFF">
-      	國立臺中教育大學 教師專業能力測驗中心  </br><div style="display:inline;"></div>陳小姐 、杜小姐、潘小姐、蔡小姐
+      	國立臺中教育大學 教師專業能力測驗中心  </br><div style="display:inline;"></div>陳小姐、潘小姐、蔡小姐
       </td>
     </tr>
     <tr>
     	<td width="20" height="25" align="right" class="underline1">‧</td>
     	<td height="30" class="font_title3" bgcolor="#FFFFFF">地址：臺中市西區民生路140號 TEL：(04)2218-3651 </td>
-    </tr>  
+    </tr>
     <tr>
     	<td width="20" height="25" align="right" class="underline1">‧</td>
     	<td height="30" class="font_title3" bgcolor="#FFFFFF">E-Mail：ckassessment@gmail.com</td>
     </tr>
   </table>
- 
-  
+
+
   </div>
   <div id="main4"></div>
   <?php include("footer.php"); ?>
