@@ -30,7 +30,7 @@
 		//});
 		}
 	});
-	
+
 	//初步判斷身分證字號是否符合運算規則
 	$.validator.addMethod("isIdCardNo", function(value, element) {
 		var a = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'W', 'Z', 'I', 'O');
@@ -42,21 +42,23 @@
 		var g = 0;
 		var h = /^[a-z](1|2)\d{8}$/i;
 		var l = /^[a-z][a-d]\d{8}$/i;
-		
-		
+		//測試用身分證
+		if(value == 'A999999999'){
+			return true;
+		}
 		if(value.search(l) == 0 ) {
 			return true;
 			}else{
 		if (value.search(h) == -1 && value.search(l) == -1 ) {
-		
+
 			return false;
 		} else {
-			
+
 			d = value.charAt(0).toUpperCase();
 			f = value.charAt(9);
 		}
 		for (var i = 0; i < 26; i++) {
-			if (d == a[i])//a==a 
+			if (d == a[i])//a==a
 			{
 				e = i + 10; //10
 				c[0] = Math.floor(e / 10); //1
@@ -79,11 +81,11 @@
 		}}
 		return true;
 	});
-	
+
 	//判斷帳號是否重複
 	jQuery . validator . addMethod ( "uniqueUsername" , function ( value , element ) {
 		var response ;
- 
+
 		var username = $ ( '#username' ) . val ( ) ;
 		$ . ajax ( {
 			type : "POST" ,
@@ -100,11 +102,24 @@
 			return false ;
 		}
 	} ) ;
-	
+
+
+	//判斷帳號是包含中文
+	jQuery . validator . addMethod ( "ChineseInUsername" , function ( value , element ) {
+		if(/.*[\u4e00-\u9fa5]+.*$/.test(value))
+		{
+			return false;
+		}else{
+			return true;
+		}
+
+
+	} ) ;
+
 	//判斷身分證字號是否重複
 	jQuery . validator . addMethod ( "uniqueID" , function ( value , element ) {
 		var response ;
- 
+
 		var id = $ ( '#id' ) . val ( ) ;
 		$ . ajax ( {
 			type : "POST" ,
@@ -121,11 +136,11 @@
 			return false ;
 		}
 	} ) ;
-	
+
 	//判斷email是否重複
 	jQuery . validator . addMethod ( "uniqueEmail" , function ( value , element ) {
 		var response ;
- 
+
 		var email = $ ( '#email' ) . val ( ) ;
 		$ . ajax ( {
 			type : "POST" ,
@@ -145,7 +160,7 @@
 //判斷英文名字是否填完整及中間用空白隔開 ,add by coway
 // 	jQuery . validator . addMethod ( "uniqueengNameForm2" , function ( value , element ) {
 // 		var response ;
- 
+
 // 		var engNameForm2 = $ ( '#engNameForm2' ) . val ( ) ;
 // 		var uname = $ ( '#uname' ) . val ( ) ;
 // // 		alert('engNameForm2='+engNameForm2+'&nbsp;');
@@ -173,7 +188,7 @@
 		if(d == value.charAt(0) && d !=' ') return true ;
 		else return false ;
 		//console.log("d:"+d+", value(0):"+value.charAt(0));
-	});	
+	});
 
 	$.validator.addMethod("engNameForm2", function(value, element) {
 		var a = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'W', 'Z', 'I', 'O');
@@ -183,7 +198,7 @@
 			var spEngNameForm2 = value.split(' ');
 			if(spEngNameForm2.length<2) return false
 		}else return true;
-		
+
 		d = value.charAt(0).toUpperCase();//字元轉大寫
 		if(d == value.charAt(0)) {
 			var words = value.split(' ');
@@ -198,7 +213,7 @@
 		}
 		else return false ;
 		//console.log("d:"+d+", value(0):"+value.charAt(0));
-	});	
+	});
 
 	//驗證
 	$().ready(function() {
@@ -222,7 +237,9 @@
 				username: {
 					required: true,
 					minlength: 4,
-					uniqueUsername: true
+					maxlength: 20,
+					uniqueUsername: true,
+					ChineseInUsername: true
 				},
 				password: {
 					required: true,
@@ -248,7 +265,7 @@
 				cusadr: {
 					required: true,
 					minlength: 5,
-				},				
+				},
 				captcha:{
 					required: true,
 					remote:"process.php"
@@ -266,17 +283,19 @@
 				Firstname: {
 					required: "請檢查英文姓欄位",
 					engNameForm: "第一個字母需大寫(姓氏前不需空白)"
-				},	
+				},
 				Lastname: {
-					required: "請檢查英文名欄位", 
+					required: "請檢查英文名欄位",
 					engNameForm2:"請輸入完整英文名字：1.第一個字字母需大寫，2.名字第一個字和第二個字需以空白隔開",//update by coway 2016.8.4
 // 					uniqueengNameForm2:"請輸入完整英文名字(名字第一個字和第二個字)，需以空白隔開"//add by coway
-				},	
-				//eng_uname: "請檢查英文姓名欄位",				
+				},
+				//eng_uname: "請檢查英文姓名欄位",
 				username: {
 					required: "請檢查帳號欄位",
 					minlength: "帳號輸入請勿少於4個字元",
-					uniqueUsername: "此帳號已經被註冊了"
+					maxlength: "帳號輸入請勿多於20個字元",
+					uniqueUsername: "此帳號已經被註冊了",
+					ChineseInUsername: "帳號請勿輸入中文"
 				},
 				password: {
 					required: "請檢查密碼欄位",
@@ -304,7 +323,7 @@
 				cusadr: {
 					required: "請檢查地址欄位",
 					minlength: "請輸入完整地址",
-				},				
+				},
 				captcha:{
 					required: "請檢查驗證碼欄位",
 					remote:"驗證碼錯誤！"
@@ -383,7 +402,7 @@
 <div id="main_1">
   <div id="main1" style="background:#efefef; margin: auto; width: 770px"></div>
   <div id="main_2">
-     
+
   </div>
   <div id="main_3" align="center" style="background:#efefef; margin: auto; width: 770px">
 	<? if(empty($_SESSION["MM_Username"])){//如果未驗證到會員登入的Session變數MM_Username，顯示本區塊?>
@@ -417,7 +436,7 @@
           , 名(First name) <label for="Lastname"><input id="Lastname" name="Lastname" type="text" size="15" ></label>
           (例如：李大同，姓:Li，名:Da Tong)
             <span class="font_red">* <a href="https://www.boca.gov.tw/sp.asp?xdURL=E2C/c2102-5.asp&CtNode=677&mp=1" target="new">英文姓名查詢</a></span> (請與護照名稱相同)</td>
-        </tr>        
+        </tr>
         <tr>
           <td height="30" align="right" class="board_add">帳號：</td>
           <td align="left" class="board_add"><label for="username"><input id="username" name="username" type="text">
@@ -442,13 +461,13 @@
           <td height="30" align="right" class="board_add">E-mail：</td>
           <td align="left" class="board_add"><label for="email"><input id="email" name="email" type="text" style="width:200px;">
           </label><span class="font_red">*</span><span id="emailErrMsg"> </span><br />
-          <span class="font_black">請勿使用會檔信的yahoo、pchome信箱，以免收不到信。</span></td>
+          <span class="font_black">請勿使用會擋信的yahoo、pchome信箱，以免收不到信。</span></td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add">性別：</td>
           <td align="left" class="board_add"><label for="sex"><input name="sex" type="radio" id="radio" value="男" checked="checked" /> 男
 				<input type="radio" name="sex" id="radio2" value="女" /> 女
-                     
+
 		  </label>
           <span class="font_red">* </span></td>
         </tr>

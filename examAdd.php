@@ -15,8 +15,8 @@ if (phpversion() > "4.0.6") {
 	$HTTP_POST_FILES = &$_FILES;
 }
 define("MAX_PIC_SIZE",3000000);
-define("DESTINATION_PIC_FOLDER", "images/examinee");
-define("DESTINATION_PIC_FOLDER_ID", "images/examinee/id_check");
+// define("DESTINATION_PIC_FOLDER", "images/examinee");
+// define("DESTINATION_PIC_FOLDER_ID", "images/examinee/id_check");
 define("no_error", "examOut.php");
 define("yes_error", "examAdd2.php");
 
@@ -32,593 +32,63 @@ if(strlen($_accepted_PIC_extensions_) > 0){
 if(!empty($HTTP_POST_FILES['upload_hpic'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
 	if(is_uploaded_file($HTTP_POST_FILES['upload_hpic']['tmp_name']) && $HTTP_POST_FILES['upload_hpic']['error'] == 0){
 		$_file_ = $HTTP_POST_FILES['upload_hpic'];
-		upload_pic('upload_hpic',$_file_);
-		print_r($_file_);
-		die();
-		// $errStr = "";
-		// $_name_ = $_file_['name'];
-		// $_type_ = $_file_['type'];
-		// $_tmp_name_ = $_file_['tmp_name'];
-		// $_size_ = $_file_['size'];
-		// header ('Content-type: text/html; charset=utf-8');//指定編碼
-		// if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-		// 	$errStr = "File troppo pesante";
-		// 	echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		// }
-		// $_ext_ = explode(".", $_name_);
-		// $attach = $_POST['username'];
-		// $_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		// $news_pic_title=$_file_['name'];
-		// $pic_type = $_file_['type'];
-		// //echo "$pic_type";
-		//
-		// //取原圖的大小進行比例處理
-		// switch ($pic_type){
-		// 	case "image/jpeg":
-		// 		$src2 = imagecreatefromjpeg($_FILES['upload_hpic']['tmp_name']);
-		// 		break;
-		// 	case "image/png":
-		// 		$src2 = imagecreatefrompng($_FILES['upload_hpic']['tmp_name']);
-		// 		break;
-		// 	case "image/gif":
-		// 		$src2 = imagecreatefromgif($_FILES['upload_hpic']['tmp_name']);
-		// 		break;
-		// }
-		// $src_w2 = imagesx($src2);
-		// $src_h2 = imagesy($src2);
-		// if($src_w2 > 100){
-		// 	$thumb_w2 = intval($src_h2 / $src_w2 * 100);
-		// 	$thumb_h2 = intval($src_h2 / $src_w2 * 130);
-		// }else{
-		// 	$thumb_h2 = intval($src_w2 / $src_h2 * 130);
-		// 	$thumb_w2 = intval($src_w2 / $src_h2 * 100);
-		// }
-		//
-		// if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-		// 	$errStr = "Estensione non valida";
-		// 	echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		// }
-		// if(!is_dir(DESTINATION_PIC_FOLDER) && is_writeable(DESTINATION_PIC_FOLDER)){
-		// 	$errStr = "Cartella di destinazione non valida";
-		// 	echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		// }
-		// if(empty($errStr)){
-		// 	$newPicname=date("YmdHis")."_$attach.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-		// 	//進行縮圖
-		// 	$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-		// 	imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-		// 	switch ($pic_type){
-		// 		case "image/jpeg":
-		// 			$resultOK= imagejpeg($thumb2, "images/smallPic/".$newPicname);
-		// 			break;
-		// 		case "image/png":
-		// 			$resultOK= imagepng($thumb2, "images/smallPic/".$newPicname);
-		// 			break;
-		// 		case "image/gif":
-		// 			$resultOK= imagegif($thumb2, "images/smallPic/".$newPicname);
-		// 			break;
-		// 	}
-		//
-		//
-		// 	if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
-		// 		@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
-		// 		//header("Location: " . no_error);
-		// 	} else {
-		// 		echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-		// 		echo "<script>history.back()</script>";//回上一頁
-		// 		exit;                                  //停止後續程式碼的繼續執行
-		// 		//header("Location: " . yes_error);
-		// 	}
-		// } else {
-		// 	echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-		// 	echo "<script>history.back()</script>";//回上一頁
-		//     exit;	                               //停止後續程式碼的繼續執行
-		// 	//header("Location: " . yes_error);
-		// }
+		$headpic_name=upload_pic('hpic',$_file_);
+		// print_r($headpic_name);
+
 	}
 }
-//1********************  BlueS 20180302 將身分證等資料傳至網頁
+//1********************  BlueS 20180302 儲存身分證等資料
 if(!empty($HTTP_POST_FILES['news_pic1']) && !empty($HTTP_POST_FILES['news_pic2'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
 	if(is_uploaded_file($HTTP_POST_FILES['news_pic1']['tmp_name']) && $HTTP_POST_FILES['news_pic1']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['news_pic1'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title1=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic1']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic1']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic1']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		// if($src_w2 > 100){
-			$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-			$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-		// }else{
-		// 	$thumb_h2 = intval($src_w2 / $src_h2 * 130);
-		// 	$thumb_w2 = intval($src_w2 / $src_h2 * 100);
-		// }
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname1=date("YmdHis")."_".$attach."_1.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$newPicname1);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$newPicname1);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$newPicname1);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $newPicname1)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤!身分證正面有誤！\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$news_pic1=upload_pic('1',$_file_);
 	}
 
 //2********************
 	if(is_uploaded_file($HTTP_POST_FILES['news_pic2']['tmp_name']) && $HTTP_POST_FILES['news_pic2']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['news_pic2'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title2=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic2']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic2']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic2']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname2=date("YmdHis")."_".$attach."_2.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$newPicname2);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$newPicname2);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$newPicname2);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $newPicname2)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤!身分證反面有誤！\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$news_pic2=upload_pic('2',$_file_);
 	}
 }
 //3********************
-if(!empty($HTTP_POST_FILES['news_pic3']) && $_POST['id'] == 1 ){
+if(!empty($HTTP_POST_FILES['news_pic3']) && $_POST['exam_id'] == 1 ){
 	if(is_uploaded_file($HTTP_POST_FILES['news_pic3']['tmp_name']) && $HTTP_POST_FILES['news_pic3']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['news_pic3'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title3=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic3']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic3']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic3']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(500/ $src_h2 * $src_w2);
-		$thumb_h2 = intval(500 / $src_h2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname3=date("YmdHis")."_".$attach."_3.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$newPicname3);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$newPicname3);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$newPicname3);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $newPicname3)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$news_pic3=upload_pic('3',$_file_);
 	}
 }
 //4********************
-if(!empty($HTTP_POST_FILES['news_pic4']) && $_POST['id'] == 2 ){
+if(!empty($HTTP_POST_FILES['news_pic4']) && $_POST['exam_id'] == 2 ){
 	if(is_uploaded_file($HTTP_POST_FILES['news_pic4']['tmp_name']) && $HTTP_POST_FILES['news_pic4']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['news_pic4'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title4=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic4']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic4']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic4']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname4=date("YmdHis")."_".$attach."_4.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$newPicname4);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$newPicname4);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$newPicname4);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $newPicname4)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$news_pic4=upload_pic('4',$_file_);
 	}
-	}
+}
 //5********************
-if(!empty($HTTP_POST_FILES['news_pic5']) && $_POST['id'] == 3 ){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
+if(!empty($HTTP_POST_FILES['news_pic5']) && $_POST['exam_id'] == 3 ){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
 	if(is_uploaded_file($HTTP_POST_FILES['news_pic5']['tmp_name']) && $HTTP_POST_FILES['news_pic5']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['news_pic5'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$news_pic_title5=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
+		$news_pic5=upload_pic('5',$_file_);
+	}
+}
+	if(!empty($HTTP_POST_FILES['news_pic6']) && $_POST['exam_id'] == 4 ){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
+		if(is_uploaded_file($HTTP_POST_FILES['news_pic6']['tmp_name']) && $HTTP_POST_FILES['news_pic6']['error'] == 0){
 
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['news_pic5']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['news_pic5']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['news_pic5']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$newPicname5=date("YmdHis")."_".$attach."_5.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$newPicname5);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$newPicname5);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$newPicname5);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $newPicname5)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
+			$_file_ = $HTTP_POST_FILES['news_pic6'];
+			$news_pic6=upload_pic('6',$_file_);
 		}
 	}
 
-	// echo "title1=$newPicname5<br>"; $news_pic_title5
-}
 //特殊考生1********************
 if(!empty($HTTP_POST_FILES['special_pic1']) && $_POST['special_check'] == 1 ){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
 	if(is_uploaded_file($HTTP_POST_FILES['special_pic1']['tmp_name']) && $HTTP_POST_FILES['special_pic1']['error'] == 0){
-
 		$_file_ = $HTTP_POST_FILES['special_pic1'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$special_pic_title1=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['special_pic1']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['special_pic1']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['special_pic1']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$special_pic_name1=date("YmdHis")."_".$attach."_sp1.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$special_pic_name1);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$special_pic_name1);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$special_pic_name1);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $special_pic_name1)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$special_pic1=upload_pic('sp1',$_file_);
 	}
 
 	// echo "title1=$newPicname5<br>"; $news_pic_title5
@@ -628,253 +98,23 @@ if(!empty($HTTP_POST_FILES['special_pic2']) && $_POST['special_check'] == 1 ){ /
 	if(is_uploaded_file($HTTP_POST_FILES['special_pic2']['tmp_name']) && $HTTP_POST_FILES['special_pic2']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['special_pic2'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$special_pic_title2=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['special_pic2']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['special_pic2']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['special_pic2']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$special_pic_name2=date("YmdHis")."_".$attach."_sp2.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$special_pic_name2);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$special_pic_name2);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$special_pic_name2);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $special_pic_name2)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$special_pic2=upload_pic('sp2',$_file_);
 	}
-
-	// echo "title1=$newPicname5<br>"; $news_pic_title5
 }
 //特殊考生3********************
 if(!empty($HTTP_POST_FILES['special_pic3']) && $_POST['special_check'] == 1 ){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
 	if(is_uploaded_file($HTTP_POST_FILES['special_pic3']['tmp_name']) && $HTTP_POST_FILES['special_pic3']['error'] == 0){
 
 		$_file_ = $HTTP_POST_FILES['special_pic3'];
-		$errStr = "";
-		$_name_ = $_file_['name'];
-		$_type_ = $_file_['type'];
-		$_tmp_name_ = $_file_['tmp_name'];
-		$_size_ = $_file_['size'];
-		header ('Content-type: text/html; charset=utf-8');//指定編碼
-		if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-			$errStr = "File troppo pesante";
-			echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-		}
-		$_ext_ = explode(".", $_name_);
-		$attach = $_POST['username'];
-		$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-		$special_pic_title3=$_file_['name'];
-		$pic_type = $_file_['type'];
-		//echo "$pic_type";
-
-		//取原圖的大小進行比例處理
-		switch ($pic_type){
-			case "image/jpeg":
-				$src2 = imagecreatefromjpeg($_FILES['special_pic3']['tmp_name']);
-				break;
-			case "image/png":
-				$src2 = imagecreatefrompng($_FILES['special_pic3']['tmp_name']);
-				break;
-			case "image/gif":
-				$src2 = imagecreatefromgif($_FILES['special_pic3']['tmp_name']);
-				break;
-		}
-		$src_w2 = imagesx($src2);
-		$src_h2 = imagesy($src2);
-		$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-		$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-			$errStr = "Estensione non valida";
-			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-		}
-		if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-			$errStr = "Cartella di destinazione non valida";
-			echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-		}
-		if(empty($errStr)){
-			$special_pic_name3=date("YmdHis")."_".$attach."_sp3.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-			//進行縮圖
-			$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-			imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-			switch ($pic_type){
-				case "image/jpeg":
-					$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$special_pic_name3);
-					break;
-				case "image/png":
-					$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$special_pic_name3);
-					break;
-				case "image/gif":
-					$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$special_pic_name3);
-					break;
-			}
-
-
-			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $special_pic_name3)){//修改檔案名稱
-				@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-				//header("Location: " . no_error);
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-				exit;                                  //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		} else {
-			echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-			echo "<script>history.back()</script>";//回上一頁
-				exit;	                               //停止後續程式碼的繼續執行
-			//header("Location: " . yes_error);
-		}
+		$special_pic3=upload_pic('spe3',$_file_);
 	}
+}
 
 	//改名********************
-	if(!empty($HTTP_POST_FILES['rename_pic'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
-		if(is_uploaded_file($HTTP_POST_FILES['rename_pic']['tmp_name']) && $HTTP_POST_FILES['rename_pic']['error'] == 0){
-
-			$_file_ = $HTTP_POST_FILES['rename_pic'];
-			$errStr = "";
-			$_name_ = $_file_['name'];
-			$_type_ = $_file_['type'];
-			$_tmp_name_ = $_file_['tmp_name'];
-			$_size_ = $_file_['size'];
-			header ('Content-type: text/html; charset=utf-8');//指定編碼
-			if($_size_ > MAX_PIC_SIZE && MAX_PIC_SIZE > 0){
-				$errStr = "File troppo pesante";
-				echo "<script>javascript:alert(\"超過限制檔案大小\");</script>";//跳出錯誤訊息
-			}
-			$_ext_ = explode(".", $_name_);
-			$attach = $_POST['username'];
-			$_ext_ = strtolower($_ext_[count($_ext_)-1]);
-			$rename_pic_title=$_file_['name'];
-			$pic_type = $_file_['type'];
-			//echo "$pic_type";
-
-			//取原圖的大小進行比例處理
-			switch ($pic_type){
-				case "image/jpeg":
-					$src2 = imagecreatefromjpeg($_FILES['rename_pic']['tmp_name']);
-					break;
-				case "image/png":
-					$src2 = imagecreatefrompng($_FILES['rename_pic']['tmp_name']);
-					break;
-				case "image/gif":
-					$src2 = imagecreatefromgif($_FILES['rename_pic']['tmp_name']);
-					break;
-			}
-			$src_w2 = imagesx($src2);
-			$src_h2 = imagesy($src2);
-			$thumb_w2 = intval(300/ $src_w2 * $src_w2);
-			$thumb_h2 = intval(300 / $src_w2 * $src_h2);
-
-			if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
-				$errStr = "Estensione non valida";
-				echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
-			}
-			if(!is_dir(DESTINATION_PIC_FOLDER_ID) && is_writeable(DESTINATION_PIC_FOLDER_ID)){
-				$errStr = "Cartella di destinazione non valida";
-				echo "<script>javascript:alert(\"必須指定資料夾目錄\");</script>";//跳出錯誤訊息
-			}
-			if(empty($errStr)){
-				$rename_pic_name=date("YmdHis")."_".$attach."_name.".$_ext_;//如果更新圖片，變數$newname就重新取得新檔案名稱
-
-				//進行縮圖
-				$thumb2 = imagecreatetruecolor($thumb_w2, $thumb_h2);
-				imagecopyresampled($thumb2, $src2, 0, 0, 0, 0, $thumb_w2, $thumb_h2, $src_w2, $src_h2);
-				switch ($pic_type){
-					case "image/jpeg":
-						$resultOK= imagejpeg($thumb2, "images/smallPic/id_check/".$rename_pic_name);
-						break;
-					case "image/png":
-						$resultOK= imagepng($thumb2, "images/smallPic/id_check/".$rename_pic_name);
-						break;
-					case "image/gif":
-						$resultOK= imagegif($thumb2, "images/smallPic/id_check/".$rename_pic_name);
-						break;
-				}
-
-
-				if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER_ID . "/" . $rename_pic_name)){//修改檔案名稱
-					@unlink('images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它  抓sql的oldpic
-					//header("Location: " . no_error);
-				} else {
-					echo "<script>javascript:alert(\"發生錯誤1!\");</script>";//跳出錯誤訊息
-					echo "<script>history.back()</script>";//回上一頁
-					exit;                                  //停止後續程式碼的繼續執行
-					//header("Location: " . yes_error);
-				}
-			} else {
-				echo "<script>javascript:alert(\"發生錯誤2!\");</script>";//跳出錯誤訊息
-				echo "<script>history.back()</script>";//回上一頁
-					exit;	                               //停止後續程式碼的繼續執行
-				//header("Location: " . yes_error);
-			}
-		}
-
-		// echo "title1=$newPicname5<br>"; $news_pic_title5
+if(!empty($HTTP_POST_FILES['rename_pic'])){ //如果你的上傳檔案欄位不是取名為news_pic，請將你的欄位名稱取代所有news_pic名稱
+	if(is_uploaded_file($HTTP_POST_FILES['rename_pic']['tmp_name']) && $HTTP_POST_FILES['rename_pic']['error'] == 0){
+		$_file_ = $HTTP_POST_FILES['rename_pic'];
+		$rename_pic=upload_pic('rename',$_file_);
 	}
 
 }
@@ -924,7 +164,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 // echo "college=".$_POST['exarea1'][0]."<br>";
 // echo "dept.=".$_POST['exarea1'][1]."<br>";
 // die();
-echo("<script>console.log('111111111');</script>");
+
 	$allSubjects=$_POST['Subjects'];
 	$allSubjects= implode(',' , $allSubjects);
 
@@ -950,7 +190,7 @@ echo("<script>console.log('111111111');</script>");
 
 	//抓取(正取)師資生的報名資料 status=0 //add身份別1(cert_no='1')判斷 ,add by coway 2016.9.22
 	$query_web_search2 = sprintf("SELECT id FROM examinee WHERE id LIKE %s
-			AND Qualify=1 AND status=0 AND exarea_note = %s AND apply_mk=1 AND cert_no='1' ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($_POST['exarea'][2], "text"));
+			AND Qualify=1 AND status=0 AND apply_mk=1 AND exarea = %s AND exarea_note = %s ORDER BY id DESC", GetSQLValueString("%" . $Ticket . "%", "text"), GetSQLValueString($_POST['exarea'][0], "text"), GetSQLValueString($_POST['exarea'][2], "text"));
 // 	echo "sql=".$query_web_search2."<br>";
 // 	die();
 	$web_search2 = mysql_query($query_web_search2, $conn_web) or die(mysql_error());
@@ -988,12 +228,14 @@ echo("<script>console.log('111111111');</script>");
 		$Ticket=$Ticket.sprintf("%04d", $number);*/
 
 	}
+
 	if(substr(($_POST['exarea'][0]),0,1) == $row_web_allguide2['no']){
+		// print_r($_POST['exarea']);
 		if($totalRows_web_search2 >= (int)$row_web_allguide2['data3']){
 // 			if($totalRows_web_search_last2 >= (int)$row_web_allguide2['data4']){
 				//echo "last:$totalRows_web_search_last, data4: $row_web_allguide2[data4]";
 // 			echo "<script>javascript:alert(\"超過限制檔案大小\");exit;</script>";
-			echo "<script>javascript:alert(\"本考場第一錄取順序應考人之網路登錄報名人數已超過簡張開放名額，請考慮是否選擇其他考場參與評量。\");</script>";
+			echo "<script>javascript:alert(\"本考場應考人之網路登錄報名人數已超過簡章開放名額，請考慮是否選擇其他考場參與評量。\");</script>";
 // 			echo "<script>if(confirm('本考場第一錄取順序應考人之網路登錄報名人數已超過簡單開放名額，請考慮是否選擇其他考場參與評量。')){history.go(-1);} </script>";
 
 		?>
@@ -1030,7 +272,7 @@ echo("<script>console.log('111111111');</script>");
 <?php
 	}
 	//判斷其他欄位有無填入，其他欄位優先
-	$_POST['Department'] = (trim($_POST['Department_other']) != "") ? $_POST['Department_other'] : $_POST['Department'];
+$_POST['Department'] = (trim($_POST['Department_other']) != "") ? $_POST['Department_other'] : $_POST['Department'];
 $_POST['High_college'] = (trim($_POST['High_college_other']) != "") ? $_POST['High_college_other'] : $_POST['High_college'];
 
 if($_POST['Department']=="" || $_POST['High_college']==""){
@@ -1049,19 +291,30 @@ if($_POST['Department']=="" || $_POST['High_college']==""){
 // 	echo "cert_id=".$row_web_cert['cert_id']."<br>";
 // echo $special_pic_title1."*****";
 	// die();
+// echo $_POST['phone1'];
+// echo $_POST['phone2'];
+$cellphone=$_POST['phone1']."-".$_POST['phone2'];
+$local_call=$_POST['phone3'].$_POST['phone4'];
+if($special_check=='1'){
+	$con_mk='Y';
+}else{
+	$con_mk='N';
+}
 
  $insertSQL = sprintf("INSERT INTO examinee (birthday, username, uname, eng_uname, sex, email,
- 		phone, Area, cityarea, cuszip, cusadr, per_id, category, exarea, exarea_date, exarea_note, school, Grade, Student_ID,
- 		Department, pic_title, pic_name, `date`, id, contact, contact_ph, Qualify, status, cert_no, cert_id,examyear_id,High_college)
- 		VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
- 		%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",//, certificate
+ 		phone, local_call, Area, cityarea, cuszip, cusadr, per_id, category, exarea, exarea_date, exarea_note, school, Grade, Student_ID,
+ 		Department, pic_title, pic_name, `date`, id, contact, contact_ph, Qualify, status, cert_no, cert_id,examyear_id,High_college, con_mk)
+ 		VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+			    %s, %s, %s, %s, %s, %s, %s, %s, %s,	%s,
+				%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",//, certificate
                        GetSQLValueString($_POST['birthday'], "text"),
-											 GetSQLValueString($_POST['username'], "text"),
+					   GetSQLValueString($_POST['username'], "text"),
                        GetSQLValueString($_POST['uname'], "text"),
-											 GetSQLValueString($_POST['eng_uname'], "text"),
+					   GetSQLValueString($_POST['eng_uname'], "text"),
                        GetSQLValueString($_POST['sex'], "text"),
                        GetSQLValueString($_POST['email'], "text"),
-                       GetSQLValueString($_POST['phone'], "text"),
+                       GetSQLValueString($cellphone, "text"),
+					   GetSQLValueString($local_call, "text"),
                        GetSQLValueString($_POST['Area'], "text"),
                        GetSQLValueString($_POST['cityarea'], "text"),
                        GetSQLValueString($_POST['cuszip'], "text"),
@@ -1077,8 +330,8 @@ if($_POST['Department']=="" || $_POST['High_college']==""){
 					   GetSQLValueString($_POST['Grade'], "text"),
 					   GetSQLValueString($_POST['Student_ID'], "text"),
 					   GetSQLValueString($_POST['Department'], "text"),
-					   GetSQLValueString($news_pic_title, "text"),
-                       GetSQLValueString($newPicname, "text"),
+					   GetSQLValueString($headpic_name[0], "text"),
+                       GetSQLValueString($headpic_name[1], "text"),
                        GetSQLValueString($_POST['date'], "date"),
                        GetSQLValueString($Ticket, "text"),
  					   GetSQLValueString($_POST['contact'], "text"),
@@ -1086,11 +339,11 @@ if($_POST['Department']=="" || $_POST['High_college']==""){
 // 				 	   GetSQLValueString($qualify, "text"),
 				 	   GetSQLValueString('1', "text"),
 				 	   GetSQLValueString('0', "text"),
-					   GetSQLValueString($_POST['id'], "text"),//cert_no, add by coway 2016.8.9
+					   GetSQLValueString($_POST['exam_id'], "text"),//cert_no, add by coway 2016.8.9
 					   GetSQLValueString($row_web_cert['cert_id'], "text"),//cert_id, add by coway 2016.8.25
 					   GetSQLValueString($_POST['examyear_id'], "text"),//examyear_id, add by coway 2016.8.25
-					   GetSQLValueString($_POST['High_college'], "text")//High_college, add by coway 2017.4.6
-
+					   GetSQLValueString($_POST['High_college'], "text"),//High_college, add by coway 2017.4.6
+					   GetSQLValueString($con_mk, "text")//特殊考生 add by BlueS 2018.07.25
  		);
 
   mysql_select_db($database_conn_web, $conn_web);
@@ -1106,6 +359,7 @@ if($_POST['Department']=="" || $_POST['High_college']==""){
 	}
 
 $web_examinne_check = sprintf("SELECT no,username,examyear_id FROM examinee WHERE username = %s ORDER BY DATE DESC LIMIT 0,1", GetSQLValueString($colname_web_member, "text"));
+mysql_select_db($database_conn_web, $conn_web);
 $web_examinne_c = mysql_query($web_examinne_check, $conn_web) or die(mysql_error());
 $row_web_examinne = mysql_fetch_assoc($web_examinne_c);
 // print_r($row_web_examinne);
@@ -1114,38 +368,50 @@ $row_web_examinne = mysql_fetch_assoc($web_examinne_c);
 //****************BlueS 20180302 將身分證等資料存入資料庫
 mysql_select_db($database_conn_web, $conn_web);
 $insertSQL_check = sprintf("INSERT INTO `examinee_pic` (`examinee_no`, `username`, `examyear_id`, `pic1_title`,
-	`pic1_name`, `pic2_title`, `pic2_name`, `pic3_title`, `pic3_name`, `pic4_title`, `pic4_name`, `pic5_title`,
-	`pic5_name`, `special_pic_title1`, `special_pic_name1`, `special_pic_title2`, `special_pic_name2`, `special_pic_title3`,
-	`special_pic_name3`, `rename_pic_title`, `rename_pic_name`)
-	 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+	`pic1_name`, `pic2_title`, `pic2_name`, `pic3_title`, `pic3_name`, `pic4_title`, `pic4_name`, `pic5_title`, `pic5_name`, `pic6_title`, `pic6_name`, `pic7_title`, `pic7_name`,
+	`special_pic_title1`, `special_pic_name1`, `special_pic_title2`, `special_pic_name2`, `special_pic_title3`, `special_pic_name3`, `rename_pic_title`, `rename_pic_name`)
+	 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
 											GetSQLValueString($row_web_examinne["no"], "text"),
 											GetSQLValueString($row_web_examinne["username"], "text"),
 											GetSQLValueString($row_web_examinne["examyear_id"], "text"),
-											GetSQLValueString($news_pic_title1, "text"),
-											GetSQLValueString($newPicname1, "text"),
-											GetSQLValueString($news_pic_title2, "text"),
-											GetSQLValueString($newPicname2, "text"),
-											GetSQLValueString($news_pic_title3, "text"),
-											GetSQLValueString($newPicname3, "text"),
-											GetSQLValueString($news_pic_title4, "text"),
-											GetSQLValueString($newPicname4, "text"),
-											GetSQLValueString($news_pic_title5, "text"),
-											GetSQLValueString($newPicname5, "text"),
-											GetSQLValueString($special_pic_title1, "text"),
-											GetSQLValueString($special_pic_name1, "text"),
-											GetSQLValueString($special_pic_title2, "text"),
-											GetSQLValueString($special_pic_name2, "text"),
-											GetSQLValueString($special_pic_title3, "text"),
-											GetSQLValueString($special_pic_name3, "text"),
-											GetSQLValueString($rename_pic_title, "text"),
-											GetSQLValueString($rename_pic_name, "text")
+											GetSQLValueString($news_pic1[0], "text"),
+											GetSQLValueString($news_pic1[1], "text"),
+											GetSQLValueString($news_pic2[0], "text"),
+											GetSQLValueString($news_pic2[1], "text"),
+											GetSQLValueString($news_pic3[0], "text"),
+											GetSQLValueString($news_pic3[1], "text"),
+											GetSQLValueString($news_pic4[0], "text"),
+											GetSQLValueString($news_pic4[1], "text"),
+											GetSQLValueString($news_pic5[0], "text"),
+											GetSQLValueString($news_pic5[1], "text"),
+											GetSQLValueString($news_pic6[0], "text"),
+											GetSQLValueString($news_pic6[1], "text"),
+											GetSQLValueString($news_pic7[0], "text"),
+											GetSQLValueString($news_pic7[1], "text"),
+											GetSQLValueString($special_pic1[0], "text"),
+											GetSQLValueString($special_pic1[1], "text"),
+											GetSQLValueString($special_pic2[0], "text"),
+											GetSQLValueString($special_pic2[1], "text"),
+											GetSQLValueString($special_pic3[0], "text"),
+											GetSQLValueString($special_pic3[1], "text"),
+											GetSQLValueString($rename_pic[0], "text"),
+											GetSQLValueString($rename_pic[1], "text")
 	 );
 
 // echo $insertSQL_check;
 // die();
  $Result1 = mysql_query($insertSQL_check, $conn_web) or die(mysql_error());
 	$nums=mysql_affected_rows();
-	if($nums > 0){
+
+	$sql_check_review = sprintf("INSERT INTO `check_review`(`examinee_sn`, `user_name`) VALUES (%s,%s)",
+											 GetSQLValueString($row_web_examinne["no"], "text"),
+											 GetSQLValueString($row_web_examinne["username"], "text")
+		);
+		mysql_select_db($database_conn_web, $conn_web);
+		$check_review = mysql_query($sql_check_review, $conn_web) or die(mysql_error());
+		$row_check_review = mysql_affected_rows();
+
+	if($nums > 0 && $row_check_review >0){
 	  header(sprintf("Location: %s", $insertGoTo));
 	  exit();
 	}
@@ -1307,6 +573,8 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 <!--引入郵遞區號.js檔案-->
 <link rel="stylesheet" href="./css/dhtmlgoodies_calendar.css" />
 <script src="./js/dhtmlgoodies_calendar.js"></script>
+<script src="Scripts/sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="Scripts/sweetalert2/dist/sweetalert2.min.css">
 <script>
 	var data = [];
 	$.validator.setDefaults({
@@ -1345,13 +613,12 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		$('#optionDiv2-1').hide();
 		$('#optionDiv3').hide();
 		$('#optionDiv3-1').hide();
-		$('#optionDiv4').hide();
-		$('#optionDiv4-1').hide();
+
 		$('#special_upload').hide();
 		$('.radio-inline').change(function(){
 
 			console.log ('---------');
-			var selected_radio_value = $("input[name=id]:checked").val();
+			var selected_radio_value = $("input[name=exam_id]:checked").val();
 			if(selected_radio_value == '1')
 			{
 					$('#optionDiv1').show();
@@ -1431,41 +698,86 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 					minlength: "科系輸入請勿少於4個字元"
 				},
 				email:"請檢查email欄位",
-				phone: "請檢查電話欄位",
+				// phone: "請檢查電話欄位",
 				//exam_school: "請選擇考場"
 			}
 		});
 	});
 
 	function SaveAlert(){
-// 判斷是否上傳照片 BlueS 20180308
-
-
-var input_id = $("input[name=id]:checked").val();
-if(input_id==3 && news_pic5.value== ""){
-	alert("檔案上傳不完整。");
-	window.event.returnValue=false;
-}else if(input_id==2 && news_pic4.value== ""){
-	alert("檔案上傳不完整。");
-	window.event.returnValue=false;
-}else if(input_id==1 && news_pic3.value== ""){
-	alert("檔案上傳不完整。");
-	window.event.returnValue=false;
-}
-var input_sp = $("input[name=special_check]:checked").val();
-if(input_sp==undefined){
-	alert("是否為特殊考生未填。");
-	window.event.returnValue=false;
-}
-if(input_sp==1){
-		if(special_pic1.value == "" || special_pic2.value == "" || special_pic3.value == ""){
-			alert("特殊考生資料上傳不完整。");
+		// 判斷是否上傳照片 BlueS 20180308
+		// var check =0;
+		// var phone11 = phone1.value;
+		// var phone2 = phone2.value;
+		if(phone1.value=="" || phone2.value==""){
+			swal("電話填寫不完整。");
 			window.event.returnValue=false;
 		}
-}
 
+		var input_id = $("input[name=exam_id]:checked").val();
+		if(input_id==4 && news_pic6.value==""){
+			// check =1;
+			swal("檔案上傳不完整。");
+			window.event.returnValue=false;
+		}
+		if(input_id==3 ){
+			// check =1;
+			if(news_pic5.value== "" ){
+				swal("檔案上傳不完整。");
+				window.event.returnValue=false;
+			}
+			if(Student_ID.value== "" ){
+				swal("學號未填。");
+				window.event.returnValue=false;
+			}
+		}
+		if(input_id==2){
+			// check =1;
+			if(news_pic4.value== ""){
+				swal("檔案上傳不完整。");
+				window.event.returnValue=false;
+			}
+			if(Student_ID.value== "" ){
+				swal("學號未填。");
+				window.event.returnValue=false;
+			}
 
-		alert("提醒您，報名尚未完成。");
+		}
+		if(input_id==1){
+			// check =1;
+			if( news_pic3.value== ""){
+				swal("學生證正面未上傳。");
+				window.event.returnValue=false;
+			}
+			if(Student_ID.value== "" ){
+				swal("學號未填。");
+				window.event.returnValue=false;
+			}
+
+		}
+		var input_sp = $("input[name=special_check]:checked").val();
+		if(input_sp==undefined){
+			// check =1;
+			swal("是否為特殊考生未填。");
+			window.event.returnValue=false;
+		}
+		if(input_sp==1){
+			if(special_pic1.value == "" || special_pic2.value == "" || special_pic3.value == ""){
+				// check =1;
+				swal("特殊考生資料上傳不完整。");
+				window.event.returnValue=false;
+			}
+		}
+		if(Department_other.value =="" && document.getElementsByName('Department')[0].value == ""){
+			// check =1;
+			swal("系所未填寫！");
+			window.event.returnValue=false;
+		}
+		if(High_college_other.value =="" && document.getElementsByName('High_college')[0].value == ""){
+			// check =1;
+			swal("學院未填寫！");
+			window.event.returnValue=false;
+		}
 	}
 
 	function showData(str,index) {
@@ -1490,13 +802,11 @@ if(input_sp==1){
 	}
 
 	function popIdMsg(){
-		var winvar;
-		swal({
-  			title: "同類別中以完成網路報名時間先後為錄取順序之排定報名完成時間較早者為優先",
-  			text: "※請確實點選報考資格，經查核資料不實者，即取消本次應考資格※",
-  			icon: "warning",
-  			button: "確定!",
-		});
+		swal(
+		  '請確實點選報考資格',
+		  '※經查核資料不實者，即取消本次應考資格※<br>同類別中以完成網路報名時間先後為錄取順序之排定<br>報名完成時間較早者為優先',
+		  'info'
+		)
 			// window.open('popIdMsg.php','msg','resizable=no,top=220,left=900,height=200,width=400,scrollbars=no,menubar=no,location=no,status=no,titlebar=no,toolbar=no');
 // 		winvar = window.open('localhost', '', config='toolbar=no,top=220,left=900,height=200,width=400,scrollbars=no,resizable=0,menubar=no,location=no,status=no');
 // 		var text1 ="※請確實點選應考資格， 經查核資料不實者，即取消本次應考資格※";
@@ -1541,34 +851,74 @@ if(input_sp==1){
 // 		form.cuszip.value = cityareacode[cityarea_account[form.Area.selectedIndex]+i+1];
 // 		form.cusadr.value = form.Area.options[form.Area.selectedIndex].value+form.cityarea.options[form.cityarea.selectedIndex].value;
 	}
+//判斷是否超過人數 updata by BlueS 21081002
+function ShowMsg(){
+	var area = $("select[name='exarea[0]']").val();
+	var data2 = $("select[name='exarea[2]']").val();
+	$.ajax({
+				type : "POST" ,
+				url : "ajax_assignment_data.php" ,
+				data :{'type': 2, 'status' : 0, 'area' : area, 'data2' : data2},
+				dataType:'json',
+				async: false,
+				success: function(returndata){
+					var Maximum_num = Number(returndata[0]);
+					var Nownum = Number(returndata[1]);
+					if(Maximum_num < Nownum){
+						swal({
+							html:"本考場應考人之網路登錄報名人數已超過簡章開放名額<br>請考慮是否選擇其他考場參與評量。",
+							title: "<b>警告</b>",
+							type: "warning",
+							animation: "slide-from-top",
+						});
+					}
 
+					console.log(returndata);
+					window.event.returnValue=false;
+				},
+				error: function(xhr, ajaxOptions, thrownError){
+					// alert('error...');
+					alert(xhr.status);//0: 请求未初始化
+					alert(thrownError);
+				}
+			});
+}
 
-	//update by coway 2016.8.9
-// 	function ShowMsg(sel, index){
-// 		var length = data.length;
-// 		var value = sel.value;
-// 		var name = sel.name.substr(7,1);
-// 		if(name == '0') data.length = 0;
-// 		if(name == '1') data.length = 1;
-// 		data[name] = value;
-// 		//console.log(index);
-// 		if(data.length == 3){
-// 			//console.log(data);
-// 			showData(data,index);
-// // 			alert('test2');
-// 		}else document.getElementById("msg").innerHTML='正取尚餘__人  ；備取尚餘 __人';
-// 	}
+function show_sign_up(){
+	$.ajax({
+				type : "POST" ,
+				url : "ajax_assignment_data.php" ,
+				data :{'type': 3, 'status' : 0},
+				dataType:'json',
+				async: false,
+				success: function(returndata){
+					var html_text = "<table border='1' style='width: 100%;'><tr><td>考場</td><td>日期</td><td>考場開放名額</td><td>目前報考人數</td></tr>";
+					$.each( returndata, function( key, value ){
+						html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+						// console.log(value["note"]);
+					});
+					html_text = html_text + "</table>";
+					// var Maximum_num = Number(returndata[0]);
+					// var Nownum = Number(returndata[1]);
+					// if(Maximum_num < Nownum){
+						swal({
+							html:html_text,
+							title: "<b>公告</b>",
+							type: "info",
+							animation: "slide-from-top",
+						});
+					// }
 
-// 	function ShowFullMsg(){
-// 		if(substr(($_POST['exarea'][0]),0,1) == $row_web_allguide2['no']){
-
-// 			alert('test2');
-// 			if($totalRows_web_search2 >= (int)$row_web_allguide2['data3']){
-
-// 				alert('test');
-// 			}
-// 			}
-// 	}
+					console.log(html_text);
+					// window.event.returnValue=false;
+				},
+				error: function(xhr, ajaxOptions, thrownError){
+					// alert('error...');
+					alert(xhr.status);//0: 请求未初始化
+					alert(thrownError);
+				}
+		});
+}
 	</script>
 
 
@@ -1582,6 +932,7 @@ if(input_sp==1){
 
   <div id="exam" align="center">
   <?php
+  echo '<script type="text/javascript">show_sign_up();</script>';
 //   echo "開始時間=".strtotime($row_web_new['startday'])."<br>";
 //   echo "開始時間H:i=".strtotime('2016-09-23 08:30:00')."<br>";
 //   echo "now=".date('Y-m-d')."<br>";
@@ -1590,6 +941,17 @@ if(input_sp==1){
 //    echo "儲存時間2=".substr(($row_web_examinee['date']),0,19)."<br>";
   $row_web_new['startday']=$row_web_new['startday']." 08:30:00";
   $row_web_new['endday']=$row_web_new['endday']." 15:30:00";
+  //判斷手機
+  $phone_num= array();
+  $phone_check=isPhone($row_web_member['phone']);
+  if($phone_check[0]){
+	  if($phone_check[1]=='1'){
+		   array_push($phone_num,substr($row_web_member['phone'],0,4),substr($row_web_member['phone'],5,3).substr($row_web_member['phone'],9,3));
+	  }else{
+		   array_push($phone_num,substr($row_web_member['phone'],0,4),substr($row_web_member['phone'],-6));
+	  }
+
+  }
   ?>
   <? if(strtotime($row_web_new['startday']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime($row_web_new['endday'])&& $row_web_new['status'] == '0'){?>
 		<!-- 如果有報名師資生跳出訊息 -->
@@ -1599,7 +961,7 @@ if(input_sp==1){
 						<td height="80" align="center" class="font_red2">已報名 國民小學教師自然領域學科知能評量!<br><br>請點選 <a href="progress.php?status=1"><img src="images/progress_check_t.png"  /></a> 查看審核情況。</td>
 						</tr>
 			</table>
-		<?php }elseif(($row_web_examinee['username'] != $row_web_member['username']) or  strtotime(substr(($row_web_examinee['date']),0,19)) < (strtotime($row_web_new['startday']))){?>
+		<?php }elseif(($row_web_examinee['username'] != $row_web_member['username']) &&  strtotime(substr(($row_web_examinee['date']),0,19)) < (strtotime($row_web_new['startday']))){?>
 
     <form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" >
       <table width="640" border="0" cellspacing="0" cellpadding="0" >
@@ -1611,7 +973,7 @@ if(input_sp==1){
       </table>
       <table width="640" border="0" cellspacing="0" cellpadding="2">
         <tr>
-          <td width="82" height="30" align="right" class="board_add"><span class="font_red">* </span>姓名：</td>
+          <td width="105" height="30" align="right" class="board_add">姓名：</td>
           <td width="458" align="left" class="board_add"><label>
 			  <?php echo $row_web_member['uname'];?>
             <input name="uname" type="hidden" id="uname" value="<?php echo $row_web_member['uname']; ?>" />
@@ -1625,7 +987,7 @@ if(input_sp==1){
 				</span></td>
 			</tr>
         <tr>
-          <td width="82" height="30" align="right" class="board_add">英文姓名：</td>
+          <td width="105" height="30" align="right" class="board_add">英文姓名：</td>
           <td width="458" align="left" class="board_add" colspan="2"><label>
           <?php
 	          list($firstname, $lastname, $lastname2) = explode(" ", $row_web_member['eng_uname']);
@@ -1642,11 +1004,11 @@ if(input_sp==1){
         <td height="30" align="right" class="board_add"><span class="font_red">* </span>大頭照圖片：</td>
         <td align="left" class="board_add"><span class="table_lineheight">
           <?php /*START_PHP_SIRFCIT*/ //if ($row_web_examinee2['pic_name']!=""){ //marker by coway 2016.9.23?>
-          <img src="images/examinee/<?php //echo $row_web_examinee2['pic_name']; ?>" alt="" name="pic" width="70" id="pic" />
+          <!-- <img src="images/examinee/<?php //echo $row_web_examinee2['pic_name']; ?>" alt="" name="pic" width="70" id="pic" /> -->
           <?php //} /*END_PHP_SIRFCIT*/ ?>
           <input name="oldPic" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_name']; ?>" />
           <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee2['pic_title']; ?>" />
-          <?php //echo $row_web_examinee2['pic_title']; ?><br />
+          <?php //echo $row_web_examinee2['pic_title']; ?>
           <label>
           <span id="sprytextfield10">
             <input type="file" name="upload_hpic" id="upload_hpic" />
@@ -1662,7 +1024,7 @@ if(input_sp==1){
           <td align="left" class="board_add"><label>
             <input name="email" type="text" id="email" value="<?php echo $row_web_member['email']; ?>" size="35" />
           </label><br />
-			<span class="font_black">請勿使用會檔信的yahoo、pchome信箱，以免收不到信。</span></td>
+			<span class="font_black">請勿使用會擋信的yahoo、pchome信箱，以免收不到信。</span></td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>性別：</td>
@@ -1686,12 +1048,23 @@ if(input_sp==1){
         </tr>
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>電話：</td>
-          <td align="left" class="board_add"><label>
-          <span id="sprytextfield5">
-            <input name="phone" type="text" id="phone" value="<?php echo $row_web_member['phone']; ?>" />
-            <span class="textfieldRequiredMsg">請輸入電話</span><span class="textfieldMinCharsMsg">請輸入電話</span></span>
-          </label></td>
+        	<td align="left" class="board_add">
+				<label>
+          			<span id="sprytextfield5">
+					手機
+					<input onkeyup="value=value.replace(/[^\d]/g,'');setBlur(this,'phone2');" name="phone1" type="text" id="phone1" style="width: 40px;" maxlength="4" value="<?php echo $phone_num[0] ?>" />-<input onkeyup="value=value.replace(/[^\d]/g,'')" name="phone2" type="text" id="phone2" style="width: 77px;" maxlength="6" value="<?php echo $phone_num[1] ?>" /><span class="font_red">必填</span>
+				</label>
+	  		</td>
         </tr>
+		<tr>
+		  <td height="30" align="right" class="board_add"></td>
+			<td align="left" class="board_add"><label>
+					<span id="sprytextfield5">
+					市話
+					（<input onkeyup="value=value.replace(/[^\d]/g,'')" name="phone3" type="text" id="phone" style="width:22px;"  /> ）<input onkeyup="value=value.replace(/[^\d]/g,'')" name="phone4" type="text" id="phone" style="width:77px;" />
+				</label>
+			</td>
+		</tr>
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>身分證字號：</td>
           <td align="left" class="board_add"><label>
@@ -1745,7 +1118,7 @@ if(input_sp==1){
 
 		</tr>
         <tr>
-          <td height="30" align="right" colspan="2" class="board_add">=========================================================================================</td>
+          <td height="30"  colspan="2" class="board_add">===================================================================================================</td>
         </tr>
         <tr>
         </tr>
@@ -1766,23 +1139,23 @@ if(input_sp==1){
             </td>
         </tr> -->
          <tr>
-          <td height="30" align="right" class="board_add"><span class="font_red">* </span>報考資格：<br>錄取順序一.<br>錄取順序二.<br>錄取順序三.<br>錄取順序四.</td>
+          <td height="30" align="right" class="board_add" style="vertical-align: top;"><span class="font_red">* </span>報考資格：<br>錄取順序一.<br>錄取順序二.<br>錄取順序三.<br>錄取順序四.</td>
            <td align="left" class="board_add">
           <label>本評量報考資格分為四類，其錄取順序如下：<br>
 							<label class="radio-inline">
-	          					<input type="radio" name="id" id="radio1" value="1"  onclick="popIdMsg();"  Checked/>
+	          					<input type="radio" name="exam_id" id="radio1" value="1"  onclick="popIdMsg();" />
 			          			<?php echo $allguide_lot[0]['nm']."<br>"?>
 							</label>
 							<label class="radio-inline">
-			          			<input type="radio" name="id" id="radio2" value="2" onclick="popIdMsg();" />
+			          			<input type="radio" name="exam_id" id="radio2" value="2" onclick="popIdMsg();" />
 			          			<?php echo $allguide_lot[1]['nm']."<br>"?>
 							</label>
 							<label class="radio-inline">
-			          			<input type="radio" name="id" id="radio3" value="3"  onclick="popIdMsg();" />
+			          			<input type="radio" name="exam_id" id="radio3" value="3"  onclick="popIdMsg();" />
 			          			<?php echo $allguide_lot[2]['nm']."<br>"?>
 							</label>
 							<label class="radio-inline">
-			          			<input type="radio" name="id" id="radio4" value="4"  onclick="popIdMsg();" />
+			          			<input type="radio" name="exam_id" id="radio4" value="4"  onclick="popIdMsg();" />
 			          			<?php echo $allguide_lot[3]['nm']."<br>"?>
 							</label>
           </label>
@@ -1790,50 +1163,50 @@ if(input_sp==1){
          </tr>
 				 <!-- 上傳相片 BlueS 20180307 -->
 				 <tr>
-					 <td height="30" align="right" class="board_add" valign="top" style="line-height: 24px;"><span class="font_red">* </span>國民身分證正面：<br><span class="font_red">* </span>國民身分證反面：<br>
-						 <div id="optionDiv1" style="display:inline-block;"><span class="font_red">* </span><span style="text-align:left;">學生證正面</span><br>(需有個人資訊)：<br></div>
-						 <div id="optionDiv2" style="display:inline-block;"><span class="font_red">* </span>修畢師資職前教育<br>證明書：<br></div>
-						 <div id="optionDiv3" style="display:inline-block;"><span class="font_red">* </span>實習學生證：</div>
-						 <div id="optionDiv4" style="display:inline-block;"><span class="font_red">* </span>國小教師證書：</div></td>
+					 <td height="30" align="right" class="board_add" valign="top" style="line-height: 24px;"><span class="font_red">* </span><?PHP echo $picname_t[1];?>：<br><span class="font_red">* </span><?PHP echo $picname_t[2];?>：<br>
+						 <div id="optionDiv1" style="display:inline-block;"><span class="font_red">* </span><span style="text-align:left;"><?PHP echo $picname_t[3];?></span>：<br>(需有個人資訊)<br></div>
+						 <div id="optionDiv2" style="display:inline-block;"><span class="font_red">* </span><?PHP echo $picname_t[4];?>：<br></div>
+						 <div id="optionDiv3" style="display:inline-block;"><span class="font_red">* </span><?PHP echo $picname_t[5];?>：</div>
+						 <div id="optionDiv4" style="display:inline-block;"><span class="font_red">* </span><?PHP echo $picname_t[6];?>：</div></td>
 					 <td class="board_add">
 						 <span id="sprytextfield11">
 							 <input type="file" name="news_pic1" id="news_pic1" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-						 </span><br/>
+						 </span><br>
 						 <span id="sprytextfield12">
 							 <input type="file" name="news_pic2" id="news_pic2" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-						 </span><br/>
-						<div id="optionDiv1-1" style="display:inline-block;"><br>
+						 </span><br>
+						<div id="optionDiv1-1">
 						 <span id="sprytextfield13">
 							 <input type="file" name="news_pic3" id="news_pic3" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-						 </span><br/>
+						 </span><br><br>
 					 	</div>
-						<div id="optionDiv2-1" style="display:inline-block;"><br>
+						<div id="optionDiv2-1"><br>
 						 <span id="sprytextfield14">
 							 <input type="file" name="news_pic4" id="news_pic4" />
 							 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-						 </span><br/>
+						 </span><br>
 					 	</div>
-						<div id="optionDiv3-1" style="display:inline-block;">
+						<div id="optionDiv3-1">
 							 <span id="sprytextfield15">
 								 <input type="file" name="news_pic5" id="news_pic5" />
 								 <span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-							 </span><br/>
+							 </span><br>
 					 	</div>
-						<div id="optionDiv4-1" style="display:inline-block;">
+						<div id="optionDiv4-1">
 							<span id="sprytextfield16">
 								<input type="file" name="news_pic6" id="news_pic6" />
 								<span class="textfieldRequiredMsg">請選擇照片</span><span class="textfieldMinCharsMsg">請選擇照片</span>
-							</span><br/>
-					   </div><br/>
+							</span><br>
+						</div>
 						<span class="font_red">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span>
 					 </td>
 				 </tr>
 				 <!-- 結尾 -->
         <tr>
-          <td height="30" align="right" class="board_add"><span class="font_red">* </span>報名科目：</td>
+          <td height="30" align="right" class="board_add"><span class="font_red">* </span>報名領域：</td>
           <td align="left" class="board_add">
 
           <label><input name="Subjects[]" type="checkbox" id="Subjects[]" value="1" checked="checked" />
@@ -1850,11 +1223,11 @@ if(input_sp==1){
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>
           <?php
-//           		$event="required onchange=\"ShowMsg(this,'$todayyear')\"";
-          		$event="required";
+          		$event="required onchange=\"ShowMsg()\"";
+          		// $event="required";
           		// Create the Element
 				$sel =& $form->addElement('hierselect', 'exarea', '',$event);?>
-          	評量考區：</td>
+          	評量考場：</td>
           <td align="left" class="board_add">
           <label>
           	<span id="spryselect3">
@@ -1958,11 +1331,13 @@ if(input_sp==1){
         </tr>
         <tr>
           <td height="30" align="right" class="board_add"><span class="font_red">* </span>學號：</td>
-          <td align="left" class="board_add"><label>
-
-          <span id="sprytextfield1">
-            <input type="text" name="Student_ID" id="Student_ID"  value="<?php echo $row_web_examinee2['Student_ID']; ?>" />(已畢業者請填畢業時之學號)
-          <span class="textfieldRequiredMsg">請輸入學號</span><span class="textfieldMinCharsMsg">請輸入學號</span></span></label></td>
+          <td align="left" class="board_add">
+			  <label>
+				  <span id="sprytextfield1">
+					  <input type="text" name="Student_ID" id="Student_ID"  value="<?php echo $row_web_examinee2['Student_ID']; ?>" />(已畢業者請填畢業時之學號)
+				  </span>
+			  </label>
+		  </td>
         </tr>
         <?php
           		$events=' class="input-normal" height="30" width="200" required onchange="areachange1(this.form)"';?>
@@ -2017,13 +1392,13 @@ if(input_sp==1){
 						</label>
 						<br>
 						<div id="special_upload" style="display:inline-block;">
-						 <span id="special_pic_upload1">特殊考場服務申請表：
+						 <span id="special_pic_upload1"><?PHP echo $picname_t[sp1];?>：
 							 <input type="file" name="special_pic1" id="special_pic1" />
 						 </span><br/>
-						 <span id="special_pic_upload2">應考服務診斷證明書：
+						 <span id="special_pic_upload2"><?PHP echo $picname_t[sp2];?>：
 							 <input type="file" name="special_pic2" id="special_pic2" />
 						 </span><br/>
-						 <span id="special_pic_upload3">應考切結書：
+						 <span id="special_pic_upload3"><?PHP echo $picname_t[sp3];?>：
 							 <input type="file" name="special_pic3" id="special_pic3" />
 						 </span><br/>
 	          <span class="font_red">**以上表格皆須使用本中心表格並掃描<br>接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span></span>
@@ -2084,13 +1459,15 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 			GetSQLValueString($row_web_examinee['no'], "text"));
 	$deleteSQL_pic = sprintf("DELETE FROM examinee_pic WHERE examinee_no=%s",
 			GetSQLValueString($row_web_examinee['no'], "text"));
-
+	$deletecheck_review= sprintf("DELETE FROM check_review WHERE examinee_sn=%s",
+			GetSQLValueString($row_web_examinee['no'], "text"));
 	//echo "no=".$row_web_examinee["no"]."<br>";
 	mysql_select_db($database_conn_web, $conn_web);
 		$ResultDel = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
 	mysql_select_db($database_conn_web, $conn_web);
 		$ResultDel_pic = mysql_query($deleteSQL_pic, $conn_web) or die(mysql_error());
-
+	mysql_select_db($database_conn_web, $conn_web);
+		$ResultDel_check_review = mysql_query($deletecheck_review, $conn_web) or die(mysql_error());
 		if($ResultDel && $ResultDel_pic)
 		{
 // 			echo "result=".$ResultDel;
@@ -2114,14 +1491,24 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
 
 <?php include("footer.php"); ?>
 </div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {minChars:4, validateOn:["blur", "change"]});
+	//電話自動換下一格
+	function setBlur(obj,target2)
+	{
+		var target =document.getElementById(target2);
+ 	if(obj.value.length ==obj.getAttribute('maxlength'))
+     {
+         target.focus();
+     }
+ 	return;
+	}
+
+// var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {minChars:4, validateOn:["blur", "change"]});//學號
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "none", {minChars:2, validateOn:["blur", "change"]});
 var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "none", {minChars:6, validateOn:["blur", "change"]});
 //20160307 teresa add
 var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "none", {minChars:8, validateOn:["blur", "change"]});
-var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "none", {minChars:9, validateOn:["blur", "change"]});
+// var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "none", {minChars:9, validateOn:["blur", "change"]});//電話判斷
 //var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none", {minChars:5, validateOn:["blur", "change"]});
 //var spryselect1 = new Spry.Widget.ValidationSelect("spryselect1");
 //var spryselect2 = new Spry.Widget.ValidationSelect("spryselect2");
@@ -2136,6 +1523,9 @@ var sprytextfield12 = new Spry.Widget.ValidationTextField("sprytextfield12", "no
 // var sprytextfield13 = new Spry.Widget.ValidationTextField("sprytextfield13", "none", {minChars:3, validateOn:["blur", "change"]});
 // var sprytextfield14 = new Spry.Widget.ValidationTextField("sprytextfield14", "none", {minChars:3, validateOn:["blur", "change"]});
 // var sprytextfield15 = new Spry.Widget.ValidationTextField("sprytextfield15", "none", {minChars:3, validateOn:["blur", "change"]});
+
+//避免上一頁下一頁之後的預設
+$("input[name=exam_id]").attr("checked",false);
 </script>
 </body>
 </html>

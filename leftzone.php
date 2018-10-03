@@ -100,17 +100,17 @@ if (isset($_POST['uCheck'])) {
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
 //通用密碼
-  if($_POST['pCheck']=='111'){
-    $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
-    GetSQLValueString($loginUsername, "text"));
-    $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
-    $loginFoundUser = mysql_num_rows($LoginRS);
-  }else{
+  // if($_POST['pCheck']=='111'){
+  //   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
+  //   GetSQLValueString($loginUsername, "text"));
+  //   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
+  //   $loginFoundUser = mysql_num_rows($LoginRS);
+  // }else{
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
-  }
+  // }
 
   if ($loginFoundUser) {
 
@@ -235,10 +235,26 @@ function YY_checkform() { //v4.66
 <link href="web.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="js/themes/easyui.css" />
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css" />
-<script type="text/javascript" src="js/jquery.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+<!-- <script type="text/javascript" src="Scripts/jquery-2.1.0.min.js"></script> -->
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui-lang-zh_TW.js"></script>
-
+<script type="text/javascript">
+    function importOnce(scriptPath) {
+      var scripts = document.getElementsByTagName("script");
+      for (var index = 0; index < scripts.length; index++) {
+        if (scripts[index].src.lastIndexOf(scriptPath) != -1) {
+          return;
+        }
+      }
+      var scriptTag = document.createElement("script");
+      scriptTag.type = "text/javascript";
+      scriptTag.src = scriptPath;
+      var headTag = document.getElementsByTagName("head")[0];
+      headTag.appendChild(scriptTag);
+}
+importOnce("Scripts/jquery-2.1.0.min.js");
+</script>
 	<? if(empty($_SESSION["MM_Username"])){
 		if($_GET["link"] == '2' ){ $member_img = 'images/member_region2.png';}
 		else $member_img = 'images/member_region.png';
@@ -350,22 +366,27 @@ function YY_checkform() { //v4.66
         </td>
       </tr>
       <tr>
-        <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
-        <?php if(date('y-m-d')>= $publishDate){//國小日程表 ./file/20160927221237.pdf?>
+        <td height="6" align="center" valign="middle" bgcolor="#FFFFFF" >
+        <!-- <?php if(date('y-m-d')>= $publishDate){//國小日程表 ./file/20160927221237.pdf?>
           <a href="./file/20180309103058.pdf"><img src="images/106schedule_t.png" /></a>
 
-  		<?php }else { ?> <img src="images/106schedule_t.png" /><? }?>
+  		<?php }else { ?> <img src="images/106schedule_t.png" /><? }?> -->
   		</td>
       <tr>
-         <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
+         <td height="52" align="center" valign="middle" bgcolor="#FFFFFF" >
          <?php if(date('y-m-d')>= $publishDate){//國小報名流程 ./file/20160927221256.pdf?>
 
-           <a href="./file/20180309103047.pdf"><img src="images/flow_t.png"  /></a>
+           <a href="./file/20180907030022.pdf"><img src="images/flow_t.png"  /></a>
 
 
          <?php }else { ?><img src="images/flow_t.png"  /><? }?>
          </td>
        </tr>
+       <tr>
+          <td height="52" align="center" valign="middle" bgcolor="#FFFFFF" >
+              <a href="relateddocuments.php?level=1"><img src="images/relateddocuments_t.png"  /></a>
+          </td>
+        </tr>
   	<? if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] =='0'){?>
    		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
             <a href="progress.php?status=1"><img src="images/progress_check_t.png"  /></a> <?php } ?>
@@ -433,23 +454,28 @@ function YY_checkform() { //v4.66
         </td>
       </tr>
       <tr>
-        <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
-        <?php if(date('y-m-d')>= $publishDate){//師資生日程表?>
+        <td height="6" align="center" valign="middle" bgcolor="#FFFFFF" >
+        <!-- <?php if(date('y-m-d')>= $publishDate){//師資生日程表?>
 
           <a href="./file/20180309102843.pdf"><img src="images/106schedule.png" /></a>
 
-  		<?php }else { ?> <img src="images/106schedule.png" /><? }?>
+  		<?php }else { ?> <img src="images/106schedule.png" /><? }?> -->
   		</td>
       <tr>
-         <td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
+         <td height="52" align="center" valign="middle" bgcolor="#FFFFFF" >
          <?php if(date('y-m-d')>= $publishDate){//師資生報名流程?>
 
-           <a href="./file/20180309102829.pdf"><img src="images/flow.png"  /></a>
+           <a href="./file/20180907030012.pdf"><img src="images/flow.png"  /></a>
 
 
          <?php }else { ?><img src="images/flow.png"  /><? }?>
          </td>
       </tr>
+      <tr>
+         <td height="52" align="center" valign="middle" bgcolor="#FFFFFF" >
+             <a href="relateddocuments.php?level=0"><img src="images/relateddocuments.png"  /></a>
+         </td>
+       </tr>
   	<? if($_SESSION["MM_UserGroup"]=='member' && $_SESSION['MM_UserType'] =='0'){?>
    		<td height="36" align="center" valign="middle" bgcolor="#FFFFFF" >
             <a href="progress.php?status=0"><img src="images/progress_check.png"  /></a> <?php } ?>
@@ -489,9 +515,10 @@ function YY_checkform() { //v4.66
       </tbody>
     </table>
 <br/>
-
+<a href="./file/20180906023632.pdf"><img src="images/download_icon_t.png" border="0"></a>
+<a href="./file/20180905113604.pdf"><img src="images/download_icon.png" border="0"></a>
 <!--<a href="./file/20160420145740.pdf"><img src="images/download.gif"></a> --><!-- 國小簡章下載 -->
-<img src="images/download.gif" onclick="$('#dlg').dialog('open')">
+<!-- <img src="images/download.gif" onclick="$('#dlg').dialog('open')">
 <div id="dlg" class="easyui-dialog" closed="true" title="簡章下載" style="width:200px;height:150px;padding:10px"
 						data-options="
 							buttons: [{
@@ -502,8 +529,8 @@ function YY_checkform() { //v4.66
 							}]
 						">
 
-    <a href="./file/20180309100438.pdf" class="easyui-linkbutton" >師資生簡章</a><a href="./file/20180309100452.pdf" class="easyui-linkbutton" >國小教師簡章</a>
-</div>
+    <a href="./file/20180905113604.pdf" class="easyui-linkbutton" >師資生簡章</a><a href="./file/20180906023632.pdf" class="easyui-linkbutton" >國小教師簡章</a>
+</div> -->
   <?PHP   /*  <form id="shopSearch" name="shopSearch" method="get" action="search.php">
  <table width="180" border="0" cellspacing="0" cellpadding="0">
       <tr>

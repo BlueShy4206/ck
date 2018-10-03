@@ -1,5 +1,6 @@
 
-<?php require_once('Connections/conn_web.php'); ?>
+<?php require_once('Connections/conn_web.php');
+require_once "examAdd_function.php";?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
@@ -78,6 +79,7 @@ $query_web_examinee = sprintf("SELECT * FROM examinee WHERE username = %s AND id
 $web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
 $row_web_examinee = mysql_fetch_assoc($web_examinee);
 $totalRows_web_member = mysql_num_rows($web_examinee);
+$_SESSION['user_level']=$row_web_examinee['status'];
 
 mysql_select_db($database_conn_web, $conn_web);
 $query_web_allguide = sprintf("SELECT * FROM allguide Where up_no='EA' AND nm= %s",GetSQLValueString($row_web_examinee['exarea'], "text"));
@@ -96,14 +98,15 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
 <meta name="keywords" content="考試通知" />
 <meta name="author" content="國立臺中教育大學 測驗統計與適性學習中心" />
 <link href="web.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body >
 
 <div id="main111" background= "#FFFFFF">
   <div id="main111" background= "#FFFFFF"></div>
+
  <?
+
  if($colname_web_member != "-1"){
 
  	if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {$exdate=$row_web_new['ndate'];}
@@ -120,6 +123,10 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
  if(strtotime($row_web_new['printtime']) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d')) <= strtotime($exdate)
  		&& $times1 == $row_web_new['times'] && $row_web_examinee['allow'] == "YY" &&($times2 == date('Y') or $times2 == $exyear)
  		&& $row_web_new['status'] == '1'){ //判斷否符合列印准考證的資格
+    if($row_web_examinee["read_examout"]==0){
+        header('Location: examOutprint_check.php');
+        //換頁
+    }
  	$dateline=strtotime($row_web_new['ndate']);
 
   ?>
@@ -162,7 +169,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
         </tr>
         <!--  -->
         <tr>
-             <td width="150" height="10" align="right" class="board_add" style="font-size:18px; background-color: #f3f3f3; border-style:solid; border-color:#f3f3f3; border-width:1px;">應考科目：</td>
+             <td width="150" height="10" align="right" class="board_add" style="font-size:18px; background-color: #f3f3f3; border-style:solid; border-color:#f3f3f3; border-width:1px;">應考領域：</td>
              <td align="left" class="board_add" style="font-size:18px; background-color: #f3f3f3; border-style:solid; border-color:#f3f3f3; border-width:1px;" colspan="2"><?php echo "自然領域";?></td>
         </tr>
         <tr>
@@ -213,7 +220,7 @@ if (!(strcmp($val,"4"))) {echo "自然領域";}} */ ?></td></tr> -->
           	</td>
        </tr> -->
       </table>
-      <font size="+1"><span class="font_red" >注意：考試通知請勿攜帶至應試座位</span></font>
+      <font size="+1"><span class="font_red" >注意：考試通知不屬應試用品，請勿攜至應試座位，違者該領域不予計分</span></font>
 
         <br />
       <table  width="600" border="0" cellspacing="0" cellpadding="0" >
@@ -285,7 +292,7 @@ if (!(strcmp($val,"4"))) {echo "自然領域";}} */ ?></td></tr> -->
 	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">試場規則說明暨預備時間</td>
 	          <td width="150" align="center" class="illustrate" style="font-size:18px;color:#000000; border-style:solid; border-color:#BBBBBB; border-width:1px; background-color:#FFF;">自然領域學科知能評量</td>
           </tr> -->
-       <tr height="50"><td style="font-size:16px; background-color: #e6e6fa;">評量科目</td><td style="font-size:16px; background-color: #e6e6fa;">時間</td><td style="font-size:16px; background-color: #e6e6fa;">執行項目</td></tr>
+       <tr height="50"><td style="font-size:16px; background-color: #e6e6fa;">評量領域</td><td style="font-size:16px; background-color: #e6e6fa;">時間</td><td style="font-size:16px; background-color: #e6e6fa;">執行項目</td></tr>
        <tr class="board_add"><td style="font-size:16px;" rowspan="3">自然領域</td><td style="font-size:16px;">15:30〜15:35</td><td style="font-size:16px;">應考人入場</td></tr>
        <tr class="board_add"><td style="font-size:16px;">15:35〜15:40</td><td style="font-size:16px;">試場規則說明暨預備時間</td></tr>
        <tr class="board_add"><td style="font-size:16px;">15:40〜16:30</td><td style="font-size:16px;">自然領域學科知能評量</td></tr>
@@ -305,47 +312,15 @@ if (!(strcmp($val,"4"))) {echo "自然領域";}} */ ?></td></tr> -->
           <p><font size="+2" ><strong>國小教師自然領域學科知能評量試場規則(簡略版)</strong></font></p>
             </td>
         </tr>
-        <tr>
-            <td height="70" align="left"><font size="+1" >
-          	     ‧<u>應考人應攜帶「<strong>國民身分證</strong>」正本（或有效駕照、護照代替國民身分證）到場應試。</u>未能提供身分證明文件者，如經監試委員查核確認係應考人本人無誤者，得先准予應試，惟身分證明文件至當日評量結束鈴(鐘)響畢前仍未送達者，則作答結果不予計分。
-                </font>
-            </td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧應考人除身分證件外，其他非應試用品均須置於教室前面地板上，不得攜帶入座。
-          </font></td></tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧本次評量將由承辦單位提供計算紙及原子筆供試題計算用，應考人試後計算紙不得攜出考場，違者該領域不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧評量開始後逾15分鐘即不得入場應試，且評量未達25分鐘不得離開考場，違者該領域不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧評量進行間行動電話、計時器及其他電子設備不得發出任何聲響（含振動聲），違者將扣減該領域成績50分，並得視違規情節加重扣分或不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧應考人不得破壞考場的配置（例如撕開或未經監試委員同意即自行帶走座位貼條、自行調整電腦螢幕亮度、自行離開測驗系統全螢幕、未經監試委員同意先行輸入測驗系統帳號與密碼…等），違者將扣減該領域成績50分，並得視違規情節加重扣分或不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧除在規定處作答擬稿外，不得在身分證件、文具、桌面、肢體上或其他物品上書寫任何文字、符號等，違者以監試委員發現時之評量領域不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧評量結束時，應考人應舉手並於原位靜候監試委員前往回收計算紙，並依監試委員指示始能離場，違者該領域作答不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧應考人因個人因素致延遲進入試場，須於評量結束鈴響時立即停止作答並在原位靜候，違者該領域作答不予計分。
-          </font></td>
-        </tr>
-        <tr>
-          <td height="70" align="left"><font size="+1" >‧其他未盡事宜，除依本中心訂頒之試場規則辦理外，由各該考區負責人處理之。
-          </font></td>
-        </tr>
+        <!-- 試場規則 -->
+        <?php foreach($TestingRegulations_t as $value){ ?>
+            <tr>
+              <td height="70" align="left"><font size="+1" >‧
+              <?php echo $value; ?>
+            </font></td>
+            </tr>
+        <?php } ?>
+
         <tr>
           <td height="40" colspan="3" align="center"><label>
 

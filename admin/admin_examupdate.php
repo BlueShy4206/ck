@@ -6,40 +6,40 @@ $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
-function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
-  // For security, start by assuming the visitor is NOT authorized. 
-  $isValid = False; 
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
+  // For security, start by assuming the visitor is NOT authorized.
+  $isValid = False;
 
-  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
-  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
-  if (!empty($UserName)) { 
-    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
-    // Parse the strings into arrays. 
-    $arrUsers = Explode(",", $strUsers); 
-    $arrGroups = Explode(",", $strGroups); 
-    if (in_array($UserName, $arrUsers)) { 
-      $isValid = true; 
-    } 
-    // Or, you may restrict access to only certain users based on their username. 
-    if (in_array($UserGroup, $arrGroups)) { 
-      $isValid = true; 
-    } 
-    if (($strUsers == "") && false) { 
-      $isValid = true; 
-    } 
-  } 
-  return $isValid; 
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username.
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank.
+  if (!empty($UserName)) {
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login.
+    // Parse the strings into arrays.
+    $arrUsers = Explode(",", $strUsers);
+    $arrGroups = Explode(",", $strGroups);
+    if (in_array($UserName, $arrUsers)) {
+      $isValid = true;
+    }
+    // Or, you may restrict access to only certain users based on their username.
+    if (in_array($UserGroup, $arrGroups)) {
+      $isValid = true;
+    }
+    if (($strUsers == "") && false) {
+      $isValid = true;
+    }
+  }
+  return $isValid;
 }
 
 $MM_restrictGoTo = "../index.php";
-if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0)
   $MM_referrer .= "?" . $QUERY_STRING;
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
-  header("Location: ". $MM_restrictGoTo); 
+  header("Location: ". $MM_restrictGoTo);
   exit;
 }
 ?>
@@ -86,11 +86,11 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 		$attach = $_POST['username'];//$_ext_[0];
 		$pic_type = $_file_['type'];
 		//------------------------------
-		
-		$news_pic_title=$_file_['name'];		
+
+		$news_pic_title=$_file_['name'];
 		list($usec, $sec) = explode(" ", microtime());//$usec:毫秒, $sec:秒
 		$datetime = date("YmdHisx.",$sec);
-		$datetime = str_replace('x', substr($usec,2,3), $datetime);		
+		$datetime = str_replace('x', substr($usec,2,3), $datetime);
 
 		//add by coway 2017.5.22--------
 		//取原圖的大小進行比例處理
@@ -118,7 +118,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 		echo "thumb_h2=".$thumb_h2."<br>";
 		echo "thumb_w2=".$thumb_w2."<br>";
 		//--------------------------------
-		
+
 		if(!in_array($_ext_, $_accepted_PIC_extensions_) && count($_accepted_PIC_extensions_) > 0){
 			$errStr = "Estensione non valida";
 			echo "<script>javascript:alert(\"請檢查檔案格式\");</script>";//跳出錯誤訊息
@@ -149,7 +149,7 @@ if(!empty($HTTP_POST_FILES['news_pic'])){ //如果你的上傳檔案欄位不是
 			}
 // 		print_r("resultOK=".$resultOK."<br>");
 // 		die();
-			
+
 			if(@copy($_tmp_name_,DESTINATION_PIC_FOLDER . "/" . $newPicname)){//修改檔案名稱
 				@unlink('../images/examinee/'.$_POST["oldPic"]);//依據傳過來的舊圖檔名，指定路徑刪除它
 				header("Location: " . no_error);
@@ -172,7 +172,7 @@ require_once('../PHPMailer/class.phpmailer.php');
 mb_internal_encoding('UTF-8'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -183,7 +183,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -209,7 +209,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
   $allSubjects=$_POST['Subjects'];
-  $allSubjects= implode(',' , $allSubjects);		
+  $allSubjects= implode(',' , $allSubjects);
   $maxlevel=0;
   $degreeArray = array('1'=>array($_POST['Other2'],$_POST['Other2_dept'],$_POST['eduRec1']),
   		'2'=>array($_POST['Highest'],$_POST['Department'],$_POST['eduRec2']),
@@ -226,17 +226,17 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
   }
   IF($_POST['Other1']!=""){
   	$maxlevel=4;
-  }	
- $insertSQL = sprintf("UPDATE examinee SET birthday=%s, username=%s, uname=%s, eng_uname=%s, sex=%s, email=%s, phone=%s, Area=%s, cityarea=%s, cuszip=%s, cusadr=%s, per_id=%s,  
- 				category=%s, exarea=%s, school=%s, Grade=%s, Student_ID=%s, Highest=%s, Department=%s, Edu_level=%s, Edu_MK=%s, pic_title=%s, pic_name=%s, date=%s, allow=%s, certificate=%s, 
- 				Sec_highest=%s, Sec_dept=%s, Edu_level2=%s, Edu_MK2=%s, Other1=%s, Other1_dept=%s, Edu_level3=%s, Edu_MK3=%s, Other2=%s, Other2_dept=%s, Edu_level4=%s, Edu_MK4=%s 
+  }
+ $insertSQL = sprintf("UPDATE examinee SET birthday=%s, username=%s, uname=%s, eng_uname=%s, sex=%s, email=%s, phone=%s, Area=%s, cityarea=%s, cuszip=%s, cusadr=%s, per_id=%s,
+ 				category=%s, exarea=%s, school=%s, Grade=%s, Student_ID=%s, Highest=%s, Department=%s, Edu_level=%s, Edu_MK=%s, pic_title=%s, pic_name=%s, date=%s, allow=%s, certificate=%s,
+ 				Sec_highest=%s, Sec_dept=%s, Edu_level2=%s, Edu_MK2=%s, Other1=%s, Other1_dept=%s, Edu_level3=%s, Edu_MK3=%s, Other2=%s, Other2_dept=%s, Edu_level4=%s, Edu_MK4=%s
  				WHERE id=%s AND no=%s",
                        GetSQLValueString($_POST['birthday'], "text"),
-					   GetSQLValueString($_POST['username'], "text"),					   
+					   GetSQLValueString($_POST['username'], "text"),
                        GetSQLValueString($_POST['uname'], "text"),
 					   GetSQLValueString($_POST['eng_uname'], "text"),
                        GetSQLValueString($_POST['sex'], "text"),
-                       GetSQLValueString($_POST['email'], "text"),                      
+                       GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['phone'], "text"),
                        GetSQLValueString($_POST['Area'], "text"),
                        GetSQLValueString($_POST['cityarea'], "text"),
@@ -252,7 +252,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 					   GetSQLValueString($degreeArray[$maxlevel][1], "text"),
 					   GetSQLValueString($maxlevel, "text"),
 					   GetSQLValueString($degreeArray[$maxlevel][2], "text"),
-					   GetSQLValueString($news_pic_title, "text"),					   
+					   GetSQLValueString($news_pic_title, "text"),
                        GetSQLValueString($newPicname, "text"),
                        GetSQLValueString($_POST['date'], "date"),
 					   GetSQLValueString($_POST['allow'], "text"),
@@ -269,7 +269,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 			 		   GetSQLValueString($degreeArray[$maxlevel-3][1], "text"),
 			 		   GetSQLValueString($maxlevel-3, "text"),
 			 		   GetSQLValueString($degreeArray[$maxlevel-3][2], "text"),
- 		
+
 					   GetSQLValueString($_POST['id'], "text"),
  					   GetSQLValueString($_POST['no'], "text"));
 
@@ -280,7 +280,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
-	
+
 	  if($_POST['allow'] == 'N'){
 		  $mail = new PHPMailer();
 	      $mail->IsSMTP();
@@ -288,8 +288,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	      $mail->Username = "ckassessment@gmail.com";
 	      $mail->Password = "assessmentck";
 	      $mail->FromName = "ck系統管理員";
-	      $webmaster_email = "ckassessment@gmail.com"; 
-		  
+	      $webmaster_email = "ckassessment@gmail.com";
+
 		  $mail->CharSet = "utf8";
 	      $email=$_POST['email'];// 收件者信箱
 	      $name=$_POST['username'];// 收件者的名稱or暱稱
@@ -299,27 +299,27 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	      $mail->WordWrap = 50;//每50行斷一次行
 	      //$mail->AddAttachment("/XXX.rar");
 	      // 附加檔案可以用這種語法(記得把上一行的//去掉)
-	
+
 	      $mail->IsHTML(true); // send as HTML
 	      $subject="國民小學教師學科知能評量通知";
 	      $mail->Subject = $subject; // 信件標題
-	
+
 	      $body="親愛的考生您好，由於您上傳的大頭照未符合規定，請重新上傳正確的大頭照，以免影響考試權益，謝謝；<br />
 	         <br />
 	         如有任何問題歡迎與我們聯絡，謝謝!!<br />
 			 any problem，you can touch us，thank you!!";
 	      $mail->Body = $body;//信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
 	      $mail->AltBody = $body; //信件內容(純文字版)
-	
+
 	      //if(!$mail->Send()){
 	      // echo "寄信發生錯誤：" . $mail->ErrorInfo;//如果有錯誤會印出原因
 	      //  }
-	      // else{ 
+	      // else{
 	      // echo "寄信成功";
-	      //     }	  
+	      //     }
   	}
-	
-	
+
+
   }
   header(sprintf("Location: %s", $updateGoTo));
 }
@@ -360,7 +360,7 @@ $degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['O
 <?php include("header.php"); ?>
 <div id="main">
   <div id="main1"></div>
-  
+
   <div id="exam" align="center">
     <form id="form3" name="form3" method="POST" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" onsubmit="YY_checkform('form3','uname','#q','0','請檢查姓名欄位','email','#S','2','請檢查email欄位','phone','#q','0','請檢查電話欄位','captcha','birthday','#q','0','請檢查生日欄位','per_id','#q','0','請檢查身分證字號欄位','cusadr','#q','0','請檢查地址欄位','Student_ID','#q','0','請檢查學號欄位','Department','#q','0','請檢查就讀科系欄位');return document.MM_returnValue">
       <table width="540" border="0" cellspacing="0" cellpadding="0" >
@@ -382,7 +382,7 @@ $degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['O
           <td width="458" align="left" class="board_add" colspan="2"><label>
             <input name="eng_uname" type="text" id="eng_uname" value="<?php echo $row_web_examinee['eng_uname']; ?>" />
           </label><span class="font_red">* </span></td>
-        </tr>       
+        </tr>
         <tr>
           <td height="30" align="right" class="board_add">E-mail：</td>
           <td align="left" class="board_add" colspan="2"><label>
@@ -396,7 +396,7 @@ $degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['O
           男
           <input <?php if (!(strcmp($row_web_examinee['sex'],"女"))) {echo "checked=\"checked\"";} ?> type="radio" name="sex" id="radio2" value="女" />
           女 &nbsp; &nbsp;</label>
-          
+
           </td>
         </tr>
         <tr>
@@ -458,7 +458,7 @@ $degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['O
           </span></td>
         </tr>
         <tr>
-          <td height="30" align="right" colspan="3" class="board_add">=========================================================================================</td>          
+          <td height="30" align="right" colspan="3" class="board_add">=========================================================================================</td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add">教師證號碼：</td>
@@ -469,7 +469,7 @@ $degreeArray = array($row_web_examinee['Edu_level4']=>array($row_web_examinee['O
             </td>
         </tr>
         <tr>
-          <td height="30" align="right" class="board_add">報名科目：</td>
+          <td height="30" align="right" class="board_add">報名領域：</td>
           <td align="left" class="board_add" colspan="2">
           <label>
             <input <?php $str=split("," , $row_web_examinee['category']);
@@ -487,7 +487,7 @@ if (!(strcmp($val,"3"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
           <input <?php $str=split("," , $row_web_examinee['category']);
 foreach ($str as $val){
 if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name="Subjects[]" id="Subjects[]" value="4" />
-          自然         
+          自然
           </label>
           (可複選)</td>
         </tr>
@@ -496,11 +496,11 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
           <td align="left" class="board_add" colspan="2">
           <label>
             <input <?php if (!(strcmp($row_web_examinee['exarea'],"Northern"))) {echo "checked=\"checked\"";} ?> name="exarea" type="radio" id="radio" value="Northern" checked="checked" />
-          北部 
+          北部
           <input <?php if (!(strcmp($row_web_examinee['exarea'],"Central"))) {echo "checked=\"checked\"";} ?> type="radio" name="exarea" id="radio2" value="Central" />
           中部
           <input <?php if (!(strcmp($row_web_examinee['exarea'],"Southern"))) {echo "checked=\"checked\"";} ?> type="radio" name="exarea" id="radio3" value="Southern" />
-          南部  
+          南部
           <input <?php if (!(strcmp($row_web_examinee['exarea'],"Eastern"))) {echo "checked=\"checked\"";} ?> type="radio" name="exarea" id="radio4" value="Eastern" />
           東部</label>
           </td>
@@ -523,7 +523,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
 			<input name="eduRec1" type="radio" id="radio" value="1" <?php if($degreeArray[1][2]=="1") echo "checked=\"checked\""; ?>/>畢業)
           	<label><input type="text" name="Other2" id="Other2"  value="<?php echo $degreeArray[1][0]; ?>" /></label>
           </td>
-          <td align="left" class="board_add">       
+          <td align="left" class="board_add">
           <input type="text" name="Other2_dept" id="Other2_dept"  value="<?php echo $degreeArray[1][1]; ?>"/>
           </td>
         </tr>
@@ -534,7 +534,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
 			<input name="eduRec2" type="radio" id="radio" value="1" <?php if($degreeArray[2][2]=="1") echo "checked=\"checked\""; ?>/>畢業)
           	<label><input type="text" name="Highest" id="Highest"  value="<?php echo $degreeArray[2][0]; ?>" /></label>
           </td>
-          <td align="left" class="board_add">   
+          <td align="left" class="board_add">
           <input type="text" name="Department" id="Department"  value="<?php echo $degreeArray[2][1]; ?>"/>
           </td>
         </tr>
@@ -545,7 +545,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
 			<input name="eduRec3" type="radio" id="radio" value="1"  <?php if($degreeArray[3][2]=="1") echo "checked=\"checked\""; ?>/>畢業)
           	<label><input type="text" name="Sec_highest" id="Sec_highest"  value="<?php echo $degreeArray[3][0]; ?>" /></label>
           </td>
-          <td align="left" class="board_add">        
+          <td align="left" class="board_add">
           <input type="text" name="Sec_dept" id="Sec_dept"  value="<?php echo $degreeArray[3][1]; ?>"/>
           </td>
         </tr>
@@ -556,7 +556,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
 			<input name="eduRec4" type="radio" id="radio" value="1" <?php if($degreeArray[4][2]=="1") echo "checked=\"checked\""; ?>/>畢業)
           <label><input type="text" name="Other1" id="Other1"  value="<?php echo $degreeArray[4][0]; ?>" /></label>
           </td>
-          <td align="left" class="board_add">        
+          <td align="left" class="board_add">
           <input type="text" name="Other1_dept" id="Other1_dept"  value="<?php echo $degreeArray[4][1]; ?>"/>
           </td>
         </tr>
@@ -593,7 +593,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
           <a href="editpic.php?id=<?php echo $row_web_examinee['pic_name']; ?>"><img src="../images/examinee/<?php echo $row_web_examinee['pic_name']; ?>" alt="" name="pic" width="70" id="pic" /></a>
           <?php } /*END_PHP_SIRFCIT*/ ?>
           <input name="oldPic" type="hidden" id="oldPic" value="<?php echo $row_web_examinee['pic_name']; ?>" />
-          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee['pic_title']; ?>" />          
+          <input name="oldPictitle" type="hidden" id="oldPic" value="<?php echo $row_web_examinee['pic_title']; ?>" />
           <?php echo $row_web_examinee['pic_title']; ?><br />
           <label>
             <input type="file" name="news_pic" id="news_pic" />
@@ -601,7 +601,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
           <br />
           <span class="font_red">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span></span>
        </td>
-        
+
       </tr>
         <tr>
           <td height="30" align="right" class="board_add">是否允許：</td>
@@ -610,7 +610,7 @@ if (!(strcmp($val,"4"))) {echo "checked=\"checked\"";}} ?> type="checkbox" name=
           是
           <input <?php if (!(strcmp($row_web_examinee['allow'],"N"))) {echo "checked=\"checked\"";} ?> type="radio" name="allow" id="radio2" value="N" />
           否&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-          
+
           </td>
         <tr>
           <td height="40" colspan="2" align="center"><label>

@@ -116,20 +116,20 @@ $t=(date("Y-m-d",$t));
   <table width="540" border="0" cellspacing="0" cellpadding="0">
   	<tr>
       <td height="80" align="center" class="font_red2" bgcolor="#FFFFFF">
-        <? if($t >'2018-03-09'){ ?>
-      <a href="file\20180309102911.pdf">107年第一梯次國民小學師資類科師資生學科知能評量Q&A</a></td>
-    <?php }else{ ?>
+        <!-- <? if($t >'2018-03-09'){ ?> -->
+      <a href="file\20180907045817.pdf">107年第二梯次國民小學師資類科師資生學科知能評量Q&A</a></td>
+    <!-- <?php }else{ ?>
       <a href="file\20170921112605.pdf">106年第二梯次國民小學師資類科師資生學科知能評量Q&A</a></td>
-    <?php }?>
+    <?php }?> -->
     </tr>
     <tr>
 
       <td height="80" align="center" class="font_red2" bgcolor="#FFFFFF">
-        <? if($t >'2018-03-09'){ ?>
-          <a href="file\20180309103118.pdf">107年第一梯次國民小學教師「自然領域」學科知能評量 Q&A</a></td>
-        <?php }else{ ?>
+        <!-- <? if($t >'2018-03-09'){ ?> -->
+          <a href="file\20180907045825.pdf">107年第二梯次國民小學教師「自然領域」學科知能評量 Q&A</a></td>
+        <!-- <?php }else{ ?>
       <a href="file\20170922024544.pdf">106年第二梯次國民小學教師「自然領域」學科知能評量 Q&A</a></td>
-      <?php }?>
+      <?php }?> -->
     </tr>
   </table>
  <?php

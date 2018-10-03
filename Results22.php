@@ -185,7 +185,7 @@ function resultOnload() {
         </tr>
 
       <?php do {
-          $showPrint_mk = false; 
+          $showPrint_mk = false;
           ?>
         <tr>
           <td width="20" height="25" align="right" class="underline1">‧</td>
@@ -199,6 +199,7 @@ function resultOnload() {
 //           	if($row_web_news['score_cpoint'] == 0) echo " "; else echo '不計分';
           }
           else{
+            if($row_web_news['score_cpoint'] == 0) $row_web_news['score_cpoint']='--';
 			$url_str_c="resultsPDF.php?type=c&id=".$row_web_news['score_id']."&status=".$row_web_news['status']."&examyear_id=".$row_web_news['examyear_id'];
           	echo $row_web_news['score_cpoint']."<br>($row_web_news[c_level])<br><a href='".$url_str_c."' target='_blank' >"."<img class='img-40' src='images/icon_print.png' alt='列印成績單'/>"."</a>";
           	if($row_web_news['c_level'] == '精熟') $showPrint_mk=true;
@@ -208,6 +209,7 @@ function resultOnload() {
           if($row_web_news['score_mpoint'] == NULL){
 //           	if($row_web_news['score_mpoint'] == 0) echo " "; else echo '不計分';
           }else{
+            if($row_web_news['score_mpoint'] == 0) $row_web_news['score_mpoint']='--';
 			$url_str_m="resultsPDF.php?type=m&id=".$row_web_news['score_id']."&status=".$row_web_news['status']."&examyear_id=".$row_web_news['examyear_id'];
           	echo $row_web_news['score_mpoint']."<br>($row_web_news[m_level])<br><a href='".$url_str_m."' target='_blank'>"."<img class='img-40' src='images/icon_print.png'>"."</a>";
           	if($row_web_news['m_level'] == '精熟') $showPrint_mk=true;
@@ -218,6 +220,7 @@ function resultOnload() {
 //           	if($row_web_news['score_spoint'] == 0) echo " "; else echo '不計分';
           }
           else{
+            if($row_web_news['score_spoint'] == 0) $row_web_news['score_spoint']='--';
 			$url_str_s="resultsPDF.php?type=s&id=".$row_web_news['score_id']."&status=".$row_web_news['status']."&examyear_id=".$row_web_news['examyear_id'];
           	echo $row_web_news['score_spoint']."<br>($row_web_news[s_level])<br><a href='".$url_str_s."' target='_blank'>"."<img class='img-40' src='images/icon_print.png'>"."</a>";
           	if($row_web_news['s_level'] == '精熟') $showPrint_mk=true;
@@ -228,6 +231,7 @@ function resultOnload() {
 //           	if($row_web_news['score_ppoint'] == 0) echo " "; else echo '不計分';
           }
           else{
+              if($row_web_news['score_ppoint'] == 0) $row_web_news['score_ppoint']='--';
 			$url_str_p="resultsPDF.php?type=p&id=".$row_web_news['score_id']."&status=".$row_web_news['status']."&examyear_id=".$row_web_news['examyear_id'];
           	echo $row_web_news['score_ppoint']."<br>($row_web_news[p_level])<br><a href='".$url_str_p."' target='_blank'>"."<img class='img-40' src='images/icon_print.png'>"."</a>";
           	if($row_web_news['p_level'] == '精熟') $showPrint_mk=true;
@@ -323,6 +327,13 @@ function resultOnload() {
 
   <div id="main4"></div>
 <div style="border:5px #FFCC66 solid;border-radius:10px;width:50%;background-color:#FFFFCC;padding:10px;margin:10px;">
+    <?php if($_GET['status']=='1'){ ?>
+        <table width="100%" style="border:2px #ffdd70 solid;padding:5px;" cellpadding='5';>
+        	<tr align="center" bgcolor="#ffe89d"><td>科目</td><td>待加強</td><td>基礎</td><td>精熟</td></tr>
+    	    <tr align="center" bgcolor="#FFFFFF"><td>自然</td><td>0-415</td><td>416-573</td><td>574以上</td></tr>
+        </table>
+
+    <?php }else{  ?>
     <table width="100%" style="border:2px #ffdd70 solid;padding:5px;" cellpadding='5';>
     	<tr align="center" bgcolor="#ffe89d"><td>科目</td><td>待加強</td><td>基礎</td><td>精熟</td></tr>
     	<tr align="center" bgcolor="#FFFFFF"><td>國語</td><td>0-412</td><td>413-553</td><td>554以上</td></tr>
@@ -330,6 +341,7 @@ function resultOnload() {
     	<tr align="center" bgcolor="#FFFFFF"><td>社會</td><td>0-446</td><td>447-589</td><td>590以上</td></tr>
     	<tr align="center"><td>自然</td><td>0-415</td><td>416-573</td><td>574以上</td></tr>
     </table>
+<?php     }?>
     </div>
 <?php include("footer.php"); ?>
 </div>.

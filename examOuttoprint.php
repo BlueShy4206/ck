@@ -1,6 +1,7 @@
 
 <?php require_once('Connections/conn_web.php');
-require_once "PEAR183/HTML/QuickForm.php";?>
+require_once "PEAR183/HTML/QuickForm.php";
+require_once "examAdd_function.php";?>
 <script type="text/javascript">
 	function SaveAlert(cert_number){
 		var str=document.getElementsByName("chk[]");
@@ -270,7 +271,7 @@ function getStatus($value){
       </table>
       <table width="540" border="0" cellspacing="0" cellpadding="2">
         <tr>
-        <td width="110" height="30" align="right" class="board_add">姓名：</td>
+        <td width="133" height="30" align="right" class="board_add">姓名：</td>
           <td width="180" align="left" class="board_add"><?php echo $row_web_examinee['uname'];
 		   if($row_web_examinee['eng_uname']!=""){
 			  list($firstname, $lastname, $lastname2) = explode(" ", $row_web_examinee['eng_uname']);
@@ -339,7 +340,7 @@ function getStatus($value){
 		  if (!(strcmp($row_web_examinee['school'],"07_南臺科技大學"))) {echo "南臺科技大學";}
 		  if (!(strcmp($row_web_examinee['school'],"08_國立屏東教育大學"))) {echo "國立屏東教育大學";}
 		  if (!(strcmp($row_web_examinee['school'],"09_靜宜大學"))) {echo "靜宜大學";}
-		  if (!(strcmp($row_web_examinee['school'],"10_國立新竹教育大學"))) {echo "國立新竹教育大學";}
+		  if (!(strcmp($row_web_examinee['school'],"10_國立清華大學"))) {echo "國立清華大學";}
 		  if (!(strcmp($row_web_examinee['school'],"11_國立臺南大學"))) {echo "國立臺南大學";}
 		  if (!(strcmp($row_web_examinee['school'],"12_國立高雄師範大學"))) {echo "國立高雄師範大學";}
 		  if (!(strcmp($row_web_examinee['school'],"13_國立臺中教育大學"))) {echo "國立臺中教育大學";}
@@ -423,7 +424,7 @@ function getStatus($value){
           <td height="30" align="right" class="board_add"></td>
         </tr>  <?php } ?>
         <tr>
-          <td height="30" align="right" class="board_add">報名科目：</td>
+          <td height="30" align="right" class="board_add">報名領域：</td>
           <td align="left" class="board_add"><?php $str=split("," , $row_web_examinee['category']);
 			foreach ($str as $val){
 			if (!(strcmp($val,"1"))) {echo "國語領域&nbsp;,&nbsp;";}
@@ -477,63 +478,70 @@ function getStatus($value){
 				<?php
 				if(null !== $row_examinee_pic[pic1_name]){?>
 					<tr>
-	        <td width="20" height="30" align="right" class="board_add">身分證正面：</td>
+	        <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[1]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic1_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[pic2_name]){?>
 					<tr>
-	          <td width="20" height="30" align="right" class="board_add">身分證反面：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[2]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic2_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[pic3_name]){?>
 					<tr>
-	          <td width="20" height="30" align="right" class="board_add">最高學歷學位證書：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[3]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic3_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[pic4_name]){?>
 					<tr>
-	         <td width="20" height="30" align="right" class="board_add">國民小學教師證書：</td>
+	         <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[4]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic4_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[pic5_name]){?>
 					<tr>
-	         <td width="20" height="30" align="right" class="board_add">在職證明書：</td>
+	         <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[5]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic5_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+	        <td height="30" align="right" class="board_add"></td>
+	        </tr>
+				<?php }
+				if(null !== $row_examinee_pic[pic6_name]){?>
+					<tr>
+	         <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[6]; ?>：</td>
+	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic6_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[special_pic_name1]){?>
 					<tr>
-	         <td width="20" height="30" align="right" class="board_add">特殊考場服務<br>申請表：</td>
+	         <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[sp1]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name1']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[special_pic_name2]){?>
 					<tr>
-          <td width="20" height="30" align="right" class="board_add">應考服務診斷<br>證明書：</td>
+          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[sp2]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name2']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[special_pic_name3]){?>
 					<tr>
-	          <td width="20" height="30" align="right" class="board_add">應考切結書：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[sp3]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name3']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
 				if(null !== $row_examinee_pic[rename_pic_name]){?>
 					<tr>
-						<td width="20" height="30" align="right" class="board_add">戶口名簿：</td>
+						<td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[rename]; ?>：</td>
 						<td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['rename_pic_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 					<td height="30" align="right" class="board_add"></td>
 					</tr>

@@ -1,5 +1,5 @@
 <?php
- 
+
 require_once('Connections/conn_web.php');
 
 $username = $_POST['username'];
@@ -16,7 +16,7 @@ if (!empty($username)) {
 		echo 'false' ;
 	} else {
 		echo 'true' ;
-	} 
+	}
 } else if (!empty($email)) { //如果傳來的email在資料庫裡找不到，則回傳true
 	$rs = $dbh->prepare('SELECT email FROM member WHERE email = ? ');
 	$rs->execute(array($email));
@@ -26,7 +26,7 @@ if (!empty($username)) {
 		echo 'false' ;
 	} else {
 		echo 'true' ;
-	} 
+	}
 } else if (!empty($id)) { //如果傳來的身分證字號在資料庫裡找不到，則回傳true
 	$rs = $dbh->prepare('SELECT uid FROM member WHERE uid = ? ');
 	$rs->execute(array($id));

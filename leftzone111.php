@@ -100,17 +100,17 @@ if (isset($_POST['uCheck'])) {
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
 //通用密碼
-  // if($_POST['pCheck']=='111'){
-  //   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
-  //   GetSQLValueString($loginUsername, "text"));
-  //   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
-  //   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }else{
+  if($_POST['pCheck']=='111'){
+    $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
+    GetSQLValueString($loginUsername, "text"));
+    $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
+    $loginFoundUser = mysql_num_rows($LoginRS);
+  }else{
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }
+  }
 
   if ($loginFoundUser) {
 

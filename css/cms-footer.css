@@ -1,0 +1,24 @@
+/* CSS Document */
+footer { background:url(../images/footer-bg.png); padding:24px 24px 20px 24px;}
+.footer-left { float:left; width:50%;}
+.footer-left span { font-size:21px; display:inline-block; vertical-align:top; width:100px; font-weight:bold; }
+.footer-left div { display:inline-block; vertical-align:top; width:calc(100% - 100px - 7px);}
+.footer-left a { font-size:20px; color:#4c595a; padding-right:20px; margin-right:20px; line-height:20px; border-right:1px solid #737373; display:inline-block;}
+.footer-left a:hover { color:#d50000}
+.footer-left a:last-child { border-width:0;}
+
+.footer-right { float:right; text-align:right; color:#8c8c8c; font-size:14px; line-height:24px; padding-top:10px;  width:50%; position:relative; padding-right:57px;}
+.footer-right span { display:inline-block; padding-right:5px;}
+.teacher-logo { position:absolute; top:3px; right:0;}
+
+
+@media only screen and (max-width: 768px) {
+.footer-left { float:none; width:100%;}
+.footer-right { float:none; text-align:left; width:100%; padding-right:0;}
+.teacher-logo { position:inherit; top:auto; right:auto;}
+}
+
+@media only screen and (max-width: 414px) {
+.footer-left span { display:block; width:100%;}
+.footer-left div { width:100%;}
+}

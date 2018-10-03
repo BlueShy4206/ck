@@ -1,3 +1,7 @@
+<script type="text/javascript" src="Scripts/jquery-2.1.0.min.js"></script>
+<script src="Scripts/sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="Scripts/sweetalert2/dist/sweetalert2.min.css">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> -->
 <?php
 ini_set("session.cookie_httponly", 1);
 require_once('Connections/conn_web.php'); ?>
@@ -109,6 +113,9 @@ if (isset($_GET['totalRows_web_shop'])) {
 $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
 
 ?>
+
+
+
 <? session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -122,6 +129,8 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
 <link href="web.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]><script src="ie6png.js" type="text/javascript"></script><![endif]-->
 <script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+
+
 </head>
 <body  background="images/background.jpg">
 <div id="wrapper">
@@ -237,11 +246,18 @@ $totalPages_web_shop = ceil($totalRows_web_shop/$maxRows_web_shop)-1;
 
 
 <?php include("footer.php"); ?>
+
 <script type="text/javascript">
-<!--
-//swfobject.registerObject("FlashID");
-//-->
+
+// swal({
+// 	html:"<b>7/21(六)上午7:00-7/23(一)上午8:30<br>因本校進行高壓電力檢查,網站暫停服務<br>造成不便 敬請見諒！！",
+// 	title: "<b>主機房高壓電力檢查停電公告</b>",
+// 	type: "warning",
+// 	animation: "slide-from-top",
+// });
+
 </script>
+
 
 </div>
 </div>

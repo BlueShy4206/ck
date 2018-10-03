@@ -1,5 +1,6 @@
 
-<?php require_once('Connections/conn_web.php'); ?>
+<?php require_once('Connections/conn_web.php');
+require_once "examAdd_function.php";?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
@@ -83,6 +84,9 @@ $query_web_allguide = sprintf("SELECT * FROM allguide Where up_no='EA2' AND nm= 
 //$query_web_allguide = sprintf("SELECT * FROM allguide Where up_no='EA2' AND nm= %s",GetSQLValueString($row_web_examinee['exarea'], "text"));
 $web_allguide = mysql_query($query_web_allguide, $conn_web) or die(mysql_error());
 $row_allguide = mysql_fetch_assoc($web_allguide);
+
+
+
 
 ?>
 <? session_start();?>
@@ -216,7 +220,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
           	</td>
        </tr> -->
         </table>
-        <font size="+1"><span class="font_red" >注意：考試通知請勿攜帶至應試座位</span></font>
+        <font size="+1"><span class="font_red" >注意：考試通知不屬應試用品，請勿攜至應試座位，違者該領域不予計分</span></font>
         <br />
       <table  width="600" border="0" cellspacing="0" cellpadding="0" >
       	<tr><td rowspan="2"><img src="images/pctc.png"></td>
@@ -323,16 +327,24 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
           <p><font size="+2" ><strong>國民小學師資類科師資生學科知能評量<br><br>試場規則(簡略版)</strong></font></p>
             </td>
         </tr>
+        <?php foreach($TestingRegulations_s as $value){ ?>
+            <tr>
+              <td height="70" align="left"><font size="+1" >
+              <?php echo $value; ?>
+            </font></td>
+            </tr>
+        <?php } ?>
         <tr>
           <td height="70" align="left"><font size="+1" >
-          	‧應考人應攜帶「<strong>國民身分證</strong>」正本（或有效駕照、護照代替國民身分證）到場應試。未能提供身分證明文件者，如經監試委員查核確認係應考人本人無誤者，得先准予應試，惟身分證明文件至當日最後一節評量結束鈴（鐘）響畢前仍未送達者，所有領域不予計分。
+          	‧應考人應攜帶「<strong>國民身分證</strong>」正本（或有效駕照、護照）到場應試。未能提供身分證明文件者，經監試委員拍照存證後，得先准予應試，惟身分證明文件至當日最後一節評量結束鈴（鐘）響畢前仍未送達者，所有領域不予計分。
         </font></td>
         </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧應考人除身分證件外，其他非應試用品均須置於教室前面地板上，不得攜帶入座。
-          </font></td></tr>
+          <td height="70" align="left"><font size="+1" >‧應考人除身分證件外，其他非應試用品均 須置於教室前面地板上，不得攜帶入座。
+          </font></td>
+      </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧本次評量將由承辦單位提供計算紙及原子筆供試題計算用，應考人試後計算紙不得攜出考場，違者該領域不予計分。
+          <td height="70" align="left"><font size="+1" >‧本次評量將由試務單位依領域性質提供計算紙及原子筆供試題計算用，應考人試後計算紙不得攜出考場，違者該領域不予計分。
           </font></td>
         </tr>
         <tr>
@@ -352,7 +364,7 @@ $row_allguide = mysql_fetch_assoc($web_allguide);
           </font></td>
         </tr>
         <tr>
-          <td height="70" align="left"><font size="+1" >‧評量結束時，應考人應舉手並於原位靜候監試委員前往回收計算紙，並依監試委員指示始能離場，違者該領域作答不予計分。
+          <td height="70" align="left"><font size="+1" >‧應考人作答結束時，應舉手並於原位靜候監試委員前往回收計算紙，並依監試委員指示始能離場，違者該領域作答不予計分。
           </font></td>
         </tr>
         <tr>

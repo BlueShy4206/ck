@@ -1,6 +1,7 @@
 
 <?php require_once('Connections/conn_web.php');
-require_once "PEAR183/HTML/QuickForm.php";?>
+require_once "PEAR183/HTML/QuickForm.php";
+require_once "examAdd_function.php";?>
 <script type="text/javascript">
 	function SaveAlert(cert_number){
 		var str=document.getElementsByName("chk[]");
@@ -24,7 +25,7 @@ require_once "PEAR183/HTML/QuickForm.php";?>
 
 		}else{
 		if(confirm("一旦點選  【確認】 即不得再修正報名表資訊!")){
-// 		alert("您已完成線上報名登錄，您的網路登錄報名流水號為："+cert_number+"。\n提醒您：請至「報名進度查詢」中列印報名表，檢附相關證件，始完成報名流程");
+		// alert("您已完成線上報名登錄，您的網路登錄報名流水號為："+cert_number+"。");
 			}else{window.event.returnValue=false;}
 
 		}//history.go(-1) ;
@@ -138,12 +139,16 @@ if ((isset($_GET["action"])) && ($_GET["action"]=="delete")){
      GetSQLValueString($row_web_examinee['no'], "text"));
 	$deleteSQL_pic = sprintf("DELETE FROM examinee_pic WHERE examinee_no=%s",
 	   GetSQLValueString($row_web_examinee['no'], "text"));
+	$deletecheck_review= sprintf("DELETE FROM check_review WHERE examinee_sn=%s",
+		GetSQLValueString($row_web_examinee['no'], "text"));
 
 // 	echo "no=".$row_web_examinee["no"]."<br>";
-  mysql_select_db($database_conn_web, $conn_web);
-  $Result1 = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
+	mysql_select_db($database_conn_web, $conn_web);
+  	$Result1 = mysql_query($deleteSQL, $conn_web) or die(mysql_error());
 	mysql_select_db($database_conn_web, $conn_web);
 	$ResultDel_pic = mysql_query($deleteSQL_pic, $conn_web) or die(mysql_error());
+	mysql_select_db($database_conn_web, $conn_web);
+	$ResultDel_check_review = mysql_query($deletecheck_review, $conn_web) or die(mysql_error());
 if($Result1 && $ResultDel_pic){
   $deleteGoTo = "index.php";
   header(sprintf("Location: %s", $deleteGoTo));
@@ -208,7 +213,7 @@ if (isset($_POST["btnSentOK"]) ){
 		//echo "<br>sql:$insertSQL";
 		if(mysql_affected_rows() > 0) {
 			// $updateGoTo = "progress.php?status=1&check=ok&cert_number=$cert_number";
-			$updateGoTo = "progress.php?status=1";
+			$updateGoTo = "progress.php?status=1&check=ok";
 			header(sprintf("Location: %s", $updateGoTo));
 		}else{
 			//報名失敗
@@ -341,7 +346,7 @@ function getStatus($value){
         <tr>
         <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
           <td height="30" align="right" class="board_add">聯絡電話：</td>
-          <td align="left" class="board_add"><?php echo $row_web_examinee['phone']; ?></td>
+          <td align="left" class="board_add"><?php echo $row_web_examinee['phone']; if($row_web_examinee['local_call'] != ""){ echo " , ".$row_web_examinee['local_call']; }?></td>
           <td height="30" align="right" class="board_add"></td>
         </tr>
         <tr>
@@ -455,7 +460,7 @@ function getStatus($value){
         </tr>  <?php } ?>
         <tr>
         <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-          <td height="30" align="right" class="board_add">報名科目：</td>
+          <td height="30" align="right" class="board_add">報名領域：</td>
           <td align="left" class="board_add"><?php $str=split("," , $row_web_examinee['category']);
 			foreach ($str as $val){
 			if (!(strcmp($val,"1"))) {echo "國語領域&nbsp;,&nbsp;";}
@@ -513,7 +518,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic1_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">身分證正面：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[1]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic1_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -521,7 +526,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic2_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">身分證反面：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[2]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic2_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -529,7 +534,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic3_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">最高學歷學位證書：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[3]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic3_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -537,7 +542,7 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic4_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">國民小學教師證書：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[4]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic4_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
@@ -545,15 +550,23 @@ function getStatus($value){
 				if(null !== $row_examinee_pic[pic5_name]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">在職證明書：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[5]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic5_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
 				<?php }
+				if(null !== $row_examinee_pic[pic6_name]){?>
+					<tr>
+						<td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
+						<td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[6]; ?>：</td>
+						<td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['pic6_name']; ?>" alt="" name="pic" width="200" id="pic" /></td>
+						<td height="30" align="right" class="board_add"></td>
+					</tr>
+				<?php }
 				if(null !== $row_examinee_pic[special_pic_name1]){?>
 					<tr>
 	        <td width="10" align="left" class="board_add"><input type="checkbox" name="chk[]" style="WIDTH: 20px; HEIGHT: 20px"></input></td>
-	          <td width="20" height="30" align="right" class="board_add">特殊考場服務<br>申請表：</td>
+	          <td width="20" height="30" align="right" class="board_add"><?PHP echo $picname[6]; ?>：</td>
 	          <td align="left" class="board_add"><img src="images/examinee/id_check/<?php echo $row_examinee_pic['special_pic_name1']; ?>" alt="" name="pic" width="200" id="pic" /></td>
 	        <td height="30" align="right" class="board_add"></td>
 	        </tr>
