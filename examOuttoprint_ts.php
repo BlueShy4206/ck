@@ -167,7 +167,7 @@ function getStatus($value){
     <table width="580" border="0" cellspacing="0" cellpadding="0" >
         <tr>
           <td width="25" align="left"><img src="images/board03.gif" /></td>
-          <td width="505" align="left" background="images/board04.gif">報名表<span class="font_black" style="float: right; color:red;">流水號：<?php echo $cert_number;?></span></td>
+          <td width="505" align="left" background="images/board04.gif">報名表<span class="font_black" style="float: right; color:red;"><!--流水號：<?php echo $cert_number;?>--></span></td>
           <td width="10" align="right"><img src="images/board05.gif" width="10" height="28" /></td>
         </tr>
       </table>

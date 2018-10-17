@@ -957,7 +957,12 @@ $().ready(function() {
 					success: function(returndata){
 						var html_text = "<table border='1' style='width: 100%;'><tr><td>考場</td><td>日期</td><td>考場開放名額</td><td>目前報考人數</td></tr>";
 						$.each( returndata, function( key, value ){
-							html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+								// html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+							if( value["Nownum"] > value["Maximum_num"] ){
+								html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td style='color: red;'><b>"+value["Nownum"]+"</b></td></tr>";
+							}else{
+								html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+							}
 							// console.log(value["note"]);
 						});
 						html_text = html_text + "</table>";
@@ -1001,7 +1006,7 @@ $().ready(function() {
   <div id="exam" align="center">
   <?php
   $row_web_new['startday']=$row_web_new['startday']." 08:30:00";
-  $row_web_new['endday']=$row_web_new['endday']." 15:30:00";
+  $row_web_new['endday']=$row_web_new['endday']." 17:04:00";
   //判斷手機
 $phone_num= array();
 $phone_check=isPhone($row_web_member['phone']);

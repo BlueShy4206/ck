@@ -23,7 +23,7 @@ if ($_POST["type"] == '1') {
 	$get_examuser_data = $get_examuser->fetchAll();
 	$get_examuser_count = $get_examuser->rowCount();
     $upload_nm = 0;
-    if($_POST["stage"]=='1'){
+    if($_POST["stage"]=='1'){//初審
         foreach ( $get_examuser_data as $key => $value) {
             if($value["first_trial"] != "" && $value["final_trial"] == ""){
                 if($value["first_trial"] == "OK"){

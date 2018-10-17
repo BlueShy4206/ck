@@ -607,17 +607,19 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		// 	});
 		// })(radio3_upload,radio3);
 
-		$('#optionDiv1').show();//修畢師資職前教育證明書
+		$('#optionDiv1').show();
 		$('#optionDiv1-1').show();
 		$('#optionDiv2').hide();
 		$('#optionDiv2-1').hide();
 		$('#optionDiv3').hide();
 		$('#optionDiv3-1').hide();
+		$('#optionDiv4').hide();
+		$('#optionDiv4-1').hide();
 
 		$('#special_upload').hide();
 		$('.radio-inline').change(function(){
 
-			console.log ('---------');
+			// console.log ('---------');
 			var selected_radio_value = $("input[name=exam_id]:checked").val();
 			if(selected_radio_value == '1')
 			{
@@ -660,7 +662,7 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		});
 		$('.radio-special').change(function(){
 
-			console.log ('---------');
+			// console.log ('---------');
 			var selected_radio_value = $("input[name=special_check]:checked").val();
 			if(selected_radio_value == '1')
 			{
@@ -715,6 +717,10 @@ while ($row_college = mysql_fetch_assoc($web_college)){
 		}
 
 		var input_id = $("input[name=exam_id]:checked").val();
+		if(input_id == undefined ){
+			swal("請確實填寫報考資格。");
+			window.event.returnValue=false;
+		}
 		if(input_id==4 && news_pic6.value==""){
 			// check =1;
 			swal("檔案上傳不完整。");
@@ -873,7 +879,7 @@ function ShowMsg(){
 						});
 					}
 
-					console.log(returndata);
+					// console.log(returndata);
 					window.event.returnValue=false;
 				},
 				error: function(xhr, ajaxOptions, thrownError){
@@ -894,7 +900,12 @@ function show_sign_up(){
 				success: function(returndata){
 					var html_text = "<table border='1' style='width: 100%;'><tr><td>考場</td><td>日期</td><td>考場開放名額</td><td>目前報考人數</td></tr>";
 					$.each( returndata, function( key, value ){
-						html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+						if( value["Nownum"] > value["Maximum_num"] ){
+							html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td style='color: red;'><b>"+value["Nownum"]+"</b></td></tr>";
+						}else{
+							html_text = html_text + "<tr><td>"+value["note"]+"</td><td>"+value["date"]+"</td><td>"+value["Maximum_num"]+"</td><td>"+value["Nownum"]+"</td></tr>";
+						}
+
 						// console.log(value["note"]);
 					});
 					html_text = html_text + "</table>";
@@ -909,7 +920,7 @@ function show_sign_up(){
 						});
 					// }
 
-					console.log(html_text);
+					// console.log(html_text);
 					// window.event.returnValue=false;
 				},
 				error: function(xhr, ajaxOptions, thrownError){
@@ -940,7 +951,7 @@ function show_sign_up(){
 //    echo "開始時間=".$row_web_new['startday']."<br>";
 //    echo "儲存時間2=".substr(($row_web_examinee['date']),0,19)."<br>";
   $row_web_new['startday']=$row_web_new['startday']." 08:30:00";
-  $row_web_new['endday']=$row_web_new['endday']." 15:30:00";
+  $row_web_new['endday']=$row_web_new['endday']." 17:04:00";
   //判斷手機
   $phone_num= array();
   $phone_check=isPhone($row_web_member['phone']);
@@ -1229,7 +1240,7 @@ function show_sign_up(){
 				$sel =& $form->addElement('hierselect', 'exarea', '',$event);?>
           	評量考場：</td>
           <td align="left" class="board_add">
-          <label>
+          <!-- <label> -->
           	<span id="spryselect3">
           	<?php
 				// And add the selection options
@@ -1246,7 +1257,7 @@ function show_sign_up(){
           	<input type="radio" name="exarea" id="radio4" value="Eastern" />
           		東部 -->
           	<span class="selectRequiredMsg">請選擇考場名稱</span></span>
-          </label>
+          <!-- </label> -->
           <label>
           <!--<span id="spryselect1">
 	           <select name="exam_school">

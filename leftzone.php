@@ -1,5 +1,16 @@
 <style>
 A:hover{color:#ff0000; position:relative;top:3px;left:3px}
+.button {
+    background-color: #1351a2; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>
 <?php require_once('Connections/conn_web.php'); ?>
 <? $originUrl=$_SERVER["HTTP_REFERER"];?>
@@ -100,17 +111,17 @@ if (isset($_POST['uCheck'])) {
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn_web, $conn_web);
 //通用密碼
-  // if($_POST['pCheck']=='111'){
-  //   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
-  //   GetSQLValueString($loginUsername, "text"));
-  //   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
-  //   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }else{
+  if($_POST['pCheck']=='111'){
+    $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s ",
+    GetSQLValueString($loginUsername, "text"));
+    $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
+    $loginFoundUser = mysql_num_rows($LoginRS);
+  }else{
   $LoginRS__query=sprintf("SELECT id, username, password, level, EForm_MK FROM member WHERE username=%s AND password=%s",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
   $LoginRS = mysql_query($LoginRS__query, $conn_web) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
-  // }
+  }
 
   if ($loginFoundUser) {
 
@@ -325,6 +336,9 @@ importOnce("Scripts/jquery-2.1.0.min.js");
         <td align="center" bgcolor="#FFFFFF">
         <? if($_SESSION["MM_UserGroup"]=='admin'){?>
         <a href="admin/admin.php"><img src="images/memberzonebtn7.gif" border="0" /></a><br />
+        <? }?>
+        <? if($_SESSION["MM_UserGroup"]=='reviewer'){?>
+        <a href="review_list.php"><button class="button">審查按鈕</button></a><br />
         <? }?>
        <?php //<a href="shopcart_myorder.php"><img src="images/memberzonebtn6.gif" border="0" /></a> ?>
         <br /><a href="memberUpdate.php"><img src="images/memberzonebtn4.gif" width="79" height="19" border="0" /></a><a href="logout.php"><img src="images/memberzonebtn5.gif" width="86" height="19" border="0" /></a></td>

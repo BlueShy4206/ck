@@ -294,17 +294,26 @@ if (in_array($_POST['check_no'], $_SESSION['check']['end_list'])) {
 				$web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
 				$row_web_examinee = mysql_fetch_assoc($web_examinee);
 				$totalRows_web_examinee = mysql_num_rows($web_examinee);
-			}elseif($user_info[result5] == "" && $user_info[verify_name5] == "" && $user_info[first_trial] == "NO"  && $_SESSION['check']['check_type'] == 3){
+			}elseif($user_info[result4] == "" && $user_info[verify_name4] == "" && $user_info[first_trial] == "NO"  && $_SESSION['check']['check_type'] == 3){
 				//未第一次複審
 				mysql_select_db($database_conn_web, $conn_web);
-				$query_web_examinee = sprintf("UPDATE `check_review` SET `verify_name5`=%s,`result5`=%s,`explanation5`=%s, `review_message`= %s, `upload_file` = %s where `examinee_sn`=%s",
+				$query_web_examinee = sprintf("UPDATE `check_review` SET `verify_name4`=%s,`result4`=%s,`explanation4`=%s, `review_message`= %s, `upload_file` = %s where `examinee_sn`=%s",
 				 GetSQLValueString($colname_web_member, "text"), GetSQLValueString($_POST[radio_pass], "text"), GetSQLValueString($_POST[review_msg], "text"),
 				GetSQLValueString($_POST[review_message], "text"), GetSQLValueString($upload_file, "text"), GetSQLValueString($_POST[check_no], "text"));
 				$web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
 				$row_web_examinee = mysql_fetch_assoc($web_examinee);
 				$totalRows_web_examinee = mysql_num_rows($web_examinee);
-			}elseif($user_info[result6] == "" && $user_info[verify_name6] == "" && $user_info[first_trial] == "NO" && $_SESSION['check']['check_type'] == 4){
+			}elseif($user_info[result5] == "" && $user_info[verify_name5] == "" && $user_info[first_trial] == "NO" && $_SESSION['check']['check_type'] == 4){
 				//未第二次複審
+				mysql_select_db($database_conn_web, $conn_web);
+				$query_web_examinee = sprintf("UPDATE `check_review` SET `verify_name5`=%s,`result5`=%s,`explanation5`=%s, `review_message`= %s, `final_trial` = %s, `upload_file` = %s where `examinee_sn`=%s",
+				GetSQLValueString($colname_web_member, "text"), GetSQLValueString($_POST[radio_pass], "text"), GetSQLValueString($_POST[review_msg], "text"),
+				GetSQLValueString($_POST[review_message], "text"), GetSQLValueString($_POST[radio_pass], "text"), GetSQLValueString($upload_file, "text"), GetSQLValueString($_POST[check_no], "text"));
+				$web_examinee = mysql_query($query_web_examinee, $conn_web) or die(mysql_error());
+				$row_web_examinee = mysql_fetch_assoc($web_examinee);
+				$totalRows_web_examinee = mysql_num_rows($web_examinee);
+			}elseif($user_info[result6] == "" && $user_info[verify_name6] == "" && $user_info[first_trial] == "NO" && $_SESSION['check']['check_type'] == 5){
+				//最後會議後修改
 				mysql_select_db($database_conn_web, $conn_web);
 				$query_web_examinee = sprintf("UPDATE `check_review` SET `verify_name6`=%s,`result6`=%s,`explanation6`=%s, `review_message`= %s, `final_trial` = %s, `upload_file` = %s where `examinee_sn`=%s",
 				GetSQLValueString($colname_web_member, "text"), GetSQLValueString($_POST[radio_pass], "text"), GetSQLValueString($_POST[review_msg], "text"),
@@ -323,6 +332,7 @@ if (in_array($_POST['check_no'], $_SESSION['check']['end_list'])) {
 			array_push($_SESSION['check']['end_list'],$_POST['check_no']);
 	}
 }
+//判斷點選名字近來 只修改結果與補件資料
 if($_GET["edit_no"] != ""){
 	$_SESSION['check']['check_type'] = 'edit';
 	$_SESSION['check']['check_list'] = [$_GET["edit_no"],0];
@@ -440,18 +450,18 @@ function getuserinfo($no,$database_conn_web, $conn_web){
 									echo "($row_web_examinee[explanation3])";
 								}
 								echo "<br>";
-								if($row_web_examinee[verify_name4] != "" && $row_web_examinee[result4] !=""){
-									if($row_web_examinee[result4]=='OK'){
-										$pass_message4 ='<p style="display: inline;color: blue;">通過</p>';
-									}elseif($row_web_examinee[result4]=='NO'){
-										$pass_message4 ='<p style="display: inline;color: red;">不通過</p>';
-									}
-									echo "$row_web_examinee[verify_name4]: $pass_message4";
-									if($row_web_examinee[explanation4] != ""){
-										echo "($row_web_examinee[explanation4])";
-									}
-									echo "<br>";
-								}
+								// if($row_web_examinee[verify_name4] != "" && $row_web_examinee[result4] !=""){
+								// 	if($row_web_examinee[result4]=='OK'){
+								// 		$pass_message4 ='<p style="display: inline;color: blue;">通過</p>';
+								// 	}elseif($row_web_examinee[result4]=='NO'){
+								// 		$pass_message4 ='<p style="display: inline;color: red;">不通過</p>';
+								// 	}
+								// 	echo "$row_web_examinee[verify_name4]: $pass_message4";
+								// 	if($row_web_examinee[explanation4] != ""){
+								// 		echo "($row_web_examinee[explanation4])";
+								// 	}
+								// 	echo "<br>";
+								// }
 							}
 						}
 					}
@@ -467,15 +477,15 @@ function getuserinfo($no,$database_conn_web, $conn_web){
 			<div style="font-size: 18px;">
 				<?php
 					// echo "複審結果：$row_web_examinee[first_trial]";
-					if($row_web_examinee[verify_name5] != "" && $row_web_examinee[result5] !=""){
-						if($row_web_examinee[result5]=='OK'){
-							$pass_message5 ='<p style="display: inline;color: blue;">通過</p>';
-						}elseif($row_web_examinee[result5]=='NO'){
-							$pass_message5 ='<p style="display: inline;color: red;">不通過</p>';
+					if($row_web_examinee[verify_name4] != "" && $row_web_examinee[result4] !=""){
+						if($row_web_examinee[result4]=='OK'){
+							$pass_message4 ='<p style="display: inline;color: blue;">通過</p>';
+						}elseif($row_web_examinee[result4]=='NO'){
+							$pass_message4 ='<p style="display: inline;color: red;">不通過</p>';
 						}
-						echo "$row_web_examinee[verify_name5]:$pass_message5";
-						if($row_web_examinee[explanation5] != ""){
-							echo "($row_web_examinee[explanation5])";
+						echo "$row_web_examinee[verify_name4]:$pass_message4";
+						if($row_web_examinee[explanation4] != ""){
+							echo "($row_web_examinee[explanation4])";
 						}
 						echo "<br>";
 						if($row_web_examinee[verify_name6] != "" && $row_web_examinee[result6] !=""){

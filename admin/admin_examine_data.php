@@ -168,15 +168,23 @@ function downloadxls(){
 			$objPHPExcel->getActiveSheet()->setCellValue('AN1' ,"身份別"); //身份別,add by coway 2016.10.25
 			$objPHPExcel->getActiveSheet()->setCellValue('AO1' ,"流水號"); //流水號,add by coway 2016.10.25
 			$objPHPExcel->getActiveSheet()->setCellValue('AP1' ,"帳號"); //帳號,add by coway 2016.10.25
-      $objPHPExcel->getActiveSheet()->setCellValue('AQ1' ,"身分證正面");
-      $objPHPExcel->getActiveSheet()->setCellValue('AR1' ,"身分證反面");
-      $objPHPExcel->getActiveSheet()->setCellValue('AS1' ,"最高學歷學位證書");
-      $objPHPExcel->getActiveSheet()->setCellValue('AT1' ,"國民小學教師證書");
-      $objPHPExcel->getActiveSheet()->setCellValue('AU1' ,"在職證明書");
-      $objPHPExcel->getActiveSheet()->setCellValue('AV1' ,"特殊考場服務申請表");
-      $objPHPExcel->getActiveSheet()->setCellValue('AW1' ,"應考服務診斷證明書");
-      $objPHPExcel->getActiveSheet()->setCellValue('AX1' ,"應考切結書");
-      $objPHPExcel->getActiveSheet()->setCellValue('AY1' ,"戶口名簿");
+            $objPHPExcel->getActiveSheet()->setCellValue('AQ1' ,"特殊考場服務申請表");
+            $objPHPExcel->getActiveSheet()->setCellValue('AR1' ,"應考服務診斷證明書");
+            $objPHPExcel->getActiveSheet()->setCellValue('AS1' ,"應考切結書");
+            $objPHPExcel->getActiveSheet()->setCellValue('AT1' ,"初審一人");
+            $objPHPExcel->getActiveSheet()->setCellValue('AU1' ,"初審一結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('AV1' ,"初審二人");
+            $objPHPExcel->getActiveSheet()->setCellValue('AW1' ,"初審二結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('AX1' ,"初審三人");
+            $objPHPExcel->getActiveSheet()->setCellValue('AY1' ,"初審三結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('AZ1' ,"初審結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('BA1' ,"複審一人");
+            $objPHPExcel->getActiveSheet()->setCellValue('BB1' ,"複審一結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('BC1' ,"複審二人");
+            $objPHPExcel->getActiveSheet()->setCellValue('BD1' ,"複審二結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('BE1' ,"會後結果");
+            $objPHPExcel->getActiveSheet()->setCellValue('BF1' ,"最後審查結果");
+
 
 
 
@@ -186,9 +194,9 @@ function downloadxls(){
 		//撈取資料庫
 // 		$sql_s = "SELECT * FROM examinee WHERE id LIKE '%". $_POST['times'] . $_POST['startyear'] ."%' AND exarea LIKE '%".$_POST['exarea']."%' AND allow LIKE '%".$_POST['apply_mk']."%'
 // 					ORDER BY no ASC";
-			$sql_s="SELECT examinee.*, allguide.note as exam_school, examinee_pic.* FROM examinee, allguide, examinee_pic WHERE allguide.up_no='EA2'
+			$sql_s="SELECT examinee.*, allguide.note as exam_school, examinee_pic.*, check_review.* FROM examinee, allguide, examinee_pic, check_review WHERE allguide.up_no='EA2'
 					AND examinee.exarea = allguide.nm and examinee.exarea_note = allguide.data2
-					AND examinee.id LIKE '_". $_POST['times'] . $_POST['startyear'] ."%' AND examinee.apply_mk = '1'  AND examinee.no = examinee_pic.examinee_no ";
+					AND examinee.id LIKE '_". $_POST['times'] . $_POST['startyear'] ."%' AND examinee.apply_mk = '1'  AND examinee.no = examinee_pic.examinee_no AND check_review.examinee_sn = examinee.no ";
 // 					"AND examinee.exarea LIKE '%".$_POST['exarea']."%' ";
 		if($_POST['allow'] != ""){
         if	($_POST['allow'] == "N"){
@@ -448,83 +456,8 @@ function downloadxls(){
 			//匯入 大頭照 END
 
       //匯入 照片1~5,特殊考生,戶口名簿 START    BlueS 20180321
-      //1
-    if(is_file('../images/smallPic/id_check/'.$row['pic1_name'])){
-
-      $objDrawing = new PHPExcel_Worksheet_Drawing();
-      $objDrawing->setName($row['pic1_name']);
-                              $objDrawing->setDescription($row['pic1_name']);
-                              $objDrawing->setPath('../images/smallPic/id_check/'.$row['pic1_name']);
-                              $objDrawing->setHeight(400);
-      $objDrawing->setWidth(320);
-      //$objDrawing->setWidthAndHeight(80,100);
-      $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AQ'.$i);
-                        $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AQ'.$i ,"");
-
-    //2
-    if(is_file('../images/smallPic/id_check/'.$row['pic2_name'])){
-      $objDrawing = new PHPExcel_Worksheet_Drawing();
-      $objDrawing->setName($row['pic2_name']);
-                              $objDrawing->setDescription($row['pic2_name']);
-                              $objDrawing->setPath('../images/smallPic/id_check/'.$row['pic2_name']);
-                              $objDrawing->setHeight(400);
-      $objDrawing->setWidth(320);
-      //$objDrawing->setWidthAndHeight(80,100);
-      $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AR'.$i);
-                        $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AR'.$i ,"");
-
-    //3
-    if(is_file('../images/smallPic/id_check/'.$row['pic3_name'])){
-      $objDrawing = new PHPExcel_Worksheet_Drawing();
-      $objDrawing->setName($row['pic3_name']);
-                              $objDrawing->setDescription($row['pic3_name']);
-                              $objDrawing->setPath('../images/smallPic/id_check/'.$row['pic3_name']);
-                              $objDrawing->setHeight(400);
-      $objDrawing->setWidth(320);
-      //$objDrawing->setWidthAndHeight(80,100);
-      $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AS'.$i);
-                        $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AS'.$i ,"");
-
-    //4
-    if(is_file('../images/smallPic/id_check/'.$row['pic4_name'])){
-      $objDrawing = new PHPExcel_Worksheet_Drawing();
-      $objDrawing->setName($row['pic4_name']);
-                              $objDrawing->setDescription($row['pic4_name']);
-                              $objDrawing->setPath('../images/smallPic/id_check/'.$row['pic4_name']);
-                              $objDrawing->setHeight(400);
-      $objDrawing->setWidth(320);
-      //$objDrawing->setWidthAndHeight(80,100);
-      $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AT'.$i);
-                        $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AT'.$i ,"");
-
-    //5
-    if(is_file('../images/examinee/id_check/'.$row['pic5_name'])){
-      $objDrawing = new PHPExcel_Worksheet_Drawing();
-      $objDrawing->setName($row['pic5_name']);
-                              $objDrawing->setDescription($row['pic5_name']);
-                              $objDrawing->setPath('../images/examinee/id_check/'.$row['pic5_name']);
-                              $objDrawing->setHeight(400);
-      $objDrawing->setWidth(320);
-      //$objDrawing->setWidthAndHeight(80,100);
-      $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AU'.$i);
-                        $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AU'.$i ,"");
-
     //特殊-1
-    if(is_file('../images/smallPic/id_check/'.$row['special_pic_name1'])){
+    if(is_file('../images/smallPic/'.$row['special_pic_name1'])){
       $objDrawing = new PHPExcel_Worksheet_Drawing();
       $objDrawing->setName($row['special_pic_name1']);
                               $objDrawing->setDescription($row['special_pic_name1']);
@@ -533,13 +466,13 @@ function downloadxls(){
       $objDrawing->setWidth(80);
       //$objDrawing->setWidthAndHeight(80,100);
       $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AV'.$i);
+                              $objDrawing->setCoordinates('AQ'.$i);
                         $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AV'.$i ,"");
+    }else $objPHPExcel->getActiveSheet()->setCellValue('AQ'.$i ,"");
 
     //特殊-2
-    if(is_file('../images/smallPic/id_check/'.$row['special_pic_name2'])){
+    if(is_file('../images/smallPic/'.$row['special_pic_name2'])){
       $objDrawing = new PHPExcel_Worksheet_Drawing();
       $objDrawing->setName($row['special_pic_name2']);
                               $objDrawing->setDescription($row['special_pic_name2']);
@@ -548,13 +481,13 @@ function downloadxls(){
       $objDrawing->setWidth(80);
       //$objDrawing->setWidthAndHeight(80,100);
       $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AW'.$i);
+                              $objDrawing->setCoordinates('AR'.$i);
                         $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AW'.$i ,"");
+    }else $objPHPExcel->getActiveSheet()->setCellValue('AR'.$i ,"");
 
     //特殊-3
-    if(is_file('../images/smallPic/id_check/'.$row['special_pic_name3'])){
+    if(is_file('../images/smallPic/'.$row['special_pic_name3'])){
       $objDrawing = new PHPExcel_Worksheet_Drawing();
       $objDrawing->setName($row['special_pic_name3']);
                               $objDrawing->setDescription($row['special_pic_name3']);
@@ -563,34 +496,45 @@ function downloadxls(){
       $objDrawing->setWidth(80);
       //$objDrawing->setWidthAndHeight(80,100);
       $objDrawing->setResizeProportional(true);
-                              $objDrawing->setCoordinates('AX'.$i);
+                              $objDrawing->setCoordinates('AS'.$i);
                         $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
-    }else $objPHPExcel->getActiveSheet()->setCellValue('AX'.$i ,"");
+    }else $objPHPExcel->getActiveSheet()->setCellValue('AS'.$i ,"");
 
       //匯入 照片1~5,特殊考生,戶口名簿 END
 
-
-   //戶口名簿
-   if(is_file('../images/examinee/id_check/'.$row['rename_pic_name'])){
-     $objDrawing = new PHPExcel_Worksheet_Drawing();
-     $objDrawing->setName($row['rename_pic_name']);
-                             $objDrawing->setDescription($row['rename_pic_name']);
-                             $objDrawing->setPath('../images/examinee/id_check/'.$row['rename_pic_name']);
-                             $objDrawing->setHeight(100);
-     $objDrawing->setWidth(80);
-     //$objDrawing->setWidthAndHeight(80,100);
-     $objDrawing->setResizeProportional(true);
-                             $objDrawing->setCoordinates('AY'.$i);
-                       $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-   }else $objPHPExcel->getActiveSheet()->setCellValue('AY'.$i ,"");
-
-				//行高 設定
-				$objPHPExcel->getActiveSheet()->getRowDimension($i)->setRowHeight(160);
+      //行高 設定
+      $objPHPExcel->getActiveSheet()->getRowDimension($i)->setRowHeight(160);
 
 
-		}
+      if($row['result1']=='OK'){$row['result1']= '通過';}else if($row['result1']=='NO'){$row['result1']= '不通過';}
+      if($row['result2']=='OK'){$row['result2']= '通過';}else if($row['result2']=='NO'){$row['result2']= '不通過';}
+      if($row['result3']=='OK'){$row['result3']= '通過';}else if($row['result3']=='NO'){$row['result3']= '不通過';}
+      if($row['result4']=='OK'){$row['result4']= '通過';}else if($row['result4']=='NO'){$row['result4']= '不通過';}
+      if($row['result5']=='OK'){$row['result5']= '通過';}else if($row['result5']=='NO'){$row['result5']= '不通過';}
+      if($row['result6']=='OK'){$row['result6']= '通過';}else if($row['result6']=='NO'){$row['result6']= '不通過';}
+      if($row['first_trial']=='OK'){$row['first_trial']= '通過';}else if($row['first_trial']=='NO'){$row['first_trial']= '不通過';}
+      if($row['explanation1'] != ""){$result_msg1=$row['result1']."(".$row['explanation1'].")";}else {$result_msg1=$row['result1'];}
+      if($row['explanation2'] != ""){$result_msg2=$row['result2']."(".$row['explanation2'].")";}else {$result_msg2=$row['result2'];}
+      if($row['explanation3'] != ""){$result_msg3=$row['result3']."(".$row['explanation3'].")";}else {$result_msg3=$row['result3'];}
+      if($row['explanation4'] != ""){$result_msg4=$row['result4']."(".$row['explanation4'].")";}else {$result_msg4=$row['result4'];}
+      if($row['explanation5'] != ""){$result_msg5=$row['result5']."(".$row['explanation5'].")";}else {$result_msg5=$row['result5'];}
+      if($row['explanation6'] != ""){$result_msg6=$row['result6']."(".$row['explanation6'].")";}else {$result_msg6=$row['result6'];}
+
+      $objPHPExcel->getActiveSheet()->setCellValue('AT'.$i ,$row['verify_name1']);//"初審一人"
+      $objPHPExcel->getActiveSheet()->setCellValue('AU'.$i ,$result_msg1);//"初審一結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('AV'.$i ,$row['verify_name2']);//"初審二人"
+      $objPHPExcel->getActiveSheet()->setCellValue('AW'.$i ,$result_msg2);//"初審二結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('AX'.$i ,$row['verify_name3']);//"初審三人"
+      $objPHPExcel->getActiveSheet()->setCellValue('AY'.$i ,$result_msg3);//"初審三結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('AZ'.$i ,$row['first_trial']);//"初審結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('BA'.$i ,$row['verify_name4']);//"複審一人"
+      $objPHPExcel->getActiveSheet()->setCellValue('BB'.$i ,$result_msg4);//"複審一結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('BC'.$i ,$row['verify_name5']);//"複審二人"
+      $objPHPExcel->getActiveSheet()->setCellValue('BD'.$i ,$result_msg5);//"複審二結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('BE'.$i ,$result_msg6);//"會後結果"
+      $objPHPExcel->getActiveSheet()->setCellValue('BF'.$i ,$row['final_trial']);//"最後審查結果"
+  }
 
 
 
@@ -644,15 +588,24 @@ function downloadxls(){
 		 $objPHPExcel->getActiveSheet()->getColumnDimension('AN')->setWidth(16);//身份別,add by coway 2016.10.25
 		 $objPHPExcel->getActiveSheet()->getColumnDimension('AO')->setWidth(16);//流水號,add by coway 2016.10.25
 		 $objPHPExcel->getActiveSheet()->getColumnDimension('AP')->setWidth(16);//帳號,add by coway 2016.10.25
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AQ')->setWidth(48);//1~5 CHECK BlueS 20180321
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AS')->setWidth(48);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AR')->setWidth(48);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AT')->setWidth(48);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AU')->setWidth(48);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AV')->setWidth(16);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AW')->setWidth(16);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AX')->setWidth(16);
-     $objPHPExcel->getActiveSheet()->getColumnDimension('AY')->setWidth(16);
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AQ')->setWidth(48);//特殊考生照片 BlueS 20180321
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AR')->setWidth(48);
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AS')->setWidth(48);
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AT')->setWidth(48);//一審人
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AU')->setWidth(48);//一審結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AV')->setWidth(48);//二審人
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AW')->setWidth(48);//二審結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AX')->setWidth(48);//三審人
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AY')->setWidth(48);//三審結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('AZ')->setWidth(48);//初審結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BA')->setWidth(48);//複審一人
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BB')->setWidth(48);//複審一結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BC')->setWidth(48);//複審二人
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BD')->setWidth(48);//複審二結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BE')->setWidth(48);//會後結果
+         $objPHPExcel->getActiveSheet()->getColumnDimension('BF')->setWidth(48);//最後審查結果
+
+
 
 
 

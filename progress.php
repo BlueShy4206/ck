@@ -595,35 +595,40 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
            // if(strtotime($row_web_new['endday']) < strtotime(date('Y-m-d'))){//add by coway 2016.9.20?>
           <?php //20180417 BlueS 顯示審核狀態
-          if($row_web_examinee['allow']=="YY"){
-					echo "<font color='#FF0000'>審核通過</font>";
-        		}elseif($row_web_examinee['allow']=="Y"){
-					echo "<font color='#FF0000'>初步審核通過</font>";
-				}elseif($row_web_examinee['allow'] == "N"){
-					echo "<font color='#FF0000'>審核不通過</font>";
-				}elseif($row_web_examinee['allow'] == "0"){
-					echo "<font color='#FF0000'>審核中</font>";
-				}else{
-					echo "<font color='#FF0000'>初步審核不通過</font>";
-				} ?>
+		   if(strtotime($row_web_new[upload_date]) < strtotime(date("Y-m-d H:i:s"))){
+		          if($row_web_examinee['allow']=="YY"){
+				  	echo "<font color='#FF0000'>審核通過</font>";
+		          }elseif($row_web_examinee['allow']=="Y"){
+				  	echo "<font color='#FF0000'>初步審核通過</font>";
+				  }elseif($row_web_examinee['allow'] == "N"){
+				  	echo "<font color='#FF0000'>審核不通過</font>";
+				  }elseif($row_web_examinee['allow'] == "0"){
+				  	echo "<font color='#FF0000'>審核中</font>";
+				  }else{
+				  	echo "<font color='#FF0000'>初步審核不通過</font>";
+				  }
+			  }else{
+				  echo "<font color='#FF0000'>審核中</font>";
+			  } ?>
            </td>
            <td height="30" align="right" class="board_add4"></td>
         </tr>
         <tr>
           <td height="30" align="right" class="board_add4">資料審查說明：</td>
-          <td align="left" class="board_add4"><?php echo $row_web_examinee['allow_note']?></td>
+          <td align="left" class="board_add4"><?php if(strtotime($row_web_new[upload_date]) < strtotime(date("Y-m-d H:i:s"))){ echo $row_web_examinee['allow_note'];}?></td>
            <td height="30" align="right" class="board_add4"></td>
         </tr>
 	</table>
         <!-- 20180305 BlueS 補件上傳處 -->
 		<table width="540">
+
         <?php
 			$OK_btn ='0'; //SHOW按鈕的變數
-			if((strtotime(date('Y-m-d')) <= strtotime($end_date) ) && ($row_web_examinee["allow"] != 'Y' && $row_web_examinee["allow"] != 'YY'  && $row_web_examinee["allow"] != 'N' && $row_web_examinee["allow"] != '0')){ ?>
+			if((strtotime($row_web_new[upload_date]) < strtotime(date("Y-m-d H:i:s"))) && ($row_web_examinee["allow"] != 'Y' && $row_web_examinee["allow"] != 'YY'  && $row_web_examinee["allow"] != 'N' && $row_web_examinee["allow"] != '0')){ ?>
 	          <form id="form3" name="form3" method="post" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" >
 	        <tr>
 
-	          <td height="30" align="center" colspan="3" style="font-size: 21px; color: #F00;">補件資料上傳</td>
+	          <td height="30" align="center" colspan="3" style="font-size: 21px; color: #F00;">補件資料上傳<br><span class="font_red" style="font-size: 10px;">**接受檔案格式為：JPG、GIF、PNG，檔案大小不能超過3MB</span></td>
 
 	        </tr>
 
@@ -788,7 +793,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 				 <td height="30" align="right" class="board_add4"></td>
 			</tr>
 		<?php }
-		if(( $OK_btn == "1" ) && (strtotime(date('Y-m-d')) <= strtotime($end_date))){ ?>
+		if(( $OK_btn == "1" ) && (strtotime($row_web_new[upload_date]) < strtotime(date("Y-m-d H:i:s")))){ ?>
 			<tr>
 				<td colspan="3">
 	      			<div align="center">

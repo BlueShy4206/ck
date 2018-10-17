@@ -187,22 +187,27 @@ if($check_type != ""){
             $str_exam_user="一、二審";
             $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and (check_review.verify_name1 != %s or check_review.verify_name1 is NULL) and check_review.verify_name2 is NULL ORDER BY DATE",
              GetSQLValueString($examyear_id, "text"), GetSQLValueString($colname_web_member, "text"));
-            break;
+        break;
         case 2://3審
             $_SESSION['check']['check_type']=2;
             $str_exam_user="三審";
             $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and check_review.verify_name3 is NULL and first_trial = 'NO' ORDER BY DATE", GetSQLValueString($examyear_id, "text"));
-            break;
+        break;
         case 3://複審一審
             $_SESSION['check']['check_type']=3;
             $str_exam_user="複審一審";
-            $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and check_review.verify_name3 is not NULL and check_review.verify_name5 is NULL and first_trial = 'NO' ORDER BY check_review.update_time DESC", GetSQLValueString($examyear_id, "text"));
-            break;
+            $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and check_review.verify_name3 is not NULL and check_review.verify_name4 is NULL and first_trial = 'NO' ORDER BY check_review.update_time DESC", GetSQLValueString($examyear_id, "text"));
+        break;
         case 4://複審二審
             $_SESSION['check']['check_type']=4;
             $str_exam_user="複審二審";
+            $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and check_review.verify_name4 is not NULL and check_review.verify_name5 is NULL and first_trial = 'NO' ORDER BY check_review.update_time DESC", GetSQLValueString($examyear_id, "text"));
+        break;
+        case 5://會後審查
+            $_SESSION['check']['check_type']=5;
+            $str_exam_user="會後審查";
             $get_exam_uesr_sql = sprintf("SELECT * FROM examinee,examinee_pic,check_review WHERE examinee.examyear_id = %s and examinee.no = examinee_pic.examinee_no and examinee.no = check_review.examinee_sn and apply_mk = '1' and check_review.verify_name5 is not NULL and check_review.verify_name6 is NULL and first_trial = 'NO' ORDER BY check_review.update_time DESC", GetSQLValueString($examyear_id, "text"));
-            break;
+        break;
         case 11://初審不通過
             $_SESSION['check']['check_type']=11;
             $str_exam_user="初審不通過";
@@ -352,6 +357,50 @@ if($_SESSION['MM_UserGroup'] != 'reviewer'){
     </script>
 <?PHP
 }
+
+    if($_GET['sent_mail'] == 'Y'){
+        require_once('PHPMailer/class.phpmailer.php');
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPAuth = true; // turn on SMTP authentication
+        $mail->Username = "ckassessment@gmail.com";
+        $mail->Password = "assessmentck";
+        $mail->FromName = "ck系統管理員";
+        $webmaster_email = "ckassessment@gmail.com";
+
+        $mail->CharSet = "utf8";
+        // $email=$_POST['email'];// 收件者信箱
+        // $name=$_POST['username'];// 收件者的名稱or暱稱
+
+        $email='bb42064206@gmail.com';// 收件者信箱
+        $name='test1';// 收件者的名稱or暱稱
+
+        $mail->From = $webmaster_email;
+        $mail->AddAddress($email,$name);
+        $mail->AddReplyTo($webmaster_email,"Squall.f");
+        $mail->WordWrap = 50;//每50行斷一次行
+        //$mail->AddAttachment("/XXX.rar");
+        // 附加檔案可以用這種語法(記得把上一行的//去掉)
+
+        $mail->IsHTML(true); // send as HTML
+        $subject="國民小學教師學科知能評量通知";
+        $mail->Subject = $subject; // 信件標題
+
+        $body="親愛的考生您好，由於您上傳的大頭照未符合規定，請重新上傳正確的大頭照，以免影響考試權益，謝謝；<br />
+           <br />
+           如有任何問題歡迎與我們聯絡，謝謝!!<br />
+           any problem，you can touch us，thank you!!";
+        $mail->Body = $body;//信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
+        $mail->AltBody = $body; //信件內容(純文字版)
+
+        if(!$mail->Send()){
+        echo "寄信發生錯誤：" . $mail->ErrorInfo;//如果有錯誤會印出原因
+         }
+        else{
+        echo "寄信成功";
+            }
+    }
+
     include("header.php");
 // echo phpinfo();?>
 </div>
@@ -390,6 +439,7 @@ if($_SESSION['MM_UserGroup'] != 'reviewer'){
             <td>
                 <button class="button1 btn1" onclick="javascript:location.href='review_list.php?check_type=3'">複審一審</button>
                 <button class="button1 btn1" onclick="javascript:location.href='review_list.php?check_type=4'">複審二審</button>
+                <button class="button1 btn1" onclick="javascript:location.href='review_list.php?check_type=5'">會後審查</button>
             </td>
         </tr>
         <tr>
@@ -473,8 +523,7 @@ if($_SESSION['MM_UserGroup'] != 'reviewer'){
                         <!-- <td><?PHP echo $exam_uesr[$key][uname] ?></td> -->
                         <td><?PHP echo $exam_uesr[$key][per_id]; ?></td>
                         <td><?PHP echo $trial ?></td>
-                        <td><img style="width: 43px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBzdHlsZT0iZmlsbDojRkZDRDcxOyIgZD0iTTQ3MC45ODMsMTM1LjMyaC01Ny4xNDFWODAuMjc4bDY5LjQxMSwxNi41NDhsOS4xNiwyLjE4M2M4LjEyNywxLjkzNiwxMi45MiwxMC41ODgsOS44OSwxOC4zNzQgIEM0OTguOTAxLDEyNi4xMjksNDkwLjYzNiwxMzUuMzIsNDcwLjk4MywxMzUuMzJ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkUxQUE7IiBkPSJNNDgzLjI1Myw5Ni44MjZjLTQuNTgxLDYuNjA5LTEyLjk3NiwxMi4yMDktMjguMzEzLDEyLjIwOWgtNDEuMDk4VjgwLjI3OEw0ODMuMjUzLDk2LjgyNnoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0YyOTUwMDsiIGQ9Ik00OTMuMTMxLDQzOS41MTJjMCwwLjYwNS0wLjAxLDEuMjExLTAuMDQsMS44MTZjLTAuNDY0LDEyLjA5OC01LjU1LDIzLjAwNi0xMy41NjEsMzEuMDE3ICBjLTguNDA1LDguMzk1LTIwLjAwOSwxMy41OTItMzIuODM0LDEzLjU5Mkg1My45OTNjLTI1LjYzOSwwLTQ2LjQyNS0yMC43NzYtNDYuNDI1LTQ2LjQyNWMwLTEyLjgyNSw1LjE5Ni0yNC40MjksMTMuNjAyLTMyLjgyNCAgYzguMzk1LTguNDA1LDIwLjAwOS0xMy42MDIsMzIuODI0LTEzLjYwMmgzOTIuNzAzQzQ3Mi4zNDUsMzkzLjA4Niw0OTMuMTMxLDQxMy44NzIsNDkzLjEzMSw0MzkuNTEyeiIvPgo8Zz4KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkE5MEI7IiBkPSJNNDkzLjEzMSw0MzkuNTEyYzAsMC42MDUtMC4wMSwxLjIxMS0wLjA0LDEuODE2SDEwMy4yMTNjLTI1LjYzOSwwLTQ2LjQyNS0yMC43ODYtNDYuNDI1LTQ2LjQyNSAgIGMwLTAuNjA1LDAuMDEtMS4yMTEsMC4wNC0xLjgxNmgzODkuODY3QzQ3Mi4zNDUsMzkzLjA4Niw0OTMuMTMxLDQxMy44NzIsNDkzLjEzMSw0MzkuNTEyeiIvPgoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQTkwQjsiIGQ9Ik0zODMuNzY4LDExOS4zOEwzODMuNzY4LDExOS4zOGgtNTkuNDQ5bC04LjM5MywxOC44MDNsNjAuMjQzLDY5LjAwNiAgIGMxMy4yNjcsMTUuOTEsMjAuNTMzLDM1Ljk3MSwyMC41MzMsNTYuNjg3djc0LjI1NGg1OS40NDl2LTc0LjI1NGMwLTIwLjcxNi03LjI2Ni00MC43NzctMjAuNTMzLTU2LjY4N2wtMzUuNDM3LTQyLjQ5OSAgIEMzODkuNTc2LDE1MS45NzIsMzgzLjc2OCwxMzUuOTM4LDM4My43NjgsMTE5LjM4eiIvPgo8L2c+CjxwYXRoIHN0eWxlPSJmaWxsOiNGRkI1MkQ7IiBkPSJNNDM2Ljk4OSw5NC43NjhjMCwxMS45OTctMy4wNzgsMjMuMjc4LTguNDc2LDMzLjA4NmMtMTEuNjk1LDIxLjI0LTM0LjI4NywzNS42MjktNjAuMjM5LDM1LjYyOSAgYy0zNy45NDksMC02OC43MDUtMzAuNzY1LTY4LjcwNS02OC43MTVjMC0yNi45MjEsMTUuNDc4LTUwLjIxOSwzOC4wMS02MS40OGM5LjIzMy00LjYyMSwxOS42NTYtNy4yMjUsMzAuNjk1LTcuMjI1ICBDNDA2LjIyNCwyNi4wNjMsNDM2Ljk4OSw1Ni44MTgsNDM2Ljk4OSw5NC43Njh6Ii8+CjxnPgoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQzE0RjsiIGQ9Ik00MzYuOTg5LDk0Ljc2OGMwLDExLjk5Ny0zLjA3OCwyMy4yNzgtOC40NzYsMzMuMDg2Yy05LjI0Myw0LjYzMS0xOS42NzYsNy4yMzUtMzAuNzE1LDcuMjM1ICAgYy0zNy45NDksMC02OC43MDUtMzAuNzU1LTY4LjcwNS02OC43MDVjMC0xMS45OTcsMy4wNzgtMjMuMjc4LDguNDg2LTMzLjA5NmM5LjIzMy00LjYyMSwxOS42NTYtNy4yMjUsMzAuNjk1LTcuMjI1ICAgQzQwNi4yMjQsMjYuMDYzLDQzNi45ODksNTYuODE4LDQzNi45ODksOTQuNzY4eiIvPgoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQzE0RjsiIGQ9Ik00OTMuMTMxLDM0Ni42NjFjMCwyNS42MzktMjAuNzg2LDQ2LjQyNS00Ni40MjUsNDYuNDI1SDUzLjk5MyAgIGMtMTIuODE1LDAtMjQuNDI5LTUuMTk2LTMyLjgyNC0xMy42MDJjLTguNDA1LTguMzk1LTEzLjYwMi0xOS45OTktMTMuNjAyLTMyLjgyNHYtODUuMjMyYzAtOS45MTksOC4wNDItMTcuOTYxLDE3Ljk2MS0xNy45NjEgICBjNC4wMzYsMCw3Ljg2LDEuMzUyLDEwLjkzOCwzLjcxM2MyLjI3LDEuNzQ2LDQuMTM3LDQuMDM2LDUuMzc4LDYuNzRsMjEuMjksNDYuMzE0aDM4My41NzFjMTIuODE1LDAsMjQuNDI5LDUuMTk2LDMyLjgyNCwxMy42MDIgICBjNy44Niw3Ljg1LDEyLjkxNSwxOC41MDYsMTMuNTMxLDMwLjM0MUM0OTMuMTExLDM0NS4wMDYsNDkzLjEzMSwzNDUuODM0LDQ5My4xMzEsMzQ2LjY2MXoiLz4KPC9nPgo8cGF0aCBzdHlsZT0iZmlsbDojRkZDRDcxOyIgZD0iTTQ5My4wNjEsMzQ0LjE3OWMtNS4zODgsMi4xOS0xMS4yODEsMy40LTE3LjQ2NiwzLjRIODIuODkxYy0xMi44MTUsMC0yNC40MjktNS4xOTYtMzIuODI0LTEzLjYwMiAgYy04LjQwNS04LjM5NS0xMy42MDItMTkuOTk5LTEzLjYwMi0zMi44MjR2LTUzLjk3M2MyLjI3LDEuNzQ2LDQuMTM3LDQuMDM2LDUuMzc4LDYuNzRsMjEuMjksNDYuMzE0aDM4My41NzEgIGMxMi44MTUsMCwyNC40MjksNS4xOTYsMzIuODI0LDEzLjYwMkM0ODcuMzksMzIxLjY4OCw0OTIuNDQ1LDMzMi4zNDMsNDkzLjA2MSwzNDQuMTc5eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojRkZEOTkzOyIgZD0iTTM2OC4wNzMsMzQ2Ljk3NGMtMC42NTYsNy44Ni0zLjAzNywxNS43NDEtNy4zNTYsMjMuMTY3Yy03LjQ4NywxMi44ODUtMTYuODYxLDIyLjIwOS0yNi42MzgsMjguOTU5ICBjLTI0LjA1NSwxNi41OTktNTQuODIsMjAuMDI5LTgyLjMwNiwxMC4wN2MtNDEuODQ0LTE1LjE2Ni05NC44MjgtNDguMDA5LTEyNi43MjQtMTEzLjU1NmwtMTQuMzE4LTI5LjQyMyAgYy01Ljc4Mi0xMS44ODYsNC43MTItMjUuMTk1LDE3LjYxOC0yMi4zM2w3LjczOSwxLjcxNWwxODcuODEsNDEuNTgyQzM1Mi41ODQsMjkzLjUxNiwzNzAuMzUzLDMyMC4wNzMsMzY4LjA3MywzNDYuOTc0eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojRkZFMUFBOyIgZD0iTTM2OC4wNzMsMzQ2Ljk3NGMtNS4yMDcsNi4wMzQtMTAuODc3LDEwLjk0OC0xNi42NzksMTQuOTU0ICBjLTI0LjA1NSwxNi42MDktNTQuODMsMjAuMDI5LTgyLjMxNiwxMC4wN2MtNDEuODM0LTE1LjE1Ni05NC44MjgtNDcuOTk5LTEyNi43MjQtMTEzLjU0NmwtNi4yNjYtMTIuODc1bDE4Ny44MSw0MS41ODIgIEMzNTIuNTg0LDI5My41MTYsMzcwLjM1MywzMjAuMDczLDM2OC4wNzMsMzQ2Ljk3NHoiLz4KPHBhdGggZD0iTTUwMC42OTksMzQ2LjY2MWMwLTIzLjgyMy0xNS41MTktNDQuMTA1LTM2Ljk4MS01MS4yMzhjLTEuMjAyLTIyLjk5LDQuMDAxLTQ0LjEyNS04Ljk2LTcyLjAzNCAgYy0yLjIzLTQuODAzLTguNTA2LTUuOTg0LTEyLjI1LTIuMjRjLTIuMjQsMi4yNC0yLjg1Niw1LjY0LTEuNTI0LDguNTA2YzExLjA4OSwyMy43OCw2LjUyOCw0MS43NjYsNy41OTgsNjMuMDU0ICBjLTEuNDUtMC4wNzEsMC41NDMtMC4wMy00NC4zMTYtMC4wNGMtMi4wMTItMTkuNjUyLDguMTU5LTUyLjI2LTIyLjQtOTAuNDU5bC0yOC40ODUtMzIuNjIyYzEyLjk1MiwyLjU3NCwyNi40NiwxLjc1NSwzOS4wNTktMi40NjIgIGMxLjYzOSwyLjE0MSwxLjExNywxLjQwOCwzMC42NDQsMzYuODZjMi44NTYsMy40MTEsOC4wMjIsMy42NDMsMTEuMTYsMC41MDVsMC4wMS0wLjAxYzIuNzY1LTIuNzY1LDIuOTY3LTcuMTg0LDAuNDU0LTEwLjE5MSAgbC0yOC4wMzEtMzMuNjMxYzcuOTQxLTQuNjQyLDE0Ljk2NC0xMC42NzYsMjAuNzQ2LTE3Ljc2OWg0My41NmMyMi42MTIsMCw0MS4wMTctMTguMzk1LDQxLjAxNy00MS4wMTcgIGMwLTMuNTAxLTIuNDEyLTYuNTQ5LTUuODEyLTcuMzU2bC02My4xNzUtMTUuMDY1Yy03LjExNC0zNC43NDEtMzcuOTE5LTYwLjk1NS03NC43MzktNjAuOTU1Yy00Mi4wNTYsMC03Ni4yNzIsMzQuMjE2LTc2LjI3Miw3Ni4yNzIgIGMwLDIyLjg2NSwxMC4xMSw0My40MDgsMjYuMDgzLDU3LjM5M2w1Mi4zMjgsNTkuOTM2YzEyLjA2OCwxNC41MSwxOC43MTcsMzIuODk0LDE4LjcxNyw1MS43ODN2MjguNzg4aC0zNi44NCAgYy03LjYyOC02LjIzNi0xNi43Mi0xMC42NzUtMjYuNzU5LTEyLjg5NWwtMTA4LjQyLTI0LjAxNWMtNy4wMzQtMS41Ni0xMS45Niw2LjY1Ni03LjU0OCwxMi4xMjkgIGMzLjE1NSwzLjk0NCwxLjY1MiwxLjQ0OSwxMDQuMTgyLDI0Ljc4Mmw4LjUxNiwxLjg4N2MzMi40NDMsNy4xODYsNDguMjg5LDQzLjYzNywzMS45MTUsNzEuNzgyICBjLTIwLjgwMywzNS43ODQtNjIuNzA4LDQ5LjE3NC05OS44MzMsMzUuNzJjLTEwMi41ODMtMzYuNjkyLTEyNy40MjctMTIzLjg5NS0xMzYuODE0LTEzOS4xNzUgIGMtMi43NzItNS43MDIsMS41OTctMTEuODQ2LDcuMzI2LTExLjg0NmMxLjY2NCwwLTEuMDIxLTAuMzU4LDU2LjIxMywxMi4yNWM0LjczMiwxLjA0OSw5LjIxMi0yLjU1Myw5LjIxMi03LjM5NiAgYzAtMy41NzItMi40ODYtNi42Mi01LjkzMy03LjM4NmwtNTQuMzU2LTEyLjAzOGMtMTkuMTA2LTQuMjE1LTM0LjYxNywxNS40NzgtMjYuMDczLDMzLjA0NmwxMS4yNzEsMjMuMTU3SDY3Ljk3OGwtMTkuMjUyLTQxLjkwNSAgYy00LjE1Ny05LjAzMS0xMy4yNTktMTQuODYzLTIzLjE5OC0xNC44NjNDMTEuNDUyLDIzNS45LDAsMjQ3LjM1MywwLDI2MS40Mjl2ODUuMjMyYzAsMTkuODE3LDEwLjcyNiwzNy4xNzMsMjYuNjc5LDQ2LjU1NiAgYy0xNS42OCw5LjI3My0yNi4zNzYsMjYuMDYzLTI2LjY2OSw0NS40NjdjLTAuNDU0LDMwLjE1LDIzLjk0NCw1NC44Miw1My45ODMsNTQuODJoMjg2LjAxOWM0LjE3NywwLDcuNTY4LTMuMzksNy41NjgtNy41NjggIGMwLTQuMTM5LTMuMzY1LTcuNTY4LTcuNTY4LTcuNTY4SDUzLjk5M2MtMjEuNzI0LDAtMzkuMzUyLTE3LjkzLTM4Ljg0OC0zOS43NzZjMC40OTQtMjEuMjIsMTguMzU0LTM3LjkzOSwzOS41NzQtMzcuOTM5aDE1OS45OTEgIGMxMC45NzgsNi4wNzQsMjIuNDkxLDExLjI5MSwzNC40NzgsMTUuNjNjMzIuMjA3LDExLjY1MSw2OC40MTMsNi4zNDMsOTUuNDAzLTE1LjYzaDEwMS4zODdjMjEuMjIsMCwzOS4wOCwxNi43MiwzOS41NzQsMzcuOTM5ICBjMC41MDUsMjEuODQ1LTE3LjEyMywzOS43NzYtMzguODQ4LDM5Ljc3NmgtNzMuOTQxYy00LjE3NywwLTcuNTY4LDMuMzktNy41NjgsNy41NjhjMCw0LjEzOSwzLjM2NSw3LjU2OCw3LjU2OCw3LjU2OGg3My45NDEgIGMzMC4wMzksMCw1NC40MzctMjQuNjcxLDUzLjk4My01NC44MmMtMC4yOTMtMTkuNDA0LTEwLjk4OC0zNi4xOTQtMjYuNjY5LTQ1LjQ2N0M0ODkuOTczLDM4My44MzMsNTAwLjY5OSwzNjYuNDc4LDUwMC42OTksMzQ2LjY2MXogICBNNDQ0LjU1Nyw5NS4zNzNsNTEuNjQyLDEyLjMyYy0yLjY0NCwxMS40ODMtMTIuOTQ2LDIwLjA1OS0yNS4yMTYsMjAuMDU5SDQzNy4wNUM0NDEuNzgyLDExNy45MzUsNDQ0LjQ2NiwxMDYuOTU3LDQ0NC41NTcsOTUuMzczeiAgIE0zNjguMjc0LDMzLjYzMWMyNi45ODEsMCw0OS45MjcsMTcuNTQ3LDU4LjAxOSw0MS44MzRjMTMuMTM5LDM5LjI2LTE2LjI0Nyw4MC40NS01OC4wMTksODAuNDUgIGMtMTUuMDY1LDAtMjguODU4LTUuNDc5LTM5LjUyNC0xNC41NEMyODUuMTU3LDEwNC40MTMsMzExLjk2MiwzMy42MzEsMzY4LjI3NCwzMy42MzF6IE01My45OTMsMzg1LjUxOSAgYy0yMS40MjIsMC0zOC44NTgtMTcuNDI2LTM4Ljg1OC0zOC44NTh2LTg1LjIzMmMwLTExLjA2NSwxNS4xNzgtMTQuNDYyLDE5LjgzNy00LjMzOWwyMS4yOCw0Ni4zMDQgIGMxLjIzMSwyLjY5NCwzLjkyNSw0LjQwOSw2Ljg4Miw0LjQwOWg1OS42NTRjMTYuMzMyLDMwLjMzOCwzOC44MzMsNTYuNjIsNjguMDE4LDc3LjcxNSAgQzE3MC41NzQsMzg1LjUxOSw3My45NTksMzg1LjUxOSw1My45OTMsMzg1LjUxOXogTTQ0Ni43MDYsMzg1LjUxOWMtOS43ODYsMC03Ny4zNzMsMC04Ny4yODEsMCAgYzIwLjg0NS0yNi41MTYsMjAuNzQyLTU1LjAxMiw2LjI4Ni03Ny43MTVjMTMuNjc0LDAsMjQuOTI1LDAsMzguNTU1LDBjMzYuODU3LDEuMTI2LDQ1Ljg2Mi0yLjcwNiw1OS40NTIsMy45MjUgIGMxMi45MjYsNi4zMjcsMjEuODQ1LDE5LjYwNSwyMS44NDUsMzQuOTMyQzQ4NS41NjQsMzY4LjA5Myw0NjguMTI4LDM4NS41MTksNDQ2LjcwNiwzODUuNTE5eiIvPgo8cGF0aCBkPSJNMzkwLjIzNCw4MS41MTZjNC4xOCwwLDcuNTY4LTMuMzg4LDcuNTY4LTcuNTY4cy0zLjM4Ny03LjU2OC03LjU2OC03LjU2OGgtMjEuOTU3Yy00LjE4LDAtNy41NjgsMy4zODgtNy41NjgsNy41NjggIHMzLjM4Nyw3LjU2OCw3LjU2OCw3LjU2OEgzOTAuMjM0eiIvPgo8cGF0aCBkPSJNMjY4LjI5OSwzMTEuODI1bC04NC44ODUtMjguNTczYy0zLjk2LTEuMzM2LTguMjUzLDAuNzk2LTkuNTg3LDQuNzU4Yy0xLjMzMywzLjk2MSwwLjc5Nyw4LjI1Myw0Ljc1OSw5LjU4NiAgYzkwLjA3NywzMC4xNjgsODQuOTY2LDI4Ljk3LDg3LjMwMSwyOC45N0MyNzQuMzk0LDMyNi41NjYsMjc2LjQxOSwzMTQuNTU4LDI2OC4yOTksMzExLjgyNXoiLz4KPHBhdGggZD0iTTIwNy4yMjUsMzM1Ljc2Yy00LjExNS0wLjcyLTguMDM5LDIuMDI5LTguNzYxLDYuMTQ2Yy0wLjcyMiw0LjExNywyLjAyOSw4LjAzOSw2LjE0Niw4Ljc2MWw1OS45NjgsMTAuNTIyICBjNC4xMzMsMC43MjIsOC4wNDEtMi4wNDMsOC43NjEtNi4xNDZjMC43MjItNC4xMTctMi4wMjktOC4wMzktNi4xNDYtOC43NjFMMjA3LjIyNSwzMzUuNzZ6Ii8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
-                        </td>
+                        <td><?PHP echo $exam_uesr[$key][update_time]; ?></td>
                     </tr>
                     <?php
                     }

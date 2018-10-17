@@ -3,8 +3,8 @@
 <?php
 mysql_select_db($database_conn_web, $conn_web);
 // $query_web = "select pic_name from examinee where examyear_id=33 and allow='Y' and exarea in ('Northern','Southern') ";//and id in ('CD20160092','CD20160091')";
-$query_web = "select pic_name from examinee where examyear_id='".$_GET[year]."' and apply_mk=1 and id='".$_GET[id]."'  ";//and id in ('CA20170029')
-echo $query_web;
+// $query_web = "select pic_name from examinee where examyear_id='".$_GET[year]."' and apply_mk=1 and id='".$_GET[id]."'  ";//and id in ('CA20170029')
+// echo $query_web;
 // 		('CA20170029', 'CA20170065', 'CA20170106', 'CA20170137', 'CA20170268', 'CA20170287', 'CA20170414', 'CA20170419', 'CA20170015', 'CA20170021', 'CA20170036', 'CA20170041', 'CA20170060', 'CA20170070', 'CA20170088', 'CA20170142', 'CA20170232', 'CA20170245', 'CA20170290', 'CA20170321', 'NA20170028', 'NA20170056', 'NA20170102', 'NA20170182', 'NA20170185', 'NA20170180', 'NA20170191', 'SA20170235', 'SA20170556', 'SA20170101', 'SA20170481', 'SA20170037', 'SA20170075', 'SA20170142', 'SA20170349', 'SA20170473', 'SA20170581' ) ";
 // 		'CD20160012',
 // 'CD20160013',
@@ -33,7 +33,7 @@ echo $query_web;
 // 'SD20160030',
 // 'SD20160041'
 // )";
-// $query_web = "select pic_name from examinee where id like '%D2016%'";
+$query_web = "select pic_name from examinee where id like '%CC2018%'";
 
 // $query_web = "select pic_name from examinee where examyear_id=33 and id in('SD20160007',
 // 		'ND20160039',
